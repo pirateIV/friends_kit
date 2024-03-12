@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import './index.css';
-import './App.css';
 import Root from './routes/root.jsx';
 import Signup from './pages/signup/Signup.jsx';
 import NotFound from './pages/404/NotFound.jsx';
+import SignupStep from './components/signup/SignupStep.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +16,12 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <Signup />,
+    children: [
+      {
+        path: '/signup/:step',
+        element: <SignupStep />
+      }
+    ]
   },
   {
     path: '*',
