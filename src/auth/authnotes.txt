@@ -1,0 +1,36 @@
+src/
+|-- auth/
+|   |-- api/
+|   |   |-- authApi.js        // API functions for authentication
+|   |
+|   |-- components/
+|   |   |-- Login.js          // Login component
+|   |   |-- Signup.js         // Signup component
+|   |   |-- UserProfile.js    // User profile component
+|   |   |-- PrivateRoute.js   // Protected route component
+|   |
+|   |-- reducers/
+|   |   |-- authSlice.js      // Redux slice for authentication
+|   |
+|   |-- services/
+|   |   |-- authService.js    // Service for handling authentication logic
+|   |
+|   |-- utils/
+|   |   |-- authUtils.js      // Utility functions for authentication
+|   |
+|   |-- pages/
+|   |   |-- LoginPage.js      // Page for login
+|   |   |-- SignupPage.js     // Page for signup
+|   |   |-- ProfilePage.js    // Page for user profile
+|   |
+|   |-- hooks/
+|   |   |-- useAuth.js        // Custom hook for authentication
+|   |
+|   |-- types/
+|   |   |-- authTypes.js      // Types related to authentication
+|   |
+|   |-- constants/
+|   |   |-- authConstants.js  // Constants related to authentication
+|   |
+|   |-- AuthProvider.js       // Context provider for authentication
+|   |-- AuthRoutes.js         // Routes related to authentication
