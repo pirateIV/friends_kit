@@ -1,6 +1,6 @@
 import Steps from './Steps';
 import ProgressBar from './ProgressBar';
-import { steps } from '../../../assets/images/signup/index';
+import { steps } from '../../../assets/images/signup/imports';
 
 const CustomSignupProgress = () => {
   return (

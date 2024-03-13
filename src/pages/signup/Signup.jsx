@@ -1,6 +1,8 @@
-import CustomSignupProgress from '../../components/signup/progress/CustomSignupProgress';
-import SelectAccount from '../../components/signup/steps/SelectAccount';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
+import SelectAccount from '../../components/signup/steps/SelectAccount';
+import CustomSignupProgress from '../../components/signup/progress/CustomSignupProgress';
+
+import './Signup.css'
 
 const Signup = () => {
   useDocumentTitle('Sign Up');
