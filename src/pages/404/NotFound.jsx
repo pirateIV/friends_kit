@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 const NotFoundPage = () => {
   const navigate = useNavigate();
@@ -12,11 +13,12 @@ const NotFoundPage = () => {
   const handleRedirect = () => {
     navigate('/');
   };
-
+  useDocumentTitle('Not Found');
+  
   return (
     <div className='min-h-screen'>
       <motion.section
-        initial={{ opacity: 0 }}  
+        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}>
@@ -58,7 +60,7 @@ const NotFoundPage = () => {
                 <div>
                   <motion.button
                     onClick={handleRedirect}
-                    className='inline-flex items-center font-medium justify-center w-[220px] h-[50px] text-white py-[18px] px-[22px] text-[.8rem] rounded-md border-t border-[#d58824] bg-[#3d70b2] hover:bg-[#4d85ce]'
+                    className='inline-flex items-center font-medium justify-center w-[220px] h-[50px] text-white py-[18px] px-[22px] text-[.8rem] rounded-md border-t border-[#90b3e0] shadow-sm bg-[#3d70b2] hover:bg-[#4d85ce]'
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}>
                     Take me Back

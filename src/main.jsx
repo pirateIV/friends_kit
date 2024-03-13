@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import './index.css';
+import './tailwind.css';
 import Root from './routes/root.jsx';
 import Signup from './pages/signup/Signup.jsx';
 import NotFound from './pages/404/NotFound.jsx';
-import SignupStep from './components/signup/SignupStep.jsx';
+import SelectAccount from './components/signup/steps/SelectAccount.jsx'
 
 const router = createBrowserRouter([
   {
@@ -16,17 +16,15 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <Signup />,
-    children: [
-      {
-        path: '/signup/:step',
-        element: <SignupStep />
-      }
-    ]
+  },
+  {
+    path: '/signup/select-account',
+    element: <SelectAccount />
   },
   {
     path: '*',
-    element: <NotFound />
-  }
+    element: <NotFound />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
