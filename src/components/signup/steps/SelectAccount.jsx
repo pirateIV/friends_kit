@@ -11,7 +11,7 @@ const SelectAccount = () => {
           Welcome, select an account type.
         </h3>
         <div className='pt-5 max-w-[1040px] w-full' id='select-acct-type'>
-          <div className='cards grid grid-cols-3 mt-4'>
+          <div className='cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-4'>
             {accountTypes.map((account) => (
               <AccountCard
                 key={account.id}

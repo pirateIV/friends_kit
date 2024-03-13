@@ -5,16 +5,15 @@ const ProgressBar = ({ progress, children }) => {
       id='progress-bar'>
       <div
         className='relative flex items-center justify-between h-[6px] mx-auto'
-        style={{ width: 'calc(100% - 24px)' }}
+        style={{ width: 'calc(100% - 38px)' }}
         id='progress-wrap'>
         <div
-          className='absolute top-0 left-0 h-full bg-[#eaeaea] w-full'
+          className='absolute top-0 left-0 h-full bg-[#eaeaea] w-full rounded-[100px]'
           id='track'></div>
         <div
-          className='absolute top-0 left-0 h-full bg-blue-500'
+          className='absolute top-0 left-0 h-full bg-blue-500 rounded-[100px]'
           id='bar'
           style={{ width: '15%' }}></div>
-
         {children}
       </div>
     </div>
