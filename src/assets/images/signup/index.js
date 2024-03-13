@@ -9,14 +9,12 @@ import type2 from './cards/type-2.svg';
 import type3 from './cards/type-3.svg';
 import mailbox from './cards/mailbox.svg';
 
-export {
-  flag,
-  lock,
-  user,
-  type1,
-  type2,
-  type3,  
-  account,
-  profile,
-  mailbox,
-};
+export { flag, lock, user, type1, type2, type3, account, profile, mailbox };
+
+export const steps = [
+  { id: 1, icon: account },
+  { id: 2, icon: user },
+  { id: 3, icon: profile },
+  { id: 4, icon: lock },
+  { id: 5, icon: flag },
+];
