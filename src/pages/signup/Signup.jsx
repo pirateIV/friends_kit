@@ -1,4 +1,5 @@
 import CustomSignupProgress from '../../components/signup/progress/CustomSignupProgress';
+import SelectAccount from '../../components/signup/steps/SelectAccount';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 const Signup = () => {
@@ -14,8 +15,10 @@ const Signup = () => {
               className='max-w-[48px] mx-auto'
               alt=''
             />
-            <CustomSignupProgress />
           </nav>
+            <CustomSignupProgress />
+
+          <SelectAccount />
         </div>
       </main>
     </>

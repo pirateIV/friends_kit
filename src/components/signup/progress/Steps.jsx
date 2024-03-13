@@ -5,7 +5,7 @@ const Steps = ({ steps }) => {
   return (
     <>
       {steps.map((step) => (
-        <StepDot step={step} />
+        <StepDot key={step.id} step={step} />
       ))}
     </>
   );
