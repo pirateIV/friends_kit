@@ -4,7 +4,7 @@ const StepDot = ({ step }) => {
 
   return (
     <div className={stepClasses} id={`step-dot-${step.id}`}>
-      <img src={step.icon} width='16' height='16' alt='icon' />
+      {step.icon}
     </div>
   );
 };

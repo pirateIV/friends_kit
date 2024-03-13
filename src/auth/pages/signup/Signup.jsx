@@ -1,8 +1,8 @@
-import useDocumentTitle from '../../hooks/useDocumentTitle';
-import SelectAccount from '../../components/signup/steps/SelectAccount';
-import CustomSignupProgress from '../../components/signup/progress/CustomSignupProgress';
+import './Signup.css';
 
-import './Signup.css'
+import useDocumentTitle from '../../../hooks/useDocumentTitle';
+import SelectAccount from '../../../components/signup/steps/SelectAccount';
+import CustomSignupProgress from '../../../components/signup/progress/CustomSignupProgress';
 
 const Signup = () => {
   useDocumentTitle('Sign Up');
@@ -18,8 +18,7 @@ const Signup = () => {
               alt=''
             />
           </nav>
-            <CustomSignupProgress />
-
+          <CustomSignupProgress />
           <SelectAccount />
         </div>
       </main>
