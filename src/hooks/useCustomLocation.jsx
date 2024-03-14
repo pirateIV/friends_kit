@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const useIsSignupPath = (path) => {
+const useCustomLocation = (path) => {
   const location = useLocation();
-  const [isSignupPath, setIsSignupPath] = useState(false);
+  const [customPath, setCustomPath] = useState(false);
 
   useEffect(() => {
     const currentPath = location.pathname;
-    setIsSignupPath(currentPath === `/${path}` || currentPath === `/${path}/`);
+    setCustomPath(currentPath === `/${path}` || currentPath === `/${path}/`);
   }, [location]);
 
-  return isSignupPath;
+  return customPath;
 };
 
-export default useIsSignupPath;
+export default useCustomLocation;
+  

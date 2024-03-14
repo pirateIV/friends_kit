@@ -1,6 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import AccountCardButton from './AccountCardButton';
 
 const AccountCard = ({ id, type, title, imgSrc }) => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className='card justify-self-stretch p-3'>
@@ -16,11 +19,7 @@ const AccountCard = ({ id, type, title, imgSrc }) => {
             <h3 className='font-montserrat font-semibold py-2 text-[#344258]'>{title}</h3>
             <p className='text-sm text-[#a2a5b9]'>{`Create a ${type} account to be able to do some awesome things.`}</p>
             <div className='mt-5'>
-              <Link
-                to='/signup/info'
-                className='flex items-center justify-center w-full min-h-[42px] text-[.8rem] font-medium border border-slate-300 text-[#999] rounded-lg transition-colors hover:text-white hover:border-blue-500 hover:bg-[#007cff] focus:text-white focus:bg-[#007cff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#007bff79]'>
-                Continue
-              </Link>
+              <AccountCardButton />
             </div>
           </div>
         </div>

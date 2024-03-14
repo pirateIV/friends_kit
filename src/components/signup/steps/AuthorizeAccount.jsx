@@ -1,9 +1,7 @@
-import React from 'react'
+import SignupWrapper from '../../common/SignupWrapper';
 
 const AuthorizeAccount = () => {
-  return (
-    <div>AuthorizeAccount</div>
-  )
-}
+  return <SignupWrapper id='authorize' title='Authorize Account'></SignupWrapper>;
+};
 
-export default AuthorizeAccount
+export default AuthorizeAccount;

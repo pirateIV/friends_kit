@@ -1,8 +1,8 @@
-import React from 'react'
+import SignupWrapper from '../../common/SignupWrapper'
 
 const AccountCreated = () => {
   return (
-    <div>AccountCreated</div>
+    <SignupWrapper id='account-created' title='AccountCreated'></SignupWrapper>
   )
 }
 

@@ -17,7 +17,7 @@ const ProgressBar = ({ children }) => {
             className='absolute top-0 left-0 h-full bg-[#eaeaea] w-full rounded-[100px]'
             id='track'></div>
           <div
-            className='absolute top-0 left-0 h-full bg-[#3d70b2] rounded-[100px]'
+            className='absolute top-0 left-0 h-full bg-[#5596e6] rounded-[100px]'
             id='bar'
             style={{ width: `${progress}%` }}></div>
         </div>

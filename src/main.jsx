@@ -31,12 +31,12 @@ const router = createBrowserRouter([
         element: <UserInfo />,
       },
       {
-        path: '/signup/auth',
-        element: <AuthorizeAccount />,
-      },
-      {
         path: '/signup/upload-profile',
         element: <ProfileUpload />,
+      },
+      {
+        path: '/signup/auth',
+        element: <AuthorizeAccount />,
       },
       {
         path: '/signup/created',

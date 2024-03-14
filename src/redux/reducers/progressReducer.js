@@ -9,7 +9,7 @@ const progressSlice = createSlice({
   initialState,
   reducers: {
     setProgress(state, action) {
-      state.value = Number(action.payload);
+     (state.value = Number(action.payload));
     },
   },
 });
