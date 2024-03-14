@@ -1,21 +1,30 @@
-const ProgressBar = ({ progress, children }) => {
+import { useSelector } from 'react-redux';
+import { currentProgress } from '../../../redux/reducers/progressReducer';
+
+const ProgressBar = ({ children }) => {
+  const progress = useSelector(currentProgress);
+
   return (
-    <div
-      className='max-w-[520px] mx-auto flex items-center bg-white h-[18px] rounded-[100px]'
-      id='progress-bar'>
+    <div className='pt-[30px]' id='progress'>
       <div
-        className='relative flex items-center justify-between h-[6px] mx-auto'
-        style={{ width: 'calc(100% - 38px)' }}
-        id='progress-wrap'>
+        className='relative max-w-[520px] mx-auto flex items-center bg-white h-[18px] rounded-[100px]'
+        id='progress-bar'>
         <div
-          className='absolute top-0 left-0 h-full bg-[#eaeaea] w-full rounded-[100px]'
-          id='track'></div>
-        <div
-          className='absolute top-0 left-0 h-full bg-blue-500 rounded-[100px]'
-          id='bar'
-          style={{ width: '15%' }}></div>
-        {children}
-      </div>
+          className='relative h-[6px] mx-auto'
+          style={{ width: 'calc(100% - 24px)' }}
+          id='progress-wrap'>
+          <div
+            className='absolute top-0 left-0 h-full bg-[#eaeaea] w-full rounded-[100px]'
+            id='track'></div>
+          <div
+            className='absolute top-0 left-0 h-full bg-[#3d70b2] rounded-[100px]'
+            id='bar'
+            style={{ width: `${progress}%` }}></div>
+        </div>
+        <div className='w-full absolute flex items-center justify-between'>
+          {children}
+        </div>
+      </div>{' '}
     </div>
   );
 };
