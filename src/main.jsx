@@ -9,7 +9,11 @@ import './tailwind.css';
 import Root from './routes/root.jsx';
 import NotFound from './pages/404/NotFound.jsx';
 import Signup from './auth/pages/signup/Signup.jsx';
-import SelectAccount from './components/signup/steps/SelectAccount.jsx';
+import ProfileUpload from './components/signup/steps/ProfileUpload.jsx';
+import AuthorizeAccount from './components/signup/steps/AuthorizeAccount.jsx';
+import AccountCreated from './components/signup/steps/AccountCreated.jsx';
+
+import UserInfo from './components/signup/steps/UserInfo.jsx';
 
 console.log(store.getState());
 
@@ -22,20 +26,23 @@ const router = createBrowserRouter([
     path: '/signup',
     element: <Signup />,
     children: [
-      // {
-      //   path: '/signup/select-account',
-      //   element: <SelectAccount />,
-      // },
       {
         path: '/signup/info',
-        // element: <Use,
+        element: <UserInfo />,
       },
-
+      {
+        path: '/signup/auth',
+        element: <AuthorizeAccount />,
+      },
+      {
+        path: '/signup/upload-profile',
+        element: <ProfileUpload />,
+      },
+      {
+        path: '/signup/created',
+        element: <AccountCreated />,
+      },
     ],
-  },
-  {
-    path: '/signup/select-account',
-    element: <SelectAccount />,
   },
   {
     path: '*',
