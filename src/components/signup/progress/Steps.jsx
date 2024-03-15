@@ -1,4 +1,4 @@
-import React from 'react';
+;
 import StepDot from './StepDot';
 
 const Steps = ({ steps }) => {

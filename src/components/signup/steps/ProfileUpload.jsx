@@ -22,7 +22,5 @@ const ProfileUpload = () => {
     </SignupWrapper>
   );
 };
-{
-  /*  */
-}
+
 export default ProfileUpload;

@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import SignupCard from '../../common/SignupCard';
 import SignupWrapper from '../../common/SignupWrapper';
-import { useNavigate } from 'react-router-dom';
 import { setProgress } from '../../../redux/reducers/progressReducer';
 import AcctCreatedContent from '../stepsComponents/AcctCreatedContent';
 
