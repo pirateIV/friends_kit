@@ -1,5 +1,6 @@
-import SignupWrapper from '../../common/SignupWrapper';
 import AccountCard from '../AccountCard/AccountCard';
+import SignupWrapper from '../../common/SignupWrapper';
+
 import { accountTypes } from '../../../assets/images/signup/imports';
 
 const SelectAccount = () => {
