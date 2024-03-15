@@ -1,10 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { setProgress } from '../../../redux/reducers/progressReducer';
-import { useEffect } from 'react';
-import SignupWrapper from '../../common/SignupWrapper';
-import ButtonGroup from '../../common/ButtonGroup';
 import { useNavigate } from 'react-router-dom';
+
 import SignupCard from '../../common/SignupCard';
+import SignupWrapper from '../../common/SignupWrapper';
+import { setProgress } from '../../../redux/reducers/progressReducer';
 import ProfileUploadContent from '../ProfileUpload/ProfileUploadContent';
 
 const ProfileUpload = () => {
@@ -13,7 +12,6 @@ const ProfileUpload = () => {
   dispatch(setProgress(50));
 
   const prev = () => navigate('/signup/info');
-
   const next = () => navigate('/signup/auth');
 
   return (
