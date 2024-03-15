@@ -1,9 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom';
 import AccountCardButton from './AccountCardButton';
 
 const AccountCard = ({ id, type, title, imgSrc }) => {
-  const navigate = useNavigate();
-
   return (
     <>
       <div className='card justify-self-stretch p-3'>
