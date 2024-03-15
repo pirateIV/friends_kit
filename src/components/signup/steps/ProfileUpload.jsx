@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import SignupCard from '../../common/SignupCard';
 import SignupWrapper from '../../common/SignupWrapper';
 import { setProgress } from '../../../redux/reducers/progressReducer';
-import ProfileUploadContent from '../ProfileUpload/ProfileUploadContent';
+import ProfileUploadContent from '../stepsComponents/ProfileUploadContent';
 
 const ProfileUpload = () => {
   const dispatch = useDispatch();
