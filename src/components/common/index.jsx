@@ -6,32 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export const isInputVisible = () => {
   const [inputVisible, setInputVisible] = useState(false);
 
-  switch (inputVisible) {
-    case false:
-      return (
-        <FontAwesomeIcon
-          icon={faEye}
-          className='text-gray-600'
-          onClick={() => setInputVisible(true)}
-        />
-      );
-    case true:
-      return (
-        <FontAwesomeIcon
-          icon={faEyeSlash}
-          className='text-gray-600'
-          onClick={() => setInputVisible(false)}
-        />
-      );
-    default:
-      return (
-        <FontAwesomeIcon
-          icon={faEyeSlash}
-          className='text-gray-600'
-          onClick={() => setInputVisible(false)}
-        />
-      );
-  }
+  return (
+    <FontAwesomeIcon
+      icon={inputVisible ? faEyeSlash : faEye}
+      className='text-gray-600'
+      onClick={() => setInputVisible(!inputVisible)}
+    />
+  );
 };
 
 export const inputClass =

@@ -1,22 +1,25 @@
 import { ErrorMessage } from 'formik';
 import { Input } from '@material-tailwind/react';
 
-import { inputClass, isInputVisible } from './index';
+import { inputClass } from './index';
+import useInputState from '../../hooks/useInputState';
 
 const InputField = ({ label, type, name }) => {
+  const { iconType, inputType } = useInputState(type);
+
   return (
     <>
       <div className='mb-6'>
         <div>
           <Input
             id={name}
-            type={type}
             name={name}
+            label={label}
+            icon={iconType}
+            type={inputType}
             variant='outlined'
-            icon={isInputVisible()}
             autoComplete={type}
             className={inputClass}
-            label={label}
           />
         </div>
         <ErrorMessage name={name} component='div' className='text-red-500 text-sm mt-1' />
