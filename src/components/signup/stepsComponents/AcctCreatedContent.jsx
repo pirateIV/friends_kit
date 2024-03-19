@@ -1,5 +1,5 @@
+import { Button } from '@material-tailwind/react';
 import mailbox from '../../../assets/images/signup/cards/mailbox.svg';
-
 
 const AcctCreatedContent = ({ next }) => {
   const btnClass = 'block px-5 py-1.5 mx-auto max-w-[280px] w-full text-sm rounded-lg text-[#5596e6] border border-[#5596e6] hover:text-white hover:bg-[#5596e6] focus:outline-none'
@@ -21,13 +21,13 @@ const AcctCreatedContent = ({ next }) => {
         </small>
       </div>
       <form>
-        <button
+        <Button
           type='submit'
           className={btnClass}
           onClick={() => next()}
           >
           Let Me in
-        </button>
+        </Button>
       </form>
     </section>
   );

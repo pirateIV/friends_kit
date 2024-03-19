@@ -1,7 +1,9 @@
+import { Button } from '@material-tailwind/react';
+
 import { useNavigate } from 'react-router-dom';
 import useLoadingState from '../../hooks/useLoading';
 
-const Button = ({ content, className, handleClick, navigateTo }) => {
+const CustomButton = ({ content, className, handleClick, navigateTo }) => {
   const navigate = useNavigate();
   const { loading, handleLoading } = useLoadingState();
 
@@ -11,15 +13,15 @@ const Button = ({ content, className, handleClick, navigateTo }) => {
     handleClick();
   };
   return (
-    <button
+    <Button
       type='button'
       className={`${className}
        ${'disabled:cursor-not-allowed'}`}
       disabled={loading}
       onClick={() => handleLoading(handleOnClick)}>
       {loading ? 'loading...' : content}
-    </button>
+    </Button>
   );
 };
 
-export default Button;
+export default CustomButton;
