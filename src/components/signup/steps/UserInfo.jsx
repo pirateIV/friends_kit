@@ -1,26 +1,19 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
+import FormContent from '../Form/FormContent';
+import ButtonGroup from '../../common/ButtonGroup';
 import SignupWrapper from '../../common/SignupWrapper';
 import { setProgress } from '../../../redux/reducers/progressReducer';
-import { useNavigate } from 'react-router-dom';
-import ButtonGroup from '../../common/ButtonGroup';
-import InputField from '../../common/InputField';
-import FormContent from '../Form/FormContent';
 
 const UserInfo = () => {
   const dispatch = useDispatch();
-  dispatch(setProgress(25));
   const navigate = useNavigate();
-
-  const prev = () => {
-    dispatch(setProgress(0));
-    navigate('/signup');
-  };
-  const next = () => {
-    dispatch(setProgress(50));
-    navigate('/signup/upload-profile');
-  };
+  
+  dispatch(setProgress(25));
+  const prev = () => navigate('/signup');
+  const next = () => navigate('/signup/upload-profile');
 
   return (
     <>

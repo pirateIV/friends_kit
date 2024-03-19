@@ -9,8 +9,8 @@ import PasswordInput from '../Form/PasswordInput';
 const AuthorizeAccount = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   dispatch(setProgress(75));
-
   const prev = () => navigate('/signup/upload-profile');
   const next = () => navigate('/signup/created');
 

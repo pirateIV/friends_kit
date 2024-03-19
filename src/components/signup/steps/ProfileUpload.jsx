@@ -9,8 +9,8 @@ import ProfileUploadContent from '../stepsComponents/ProfileUploadContent';
 const ProfileUpload = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   dispatch(setProgress(50));
-
   const prev = () => navigate('/signup/info');
   const next = () => navigate('/signup/auth');
 

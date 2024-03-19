@@ -1,5 +1,3 @@
-;
-
 const SignupWrapper = ({ id, title, children }) => {
   return (
     <section id={id}>

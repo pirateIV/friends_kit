@@ -13,7 +13,9 @@ const Button = ({ content, className, handleClick, navigateTo }) => {
   return (
     <button
       type='button'
-      className={className}
+      className={`${className}
+       ${'disabled:cursor-not-allowed'}`}
+      disabled={loading}
       onClick={() => handleLoading(handleOnClick)}>
       {loading ? 'loading...' : content}
     </button>
