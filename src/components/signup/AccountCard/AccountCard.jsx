@@ -9,6 +9,7 @@ const AccountCard = ({ id, type, title, imgSrc }) => {
             <img
               src={imgSrc}
               className='max-w-full h-auto scale-125 -translate-y-[20%]'
+              // loading='lazy'
               alt='company'
             />
           </div>

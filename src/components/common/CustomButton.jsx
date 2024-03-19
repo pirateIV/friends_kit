@@ -16,6 +16,7 @@ const CustomButton = (props) => {
   };
   return (
     <Button
+      style={{}}
       type='button'
       variant={variant}
       className={`${className}
@@ -23,7 +24,7 @@ const CustomButton = (props) => {
       loading={loading}
       disabled={loading}
       onClick={() => handleLoading(handleOnClick)}>
-      {content}
+      {!loading && content}
     </Button>
   );
 };

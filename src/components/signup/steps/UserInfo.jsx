@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import FormContent from '../Form/FormContent';
-import ButtonGroup from '../../common/ButtonGroup';
+import CustomButtonGroup from '../../common/CustomButtonGroup';
 import SignupWrapper from '../../common/SignupWrapper';
 import { setProgress } from '../../../redux/reducers/progressReducer';
 import { useEffect } from 'react';
@@ -31,7 +31,7 @@ const UserInfo = () => {
           {({ errors, touched }) => (
             <Form className='w-full max-w-[540px]'>
               <FormContent />
-              <ButtonGroup prev={prev} next={next} />
+              <CustomButtonGroup prev={prev} next={next} />
             </Form>
           )}
         </Formik>

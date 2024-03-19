@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import SignupWrapper from '../../common/SignupWrapper';
 import { setProgress } from '../../../redux/reducers/progressReducer';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import ButtonGroup from '../../common/ButtonGroup';
+import CustomButtonGroup from '../../common/CustomButtonGroup';
 import { useNavigate } from 'react-router-dom';
 import PasswordInput from '../Form/PasswordInput';
 import { useEffect } from 'react';
@@ -28,7 +28,7 @@ const AuthorizeAccount = () => {
         {({ errors, touched }) => (
           <Form className='w-full max-w-[540px]'>
             <PasswordInput />
-            <ButtonGroup prev={prev} next={next} />
+            <CustomButtonGroup prev={prev} next={next} />
           </Form>
         )}
       </Formik>

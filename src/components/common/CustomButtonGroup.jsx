@@ -1,9 +1,11 @@
+import { ButtonGroup } from '@material-tailwind/react';
+
 import Button from './CustomButton';
 import { nextBtnClass, prevBtnClass } from '../signup/steps';
 
-const ButtonGroup = ({ prev, next }) => {
+const CustomButtonGroup = ({ prev, next }) => {
   return (
-    <div className='flex justify-end gap-8 mt-4'>
+    <ButtonGroup className='flex justify-end gap-1 mt-4 divide-none'>
       <Button
         content='Back'
         variant='outlined'
@@ -16,8 +18,8 @@ const ButtonGroup = ({ prev, next }) => {
         handleClick={next}
         className={nextBtnClass}
       />
-    </div>
+    </ButtonGroup>
   );
 };
 
-export default ButtonGroup;
+export default CustomButtonGroup;

@@ -1,4 +1,4 @@
-import ButtonGroup from './ButtonGroup';
+import CustomButtonGroup from './CustomButtonGroup';
 import useCustomLocation from '../../hooks/useCustomLocation';
 
 const SignupCard = ({ children, prev, next }) => {
@@ -8,7 +8,7 @@ const SignupCard = ({ children, prev, next }) => {
       <div className='bg-white border border-slate-200 rounded-lg p-[30px]'>
         {children}
       </div>
-      {!isAccountCreated ? <ButtonGroup prev={prev} next={next} /> : null}
+      {!isAccountCreated ? <CustomButtonGroup prev={prev} next={next} /> : null}
     </section>
   );
 };

@@ -22,6 +22,9 @@ const usersSlice = createSlice({
     updateAcctType(state, action) {
       state.users.push({ ...user, accountType: action.payload });
     },
+    updateAcctType(state, action) {
+      
+    }
   },
 });
 
