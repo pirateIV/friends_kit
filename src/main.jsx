@@ -14,6 +14,7 @@ import AuthorizeAccount from './components/signup/steps/AuthorizeAccount.jsx';
 import AccountCreated from './components/signup/steps/AccountCreated.jsx';
 
 import UserInfo from './components/signup/steps/UserInfo.jsx';
+import { ThemeProvider } from '@material-tailwind/react';
 
 console.log(store.getState());
 
@@ -53,7 +54,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>
 );

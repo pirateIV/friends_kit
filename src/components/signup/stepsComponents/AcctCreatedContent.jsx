@@ -2,7 +2,7 @@ import { Button } from '@material-tailwind/react';
 import mailbox from '../../../assets/images/signup/cards/mailbox.svg';
 
 const AcctCreatedContent = ({ next }) => {
-  const btnClass = 'block px-5 py-1.5 mx-auto max-w-[280px] w-full text-sm rounded-lg text-[#5596e6] border border-[#5596e6] hover:text-white hover:bg-[#5596e6] focus:outline-none'
+  const btnClass = 'block px-5 py-1.5 mx-auto max-w-[280px] font-sans w-full bg-blue-600 !text-white text-sm rounded-lg text-[#5596e6] border border-[#5596e6] hover:text-white hover:bg-[#5596e6] focus:outline-none'
 
   return (
     <section className='space-y-4'>
@@ -23,7 +23,7 @@ const AcctCreatedContent = ({ next }) => {
       <form>
         <Button
           type='submit'
-          className={btnClass}
+          className={`${btnClass} lowercase first-letter:uppercase`}
           onClick={() => next()}
           >
           Let Me in
