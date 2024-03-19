@@ -6,15 +6,15 @@ const ButtonGroup = ({ prev, next }) => {
     <div className='flex justify-end gap-8 mt-4'>
       <Button
         content='Back'
-        className={prevBtnClass}
-        handleClick={prev}
         variant='outined'
+        handleClick={prev}
+        className={prevBtnClass}
       />
       <Button
         content='Next'
-        className={nextBtnClass}
-        handleClick={next}
         variant='filled'
+        handleClick={next}
+        className={nextBtnClass}
       />
     </div>
   );

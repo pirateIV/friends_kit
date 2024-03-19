@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
-import { setProgress } from '../../../redux/reducers/progressReducer';
-import useDocumentTitle from '../../../hooks/useDocumentTitle';
+import { setProgress } from '../../../redux/reducers/progressReducer.js';
+import useDocumentTitle from '../../../hooks/useDocumentTitle.js';
 import useCustomLocation from '../../../hooks/useCustomLocation.jsx';
-import SelectAccount from '../../../components/signup/steps/SelectAccount';
-import CustomSignupProgress from '../../../components/signup/progress/CustomSignupProgress';
+import SelectAccount from '../../../components/signup/steps/SelectAccount.jsx';
+import CustomSignupProgress from '../../../components/signup/progress/CustomSignupProgress.jsx';
 
 import './Signup.css';
 import logo from '../../../assets/images/logo/logo.svg';

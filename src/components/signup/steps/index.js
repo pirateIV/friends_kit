@@ -1,4 +1,9 @@
-export const prevBtnClass =
-  'flex items-center justify-center bg-white border text-gray-600 border-gray-300 w-20 text-sm leading-6 font-medium py-2 px-3 rounded-lg !shadow-sm hover:bg-gray-100 focus:outline-none disabled:bg-gray-200';
-export const nextBtnClass =
-  'flex items-center justify-center bg-blue-600 w-20 text-white border border-blue-600 text-sm leading-6 font-medium py-2 px-3 rounded-lg !shadow-sm hover:opacity-90 focus:outline-none disabled:bg-blue-400';
+// Base button class with common styles
+const baseBtnClass =
+  'flex items-center justify-center text-sm leading-6 font-medium py-2 px-3 rounded-lg !shadow-sm focus:outline-none lowercase first-letter:!uppercase';
+
+// Previous button class with specific styles
+export const prevBtnClass = `${baseBtnClass} bg-white border text-gray-600 border-gray-300 w-20 hover:bg-gray-100 disabled:bg-gray-200`;
+
+// Next button class with specific styles
+export const nextBtnClass = `${baseBtnClass} bg-blue-600 text-white border border-blue-600 w-20 hover:opacity-90 disabled:bg-blue-400`;

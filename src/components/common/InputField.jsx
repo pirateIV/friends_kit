@@ -16,8 +16,9 @@ const InputField = ({ label, type, name }) => {
             name={name}
             label={label}
             icon={iconType}
+            color='blue'
             type={inputType}
-            variant='outlined'
+            variant="standard"
             autoComplete={type}
             className={inputClass}
           />
