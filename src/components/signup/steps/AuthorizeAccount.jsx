@@ -5,12 +5,15 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import ButtonGroup from '../../common/ButtonGroup';
 import { useNavigate } from 'react-router-dom';
 import PasswordInput from '../Form/PasswordInput';
+import { useEffect } from 'react';
 
 const AuthorizeAccount = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
-  dispatch(setProgress(75));
+
+  useEffect(() => {
+    dispatch(setProgress(75));
+  }, []);
   const prev = () => navigate('/signup/upload-profile');
   const next = () => navigate('/signup/created');
 

@@ -5,12 +5,15 @@ import SignupCard from '../../common/SignupCard';
 import SignupWrapper from '../../common/SignupWrapper';
 import { setProgress } from '../../../redux/reducers/progressReducer';
 import ProfileUploadContent from '../stepsComponents/ProfileUploadContent';
+import { useEffect } from 'react';
 
 const ProfileUpload = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
-  dispatch(setProgress(50));
+
+  useEffect(() => {
+    dispatch(setProgress(50));
+  }, []);
   const prev = () => navigate('/signup/info');
   const next = () => navigate('/signup/auth');
 

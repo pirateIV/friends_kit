@@ -6,7 +6,7 @@ const ButtonGroup = ({ prev, next }) => {
     <div className='flex justify-end gap-8 mt-4'>
       <Button
         content='Back'
-        variant='outined'
+        variant='outlined'
         handleClick={prev}
         className={prevBtnClass}
       />

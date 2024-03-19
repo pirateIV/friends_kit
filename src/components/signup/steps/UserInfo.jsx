@@ -6,12 +6,15 @@ import FormContent from '../Form/FormContent';
 import ButtonGroup from '../../common/ButtonGroup';
 import SignupWrapper from '../../common/SignupWrapper';
 import { setProgress } from '../../../redux/reducers/progressReducer';
+import { useEffect } from 'react';
 
 const UserInfo = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
+ useEffect(() => {
   dispatch(setProgress(25));
+ }, [])
   const prev = () => navigate('/signup');
   const next = () => navigate('/signup/upload-profile');
 

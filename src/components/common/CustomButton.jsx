@@ -1,4 +1,4 @@
-import { Button, Spinner } from '@material-tailwind/react';
+import { Button } from '@material-tailwind/react';
 
 import { useNavigate } from 'react-router-dom';
 import useLoadingState from '../../hooks/useLoading';
