@@ -1,5 +1,5 @@
 import { Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import FormContent from '../Form/FormContent';
@@ -7,7 +7,7 @@ import CustomButtonGroup from '../../common/CustomButtonGroup';
 import SignupWrapper from '../../common/SignupWrapper';
 import { setProgress } from '../../../redux/reducers/progressReducer';
 import { useEffect, useState } from 'react';
-import { setUserInfo } from '../../../auth/reducers/users/userSlice';
+import { getUserInfo, setUserInfo } from '../../../auth/reducers/users/userSlice';
 import { nextBtnClass, prevBtnClass } from '.';
 import { Button, ButtonGroup } from '@material-tailwind/react';
 import CustomButton from '../../common/CustomButton';
@@ -16,20 +16,23 @@ import useLoadingState from '../../../hooks/useLoading';
 const UserInfo = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector(getUserInfo);
+  const { firstName, lastName, email } = user;
 
-  const [formDetails, setFormDetails] = useState(null);
-  const { handleLoading } = useLoadingState();
+  const handlePrevious = () => {
+    console.log(1231232);
+  };
 
+  const handleNext = (values) => {
+    dispatch(setUserInfo(values));
+    navigate('/signup/user-profile')
+  };
 
   return (
     <>
       <SignupWrapper title='Tell us more about you.' id='user-info'>
         <Formik
-          initialValues={{
-            firstname: '',
-            lastname: '',
-            email: '',
-          }}
+          initialValues={{ firstName, lastName, email }}
           onSubmit={(values) => handleNext(values)}>
           {() => (
             <Form className='w-full max-w-[540px]'>
@@ -39,16 +42,13 @@ const UserInfo = () => {
                   type='button'
                   content='Back'
                   variant='outlined'
-                  handleClick={handleClick}
+                  navigateTo='/signup'
+                  handleClick={handlePrevious}
                   className={prevBtnClass}
                 />
-                <button type='submit' content='Next' className={nextBtnClass}>Next</button>
-                {/* <CustomButton 
-                  type='submit'
-                  content='Next'
-                  variant='filled'
-                  className={nextBtnClass}
-                /> */}
+                <button type='submit' content='Next' className={nextBtnClass}>
+                  Next
+                </button>
               </ButtonGroup>
             </Form>
           )}

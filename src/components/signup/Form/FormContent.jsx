@@ -7,13 +7,13 @@ const FormContent = () => {
       <InputField
         label='First Name'
         type='text'
-        name='firstname'
+        name='firstName'
         placeholder='Enter your first name'
       />
       <InputField
         label='Last Name'
         type='text'
-        name='lastname'
+        name='lastName'
         placeholder='Enter your last name'
       />
       <InputField

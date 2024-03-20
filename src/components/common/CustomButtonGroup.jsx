@@ -21,7 +21,7 @@ const CustomButtonGroup = ({ prev, next }) => {
         content='Back'
         type='button'
         variant='outlined'
-        handleClick={prev}
+        // handleClick={prev}
         className={prevBtnClass}
       />
       <Button
