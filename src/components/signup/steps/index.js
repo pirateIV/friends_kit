@@ -7,10 +7,10 @@ const baseBtnClass =
   'flex items-center justify-center text-sm leading-6 font-medium py-2 px-3 !shadow-sm outline-none border-0';
 
 // Previous button class with specific styles
-export const prevBtnClass = `${baseBtnClass} bg-gray-500 text-white border border-gray-300 w-20 hover:bg-gray-600 disabled:bg-gray-200`;
+export const prevBtnClass = `${baseBtnClass} bg-gray-600 border border-gray-300 w-20 rounded-md hover:bg-gray-500`;
 
 // Next button class with specific styles
-export const nextBtnClass = `${baseBtnClass} bg-blue-600 text-white border border-blue-600 w-20 hover:opacity-90 disabled:bg-blue-400`;
+export const nextBtnClass = `${baseBtnClass} bg-blue-600 text-white border border-blue-600 w-20 rounded-md hover:opacity-90 disabled:bg-blue-400`;
 
 export const accountTypes = [
   { id: 1, type: 'company', title: 'Company', illustration: type1 },

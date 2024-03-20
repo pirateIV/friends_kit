@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import usersReducer from '../auth/reducers/users/userSlice';
+import userReducer from '../auth/reducers/user/userSlice';
 import progressReducer from '../redux/reducers/progressReducer';
 
 const store = configureStore({
   reducer: {
-    users: usersReducer,
+    user: userReducer,
     progress: progressReducer,
   },
 });

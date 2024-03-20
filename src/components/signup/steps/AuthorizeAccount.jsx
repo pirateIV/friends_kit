@@ -1,15 +1,15 @@
+import { useEffect } from 'react';
+import {  Form, Formik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button, ButtonGroup } from '@material-tailwind/react';
+
+import { nextBtnClass, prevBtnClass } from '.';
+import PasswordInput from '../Form/PasswordInput';
+import CustomButton from '../../common/CustomButton';
 import SignupWrapper from '../../common/SignupWrapper';
 import { setProgress } from '../../../redux/reducers/progressReducer';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import CustomButtonGroup from '../../common/CustomButtonGroup';
-import { useNavigate } from 'react-router-dom';
-import PasswordInput from '../Form/PasswordInput';
-import { useEffect } from 'react';
-import { nextBtnClass, prevBtnClass } from '.';
 import { getUserInfo, setUserPassword } from '../../../auth/reducers/users/userSlice';
-import { ButtonGroup } from '@material-tailwind/react';
-import CustomButton from '../../common/CustomButton';
 
 const AuthorizeAccount = () => {
   const dispatch = useDispatch();
@@ -44,9 +44,9 @@ const AuthorizeAccount = () => {
                 handleClick={prev}
                 className={prevBtnClass}
               />
-              <button type='submit' className={nextBtnClass}>
+              <Button type='submit' className={nextBtnClass}>
                 Next
-              </button>
+              </Button>
             </ButtonGroup>
           </Form>
         )}

@@ -50,9 +50,9 @@ const UserInfo = () => {
                   handleClick={handlePrevious}
                   className={prevBtnClass}
                 />
-                <button type='submit' content='Next' className={nextBtnClass}>
+                <Button type='submit' content='Next' className={nextBtnClass}>
                   Next
-                </button>
+                </Button>
               </ButtonGroup>
             </Form>
           )}

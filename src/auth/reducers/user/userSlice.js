@@ -1,10 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
 
 const user = {
-  name: function () {
-    return `${this.firstName} ${this.lastName}`;
-  },
   email: '',
   password: '',
   firstName: '',
@@ -22,8 +18,8 @@ const initialState = {
   error: null,
 };
 
-const usersSlice = createSlice({
-  name: 'users',
+const userSlice = createSlice({
+  name: 'user',
   initialState,
   reducers: {
     setAcctType(state, action) {
@@ -46,8 +42,8 @@ const usersSlice = createSlice({
   extraReducers(builder) {},
 });
 
-export const { setAcctType, setUserInfo, setUserPassword } = usersSlice.actions;
-export const getUserInfo = (state) => state.users.user;
+export const { setAcctType, setUserInfo, setUserPassword } = userSlice.actions;
+export const getUserInfo = (state) => state.user.user;
 // export const getUserPassword = (state) = state.users.
 
-export default usersSlice.reducer;
+export default userSlice.reducer;

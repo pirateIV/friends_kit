@@ -17,6 +17,7 @@ const CustomButton = (props) => {
   return (
     <Button
       style={{}}
+      color='gray'
       type={type}
       variant={variant}
       className={`${className}
