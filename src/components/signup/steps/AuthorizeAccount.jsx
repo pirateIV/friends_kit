@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import {  Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, ButtonGroup } from '@material-tailwind/react';
@@ -9,12 +9,14 @@ import PasswordInput from '../Form/PasswordInput';
 import CustomButton from '../../common/CustomButton';
 import SignupWrapper from '../../common/SignupWrapper';
 import { setProgress } from '../../../redux/reducers/progressReducer';
-import { getUserInfo, setUserPassword } from '../../../auth/reducers/users/userSlice';
+import { getUserInfo, setUserPassword } from '../../../auth/reducers/user/userSlice';
+import useLoadingState from '../../../hooks/useLoading';
 
 const AuthorizeAccount = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { loading, handleLoading } = useLoadingState();
   const { password, confirmPassword } = useSelector(getUserInfo);
 
   useEffect(() => {
@@ -23,7 +25,8 @@ const AuthorizeAccount = () => {
   const prev = () => navigate('/signup/upload-profile');
   const next = () => navigate('/signup/created');
 
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
+    await new Promise((resolve) => setTimeout(resolve, 600));
     dispatch(setUserPassword(values));
     next();
   };
@@ -32,7 +35,7 @@ const AuthorizeAccount = () => {
     <SignupWrapper id='authorize' title='Secure your account.'>
       <Formik
         initialValues={{ password, confirmPassword }}
-        onSubmit={(values) => handleSubmit(values)}>
+        onSubmit={(values) => handleLoading(handleSubmit(values))}>
         {({}) => (
           <Form className='w-full max-w-[540px]'>
             <PasswordInput />
@@ -44,7 +47,7 @@ const AuthorizeAccount = () => {
                 handleClick={prev}
                 className={prevBtnClass}
               />
-              <Button type='submit' className={nextBtnClass}>
+              <Button type='submit' loading={loading} className={nextBtnClass}>
                 Next
               </Button>
             </ButtonGroup>

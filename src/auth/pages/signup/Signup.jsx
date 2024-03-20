@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Outlet, Link } from 'react-router-dom';
 
@@ -14,8 +14,12 @@ import logo from '../../../assets/images/logo/logo.svg';
 
 const Signup = () => {
   const dispatch = useDispatch();
+  
   useDocumentTitle('Sign Up');
-  useCustomLocation('signup') && dispatch(setProgress(0));
+  useCustomLocation('signup') 
+  useEffect(() => {
+    // && dispatch(setProgress(0));
+  }, []);
 
   const isSignupPath = useCustomLocation('signup');
 

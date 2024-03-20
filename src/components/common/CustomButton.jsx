@@ -25,7 +25,7 @@ const CustomButton = (props) => {
       loading={loading}
       disabled={loading}
       onClick={() => handleLoading(handleOnClick)}>
-      {!loading && content}
+      {content}
     </Button>
   );
 };
