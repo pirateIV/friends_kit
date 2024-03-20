@@ -24,9 +24,7 @@ const Signup = () => {
       <main>
         <div className='min-h-screen'>
           <nav className='fake-nav flex items-center justify-center w-full h-[55px] bg-white'>
-            <a href='/'>
-              <img src={logo} className='max-w-[48px] mx-auto' alt='' />
-            </a>
+            <img src={logo} className='max-w-[48px] mx-auto' alt='' />
           </nav>
           <CustomSignupProgress />
           {isSignupPath ? <SelectAccount /> : <Outlet />}
