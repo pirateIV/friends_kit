@@ -6,9 +6,6 @@ import { setProgress } from '../../../redux/reducers/progressReducer.js';
 import useDocumentTitle from '../../../hooks/useDocumentTitle.js';
 import useCustomLocation from '../../../hooks/useCustomLocation.jsx';
 import SelectAccount from '../../../components/signup/steps/SelectAccount.jsx';
-// const SelectAccount = React.lazy(() =>
-//   import('../../../components/signup/steps/SelectAccount.jsx')
-// );
 
 import CustomSignupProgress from '../../../components/signup/progress/CustomSignupProgress.jsx';
 

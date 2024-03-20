@@ -11,7 +11,7 @@ const user = {
 
 const initialState = {
   status: 'idle',
-  users: [],
+  user,
   error: null,
 };
 
@@ -19,13 +19,21 @@ const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    updateAcctType(state, action) {
-      state.users.push({ ...user, accountType: action.payload });
+    setAcctType(state, action) {
+      state.user.accountType = action.payload;
+      console.log(JSON.parse(JSON.stringify(state.user)));
     },
-    updateAcctType(state, action) {
-      
-    }
+    setUserInfo(state, action) {
+      const content = action.payload;
+      state.user = { ...state.user, ...content };
+      console.log(JSON.parse(JSON.stringify(state.user)));
+    },
+    setUserPassword(state, action) {
+      return { ...state.user, password: action.payload };
+    },
   },
 });
+
+export const { setAcctType, setUserInfo, setUserPassword } = usersSlice.actions;
 
 export default usersSlice.reducer;

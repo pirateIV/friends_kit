@@ -1,10 +1,11 @@
-import { ErrorMessage } from 'formik';
+import { ErrorMessage, useField } from 'formik';
 import { Input } from '@material-tailwind/react';
 
 import { inputClass } from './index';
 import useInputState from '../../hooks/useInputState';
 
-const InputField = ({ label, type, name }) => {
+const InputField = ({ label, type, ...props }) => {
+  const [field, meta] = useField(props);
   const { iconType, inputType } = useInputState(type);
 
   return (
@@ -12,18 +13,20 @@ const InputField = ({ label, type, name }) => {
       <div className='mb-6'>
         <div>
           <Input
-            id={name}
-            name={name}
+            {...field}
+            {...props}
             label={label}
             icon={iconType}
             color='blue'
             type={inputType}
-            variant="standard"
-            autoComplete={type}
+            variant='standard'
+            // autoComplete={complete}
             className={inputClass}
           />
         </div>
-        <ErrorMessage name={name} component='div' className='text-red-500 text-sm mt-1' />
+        {meta.touched && meta.error && (
+          <div className='text-red-500 text-sm mt-1'>{meta.error}</div>
+        )}
       </div>
     </>
   );

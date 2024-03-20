@@ -17,7 +17,7 @@ const AccountCard = ({ id, type, title, imgSrc }) => {
             <h3 className='font-montserrat font-semibold py-2 text-[#344258]'>{title}</h3>
             <p className='text-sm text-[#a2a5b9]'>{`Create a ${type} account to be able to do some awesome things.`}</p>
             <div className='mt-5'>
-              <AccountCardButton />
+              <AccountCardButton title={title} />
             </div>
           </div>
         </div>
