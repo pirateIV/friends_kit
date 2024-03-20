@@ -1,13 +1,13 @@
 import { useSelector } from 'react-redux';
 import { currentProgress } from '../../../redux/reducers/progressReducer';
 
-const StepDot = ({ step }) => {
+const StepCircle = ({ step }) => {
   const progress = useSelector(currentProgress);
 
   const compareProgress = (caseOne, caseTwo) =>
     progress >= step.progress ? caseOne : caseTwo;
 
-  const stepClasses = `relative flex items-center justify-center rounded-full bg-white w-[38px] h-[38px] shadow-lg 
+  const stepClasses = `relative flex items-center justify-center rounded-full bg-white w-[38px] h-[38px]
      border ${compareProgress(
        'border-[#3d70b2]',
        'border-[#e8e8e8]'
@@ -25,4 +25,4 @@ const StepDot = ({ step }) => {
   );
 };
 
-export default StepDot;
+export default StepCircle;

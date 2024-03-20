@@ -38,7 +38,9 @@ const usersSlice = createSlice({
       console.log(JSON.parse(JSON.stringify(state.user)));
     },
     setUserPassword(state, action) {
-      return { ...state.user, password: action.payload };
+      const passwords = action.payload;
+      state.user = { ...state.user, ...passwords };
+      localStorage.setItem('user', JSON.stringify(state.user));
     },
   },
   extraReducers(builder) {},
@@ -46,5 +48,6 @@ const usersSlice = createSlice({
 
 export const { setAcctType, setUserInfo, setUserPassword } = usersSlice.actions;
 export const getUserInfo = (state) => state.users.user;
+// export const getUserPassword = (state) = state.users.
 
 export default usersSlice.reducer;

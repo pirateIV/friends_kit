@@ -3,7 +3,7 @@ import InputField from '../../common/InputField';
 
 const FormContent = () => {
   return (
-    <section className='bg-white border border-slate-200 mt-4 shadow-sm rounded-lg p-6'>
+    <section className='bg-white mt-4 shadow-tiny rounded-lg p-6'>
       <InputField
         label='First Name'
         type='text'

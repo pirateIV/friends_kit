@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
 import { setProgress } from '../../../redux/reducers/progressReducer.js';
 import useDocumentTitle from '../../../hooks/useDocumentTitle.js';
@@ -23,8 +23,10 @@ const Signup = () => {
     <>
       <main>
         <div className='min-h-screen'>
-          <nav className='fake-nav w-full h-[55px] bg-white'>
-            <img src={logo} className='max-w-[48px] mx-auto' alt='' />
+          <nav className='fake-nav flex items-center justify-center w-full h-[55px] bg-white'>
+            <a href='/'>
+              <img src={logo} className='max-w-[48px] mx-auto' alt='' />
+            </a>
           </nav>
           <CustomSignupProgress />
           {isSignupPath ? <SelectAccount /> : <Outlet />}

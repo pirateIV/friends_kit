@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import useLoadingState from '../../hooks/useLoading';
 
 const CustomButton = (props) => {
-  const navigate =  useNavigate()
+  const navigate = useNavigate();
   const { loading, handleLoading } = useLoadingState();
   const { type, content, variant, className, handleClick, navigateTo } = props;
 
   const handleOnClick = async () => {
     await new Promise((resolve) => setTimeout(resolve, 600));
-    navigate(navigateTo)
-    handleClick()
+    navigate(navigateTo);
+    handleClick();
   };
 
   return (
@@ -23,7 +23,7 @@ const CustomButton = (props) => {
        ${'disabled:cursor-not-allowed'}`}
       loading={loading}
       disabled={loading}
-      onClick={() => handleOnClick(handleLoading)}>
+      onClick={() => handleLoading(handleOnClick)}>
       {!loading && content}
     </Button>
   );

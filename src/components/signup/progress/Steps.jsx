@@ -1,11 +1,10 @@
-;
-import StepDot from './StepDot';
+import StepCircle from './StepCircle';
 
 const Steps = ({ steps }) => {
   return (
     <>
       {steps.map((step) => (
-        <StepDot key={step.id} step={step} />
+        <StepCircle key={step.id} step={step} />
       ))}
     </>
   );

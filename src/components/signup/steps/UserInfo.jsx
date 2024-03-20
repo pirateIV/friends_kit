@@ -19,13 +19,17 @@ const UserInfo = () => {
   const user = useSelector(getUserInfo);
   const { firstName, lastName, email } = user;
 
+  useEffect(() => {
+    dispatch(setProgress(25))
+  }, [])
+
   const handlePrevious = () => {
     console.log(1231232);
   };
 
   const handleNext = (values) => {
     dispatch(setUserInfo(values));
-    navigate('/signup/user-profile')
+    navigate('/signup/upload-profile')
   };
 
   return (

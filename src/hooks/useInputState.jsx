@@ -4,12 +4,12 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const useInputState = (type) => {
   const [inputVisible, setInputVisible] = useState(false);
-  
+
   const icon = () => {
     return (
       <FontAwesomeIcon
+        className='text-gray-600' 
         icon={inputVisible ? faEyeSlash : faEye}
-        className='text-gray-600'
         onClick={() => setInputVisible(!inputVisible)}
       />
     );
