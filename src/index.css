@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cropper {
+  height: 330px !important;
+}
+
+@layer components {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .flex-end {
+    @apply flex items-end;
+  }
+}

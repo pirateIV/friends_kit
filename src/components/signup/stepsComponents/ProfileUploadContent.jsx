@@ -1,5 +1,8 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Cropper from 'react-cropper';
+import 'cropperjs/dist/cropper.css';
+
 import { assets, uploadClass } from '.';
 import PlusIcon from '../../../shared/components/icons/PlusIcon';
 import returnFileSize from '../../../helpers/returnFileSize';
@@ -20,23 +23,30 @@ import {
 const defaultSrc = assets.avatar;
 
 const ProfileUploadContent = () => {
-  const dispatch = useDispatch();
-  const user = useSelector(getUserInfo);
-  const [image, setImage] = useState(defaultSrc);
-  const [fileSize, setFileSize] = useState('');
   const inputFileRef = useRef();
+  const cropBtnRef = useRef();
+  const dispatch = useDispatch();
+
+  const [fileSize, setFileSize] = useState('');
+  const { profilePic } = useSelector(getUserInfo);
+  const [image, setImage] = useState(defaultSrc);
+  const [cropData, setCropData] = useState('');
+  const [cropper, setCropper] = useState(null);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     const imageUrl = URL.createObjectURL(file);
     setFileSize(returnFileSize(file.size));
     dispatch(setProfileUpload(imageUrl));
+    cropBtnRef.current.click();
   };
 
   const handleImageUpload = (e) => {
     e.preventDefault();
     inputFileRef.current.click();
   };
+
+  const cropImage = () => {};
 
   return (
     <>
@@ -45,16 +55,16 @@ const ProfileUploadContent = () => {
         <div
           className='photo-upload w-[100px] h-[100px] rounded-full bg-cover object-cover'
           style={{
-            backgroundImage: `url(${!user.profilePic ? defaultSrc : user.profilePic})`,
+            backgroundImage: `url(${!profilePic ? defaultSrc : profilePic})`,
           }}>
           <a className={uploadClass.photoUpload} onClick={(e) => handleImageUpload(e)}>
             <PlusIcon />
           </a>
           <input
             type='file'
-            ref={inputFileRef}
             id='file-input'
-            style={{ display: 'none' }}
+            className='hidden'
+            ref={inputFileRef}
             onChange={handleFileChange}
           />
         </div>
@@ -67,24 +77,41 @@ const ProfileUploadContent = () => {
 
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant='outline'>Share</Button>
+          <Button
+            ref={cropBtnRef}
+            variant='outline'
+            className='hidden'
+            onClick={() => cropImage()}>
+            Share
+          </Button>
         </DialogTrigger>
-        <DialogContent className='sm:max-w-md'>
+        <DialogContent className='sm:max-w-xl h-[400px]'>
           <DialogHeader>
-            <DialogTitle>Share link</DialogTitle>
-            <DialogDescription>
-              Anyone who has this link will be able to view this.
-            </DialogDescription>
+            <h3> Crop your Picture</h3>
           </DialogHeader>
-          <div className='grid flex-1 gap-2'>
-            <Button type='submit' size='sm' className='px-3'>
-              <span>Copy</span>
-            </Button>
-          </div>
-          <DialogFooter className='sm:justify-start'>
-            <DialogClose asChild>
-              <Button type='button' variant='secondary'>
-                Close
+          <section className='mt-4'>
+            <Cropper
+              zoomTo={0.5}
+              viewMode={1}
+              src={profilePic}
+              autoCropArea={1}
+              responsive={true}
+              background={false}
+              className='cropper bg-contain'
+              minCropBoxWidth={10}
+              minCropBoxHeight={10}
+              initialAspectRatio={1}
+              checkOrientation={false}
+              onInitialized={(instance) => {
+                setCropper(instance);
+              }}
+              guides={true}
+            />
+          </section>
+          <DialogFooter className='sm:items-end'>
+            <DialogClose>
+              <Button type='button' className='w-16 bg-green-600 text-white' variant='secondary'>
+                Crop
               </Button>
             </DialogClose>
           </DialogFooter>
