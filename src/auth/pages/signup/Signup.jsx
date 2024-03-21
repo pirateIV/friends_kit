@@ -16,8 +16,12 @@ const Signup = () => {
   const dispatch = useDispatch();
 
   useDocumentTitle('Sign Up');
-  useCustomLocation('signup') && dispatch(setProgress(0));
   const isSignupPath = useCustomLocation('signup');
+  useEffect(() => {
+    if (isSignupPath) {
+      dispatch(setProgress(0));
+    }
+  }, [isSignupPath]);
   const signupContent = isSignupPath ? <SelectAccount /> : <Outlet />;
 
   return (

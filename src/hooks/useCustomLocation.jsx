@@ -10,13 +10,6 @@ const useCustomLocation = (path) => {
     setCustomPath(currentPath === `/${path}` || currentPath === `/${path}/`);
   }, [location]);
 
-  const isCustomPath = (customPath) => {
-    if (customPath) {
-      return true;
-    }
-    return;
-  };
-
   return customPath;
 };
 
