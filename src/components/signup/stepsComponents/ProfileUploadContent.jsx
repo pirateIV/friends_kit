@@ -1,16 +1,16 @@
-import avatar from '../../../assets/images/signup/avatar-w.webp';
+import { assets, uploadClass } from '.';
 import PlusIcon from '../../../shared/components/icons/PlusIcon';
 
 const ProfileUploadContent = () => {
   return (
     <>
-      <div className='preview flex items-center justify-center relative w-[120px] h-[120px] mx-auto border border-[#cecece] rounded-full'>
+      <div className={uploadClass.container}>
         <div className='photo-upload'>
-          <a className='upload-button absolute top-0 right-0 flex items-center justify-center h-[36px] w-[36px] text-white border-[3px] border-white rounded-full bg-[#cecece] cursor-pointer hover:bg-blue-500'>
+          <a className={uploadClass.photoUpload}>
             <PlusIcon />
           </a>
           <img
-            src={avatar}
+            src={assets.avatar}
             alt='avatar'
             width='100'
             height='100'

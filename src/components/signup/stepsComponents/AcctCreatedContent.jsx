@@ -1,10 +1,9 @@
 import { Button } from '@material-tailwind/react';
+
+import { btnClass } from '.';
 import mailbox from '../../../assets/images/signup/cards/mailbox.svg';
 
 const AcctCreatedContent = ({ next }) => {
-  const btnClass =
-    'block px-5 py-1.5 mx-auto max-w-[280px] font-sans w-full bg-blue-600 !text-white text-sm rounded-lg text-[#5596e6] shadow-tiny border border-[#5596e6] hover:text-white hover:bg-[#5596e6] focus:outline-none';
-
   return (
     <section className='space-y-4'>
       <img

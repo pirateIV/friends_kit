@@ -19,8 +19,7 @@ const InputField = ({ label, type, ...props }) => {
             icon={iconType}
             color='blue'
             type={inputType}
-            // variant='standard'
-            // autoComplete={complete}
+            height='4rem'
             className={inputClass}
           />
         </div>

@@ -6,6 +6,7 @@ import SignupWrapper from '../../common/SignupWrapper';
 import { setProgress } from '../../../redux/reducers/progressReducer';
 import ProfileUploadContent from '../stepsComponents/ProfileUploadContent';
 import { useEffect } from 'react';
+import { stepsInfo } from '.';
 
 const ProfileUpload = () => {
   const dispatch = useDispatch();
@@ -17,9 +18,11 @@ const ProfileUpload = () => {
   const prev = () => navigate('/signup/info');
   const next = () => navigate('/signup/auth');
 
+  const cardProps = { prev, next };
+  const profileProps = stepsInfo.profileUpload;
   return (
-    <SignupWrapper id='upload-profile' title='Upload a Profile picture.'>
-      <SignupCard prev={prev} next={next}>
+    <SignupWrapper {...profileProps}>
+      <SignupCard {...cardProps}>
         <ProfileUploadContent />
       </SignupCard>
     </SignupWrapper>

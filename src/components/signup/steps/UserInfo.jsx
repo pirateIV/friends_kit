@@ -1,17 +1,17 @@
+import { useEffect } from 'react';
 import { Form, Formik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button, ButtonGroup } from '@material-tailwind/react';
+
+import { nextBtnClass, prevBtnClass, stepsInfo } from '.';
+import { setProgress } from '../../../redux/reducers/progressReducer';
 
 import FormContent from '../Form/FormContent';
-import CustomButtonGroup from '../../common/CustomButtonGroup';
-import SignupWrapper from '../../common/SignupWrapper';
-import { setProgress } from '../../../redux/reducers/progressReducer';
-import { useEffect, useState } from 'react';
-import { getUserInfo, setUserInfo } from '../../../auth/reducers/user/userSlice';
-import { nextBtnClass, prevBtnClass } from '.';
-import { Button, ButtonGroup } from '@material-tailwind/react';
 import CustomButton from '../../common/CustomButton';
+import SignupWrapper from '../../common/SignupWrapper';
 import useLoadingState from '../../../hooks/useLoading';
+import { getUserInfo, setUserInfo } from '../../../auth/reducers/user/userSlice';
 
 const UserInfo = () => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const UserInfo = () => {
   const handlePrevious = () => {
     console.log(1231232);
   };
-
+  const userInfoProps = stepsInfo.userInfo;
   const handleNext = async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 600));
     dispatch(setUserInfo(values));
@@ -36,7 +36,7 @@ const UserInfo = () => {
 
   return (
     <>
-      <SignupWrapper title='Tell us more about you.' id='user-info'>
+      <SignupWrapper {...userInfoProps}>
         <Formik
           initialValues={{ firstName, lastName, email }}
           onSubmit={(values) => handleLoading(handleNext(values))}>

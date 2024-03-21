@@ -6,6 +6,7 @@ import SignupWrapper from '../../common/SignupWrapper';
 import { setProgress } from '../../../redux/reducers/progressReducer';
 import AcctCreatedContent from '../stepsComponents/AcctCreatedContent';
 import { useEffect } from 'react';
+import { stepsInfo } from '.';
 
 const AccountCreated = () => {
   const dispatch = useDispatch();
@@ -14,8 +15,9 @@ const AccountCreated = () => {
     dispatch(setProgress(100));
   }, []);
   const next = () => navigate('/');
+  const accCreatedProps = stepsInfo.accountCreated;
   return (
-    <SignupWrapper id='account-created' title="You're all set. Ready?">
+    <SignupWrapper {...accCreatedProps}>
       <SignupCard>
         <AcctCreatedContent next={next} />
       </SignupCard>

@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, ButtonGroup } from '@material-tailwind/react';
 
-import { nextBtnClass, prevBtnClass } from '.';
+import { nextBtnClass, prevBtnClass, stepsInfo } from '.';
 import PasswordInput from '../Form/PasswordInput';
 import CustomButton from '../../common/CustomButton';
 import SignupWrapper from '../../common/SignupWrapper';
+import useLoadingState from '../../../hooks/useLoading';
 import { setProgress } from '../../../redux/reducers/progressReducer';
 import { getUserInfo, setUserPassword } from '../../../auth/reducers/user/userSlice';
-import useLoadingState from '../../../hooks/useLoading';
 
 const AuthorizeAccount = () => {
   const dispatch = useDispatch();
@@ -24,6 +24,7 @@ const AuthorizeAccount = () => {
   }, []);
   const prev = () => navigate('/signup/upload-profile');
   const next = () => navigate('/signup/created');
+  const authorizeProps = stepsInfo.authorizeAcct;
 
   const handleSubmit = async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 600));
@@ -32,7 +33,7 @@ const AuthorizeAccount = () => {
   };
 
   return (
-    <SignupWrapper id='authorize' title='Secure your account.'>
+    <SignupWrapper {...authorizeProps}>
       <Formik
         initialValues={{ password, confirmPassword }}
         onSubmit={(values) => handleLoading(handleSubmit(values))}>

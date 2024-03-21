@@ -17,3 +17,26 @@ export const accountTypes = [
   { id: 2, type: 'public', title: 'Public Person', illustration: type2 },
   { id: 3, type: 'personal', title: 'Personal', illustration: type3 },
 ];
+
+export const stepsInfo = {
+  accountCreated: {
+    id: 'account-created',
+    title: "You're all set. Ready?",
+  },
+  authorizeAcct: {
+    id: 'authorize',
+    title: 'Secure your account.',
+  },
+  profileUpload: {
+    id: 'upload-profile',
+    title: 'Upload a Profile picture.',
+  },
+  selectAcct: {
+    id: 'select-account',
+    title: 'Welcome, select an account type.',
+  },
+  userInfo: {
+    id: 'user-info',
+    title: 'Tell us more about you.',
+  },
+};
