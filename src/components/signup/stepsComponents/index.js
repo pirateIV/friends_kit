@@ -7,7 +7,7 @@ export const btnClass =
 
 export const uploadClass = {
   container:
-    'preview flex items-center justify-center relative w-[120px] h-[120px] mx-auto border border-[#cecece] rounded-full',
+    'preview flex-center relative w-[120px] h-[120px] mx-auto border border-[#cecece] rounded-full',
   photoUpload:
-    'upload-button absolute top-0 right-0 flex items-center justify-center h-[36px] w-[36px] text-white border-[3px] border-white rounded-full bg-[#cecece] cursor-pointer hover:bg-blue-500',
+    'upload-button absolute top-0 right-0 flex-center h-[36px] w-[36px] text-white border-[3px] border-white rounded-full bg-[#cecece] cursor-pointer hover:bg-blue-500',
 };
