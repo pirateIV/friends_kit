@@ -18,7 +18,7 @@ export const accountTypes = [
   { id: 3, type: 'personal', title: 'Personal', illustration: type3 },
 ];
 
-export const stepsInfo = {
+export const stepProps = {
   accountCreated: {
     id: 'account-created',
     title: "You're all set. Ready?",

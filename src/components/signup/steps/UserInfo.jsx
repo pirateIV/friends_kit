@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, ButtonGroup } from '@material-tailwind/react';
 
-import { nextBtnClass, prevBtnClass, stepsInfo } from '.';
+import { nextBtnClass, prevBtnClass, stepProps } from '.';
 import { setProgress } from '../../../redux/reducers/progressReducer';
 
 import FormContent from '../Form/FormContent';
@@ -25,9 +25,8 @@ const UserInfo = () => {
   }, []);
 
   const handlePrevious = () => {
-    console.log(1231232);
+    return;
   };
-  const userInfoProps = stepsInfo.userInfo;
   const handleNext = async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 600));
     dispatch(setUserInfo(values));
@@ -36,7 +35,7 @@ const UserInfo = () => {
 
   return (
     <>
-      <SignupWrapper {...userInfoProps}>
+      <SignupWrapper {...stepProps.userInfo}>
         <Formik
           initialValues={{ firstName, lastName, email }}
           onSubmit={(values) => handleLoading(handleNext(values))}>

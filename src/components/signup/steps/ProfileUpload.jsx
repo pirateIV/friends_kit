@@ -1,12 +1,12 @@
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import { stepProps } from '.';
 import SignupCard from '../../common/SignupCard';
 import SignupWrapper from '../../common/SignupWrapper';
 import { setProgress } from '../../../redux/reducers/progressReducer';
 import ProfileUploadContent from '../stepsComponents/ProfileUploadContent';
-import { useEffect } from 'react';
-import { stepsInfo } from '.';
 
 const ProfileUpload = () => {
   const dispatch = useDispatch();
@@ -19,9 +19,8 @@ const ProfileUpload = () => {
   const next = () => navigate('/signup/auth');
 
   const cardProps = { prev, next };
-  const profileProps = stepsInfo.profileUpload;
   return (
-    <SignupWrapper {...profileProps}>
+    <SignupWrapper {...stepProps.profileUpload}>
       <SignupCard {...cardProps}>
         <ProfileUploadContent />
       </SignupCard>

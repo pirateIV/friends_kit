@@ -13,13 +13,13 @@ const InputField = ({ label, type, ...props }) => {
       <div className='mb-6'>
         <div>
           <Input
+            size='lg'
             {...field}
             {...props}
+            color='blue'
             label={label}
             icon={iconType}
-            color='blue'
             type={inputType}
-            height='4rem'
             className={inputClass}
           />
         </div>

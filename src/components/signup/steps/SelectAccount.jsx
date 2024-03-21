@@ -1,13 +1,11 @@
 import AccountCard from '../AccountCard/AccountCard';
 import SignupWrapper from '../../common/SignupWrapper';
 
-import { accountTypes, stepsInfo } from './index';
+import { accountTypes, stepProps } from '.';
 
 const SelectAccount = () => {
-  const selectAcctProps = stepsInfo.selectAcct;
-
   return (
-    <SignupWrapper {...selectAcctProps}>
+    <SignupWrapper {...stepProps.selectAcct}>
       <div className='pt-5 max-w-[1040px] w-full' id='select-acct-type'>
         <div className='cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-4'>
           {accountTypes.map((account) => (
