@@ -38,11 +38,21 @@ const userSlice = createSlice({
       state.user = { ...state.user, ...passwords };
       localStorage.setItem('user', JSON.stringify(state.user));
     },
+    setProfileUpload(state, action) {
+      const profilePic = action.payload;
+
+      // const file = action.payload;
+      // const imageUrl = URL.createObjectURL(file);
+      // console.log(imageUrl);
+
+      state.user = { ...state.user, profilePic };
+    },
   },
   extraReducers(builder) {},
 });
 
-export const { setAcctType, setUserInfo, setUserPassword } = userSlice.actions;
+export const { setAcctType, setUserInfo, setUserPassword, setProfileUpload } =
+  userSlice.actions;
 export const getUserInfo = (state) => state.user.user;
 // export const getUserPassword = (state) = state.users.
 

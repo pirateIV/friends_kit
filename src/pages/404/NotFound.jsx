@@ -14,7 +14,7 @@ const NotFoundPage = () => {
     navigate(-1);
   };
   useDocumentTitle('Not Found');
-  
+
   return (
     <div className='min-h-screen'>
       <motion.section
@@ -59,7 +59,7 @@ const NotFoundPage = () => {
                 </div>
                 <div>
                   <motion.button
-                    onClick={handleRedirect}
+                    onClick={() => handleRedirect()}
                     className='inline-flex items-center font-medium justify-center w-[220px] h-[50px] text-white py-[18px] px-[22px] text-[.8rem] rounded-md border-t border-[#90b3e0] shadow-sm bg-[#3d70b2] hover:bg-[#4d85ce]'
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}>
