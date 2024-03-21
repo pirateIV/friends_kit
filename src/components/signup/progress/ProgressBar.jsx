@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { currentProgress } from '../../../redux/reducers/progressReducer';
+import { currentProgress } from '@/redux/reducers/progressReducer';
 
 const ProgressBar = ({ children }) => {
   const progress = useSelector(currentProgress);

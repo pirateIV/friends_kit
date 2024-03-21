@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import CustomButton from '../../common/CustomButton';
-import { setAcctType } from '../../../auth/reducers/user/userSlice';
+import CustomButton from '@/components/common/CustomButton';
+import { setAcctType } from '@/auth/reducers/user/userSlice';
 
 const AccountCardButton = ({ title }) => {
   const navigate = useNavigate();

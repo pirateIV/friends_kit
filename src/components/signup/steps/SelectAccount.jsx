@@ -1,5 +1,5 @@
-import AccountCard from '../AccountCard/AccountCard';
-import SignupWrapper from '../../common/SignupWrapper';
+import SignupWrapper from '@/components/common/SignupWrapper';
+import AccountCard from '@/components/signup/AccountCard/AccountCard';
 
 import { accountTypes, stepProps } from '.';
 

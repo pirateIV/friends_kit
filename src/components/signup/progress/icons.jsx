@@ -1,8 +1,8 @@
-import FlagIcon from '../../../shared/components/icons/FlagIcon';
-import UserIcon from '../../../shared/components/icons/UserIcon';
-import LockIcon from '../../../shared/components/icons/LockIcon';
-import ProfileIcon from '../../../shared/components/icons/ProfileIcon';
-import AccountIcon from '../../../shared/components/icons/AccountIcon';
+import FlagIcon from '@/shared/components/icons/FlagIcon';
+import UserIcon from '@/shared/components/icons/UserIcon';
+import LockIcon from '@/shared/components/icons/LockIcon';
+import ProfileIcon from '@/shared/components/icons/ProfileIcon';
+import AccountIcon from '@/shared/components/icons/AccountIcon';
 
 export const progressDetails = [
   { id: 1, progress: 0, icon: <AccountIcon /> },

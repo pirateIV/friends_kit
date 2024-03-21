@@ -1,5 +1,5 @@
 import CustomButtonGroup from './CustomButtonGroup';
-import useCustomLocation from '../../hooks/useCustomLocation';
+import useCustomLocation from '@/hooks/useCustomLocation';
 
 const SignupCard = ({ children, prev, next }) => {
   const isAccountCreated = useCustomLocation('signup/created');
