@@ -13,4 +13,4 @@ const SignupCard = ({ children, prev, next }) => {
   );
 };
 
-export default SignupCard;
+export default SignupCard;    

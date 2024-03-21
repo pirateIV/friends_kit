@@ -5,7 +5,7 @@ const useLoadingState = () => {
 
   const handleLoading = async (callback) => {
     setLoading(true);
-    await callback();
+    await callback;
     setLoading(false);
   };
 

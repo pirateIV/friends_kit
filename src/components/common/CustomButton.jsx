@@ -24,7 +24,7 @@ const CustomButton = (props) => {
        ${'disabled:cursor-not-allowed'}`}
       loading={loading}
       disabled={loading}
-      onClick={() => handleLoading(handleOnClick)}>
+      onClick={() => handleLoading(handleOnClick())}>
       {content}
     </Button>
   );
