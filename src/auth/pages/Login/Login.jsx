@@ -1,5 +1,12 @@
+import AuthContainer from '../../components/AuthContainer';
+import FakeNavigation from '../../components/FakeNavigation';
+
 const Login = () => {
-  return <div>Login</div>;
+  return (
+    <AuthContainer>
+      <FakeNavigation />
+    </AuthContainer>
+  );
 };
 
 export default Login;

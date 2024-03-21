@@ -33,12 +33,33 @@ const ProfileUploadContent = () => {
   const [cropData, setCropData] = useState('');
   const [cropper, setCropper] = useState(null);
 
+  const getCropData = () => {
+    if (typeof cropper !== 'undefined') {
+      setCropData(cropper.getCroppedCanvas().toDataURL());
+    }
+  };
+
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    const imageUrl = URL.createObjectURL(file);
-    setFileSize(returnFileSize(file.size));
-    dispatch(setProfileUpload(imageUrl));
+    e.preventDefault();
+
+    let files;
+    if (e.dataTransfer) {
+      files = e.dataTransfer.files;
+    } else if (e.target) {
+      files = e.target.files;
+    }
     cropBtnRef.current.click();
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setImage(reader.result);
+    };
+    reader.readAsDataURL(files[0]);
+
+    // const file = e.target.files[0];
+    // const imageUrl = URL.createObjectURL(file);
+    // setFileSize(returnFileSize(file.size));
+    // dispatch(setProfileUpload(imageUrl));
   };
 
   const handleImageUpload = (e) => {
@@ -52,11 +73,8 @@ const ProfileUploadContent = () => {
     <>
       {/* <small className='absolute text-center items-center justify-center top-10 end-5 bg-yellow-400 h-10 w-10 rounded-full'>{fileSize}</small> */}
       <div className={uploadClass.container}>
-        <div
-          className='photo-upload w-[100px] h-[100px] rounded-full bg-cover object-cover'
-          style={{
-            backgroundImage: `url(${!profilePic ? defaultSrc : profilePic})`,
-          }}>
+        <div className='photo-upload flex-center w-[100px] h-[100px] rounded-full overflow-hidden'>
+          <img src={!image ? defaultSrc : image} />
           <a className={uploadClass.photoUpload} onClick={(e) => handleImageUpload(e)}>
             <PlusIcon />
           </a>
@@ -85,7 +103,7 @@ const ProfileUploadContent = () => {
             Share
           </Button>
         </DialogTrigger>
-        <DialogContent className='sm:max-w-xl h-[400px]'>
+        <DialogContent className='sm:max-w-xl h-300px]'>
           <DialogHeader>
             <h3> Crop your Picture</h3>
           </DialogHeader>
@@ -93,11 +111,11 @@ const ProfileUploadContent = () => {
             <Cropper
               zoomTo={0.5}
               viewMode={1}
-              src={profilePic}
+              src={image}
               autoCropArea={1}
               responsive={true}
               background={false}
-              className='cropper bg-contain'
+              className='cropper'
               minCropBoxWidth={10}
               minCropBoxHeight={10}
               initialAspectRatio={1}
@@ -110,7 +128,11 @@ const ProfileUploadContent = () => {
           </section>
           <DialogFooter className='sm:items-end'>
             <DialogClose>
-              <Button type='button' className='w-16 bg-green-600 text-white' variant='secondary'>
+              <Button
+                type='button'
+                variant='secondary'
+                onClick={() => getCropData()}
+                className='w-16 bg-green-600 text-whit focus:outline-nonee'>
                 Crop
               </Button>
             </DialogClose>

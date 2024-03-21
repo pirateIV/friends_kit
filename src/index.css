@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .cropper {
-  height: 330px !important;
+  height: 300px !important;
 }
 
 @layer components {

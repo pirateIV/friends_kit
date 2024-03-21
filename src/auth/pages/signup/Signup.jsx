@@ -9,7 +9,8 @@ import SelectAccount from '../../../components/signup/steps/SelectAccount.jsx';
 import CustomSignupProgress from '../../../components/signup/progress/CustomSignupProgress.jsx';
 
 import './Signup.css';
-import logo from '../../../assets/images/logo/logo.svg';
+import AuthContainer from '../../components/AuthContainer.jsx';
+import FakeNavigation from '../../components/FakeNavigation.jsx';
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -17,18 +18,15 @@ const Signup = () => {
   useDocumentTitle('Sign Up');
   useCustomLocation('signup') && dispatch(setProgress(0));
   const isSignupPath = useCustomLocation('signup');
+  const signupContent = isSignupPath ? <SelectAccount /> : <Outlet />;
 
   return (
     <>
-      <main>
-        <div className='min-h-screen'>
-          <nav className='fake-nav flex-center w-full h-[55px] bg-white'>
-            <img src={logo} className='max-w-[48px] mx-auto' alt='' />
-          </nav>
-          <CustomSignupProgress />
-          {isSignupPath ? <SelectAccount /> : <Outlet />}
-        </div>
-      </main>
+      <AuthContainer>
+        <FakeNavigation />
+        <CustomSignupProgress />
+        {signupContent}
+      </AuthContainer>
     </>
   );
 };

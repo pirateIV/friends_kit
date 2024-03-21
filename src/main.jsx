@@ -8,7 +8,7 @@ import { RouterProvider } from 'react-router-dom';
 import router from './routes/routes.jsx';
 import { ThemeProvider } from '@material-tailwind/react';
 
-import './tailwind.css';
+import './index.css';
 
 console.log(store.getState());
 
