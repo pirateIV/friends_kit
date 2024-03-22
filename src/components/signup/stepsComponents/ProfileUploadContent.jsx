@@ -4,9 +4,9 @@ import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
 
 import { assets, uploadClass } from '.';
-import PlusIcon from '../../../shared/components/icons/PlusIcon';
-import returnFileSize from '../../../helpers/returnFileSize';
-import { getUserInfo, setProfileUpload } from '../../../auth/reducers/user/userSlice';
+import PlusIcon from '@/shared/components/icons/PlusIcon';
+import returnFileSize from '@/helpers/returnFileSize';
+import { getUserInfo, setProfileUpload } from '@/auth/reducers/user/userSlice';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -48,13 +48,14 @@ const ProfileUploadContent = () => {
     } else if (e.target) {
       files = e.target.files;
     }
-    cropBtnRef.current.click();
-
+    
     const reader = new FileReader();
-    reader.onload = () => {
-      setImage(reader.result);
-    };
     reader.readAsDataURL(files[0]);
+    reader.onload = () => {
+      setImage(cropper);
+    };
+    cropBtnRef.current.click();
+    // console.log(image);
 
     // const file = e.target.files[0];
     // const imageUrl = URL.createObjectURL(file);
@@ -74,7 +75,7 @@ const ProfileUploadContent = () => {
       {/* <small className='absolute text-center items-center justify-center top-10 end-5 bg-yellow-400 h-10 w-10 rounded-full'>{fileSize}</small> */}
       <div className={uploadClass.container}>
         <div className='photo-upload flex-center w-[100px] h-[100px] rounded-full overflow-hidden'>
-          <img src={!image ? defaultSrc : image} />
+          <img src={!cropData ? defaultSrc : cropData} />
           <a className={uploadClass.photoUpload} onClick={(e) => handleImageUpload(e)}>
             <PlusIcon />
           </a>
@@ -94,7 +95,7 @@ const ProfileUploadContent = () => {
       </div>
 
       <Dialog>
-        <DialogTrigger asChild>
+        <DialogTrigger asChild>                                                                                                                                                                 
           <Button
             ref={cropBtnRef}
             variant='outline'
@@ -111,7 +112,7 @@ const ProfileUploadContent = () => {
             <Cropper
               zoomTo={0.5}
               viewMode={1}
-              src={image}
+              src={image} 
               autoCropArea={1}
               responsive={true}
               background={false}
@@ -132,7 +133,7 @@ const ProfileUploadContent = () => {
                 type='button'
                 variant='secondary'
                 onClick={() => getCropData()}
-                className='w-16 bg-green-600 text-whit focus:outline-nonee'>
+                className='w-16 bg-green-600 text-white focus:outline-none'>
                 Crop
               </Button>
             </DialogClose>

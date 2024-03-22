@@ -1,7 +1,7 @@
 import { Button } from '@material-tailwind/react';
 
 import { btnClass } from '.';
-import mailbox from '../../../assets/images/signup/cards/mailbox.svg';
+import mailbox from '@/assets/images/signup/cards/mailbox.svg';
 
 const AcctCreatedContent = ({ next }) => {
   return (

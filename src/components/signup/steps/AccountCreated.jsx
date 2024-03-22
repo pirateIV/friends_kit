@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { stepProps } from '.';
-import SignupCard from '../../common/SignupCard';
-import SignupWrapper from '../../common/SignupWrapper';
-import { setProgress } from '../../../redux/reducers/progressReducer';
+import SignupCard from '@/components/common/SignupCard';
+import SignupWrapper from '@/components/common/SignupWrapper';
+import { setProgress } from '@/redux/reducers/progressReducer';
 import AcctCreatedContent from '../stepsComponents/AcctCreatedContent';
 
 const AccountCreated = () => {
