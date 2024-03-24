@@ -13,10 +13,8 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
 
@@ -26,6 +24,7 @@ const ProfileUploadContent = () => {
   const inputFileRef = useRef();
   const cropBtnRef = useRef();
   const dispatch = useDispatch();
+  const user = useSelector(getUserInfo);
 
   const [fileSize, setFileSize] = useState('');
   const { profilePic } = useSelector(getUserInfo);
@@ -37,6 +36,7 @@ const ProfileUploadContent = () => {
     if (typeof cropper !== 'undefined') {
       setCropData(cropper.getCroppedCanvas().toDataURL());
     }
+    cropData && dispatch(setProfileUpload(cropData));
   };
 
   const handleFileChange = (e) => {
@@ -48,19 +48,13 @@ const ProfileUploadContent = () => {
     } else if (e.target) {
       files = e.target.files;
     }
-    
-    const reader = new FileReader();
-    reader.readAsDataURL(files[0]);
-    reader.onload = () => {
-      setImage(cropper);
-    };
-    cropBtnRef.current.click();
-    // console.log(image);
 
-    // const file = e.target.files[0];
-    // const imageUrl = URL.createObjectURL(file);
-    // setFileSize(returnFileSize(file.size));
-    // dispatch(setProfileUpload(imageUrl));
+    const reader = new FileReader();
+    reader.onload = () => {
+      setImage(reader.result); // Update image state here
+    };
+    reader.readAsDataURL(files[0]);
+    cropBtnRef.current.click();
   };
 
   const handleImageUpload = (e) => {
@@ -68,14 +62,15 @@ const ProfileUploadContent = () => {
     inputFileRef.current.click();
   };
 
-  const cropImage = () => {};
+  useEffect(() => {
+    cropData && dispatch(setProfileUpload(cropData));
+  }, [cropData]);
 
   return (
     <>
-      {/* <small className='absolute text-center items-center justify-center top-10 end-5 bg-yellow-400 h-10 w-10 rounded-full'>{fileSize}</small> */}
       <div className={uploadClass.container}>
         <div className='photo-upload flex-center w-[100px] h-[100px] rounded-full overflow-hidden'>
-          <img src={!cropData ? defaultSrc : cropData} />
+          <img src={!profilePic ? defaultSrc : profilePic} alt='Profile' />
           <a className={uploadClass.photoUpload} onClick={(e) => handleImageUpload(e)}>
             <PlusIcon />
           </a>
@@ -95,12 +90,8 @@ const ProfileUploadContent = () => {
       </div>
 
       <Dialog>
-        <DialogTrigger asChild>                                                                                                                                                                 
-          <Button
-            ref={cropBtnRef}
-            variant='outline'
-            className='hidden'
-            onClick={() => cropImage()}>
+        <DialogTrigger asChild>
+          <Button ref={cropBtnRef} variant='outline' className='hidden'>
             Share
           </Button>
         </DialogTrigger>
@@ -112,7 +103,7 @@ const ProfileUploadContent = () => {
             <Cropper
               zoomTo={0.5}
               viewMode={1}
-              src={image} 
+              src={image}
               autoCropArea={1}
               responsive={true}
               background={false}

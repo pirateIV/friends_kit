@@ -40,12 +40,11 @@ const userSlice = createSlice({
     },
     setProfileUpload(state, action) {
       const profilePic = action.payload;
-
-      // const file = action.payload;
-      // const imageUrl = URL.createObjectURL(file);
-      // console.log(imageUrl);
+      console.log(profilePic);
 
       state.user = { ...state.user, profilePic };
+      localStorage.setItem('user', JSON.stringify(state.user));
+      console.log(JSON.parse(JSON.stringify(state.user)))
     },
   },
   extraReducers(builder) {},
