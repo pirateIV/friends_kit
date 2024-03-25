@@ -4,13 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, ButtonGroup } from '@material-tailwind/react';
 
-import PasswordInput from '../Form/PasswordInput';
-import CustomButton from '../../common/CustomButton';
-import SignupWrapper from '../../common/SignupWrapper';
-import useLoadingState from '../../../hooks/useLoading';
+import useLoadingState from '@/hooks/useLoading';
+import CustomButton from '@/components/common/CustomButton';
+import SignupWrapper from '@/components/common/SignupWrapper';
+import PasswordInput from '@/components/signup/Form/PasswordInput';
+
+import { setProgress } from '@/redux/reducers/progressReducer';
+import { getUserInfo, setUserPassword } from '@/auth/reducers/user/userSlice';
 import { nextBtnClass, prevBtnClass, stepProps } from '.';
-import { setProgress } from '../../../redux/reducers/progressReducer';
-import { getUserInfo, setUserPassword } from '../../../auth/reducers/user/userSlice';
 
 const AuthorizeAccount = () => {
   const dispatch = useDispatch();

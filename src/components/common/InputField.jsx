@@ -6,7 +6,7 @@ import useInputState from '../../hooks/useInputState';
 
 const InputField = ({ label, type, ...props }) => {
   const [field, meta] = useField(props);
-  const { iconType, inputType } = useInputState(type);
+  const { iconType, name, inputType } = useInputState(type);
 
   return (
     <>
@@ -16,6 +16,7 @@ const InputField = ({ label, type, ...props }) => {
             size='lg'
             {...field}
             {...props}
+            name={type}
             color='blue'
             label={label}
             icon={iconType}
@@ -23,9 +24,10 @@ const InputField = ({ label, type, ...props }) => {
             className={inputClass}
           />
         </div>
-        {meta.touched && meta.error && (
+        <ErrorMessage name={type} component='div' className='text-red-500 text-sm mt-1' />
+        {/* {meta.touched && meta.error && (
           <div className='text-red-500 text-sm mt-1'>{meta.error}</div>
-        )}
+        )} */}
       </div>
     </>
   );

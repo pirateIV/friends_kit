@@ -36,7 +36,6 @@ const ProfileUploadContent = () => {
     if (typeof cropper !== 'undefined') {
       setCropData(cropper.getCroppedCanvas().toDataURL());
     }
-    cropData && dispatch(setProfileUpload(cropData));
   };
 
   const handleFileChange = (e) => {
@@ -51,7 +50,7 @@ const ProfileUploadContent = () => {
 
     const reader = new FileReader();
     reader.onload = () => {
-      setImage(reader.result); // Update image state here
+      setImage(reader.result);
     };
     reader.readAsDataURL(files[0]);
     cropBtnRef.current.click();
@@ -95,7 +94,7 @@ const ProfileUploadContent = () => {
             Share
           </Button>
         </DialogTrigger>
-        <DialogContent className='sm:max-w-xl h-300px]'>
+        <DialogContent className='sm:max-w-xl'>
           <DialogHeader>
             <h3> Crop your Picture</h3>
           </DialogHeader>
