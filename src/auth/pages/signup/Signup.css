@@ -1,12 +1,21 @@
-#part-1{
-  /* background-image: url('../../../assets/images/signup/cards/type-1-bg.svg'); */
-  background-image: url('../../../assets/images/signup/cards/type-1-bg-dark.svg');
+#part-1 {
+  background-image: url('../../../assets/images/signup/cards/type-1-bg.svg');
 }
 #part-2 {
-  /* background-image: url('../../../assets/images/signup/cards/type-2-bg.svg'); */
-  background-image: url('../../../assets/images/signup/cards/type-2-bg-dark.svg');
+  background-image: url('../../../assets/images/signup/cards/type-2-bg.svg');
 }
 #part-3 {
-  /* background-image: url('../../../assets/images/signup/cards/type-3-bg.svg'); */
+  background-image: url('../../../assets/images/signup/cards/type-3-bg.svg');
+}
+
+/* @media (prefers-color-scheme: dark) { */
+.dark #part-1 {
+  background-image: url('../../../assets/images/signup/cards/type-1-bg-dark.svg');
+}
+.dark #part-2 {
+  background-image: url('../../../assets/images/signup/cards/type-2-bg-dark.svg');
+}
+.dark #part-3 {
   background-image: url('../../../assets/images/signup/cards/type-3-bg-dark.svg');
 }
+/* } */

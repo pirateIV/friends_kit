@@ -4,7 +4,7 @@ const AccountCard = ({ id, type, title, imgSrc }) => {
   return (
     <>
       <div className='card justify-self-stretch p-3'>
-        <div className='bg-[#202836] shadow-mui-1 p-[30px] text-center rounded-md'>
+        <div className='bg-white shadow-mui-1 p-[30px] text-center rounded-md dark:bg-[#202836]'>
           <div className='img-illustration w-full' id={id}>
             <img
               src={imgSrc}
