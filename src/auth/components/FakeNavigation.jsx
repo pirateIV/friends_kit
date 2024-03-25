@@ -2,14 +2,15 @@ import logo from '@/assets/images/logo/logo.svg';
 import darkIcon from '@/assets/icons/dark-icon.svg';
 import lightIcon from '@/assets/icons/light-icon.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { setTheme } from '@/redux/reducers/themeReducer';
+import { getTheme, setTheme } from '@/redux/reducers/themeReducer';
 
 const FakeNavigation = () => {
-  const theme = useSelector(({ theme }) => theme);
+  const theme = useSelector(getTheme());
   const dispatch = useDispatch();
 
+  const selectedTheme = theme === 'dark' ? 'light' : 'dark';
   const changePreference = () => {
-    dispatch(setTheme(theme === 'dark' ? 'dark' : 'light'));
+    dispatch(setTheme(selectedTheme));
   };
 
   return (

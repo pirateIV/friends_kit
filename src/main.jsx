@@ -12,6 +12,12 @@ import './index.css';
 
 console.log(store.getState());
 
+// if (store.getState().theme === 'dark') {
+//   document.documentElement.classList.add('dark');
+// } else {
+//   document.documentElement.classList.remove('dark');
+// }
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
