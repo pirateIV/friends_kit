@@ -19,10 +19,10 @@ const Login = () => {
         <div className='flex-center max-w-[1140px] w-full h-full mx-auto'>
           <img
             src={loginIlustrLight}
-            className='max-w-[620px]'
+            className='max-w-[620px] hidden xl:flex'
             alt='login-illustration'
           />
-          <aside className='w-1/2'>
+          <aside className='w-full px-10 sm:px-0 mx-auto sm:w-3/4 md:w-[67%] lg:w-1/2'>
             <div>
               <h2 className='text-[1.5rem] font-montserrat font-normal'>Welcome back</h2>
               <small>Enter your credentials to sign in.</small>
@@ -31,7 +31,7 @@ const Login = () => {
               initialValues={{ email: '', password: '' }}
               onSubmit={(values) => console.log(values)}>
               <Form>
-                <section className='inputs w-3/4 mt-4 space-y-2'>
+                <section className='inputs w-full mt-4 space-y-2 xl:w-3/4'>
                   <div>
                     <InputField
                       type='email'
@@ -50,16 +50,14 @@ const Login = () => {
                   <Button className='my-3 bg-blue-600' fullWidth>
                     Login
                   </Button>
-                  <div className='text-center'>
-                    <Link
-                      to='/signup'
-                      className='text-sm text-gray-500 hover:text-blue-500'>
-                      Don't have an account? Sign Up
-                    </Link>
-                  </div>
                 </section>
               </Form>
             </Formik>
+            <div className='mt-5 w-3/4 text-center'>
+              <Link to='/signup' className='text-sm text-gray-500 hover:text-blue-500'>
+                Don't have an account? Sign Up
+              </Link>
+            </div>
           </aside>
         </div>
       </section>
