@@ -1,13 +1,15 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import Root from './root';
-import Login from '../auth/pages/Login/Login';
-import Signup from '../auth/pages/Signup/Signup';
-import UserInfo from '../components/signup/steps/UserInfo';
-import ProfileUpload from '../components/signup/steps/ProfileUpload';
-import AccountCreated from '../components/signup/steps/AccountCreated';
-import AuthorizeAccount from '../components/signup/steps/AuthorizeAccount';
-import NotFoundPage from '../pages/404/NotFound';
+import Login from '@/auth/pages/Login/Login';
+import Signup from '@/auth/pages/Signup/Signup';
+
+import UserInfo from '@/components/signup/steps/UserInfo';
+import ProfileUpload from '@/components/signup/steps/ProfileUpload';
+import AccountCreated from '@/components/signup/steps/AccountCreated';
+import AuthorizeAccount from '@/components/signup/steps/AuthorizeAccount';
+
+import NotFoundPage from '@/pages/404/NotFound';
 import UserProfile from '@/pages/UserProfile/UserProfile';
 
 const router = createBrowserRouter([
