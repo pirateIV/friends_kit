@@ -9,14 +9,15 @@ import router from './routes/routes.jsx';
 import { ThemeProvider } from '@material-tailwind/react';
 
 import './index.css';
+import { setTheme } from './redux/reducers/themeReducer.js';
 
-console.log(store.getState());
-
-// if (store.getState().theme === 'dark') {
-//   document.documentElement.classList.add('dark');
-// } else {
-//   document.documentElement.classList.remove('dark');
-// }
+if (localStorage.theme === 'dark') {
+  document.documentElement.classList.add('dark');
+  store.dispatch(setTheme('dark'));
+} else {
+  document.documentElement.classList.remove('dark');
+  store.dispatch(setTheme('light'));
+}
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
