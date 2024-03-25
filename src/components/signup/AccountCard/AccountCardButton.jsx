@@ -14,7 +14,7 @@ const AccountCardButton = ({ title }) => {
   };
 
   const btnClass =
-    'flex-center w-full min-h-[42px] !text-white text-[.8rem] text-lowercase bg-blue-600 font-medium border border-slate-300 text-[#999] rounded-lg shadow-none hover:shadow-none transition-colors hover:bg-blue-700 focus:outline-none disabled:cursor-not-allowed disabled:bg-blue-400';
+    'flex-center w-full min-h-[42px] !text-white text-[.8rem] text-lowercase bg-blue-600 font-medium dark:border dark:border-slate-300 border-t border-blue-300  text-[#999] rounded-lg shadow-none hover:shadow-none transition-colors hover:bg-blue-700 focus:outline-none disabled:cursor-not-allowed disabled:bg-blue-400';
 
   return (
     <CustomButton

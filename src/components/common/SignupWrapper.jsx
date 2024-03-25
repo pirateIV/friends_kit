@@ -4,7 +4,7 @@ const SignupWrapper = ({ id, title, children }) => {
       <div
         className='flex flex-col items-center justify-center'
         style={{ height: 'calc(100vh - 133px)' }}>
-        <h3 className='block font-montserrat font-semibold text-lg text-center text-[#344258]'>
+        <h3 className='block font-montserrat font-semibold text-lg text-center dark:text-[#344258] text-[#fafafa]'>
           {title}
         </h3>
         {children}

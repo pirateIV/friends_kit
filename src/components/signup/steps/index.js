@@ -1,3 +1,4 @@
+// import type1 from '@/assets/images/signup/cards/type-1.svg';
 import type1 from '@/assets/images/signup/cards/type-1.svg';
 import type2 from '@/assets/images/signup/cards/type-2.svg';
 import type3 from '@/assets/images/signup/cards/type-3.svg';

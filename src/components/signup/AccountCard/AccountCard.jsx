@@ -4,7 +4,7 @@ const AccountCard = ({ id, type, title, imgSrc }) => {
   return (
     <>
       <div className='card justify-self-stretch p-3'>
-        <div className='bg-white shadow-mui-1 p-[30px] text-center rounded-md'>
+        <div className='bg-[#202836] shadow-mui-1 p-[30px] text-center rounded-md'>
           <div className='img-illustration w-full' id={id}>
             <img
               src={imgSrc}
@@ -13,7 +13,7 @@ const AccountCard = ({ id, type, title, imgSrc }) => {
             />
           </div>
           <div className='card-content'>
-            <h3 className='font-montserrat font-semibold py-2 text-[#344258]'>{title}</h3>
+            <h3 className='font-montserrat font-semibold py-2 dark:text-[#344258] text-[#fafafa]'>{title}</h3>
             <p className='text-sm text-[#a2a5b9]'>
               {`Create a ${type} account to be able to do some awesome things.`}
             </p>
@@ -28,3 +28,4 @@ const AccountCard = ({ id, type, title, imgSrc }) => {
 };
 
 export default AccountCard;
+// bg-white darkx :

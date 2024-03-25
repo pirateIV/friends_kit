@@ -7,8 +7,8 @@ const StepCircle = ({ step }) => {
   const compareProgress = (caseOne, caseTwo) =>
     progress >= step.progress ? caseOne : caseTwo;
 
-  const stepClasses = `relative flex-center rounded-full bg-white w-[38px] h-[38px]
-     border ${compareProgress(
+  const stepClasses = `relative flex-center rounded-full dark:bg-white bg-[#242d3c] w-[38px] h-[38px]
+     dark:border ${compareProgress(
        'border-[#3d70b2]',
        'border-[#e8e8e8]'
      )} pointer-events-none z-20`;
