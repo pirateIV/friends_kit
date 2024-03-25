@@ -8,6 +8,7 @@ import ProfileUpload from '../components/signup/steps/ProfileUpload';
 import AccountCreated from '../components/signup/steps/AccountCreated';
 import AuthorizeAccount from '../components/signup/steps/AuthorizeAccount';
 import NotFoundPage from '../pages/404/NotFound';
+import UserProfile from '@/pages/UserProfile/UserProfile';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/me',
+    element: <UserProfile />,
   },
   {
     path: '*',
