@@ -5,13 +5,14 @@ import type3 from '@/assets/images/signup/cards/type-3.svg';
 
 // Base button class with common styles
 const baseBtnClass =
-  'flex-center text-sm leading-6 font-medium py-2 px-3 !shadow-sm outline-none border-0';
+  'flex-center w-20 text-sm leading-6 font-medium py-2 px-3 text-white rounded-md !shadow-sm outline-none focus:ring-0';
 
 // Previous button class with specific styles
-export const prevBtnClass = `${baseBtnClass} bg-gray-600 border border-gray-300 w-20 rounded-md hover:bg-gray-500`;
+export const prevBtnClass = `${baseBtnClass} bg-gray-600 border border-gray-300 hover:bg-gray-500 dark:border-0 dark:border-t dark:border-gray-5
+00 dark:bg-gray-700`;
 
 // Next button class with specific styles
-export const nextBtnClass = `${baseBtnClass} bg-blue-600 text-white border border-blue-600 w-20 rounded-md hover:opacity-90 disabled:bg-blue-400`;
+export const nextBtnClass = `${baseBtnClass} bg-blue-600 hover:opacity-90 disabled:bg-blue-400 dark:border-0 dark:border-t dark:border-blue-300`;
 
 export const accountTypes = [
   { id: 1, type: 'company', title: 'Company', illustration: type1 },

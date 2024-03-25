@@ -12,7 +12,7 @@ const AcctCreatedContent = ({ next }) => {
         alt='mailbox illustration'
       />
       <div className='success-text max-w-[370px] mx-auto text-center'>
-        <h5 className='font-medium text-[#393a4f]'>
+        <h5 className='font-medium text-[#393a4f] dark:text-[#fafafa]'>
           Congratz, you successfully created your account.
         </h5>
         <small className='text-[#999] text-[.9rem]'>

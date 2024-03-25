@@ -5,7 +5,7 @@ import { nextBtnClass, prevBtnClass } from '../signup/steps';
 
 const CustomButtonGroup = ({ prev, next }) => {
   return (
-    <ButtonGroup className='flex justify-end gap-1 mt-4 divide-none'>
+    <div className='flex justify-end gap-1 mt-4'>
       <Button
         content='Back'
         type='button'
@@ -20,7 +20,7 @@ const CustomButtonGroup = ({ prev, next }) => {
         handleClick={next}
         className={nextBtnClass}
       />
-    </ButtonGroup>
+    </div>
   );
 };
 

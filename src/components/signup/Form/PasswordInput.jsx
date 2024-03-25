@@ -2,7 +2,7 @@ import InputField from '../../common/InputField';
 
 const PasswordInput = () => {
   return (
-    <section className='bg-white shadow-tiny mt-4 rounded-lg p-6'>
+    <section className='bg-white shadow-tiny mt-4 rounded-lg p-6 dark:bg-[#202836]'>
       <InputField
         label='Password'
         htmlFor='password'

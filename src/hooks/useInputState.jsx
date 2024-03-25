@@ -8,7 +8,7 @@ const useInputState = (type) => {
   const icon = () => {
     return (
       <FontAwesomeIcon
-        className='text-gray-600' 
+        className='text-gray-600 dark:text-white' 
         icon={inputVisible ? faEyeSlash : faEye}
         onClick={() => setInputVisible(!inputVisible)}
       />

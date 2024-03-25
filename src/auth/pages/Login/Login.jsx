@@ -4,28 +4,34 @@ import InputField from '@/components/common/InputField';
 import AuthContainer from '@/auth/components/AuthContainer';
 import FakeNavigation from '@/auth/components/FakeNavigation';
 
-import loginIlustrLight from '@/assets/images/login/illustration-light.svg';
-import RememberMe from '@/components/login/RememberMe';
 import ForgotPassword from '@/components/login/ForgotPassword';
 import { Button } from '@material-tailwind/react';
 import { Link } from 'react-router-dom';
-// import loginIlustrDark from '@/assets/images/login/illustration-dark.svg';
+import loginIlustrLight from '@/assets/images/login/illustration-light.svg';
+import useDarkMode from '@/hooks/useDarkMode';
+import loginIlustrDark from '@/assets/images/login/illustration-dark.svg';
 
 const Login = () => {
+  const { isDarkMode } = useDarkMode();
+
   return (
     <AuthContainer>
       <FakeNavigation />
       <section className='p-2' style={{ height: 'calc(100vh - 100px)' }}>
         <div className='flex-center max-w-[1140px] w-full h-full mx-auto'>
           <img
-            src={loginIlustrLight}
+            src={!isDarkMode ? loginIlustrDark : loginIlustrLight}
             className='max-w-[620px] hidden xl:flex'
             alt='login-illustration'
           />
           <aside className='w-full px-10 sm:px-0 mx-auto sm:w-3/4 md:w-[67%] lg:w-1/2'>
             <div>
-              <h2 className='text-[1.5rem] font-montserrat font-normal'>Welcome back</h2>
-              <small>Enter your credentials to sign in.</small>
+              <h2 className='text-[1.5rem] font-montserrat font-normal dark:text-[#fafafa]'>
+                Welcome back
+              </h2>
+              <small className='dark:text-gray-200/50'>
+                Enter your credentials to sign in.
+              </small>
             </div>
             <Formik
               initialValues={{ email: '', password: '' }}
@@ -47,7 +53,9 @@ const Login = () => {
                     />
                   </div>
                   <ForgotPassword />
-                  <Button className='my-3 bg-blue-600' fullWidth>
+                  <Button
+                    className='my-3 bg-blue-600 dark:border-t border-blue-300'
+                    fullWidth>
                     Login
                   </Button>
                 </section>

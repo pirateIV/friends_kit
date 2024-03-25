@@ -40,7 +40,7 @@ const AuthorizeAccount = () => {
         {({}) => (
           <Form className='w-full max-w-[540px]'>
             <PasswordInput />
-            <ButtonGroup className='flex justify-end gap-1 mt-4 divide-none'>
+            <div className='flex justify-end gap-1 mt-4'>
               <CustomButton
                 content='Back'
                 type='button'
@@ -51,7 +51,7 @@ const AuthorizeAccount = () => {
               <Button type='submit' loading={loading} className={nextBtnClass}>
                 Next
               </Button>
-            </ButtonGroup>
+            </div>
           </Form>
         )}
       </Formik>

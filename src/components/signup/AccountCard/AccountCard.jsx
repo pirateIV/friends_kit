@@ -13,7 +13,7 @@ const AccountCard = ({ id, type, title, imgSrc }) => {
             />
           </div>
           <div className='card-content'>
-            <h3 className='font-montserrat font-semibold py-2 dark:text-[#344258] text-[#fafafa]'>{title}</h3>
+            <h3 className='font-montserrat font-semibold py-2 text-[#344258] dark:text-[#fafafa]'>{title}</h3>
             <p className='text-sm text-[#a2a5b9]'>
               {`Create a ${type} account to be able to do some awesome things.`}
             </p>

@@ -42,7 +42,7 @@ const UserInfo = () => {
           {() => (
             <Form className='w-full max-w-[540px]'>
               <FormContent />
-              <ButtonGroup className='flex justify-end gap-1 mt-4 divide-none'>
+              <div className='flex justify-end mt-4 gap-1'>
                 <CustomButton
                   type='button'
                   content='Back'
@@ -54,11 +54,12 @@ const UserInfo = () => {
                 <Button
                   type='submit'
                   content='Next'
+                  variant='outlined'
                   loading={loading}
                   className={nextBtnClass}>
                   Next
                 </Button>
-              </ButtonGroup>
+              </div>
             </Form>
           )}
         </Formik>
