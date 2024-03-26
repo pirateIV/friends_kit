@@ -1,3 +1,4 @@
+import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
 
@@ -10,6 +11,17 @@ import { Button } from '@material-tailwind/react';
 import useDarkMode from '@/hooks/useDarkMode';
 import loginIlustrLight from '@/assets/images/login/illustration-light.svg';
 import loginIlustrDark from '@/assets/images/login/illustration-dark.svg';
+
+const LoginSchema = Yup.object().shape({
+  email: Yup.string().email('Invalid email').required('Required'),
+  password: Yup.string()
+    .required('required')
+    .min(8, 'Password must at least be 8 characters')
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
+      'Password must contain at least one uppercase letter, one lowercase letter, and one digit'
+    ),
+});
 
 const Login = () => {
   const { isDarkMode } = useDarkMode();
@@ -35,6 +47,7 @@ const Login = () => {
             </div>
             <Formik
               initialValues={{ email: '', password: '' }}
+              validationSchema={LoginSchema}
               onSubmit={(values) => console.log(values)}>
               <Form>
                 <section className='inputs w-full mt-4 space-y-2 xl:w-3/4'>

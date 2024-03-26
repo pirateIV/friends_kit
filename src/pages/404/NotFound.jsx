@@ -34,8 +34,8 @@ const NotFoundPage = () => {
             </h1>
             <div className='max-w-[540px] z-10'>
               <img
-                width='540'
-                height='409'
+                // width='540'
+                // height='409'
                 src='/images/404.svg'
                 alt='not found page image illustration'
                 className='motion-safe:animate-fade-in-down'
