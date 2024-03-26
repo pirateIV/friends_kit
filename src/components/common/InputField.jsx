@@ -3,6 +3,8 @@ import { Input } from '@material-tailwind/react';
 
 import { inputClass } from './index';
 import useInputState from '../../hooks/useInputState';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const InputField = ({ label, type, ...props }) => {
   const [field, meta] = useField(props);
@@ -23,11 +25,12 @@ const InputField = ({ label, type, ...props }) => {
             className={inputClass}
           />
         </div>
-        <ErrorMessage
-          name={type}
-          component='div'
-          className='absolute end-2 text-red-500  text-xs mt-1'
-        />
+        {meta.touched && meta.error && (
+          <div className='absolute end-0 text-red-500 inline-flex items-center gap-1  mt-1'>
+            <FontAwesomeIcon className='text-red-500 h-3 w-3' icon={faInfoCircle} />
+            <small className='text-xs mt-0.5'> {meta.error}</small>
+          </div>
+        )}
       </div>
     </>
   );

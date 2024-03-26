@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,6 +13,12 @@ import CustomButton from '../../common/CustomButton';
 import SignupWrapper from '../../common/SignupWrapper';
 import useLoadingState from '../../../hooks/useLoading';
 import { getUserInfo, setUserInfo } from '../../../auth/reducers/user/userSlice';
+
+const UserInfoSchema = Yup.object().shape({
+  email: Yup.string().email('Invalid email').required('required!'),
+  firstName: Yup.string().min(2, 'too short!').max(25, 'too long!').required('required'),
+  lastName: Yup.string().min(2, 'too short!').max(25, 'too long!').required('required'),
+});
 
 const UserInfo = () => {
   const dispatch = useDispatch();
@@ -38,6 +45,7 @@ const UserInfo = () => {
       <SignupWrapper {...stepProps.userInfo}>
         <Formik
           initialValues={{ firstName, lastName, email }}
+          validationSchema={UserInfoSchema}
           onSubmit={(values) => handleLoading(handleNext(values))}>
           {() => (
             <Form className='w-full max-w-[540px]'>
