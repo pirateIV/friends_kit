@@ -13,10 +13,10 @@ import loginIlustrLight from '@/assets/images/login/illustration-light.svg';
 import loginIlustrDark from '@/assets/images/login/illustration-dark.svg';
 
 const LoginSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Required'),
+  email: Yup.string().email('Invalid email').required('required!'),
   password: Yup.string()
-    .required('required')
-    .min(8, 'Password must at least be 8 characters')
+    .required('required!')
+    .min(8, 'password must at least be 8 characters')
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
       'Password must contain at least one uppercase letter, one lowercase letter, and one digit'

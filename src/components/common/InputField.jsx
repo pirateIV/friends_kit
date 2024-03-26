@@ -10,8 +10,8 @@ const InputField = ({ label, type, ...props }) => {
 
   return (
     <>
-      <div className='mb-6'>
-        <div> 
+      <div className='relative mb-8'>
+        <div>
           <Input
             size='lg'
             {...field}
@@ -23,10 +23,11 @@ const InputField = ({ label, type, ...props }) => {
             className={inputClass}
           />
         </div>
-        {/* <ErrorMessage name={type} component='div' className='text-red-500 text-sm mt-1' /> */}
-        {meta.touched && meta.error && (
-          <div className='text-red-500 text-sm mt-1'>{meta.error}</div>
-        )}
+        <ErrorMessage
+          name={type}
+          component='div'
+          className='absolute end-2 text-red-500  text-xs mt-1'
+        />
       </div>
     </>
   );
