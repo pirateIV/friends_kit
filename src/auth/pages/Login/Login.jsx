@@ -1,4 +1,5 @@
 import { Form, Formik } from 'formik';
+import { Link } from 'react-router-dom';
 
 import InputField from '@/components/common/InputField';
 import AuthContainer from '@/auth/components/AuthContainer';
@@ -6,9 +7,8 @@ import FakeNavigation from '@/auth/components/FakeNavigation';
 
 import ForgotPassword from '@/components/login/ForgotPassword';
 import { Button } from '@material-tailwind/react';
-import { Link } from 'react-router-dom';
-import loginIlustrLight from '@/assets/images/login/illustration-light.svg';
 import useDarkMode from '@/hooks/useDarkMode';
+import loginIlustrLight from '@/assets/images/login/illustration-light.svg';
 import loginIlustrDark from '@/assets/images/login/illustration-dark.svg';
 
 const Login = () => {
@@ -20,7 +20,7 @@ const Login = () => {
       <section className='p-2' style={{ height: 'calc(100vh - 100px)' }}>
         <div className='flex-center max-w-[1140px] w-full h-full mx-auto'>
           <img
-            src={!isDarkMode ? loginIlustrDark : loginIlustrLight}
+            src={isDarkMode ? loginIlustrDark : loginIlustrLight}
             className='max-w-[620px] hidden xl:flex'
             alt='login-illustration'
           />
@@ -49,6 +49,7 @@ const Login = () => {
                       type='password'
                       name='password'
                       label='Password'
+                      autoComplete='current-password'
                       placeholder='Enter your password'
                     />
                   </div>

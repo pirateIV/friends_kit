@@ -1,14 +1,10 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 const useDarkMode = () => {
-  const theme = useSelector((state) => state.theme);
-
-  const isDarkMode = theme === 'dark' ? true : false;
-
- 
+  const isDarkMode = useSelector((state) => state.theme.theme);
 
   return {
-    theme,
     isDarkMode,
   };
 };
