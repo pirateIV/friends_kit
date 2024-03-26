@@ -12,7 +12,7 @@ export const prevBtnClass = `${baseBtnClass} bg-gray-600 border border-gray-300 
 00 dark:bg-gray-700`;
 
 // Next button class with specific styles
-export const nextBtnClass = `${baseBtnClass} bg-blue-600 hover:opacity-90 disabled:bg-blue-400 dark:border-0 dark:border-t dark:border-blue-300`;
+export const nextBtnClass = `${baseBtnClass} bg-blue-600 border border-white hover:opacity-90 disabled:bg-blue-400 dark:border-0 dark:border-t dark:border-blue-300`;
 
 export const accountTypes = [
   { id: 1, type: 'company', title: 'Company', illustration: type1 },
