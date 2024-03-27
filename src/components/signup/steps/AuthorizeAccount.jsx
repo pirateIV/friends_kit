@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
+import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, ButtonGroup } from '@material-tailwind/react';
+import { Button } from '@material-tailwind/react';
 
 import useLoadingState from '@/hooks/useLoading';
 import CustomButton from '@/components/common/CustomButton';
@@ -12,6 +13,19 @@ import PasswordInput from '@/components/signup/Form/PasswordInput';
 import { setProgress } from '@/redux/reducers/progressReducer';
 import { getUserInfo, setUserPassword } from '@/auth/reducers/user/userSlice';
 import { nextBtnClass, prevBtnClass, stepProps } from '.';
+
+const passwordSchema = Yup.object().shape({
+  password: Yup.string()
+  .required('required!')
+  .min(8, 'password must at least be 8 characters')
+  .matches(
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
+    'Password must contain at least one uppercase letter, one lowercase letter, and one digit'
+  ),
+  confirmPassword: Yup.string()
+    .required('required!')
+    .oneOf([Yup.ref('password'), null], 'Passwords does not match!'),
+});
 
 const AuthorizeAccount = () => {
   const dispatch = useDispatch();
@@ -36,6 +50,7 @@ const AuthorizeAccount = () => {
     <SignupWrapper {...stepProps.authorizeAcct}>
       <Formik
         initialValues={{ password, confirmPassword }}
+        validationSchema={passwordSchema}
         onSubmit={(values) => handleLoading(handleSubmit(values))}>
         {({}) => (
           <Form className='w-full max-w-[540px]'>
