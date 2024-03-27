@@ -10,6 +10,7 @@ const InputField = ({ label, type, ...props }) => {
   const [field, meta] = useField(props);
   const { iconType, inputType } = useInputState(type);
   const hasError = meta.touched && meta.error;
+
   const inputClasses = hasError
     ? 'peer h-full w-full rounded-[7px] border border-red-500 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-red-500 placeholder-shown:border-t-red-500 focus:border-2 focus:border-red-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder-opacity-100'
     : 'peer w-full h-full bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-blue-500 placeholder-opacity-100';
@@ -22,25 +23,30 @@ const InputField = ({ label, type, ...props }) => {
     <>
       <div className='relative mb-8'>
         <div className='relative h-10 w-full'>
-          <input
+          {/* <input
             {...field}
             {...props}
             className={inputClasses}
             type={inputType}
             // placeholder={hasError ? '' : props.placeholder}
           />
-          <label className={labelClasses}>{type}</label>
+          <label className={labelClasses}>{type}</label> */}
 
-          {/* <Input
+          <Input
             size='lg'
             {...field}
             {...props}
-            color={meta.error ? null : 'blue'}
+            color={meta.error ? 'red' : 'blue'}
             label={label}
             icon={iconType}
             type={inputType}
+            className={
+              meta.error & meta.touched
+                ? '!border !border-red-500 focus:!border-t-transparent'
+                : ''
+            }
             // className={meta.error ? inputErrorClass : inputClass}
-          /> */}
+          />
         </div>
         {meta.touched && meta.error && (
           <div className='absolute end-0 text-red-500 inline-flex items-center gap-1  mt-1'>
