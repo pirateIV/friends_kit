@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 const baseUrl = 'http://localhost:5000/api/users';
 
@@ -13,4 +13,9 @@ const createUser = async (userData) => {
   return await response.json();
 };
 
-export default { createUser };
+const getAll = async () => {
+  const response = await axios.get(baseUrl);
+  return response.data;
+};
+
+export default { createUser, getAll };
