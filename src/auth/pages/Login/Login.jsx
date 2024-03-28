@@ -1,14 +1,13 @@
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
+import { Button } from '@material-tailwind/react';
 
+import useDarkMode from '@/hooks/useDarkMode';
 import InputField from '@/components/common/InputField';
 import AuthContainer from '@/auth/components/AuthContainer';
 import FakeNavigation from '@/auth/components/FakeNavigation';
-
 import ForgotPassword from '@/components/login/ForgotPassword';
-import { Button } from '@material-tailwind/react';
-import useDarkMode from '@/hooks/useDarkMode';
 import loginIlustrLight from '@/assets/images/login/illustration-light.svg';
 import loginIlustrDark from '@/assets/images/login/illustration-dark.svg';
 

@@ -23,15 +23,6 @@ const InputField = ({ label, type, ...props }) => {
     <>
       <div className='relative mb-8'>
         <div className='relative h-10 w-full'>
-          {/* <input
-            {...field}
-            {...props}
-            className={inputClasses}
-            type={inputType}
-            // placeholder={hasError ? '' : props.placeholder}
-          />
-          <label className={labelClasses}>{type}</label> */}
-
           <Input
             size='lg'
             {...field}
@@ -41,11 +32,10 @@ const InputField = ({ label, type, ...props }) => {
             icon={iconType}
             type={inputType}
             className={
-              meta.error & meta.touched
-                ? '!border !border-red-500 focus:!border-t-transparent'
+              meta.error
+                ? '!border  focus:!border-t focus:!border-t-transparent !border-t border-red-500'
                 : ''
             }
-            // className={meta.error ? inputErrorClass : inputClass}
           />
         </div>
         {meta.touched && meta.error && (
