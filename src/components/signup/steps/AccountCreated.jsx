@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { stepProps } from '.';
@@ -15,6 +15,9 @@ const AccountCreated = () => {
     dispatch(setProgress(100));
   }, []);
   const next = () => navigate('/');
+
+  
+
   return (
     <SignupWrapper {...stepProps.accountCreated}>
       <SignupCard>

@@ -10,7 +10,8 @@ const getUser = async () => {
 
 const createUser = async (userData) => {
   const response = await axios.post(baseUrl, userData);
-  return await response.json();
+  console.log(response.data)
+  return response.data;
 };
 
 const getAll = async () => {

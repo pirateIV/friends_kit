@@ -17,8 +17,14 @@ const Root = () => {
         <div>
           <h1>User List</h1>
           <ul>
-            {users.map((user) => (
-              <li key={user.id}>{user.name}</li>
+            {users?.map((user) => (
+              <div key={user.id}>
+                <img src={user.avatar} alt='' />
+                <li>
+                  {user.firstName}
+                  {user.lastName}
+                </li>
+              </div>
             ))}
           </ul>
         </div>
