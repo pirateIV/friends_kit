@@ -1,7 +1,7 @@
 import { Button } from '@material-tailwind/react';
 
 import { useNavigate } from 'react-router-dom';
-import useLoadingState from '../../hooks/useLoading';
+import useLoadingState from '@/hooks/useLoading';
 
 const CustomButton = (props) => {
   const navigate = useNavigate();

@@ -2,7 +2,7 @@ import { useField } from 'formik';
 import { Input } from '@material-tailwind/react';
 
 import { inputErrorClass } from '.';
-import useInputState from '../../hooks/useInputState';
+import useInputState from '@/hooks/useInputState';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -19,11 +19,11 @@ const InputField = ({ label, type, ...props }) => {
             size='lg'
             {...field}
             {...props}
-            color={meta.error ? 'red' : 'blue'}
             label={label}
             icon={iconType}
             type={inputType}
             className={inputClass}
+            color={meta.error ? 'red' : 'blue'}
           />
         </div>
         {meta.touched && meta.error && (
