@@ -1,11 +1,11 @@
-import SearchIcon from '@/shared/components/icons/SearchIcon';
-import Icon from '@mdi/react';
 import jenna from './jenna.webp';
+import SearchIcon from '@/shared/components/icons/SearchIcon';
+import ThemeSwitcher from '@/shared/components/ThemeSwitcher';
 
 const NavbarEnd = () => {
   return (
-    <div className='navbar-end flex items-center gap-7 transition-all'>
-      <div className='relative w-80'>
+    <div className='relative navbar-end flex items-center gap-7 transition-all'>
+      <div className='relative w-80 me-3'>
         <input
           id='search'
           type='search'
@@ -20,10 +20,11 @@ const NavbarEnd = () => {
         </div>
       </div>
       <div className='user-avatar'>
-        <a  className='block h-10 w-10 rounded-full bg-gray-200'>
+        <a className='block h-10 w-10 rounded-full bg-gray-200'>
           <img src={jenna} className='bg-cover rounded-full' />
         </a>
       </div>
+      <ThemeSwitcher /> 
     </div>
   );
 };

@@ -16,12 +16,11 @@ import { nextBtnClass, prevBtnClass, stepProps } from '.';
 
 const passwordSchema = Yup.object().shape({
   password: Yup.string()
-  .required('required!')
-  .min(8, 'password must at least be 8 characters')
-  .matches(
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-    'Password must contain at least one uppercase letter, one lowercase letter, and one digit'
-  ),
+    .required('required!')
+    .min(8, 'password must at least be 8 characters')
+    .matches(
+      'Password must contain at least one uppercase letter, one lowercase letter, and one digit'
+    ),
   confirmPassword: Yup.string()
     .required('required!')
     .oneOf([Yup.ref('password'), null], 'Passwords does not match!'),
