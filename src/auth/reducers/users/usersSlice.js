@@ -12,23 +12,13 @@ export const getAllUsers = createAsyncThunk('users/getAllUsers', async () => {
   }
 });
 
-export const createNewUser = createAsyncThunk(
-  'users/createNewUser',
-  async (post) => {
-    try {
-      // // console.log(post)
-      // const postcreated = usersService.createUser(post);
-      // console.log(postcreated)
-      // return usersService.createUser(post);
-      const res = await axios.post(baseUrl, post);
-      console.log(post)
-      // console.log(res.data);
-      return res.data;
-    } catch (error) {
-      console.log(error);
-    }
+export const createNewUser = createAsyncThunk('users/createNewUser', async (newUser) => {
+  try {
+    return await usersService.createUser(newUser);
+  } catch (error) {
+    console.log(error);
   }
-);
+});
 
 const usersReducer = createSlice({
   name: 'users',

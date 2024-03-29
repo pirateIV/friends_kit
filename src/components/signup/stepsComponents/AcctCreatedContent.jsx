@@ -10,18 +10,11 @@ const AcctCreatedContent = ({ next }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
 
-  const submitData = async () => {
-    const res = await axios.post('http://localhost:5000/api/users', user);
-    // console.log(res.data);
-    return await res.data;
-    // return res.data;
+  const submitForm = async (e) => {
+    e.preventDefault();
+    dispatch(createNewUser(user));
+    next();
   };
-
-  // const submitUserDetails = () => {
-  //   console.log(user);
-  //   dispatch(createNewUser(user));
-  //   // next();
-  // };
 
   return (
     <section className='space-y-4'>
@@ -39,12 +32,9 @@ const AcctCreatedContent = ({ next }) => {
           hours.
         </small>
       </div>
-      <form>
-        <Button
-          type='button'
-          className={`${btnClass} lowercase first-letter:uppercase`}
-          onClick={() => submitData()}>
-          Let Me in
+      <form onSubmit={submitForm} encType='multipart/form-data'>
+        <Button type='submit' className={`${btnClass} lowercase first-letter:uppercase`}>
+          {/* // onClick={() => submitData()} Let Me in */} Let me in
         </Button>
       </form>
     </section>

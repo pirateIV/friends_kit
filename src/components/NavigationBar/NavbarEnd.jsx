@@ -1,4 +1,5 @@
 import SearchIcon from '@/shared/components/icons/SearchIcon';
+import Icon from '@mdi/react'
 
 const NavbarEnd = () => {
   return (
