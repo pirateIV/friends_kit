@@ -1,5 +1,6 @@
 import SearchIcon from '@/shared/components/icons/SearchIcon';
-import Icon from '@mdi/react'
+import Icon from '@mdi/react';
+import jenna from './jenna.webp';
 
 const NavbarEnd = () => {
   return (
@@ -18,8 +19,10 @@ const NavbarEnd = () => {
           <span className='sr-only'>Search icon</span>
         </div>
       </div>
-      <div className="user-avatar">
-        <div className='h-9 w-9 rounded-full bg-gray-200'></div>
+      <div className='user-avatar'>
+        <a  className='block h-10 w-10 rounded-full bg-gray-200'>
+          <img src={jenna} className='bg-cover rounded-full' />
+        </a>
       </div>
     </div>
   );
