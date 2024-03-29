@@ -44,14 +44,23 @@ const userSlice = createSlice({
 
       state.user = { ...state.user, profilePic };
       localStorage.setItem('user', JSON.stringify(state.user));
-      console.log(JSON.parse(JSON.stringify(state.user)))
+      console.log(JSON.parse(JSON.stringify(state.user)));
+    },
+    deleteUserFromStorage(state, _) {
+      localStorage.removeItem('user');
+      state.user = null;
     },
   },
   extraReducers(builder) {},
 });
 
-export const { setAcctType, setUserInfo, setUserPassword, setProfileUpload } =
-  userSlice.actions;
+export const {
+  setAcctType,
+  setUserInfo,
+  setUserPassword,
+  setProfileUpload,
+  deleteUserFromStorage,
+} = userSlice.actions;
 export const getUserInfo = (state) => state.user.user;
 // export const getUserPassword = (state) = state.users.
 

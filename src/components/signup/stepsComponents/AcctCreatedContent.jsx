@@ -1,10 +1,10 @@
 import { Button } from '@material-tailwind/react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { btnClass } from '.';
 import mailbox from '@/assets/images/signup/cards/mailbox.svg';
-import { useDispatch, useSelector } from 'react-redux';
 import { createNewUser } from '@/auth/reducers/users/usersSlice';
-import axios from 'axios';
+import { deleteUserFromStorage } from '@/auth/reducers/user/userSlice';
 
 const AcctCreatedContent = ({ next }) => {
   const dispatch = useDispatch();
@@ -13,6 +13,7 @@ const AcctCreatedContent = ({ next }) => {
   const submitForm = async (e) => {
     e.preventDefault();
     dispatch(createNewUser(user));
+    dispatch(deleteUserFromStorage());
     next();
   };
 
@@ -34,7 +35,7 @@ const AcctCreatedContent = ({ next }) => {
       </div>
       <form onSubmit={submitForm} encType='multipart/form-data'>
         <Button type='submit' className={`${btnClass} lowercase first-letter:uppercase`}>
-          {/* // onClick={() => submitData()} Let Me in */} Let me in
+          Let me in
         </Button>
       </form>
     </section>

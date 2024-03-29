@@ -3,7 +3,7 @@ import Icon from '@mdi/react'
 
 const NavbarEnd = () => {
   return (
-    <div className='navbar-end flex items-center transition-all'>
+    <div className='navbar-end flex items-center gap-7 transition-all'>
       <div className='relative w-80'>
         <input
           id='search'
@@ -17,6 +17,9 @@ const NavbarEnd = () => {
           <SearchIcon />
           <span className='sr-only'>Search icon</span>
         </div>
+      </div>
+      <div className="user-avatar">
+        <div className='h-9 w-9 rounded-full bg-gray-200'></div>
       </div>
     </div>
   );
