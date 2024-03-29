@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const InputField = ({ label, type, ...props }) => {
   const [field, meta] = useField(props);
   const { iconType, inputType } = useInputState(type);
-  const inputClass = `dark:text-[#fafafa] ${meta.error && inputErrorClass}`;
+  const inputClass = ``;
 
   return (
     <>
@@ -22,11 +22,11 @@ const InputField = ({ label, type, ...props }) => {
             label={label}
             icon={iconType}
             type={inputType}
-            className={inputClass}
             color={meta.error ? 'red' : 'blue'}
+            className={`dark:text-[#fafafa] ${meta.error && inputErrorClass}`}
           />
         </div>
-        {meta.touched && meta.error && (
+        {meta.error && (
           <div className='absolute end-0 text-red-500 inline-flex items-center gap-1  mt-1'>
             <FontAwesomeIcon className='text-red-500 h-3 w-3' icon={faInfoCircle} />
             <small className='text-xs mt-0.5'> {meta.error}</small>
