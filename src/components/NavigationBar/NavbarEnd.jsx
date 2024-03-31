@@ -1,4 +1,4 @@
-import jenna from './jenna.webp';
+import jenna from '@/assets/images/jenna.webp';
 import SearchIcon from '@/shared/components/icons/SearchIcon';
 import ThemeSwitcher from '@/shared/components/ThemeSwitcher';
 

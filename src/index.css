@@ -11,7 +11,7 @@
     @apply flex items-center justify-center;
   }
   .inline-flex-center {
-    @apply inline-flex items-center justify-center
+    @apply inline-flex items-center justify-center;
   }
   .flex-end {
     @apply flex items-end;
