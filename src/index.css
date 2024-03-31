@@ -6,6 +6,10 @@
   height: 300px !important;
 }
 
+main {
+  height: 100%;
+}
+
 @layer components {
   .flex-center {
     @apply flex items-center justify-center;

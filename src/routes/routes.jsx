@@ -11,11 +11,16 @@ import AuthorizeAccount from '@/components/signup/steps/AuthorizeAccount';
 
 import NotFoundPage from '@/pages/404/NotFound';
 import UserProfile from '@/pages/UserProfile/UserProfile';
+import UserProfileMinimal from '@/pages/UserProfileMinimal/UserProfileMinimal';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+    children: [{
+      path: '/profile-minimal',
+      element: <UserProfileMinimal />,
+    },]
   },
   {
     path: '/signup',
