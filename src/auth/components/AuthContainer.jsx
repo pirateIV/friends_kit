@@ -7,4 +7,3 @@ const AuthContainer = ({ children }) => {
 };
 
 export default AuthContainer;
-// bg-[#f4f4f4] dark:

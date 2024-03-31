@@ -2,23 +2,24 @@ import { useEffect } from 'react';
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@material-tailwind/react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import useLoadingState from '@/hooks/useLoading';
 import CustomButton from '@/components/common/CustomButton';
 import SignupWrapper from '@/components/common/SignupWrapper';
 import PasswordInput from '@/components/signup/Form/PasswordInput';
 
+import { nextBtnClass, prevBtnClass, stepProps } from '.';
 import { setProgress } from '@/redux/reducers/progressReducer';
 import { getUserInfo, setUserPassword } from '@/auth/reducers/user/userSlice';
-import { nextBtnClass, prevBtnClass, stepProps } from '.';
 
 const passwordSchema = Yup.object().shape({
   password: Yup.string()
     .required('required!')
     .min(8, 'password must at least be 8 characters')
     .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
       'Password must contain at least one uppercase letter, one lowercase letter, and one digit'
     ),
   confirmPassword: Yup.string()
@@ -56,8 +57,8 @@ const AuthorizeAccount = () => {
             <PasswordInput />
             <div className='flex justify-end gap-1 mt-4'>
               <CustomButton
-                content='Back'
                 type='button'
+                content='Back'
                 variant='outlined'
                 handleClick={prev}
                 className={prevBtnClass}

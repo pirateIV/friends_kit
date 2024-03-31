@@ -3,13 +3,15 @@ import { Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-tailwind/react';
 
-import useDarkMode from '@/hooks/useDarkMode';
 import InputField from '@/components/common/InputField';
 import AuthContainer from '@/auth/components/AuthContainer';
 import FakeNavigation from '@/auth/components/FakeNavigation';
 import ForgotPassword from '@/components/login/ForgotPassword';
 import loginIlustrLight from '@/assets/images/login/illustration-light.svg';
 import loginIlustrDark from '@/assets/images/login/illustration-dark.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTheme } from '@/redux/reducers/themeReducer';
+import { signInUser } from '@/auth/reducers/login/authSlice';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('required!'),
@@ -23,7 +25,14 @@ const LoginSchema = Yup.object().shape({
 });
 
 const Login = () => {
-  const { isDarkMode } = useDarkMode();
+  const theme = useSelector(getTheme());
+  const dispatch = useDispatch();
+  const { email, password } = useSelector((state) => state.auth);
+
+  const submitForm = (values) => {
+    console.log(values);
+    dispatch(signInUser(values));
+  };
 
   return (
     <AuthContainer>
@@ -31,7 +40,7 @@ const Login = () => {
       <section className='p-2' style={{ height: 'calc(100vh - 100px)' }}>
         <div className='flex-center max-w-[1140px] w-full h-full mx-auto'>
           <img
-            src={isDarkMode ? loginIlustrDark : loginIlustrLight}
+            src={theme === 'light' ? loginIlustrLight : loginIlustrDark}
             className='max-w-[620px] hidden xl:flex'
             alt='login-illustration'
           />
@@ -45,9 +54,9 @@ const Login = () => {
               </small>
             </div>
             <Formik
-              initialValues={{ email: '', password: '' }}
+              initialValues={{ email, password }}
               validationSchema={LoginSchema}
-              onSubmit={(values) => console.log(values)}>
+              onSubmit={(values) => submitForm(values)}>
               <Form>
                 <section className='inputs w-full mt-4 space-y-2 xl:w-3/4'>
                   <div>
@@ -67,6 +76,7 @@ const Login = () => {
                   </div>
                   <ForgotPassword />
                   <Button
+                    type='submit'
                     className='my-3 bg-blue-600 dark:border-t border-blue-300'
                     fullWidth>
                     Login

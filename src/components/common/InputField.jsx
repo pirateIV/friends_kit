@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const InputField = ({ label, type, ...props }) => {
   const [field, meta] = useField(props);
   const { iconType, inputType } = useInputState(type);
-  const inputClass = ``;
 
   return (
     <>

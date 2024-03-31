@@ -10,6 +10,7 @@ const ThemeSwitcher = () => {
   const changePreference = () => {
     dispatch(setTheme(selectedTheme));
   };
+  
 
   const themeBtnClass = 'absolute end-10 text-gray-500 inline-flex-center dark:text-gray-400 hover:bg-gray-100 w-8 h-8 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-full text-sm p-1'
   

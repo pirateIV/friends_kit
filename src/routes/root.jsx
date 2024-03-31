@@ -17,15 +17,15 @@ const Root = () => {
         <div>
           <h1>User List</h1>
           <ul>
-            {users?.map((user) => (
+            {/* {users?.map((user) => (
               <div key={user.id}>
-                <img src={user.avatar} alt='' />
+                <img src={user ? user.avatar : null} />
                 <li>
-                  {user.firstName}
-                  {user.lastName}
+                  {user ? user.firstName : null}
+                  {user ? user.lastName : null}
                 </li>
               </div>
-            ))}
+            ))} */}
           </ul>
         </div>
       </div>
