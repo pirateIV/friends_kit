@@ -34,9 +34,6 @@ const AuthorizeAccount = () => {
   const { loading, handleLoading } = useLoadingState();
   const { password, confirmPassword } = useSelector(getUserInfo);
 
-  useEffect(() => {
-    dispatch(setProgress(75));
-  }, []);
   const prev = () => navigate('/signup/upload-profile');
   const next = () => navigate('/signup/created');
 
@@ -45,6 +42,10 @@ const AuthorizeAccount = () => {
     dispatch(setUserPassword(values));
     next();
   };
+
+  useEffect(() => {
+    dispatch(setProgress(75));
+  }, []);
 
   return (
     <SignupWrapper {...stepProps.authorizeAcct}>
