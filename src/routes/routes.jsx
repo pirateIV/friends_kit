@@ -10,7 +10,8 @@ import AccountCreated from '@/components/signup/steps/AccountCreated';
 import AuthorizeAccount from '@/components/signup/steps/AuthorizeAccount';
 
 import NotFoundPage from '@/pages/404/NotFound';
-import UserProfile from '@/pages/UserProfile/UserProfile';
+// import UserProfile from '@/pages/UserProfile/UserProfile';
+import UserProfileMain from '@/pages/UserProfile/UserProfileMain';
 import UserProfileMinimal from '@/pages/UserProfileMinimal/UserProfileMinimal';
 
 const router = createBrowserRouter([
@@ -20,7 +21,12 @@ const router = createBrowserRouter([
     children: [{
       path: '/profile-minimal',
       element: <UserProfileMinimal />,
-    },]
+    },
+    {
+      path: '/profile-main',
+      element: <UserProfileMain />
+    }
+  ]
   },
   {
     path: '/signup',
@@ -48,10 +54,10 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Login />,
   },
-  {
-    path: '/me',
-    element: <UserProfile />,
-  },
+  // {
+  //   path: '/me',
+  //   element: <UserProfile />,
+  // },
   {
     path: '*',
     element: <NotFoundPage />,
