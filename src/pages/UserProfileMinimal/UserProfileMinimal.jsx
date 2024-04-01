@@ -8,9 +8,10 @@ const UserProfileMinimal = () => {
     <>
       <header>
         <section
-          className='mt-1 banner profile-cover h-[300px] bg-cover'
+          className='mt-1 banner profile-cover h-[300px] bg-cover bg-center'
           style={{
             backgroundImage: `url(${banner})`,
+            // backgroundPositionY: 'center'
           }}></section>
       </header>
       <div className='max-w-[1040px] mx-auto'>
