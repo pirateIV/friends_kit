@@ -1,7 +1,6 @@
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button } from '@material-tailwind/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useLoginMutation } from '@/app/api/apiSlice';
@@ -38,7 +37,7 @@ const Login = () => {
     if (error) {
       setIsError(true);
     }
-    setTimeout(() => setIsError(false), 3000);
+    setTimeout(() => setIsError(false), 5000);
   }, [error]);
 
   const submitForm = async (values) => {
@@ -66,7 +65,9 @@ const Login = () => {
                 Enter your credentials to sign in.
               </small>
             </div>
-            {isError && <Alert>{error.data.error}</Alert>}
+            <div className='mt-2'>
+              {error && isError ? <Alert>{error?.data.error}</Alert> : null}
+            </div>
             <Formik
               initialValues={{ email: '', password: '' }}
               validationSchema={LoginSchema}
@@ -88,18 +89,19 @@ const Login = () => {
                       placeholder='Enter your password'
                     />
                   </div>
+
                   <ForgotPassword />
-                  <Button
+                  <button
                     type='submit'
-                    className='my-3 bg-blue-600 dark:border-t border-blue-300'
-                    fullWidth>
+                    className='my-3 w-full py-2.5 text-white font-medium text-sm rounded-md bg-blue-600 dark:border-t border-blue-300 disabled:bg-blue-300 disabled:cursor-not-allowed '
+                    disabled={isError}>
                     Login
-                  </Button>
+                  </button>
                 </section>
               </Form>
             </Formik>
 
-            <div className='mt-5 w-3/4 text-center'>
+            <div className='mt-5 lg:w-3/4 text-center'>
               <Link to='/signup' className='text-sm text-gray-500 hover:text-blue-500'>
                 Don't have an account? Sign Up
               </Link>
