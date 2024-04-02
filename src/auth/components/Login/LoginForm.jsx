@@ -19,10 +19,10 @@ const LoginSchema = Yup.object().shape({
     ),
 });
 
-const LoginForm = ({ theme, isError, setIsError }) => {
+const LoginForm = ({ theme, login, isError, setIsError }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [login, { error }] = useLoginMutation();
+  // const [login, { error }] = useLoginMutation();
 
   const submitForm = async (values) => {
     const user = await login(values).unwrap();

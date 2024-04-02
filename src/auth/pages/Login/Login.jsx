@@ -15,6 +15,7 @@ const Login = () => {
 
   useEffect(() => {
     if (error) {
+      console.log(error);
       setIsError(true);
     }
     setTimeout(() => setIsError(false), 5000);
@@ -22,11 +23,13 @@ const Login = () => {
 
   return (
     <LoginContent
+      error={error}
+      login={login}
       theme={theme}
-      loginIlustrLight={loginIlustrLight}
-      loginIlustrDark={loginIlustrDark}
       isError={isError}
       setIsError={setIsError}
+      loginIlustrLight={loginIlustrLight}
+      loginIlustrDark={loginIlustrDark}
     />
   );
 };

@@ -2,11 +2,11 @@ import React from 'react';
 import LoginForm from './LoginForm';
 import LoginAlert from './LoginAlert';
 
-const LoginFormContainer = ({ theme, isError, setIsError }) => {
+const LoginFormContainer = ({ error, login, theme, isError, setIsError }) => {
   return (
     <div>
-      <LoginAlert isError={isError} />
-      <LoginForm theme={theme} isError={isError} setIsError={setIsError} />
+      <LoginAlert error={error} isError={isError} />
+      <LoginForm login={login} theme={theme} isError={isError} setIsError={setIsError} />
     </div>
   );
 };
