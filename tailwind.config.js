@@ -41,7 +41,6 @@ module.exports = withMT({
           '-apple-system',
           'BlinkMacSystemFont',
           'Segoe UI',
-          'Roboto',
           'Helvetica Neue',
           'Arial',
           'Noto Sans',
@@ -52,6 +51,7 @@ module.exports = withMT({
           'Noto Color Emoji',
         ],
         montserrat: ['Montserrat'],
+        inter: ['Inter'],
       },
       boxShadow: {
         tiny: '0 1px 0.5px rgba(0, 0, 0, 0.13), 0 1px 1px rgba(0, 0, 0, 0.2)',

@@ -2,6 +2,8 @@ import jenna from '@/assets/images/jenna.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera, faPlus } from '@fortawesome/free-solid-svg-icons';
 import banner from '@/assets/images/default-profile-banner.png';
+import PlusIcon from '@/shared/components/icons/PlusIcon';
+// import { PlusIcon } from '@radix-ui/react-icons';
 
 const UserProfileMinimal = () => {
   return (
@@ -11,7 +13,6 @@ const UserProfileMinimal = () => {
           className='mt-1 banner profile-cover h-[300px] bg-cover bg-center'
           style={{
             backgroundImage: `url(${banner})`,
-            // backgroundPositionY: 'center'
           }}></section>
       </header>
       <div className='max-w-[1040px] mx-auto'>
@@ -25,6 +26,11 @@ const UserProfileMinimal = () => {
                     className='h-[130px] w-[130px]'
                     alt='user-profile-pic'
                   />
+                  <a
+                    className='upload-button absolute bottom-0 right-0 flex-center h-[36px] w-[36px] text-white  rounded-full bg-light-green-500 cursor-pointer hover:bg-blue-500'
+                    onClick={(e) => handleImageUpload(e)}>
+                    <PlusIcon />
+                  </a>
                 </div>
                 <button className='inline-flex-center border border-gray-300 p-2 w-full font-medium gap-1 rounded-md hover:border-gray-400'>
                   <FontAwesomeIcon icon={faCamera} />
@@ -36,7 +42,7 @@ const UserProfileMinimal = () => {
               <div className='user'>
                 <div className='head w-full flex items-center justify-between'>
                   <h1 className='user-name text-[1.4rem]'>Jenna Davis</h1>
-                  <button className='min-w-32 bg-green-500 text-white p-2 rounded-md hover:bg-green-400'>
+                  <button className='min-w-32 bg-light-green-500 text-white p-2 rounded-md hover:bg-light-green-400'>
                     Follow
                   </button>
                 </div>

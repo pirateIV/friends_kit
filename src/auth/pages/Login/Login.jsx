@@ -11,7 +11,7 @@ import loginIlustrLight from '@/assets/images/login/illustration-light.svg';
 import loginIlustrDark from '@/assets/images/login/illustration-dark.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTheme } from '@/redux/reducers/themeReducer';
-import { signInUser } from '@/auth/reducers/login/authSlice';
+import { signInUser } from '@/auth/reducers/login/loginSlice';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('required!'),
@@ -27,11 +27,11 @@ const LoginSchema = Yup.object().shape({
 const Login = () => {
   const theme = useSelector(getTheme());
   const dispatch = useDispatch();
-  const { email, password } = useSelector((state) => state.auth);
+  // const { email, password } = useSelector((state) => state.auth);
 
   const submitForm = (values) => {
-    console.log(values);
-    dispatch(signInUser(values));
+    // console.log(values);
+    // dispatch(signInUser(values));
   };
 
   return (
@@ -54,7 +54,7 @@ const Login = () => {
               </small>
             </div>
             <Formik
-              initialValues={{ email, password }}
+              initialValues={{ email: '', password: '' }}
               validationSchema={LoginSchema}
               onSubmit={(values) => submitForm(values)}>
               <Form>

@@ -4,7 +4,7 @@ import userReducer from '@/auth/reducers/user/userSlice';
 import progressReducer from '@/redux/reducers/progressReducer';
 import themeReducer from '@/redux/reducers/themeReducer';
 import usersReducer from '@/auth/reducers/users/usersSlice';
-import authReducer from '@/auth/reducers/login/authSlice';
+import authReducer from '@/auth/reducers/login/loginSlice';
 
 const store = configureStore({
   reducer: {
