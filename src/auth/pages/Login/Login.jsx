@@ -1,17 +1,20 @@
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@material-tailwind/react';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { useLoginMutation } from '@/app/api/apiSlice';
 import InputField from '@/components/common/InputField';
+import { getTheme } from '@/redux/reducers/themeReducer';
 import AuthContainer from '@/auth/components/AuthContainer';
 import FakeNavigation from '@/auth/components/FakeNavigation';
 import ForgotPassword from '@/components/login/ForgotPassword';
-import loginIlustrLight from '@/assets/images/login/illustration-light.svg';
+import { setCredentials } from '@/auth/reducers/login/loginSlice';
 import loginIlustrDark from '@/assets/images/login/illustration-dark.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { getTheme } from '@/redux/reducers/themeReducer';
-import { signInUser } from '@/auth/reducers/login/loginSlice';
+import loginIlustrLight from '@/assets/images/login/illustration-light.svg';
+import Alert from '@/components/common/Alert';
+import { useEffect, useState } from 'react';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('required!'),
@@ -27,11 +30,21 @@ const LoginSchema = Yup.object().shape({
 const Login = () => {
   const theme = useSelector(getTheme());
   const dispatch = useDispatch();
-  // const { email, password } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const [isError, setIsError] = useState(false);
+  const [login, { error, isLoading }] = useLoginMutation();
 
-  const submitForm = (values) => {
-    // console.log(values);
-    // dispatch(signInUser(values));
+  useEffect(() => {
+    if (error) {
+      setIsError(true);
+    }
+    setTimeout(() => setIsError(false), 3000);
+  }, [error]);
+
+  const submitForm = async (values) => {
+    const user = await login(values).unwrap();
+    dispatch(setCredentials(user));
+    navigate('/');
   };
 
   return (
@@ -53,6 +66,7 @@ const Login = () => {
                 Enter your credentials to sign in.
               </small>
             </div>
+            {isError && <Alert>{error.data.error}</Alert>}
             <Formik
               initialValues={{ email: '', password: '' }}
               validationSchema={LoginSchema}
@@ -84,6 +98,7 @@ const Login = () => {
                 </section>
               </Form>
             </Formik>
+
             <div className='mt-5 w-3/4 text-center'>
               <Link to='/signup' className='text-sm text-gray-500 hover:text-blue-500'>
                 Don't have an account? Sign Up
