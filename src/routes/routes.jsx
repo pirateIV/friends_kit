@@ -12,21 +12,34 @@ import AuthorizeAccount from '@/components/signup/steps/AuthorizeAccount';
 import NotFoundPage from '@/pages/404/NotFound';
 // import UserProfile from '@/pages/UserProfile/UserProfile';
 import UserProfileMain from '@/pages/UserProfile/UserProfileMain';
-import UserProfileMinimal from '@/pages/UserProfileMinimal/UserProfileMinimal';
+import UserProfileMinimal from '@/pages/UserProfile/UserProfileMinimal';
+import AboutUser from '@/pages/About/AboutUser';
+import Friends from '@/pages/Friends/Friends';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
-    children: [{
-      path: '/profile-minimal',
-      element: <UserProfileMinimal />,
-    },
-    {
-      path: '/profile-main',
-      element: <UserProfileMain />
-    }
-  ]
+    children: [
+      {
+        path: '/profile-minimal',
+        element: <UserProfileMinimal />,
+      },
+      {
+        path: '/user-profile',
+        element: <UserProfileMain />,
+        children: [
+          {
+            path: '/user-profile/about',
+            element: <AboutUser />,
+          },
+          {
+            path: '/user-profile/friends',
+            element: <Friends />,
+          },
+        ],
+      },
+    ],
   },
   {
     path: '/signup',
