@@ -1,10 +1,10 @@
 import useDocumentTitle from "@/hooks/useDocumentTitle"
 
 const AboutUser = () => {
-  useDocumentTitle("Profile About")
-  
+  useDocumentTitle("profile-about")
+
   return (
-    <div>AboutUser</div>
+  <div className="about">about</div>
   )
 }
 
