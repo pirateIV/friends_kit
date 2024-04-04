@@ -21,8 +21,8 @@ const InputField = ({ label, type, ...props }) => {
             label={label}
             icon={iconType}
             type={inputType}
-            color={meta.error ? 'red' : 'blue'}
-            className={`dark:text-[#fafafa] ${meta.error && inputErrorClass}`}
+            // color={meta.error ? 'red' : 'blue'}
+            // className={`dark:text-[#fafafa]`}
           />
         </div>
         {meta.error && (

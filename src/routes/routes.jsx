@@ -15,6 +15,10 @@ import UserProfileMain from '@/pages/UserProfile/UserProfileMain';
 import UserProfileMinimal from '@/pages/UserProfile/UserProfileMinimal';
 import AboutUser from '@/pages/About/AboutUser';
 import Friends from '@/pages/Friends/Friends';
+import Overview from '@/pages/About/components/Overview';
+import PersonalInfo from '@/pages/About/components/PersonalInfo';
+import Education from '@/pages/About/components/Education';
+import Jobs from '@/pages/About/components/Jobs';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +36,24 @@ const router = createBrowserRouter([
           {
             path: '/user-profile/about',
             element: <AboutUser />,
+            children: [
+              {
+                path: '/user-profile/about',
+                element: <Overview />,
+              },
+              {
+                path: '/user-profile/about',
+                element: <PersonalInfo />,
+              },
+              {
+                path: '/user-profile/about',
+                element: <Education />,
+              },
+              {
+                path: '/user-profile/about',
+                element: <Jobs />,
+              },
+            ],
           },
           {
             path: '/user-profile/friends',

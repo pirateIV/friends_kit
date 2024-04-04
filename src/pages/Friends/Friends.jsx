@@ -133,29 +133,30 @@ const friendsArray = [
 const dropdownItems = [
   {
     title: 'Close Friends',
-    icon: <FontAwesomeIcon icon={faHeart} />,
-    description: 'your closest friends list',
+    icon: <FontAwesomeIcon icon={faHeart} className='text-red-500' />,
+    description: 'Your closest friends list.',
   },
   {
     title: 'Followed',
-    icon: <FontAwesomeIcon icon={faBell} />,
-    description: 'Friends you are following',
+    icon: <FontAwesomeIcon icon={faBell} className='text-blue-500' />,
+    description: 'Friends you are following.',
   },
   {
     title: 'Work relations',
-    icon: <FontAwesomeIcon icon={faCoffee} />,
-    description: 'Your work relations',
+    icon: <FontAwesomeIcon icon={faCoffee} className='text-yellow-500' />,
+    description: 'Your work relations.',
   },
   {
     title: 'Friend Requests',
-    icon: <FontAwesomeIcon icon={faEnvelope} />,
-    description: 'Your pending friend requests',
+    icon: <FontAwesomeIcon icon={faEnvelope} className='text-green-500' />,
+    description: 'Your pending friend requests.',
   },
 ];
 
 const Friends = () => {
   useDocumentTitle('profile-friends');
   const dropdownRef = useRef();
+  console.log(dropdownRef.current);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredFriends, setFilteredFriends] = useState([...friendsArray]);
 
@@ -176,7 +177,7 @@ const Friends = () => {
           <div className='dropdown'>
             <Dropdown
               label=''
-              className='w-72 z-40 rounded-xl'
+              className='w-72 z-40 -translate-y-3 rounded-xl'
               renderTrigger={() => (
                 <span className='cursor-pointer bg-gray-100 p-2 pe-8 text-sm rounded-full'>
                   All Friends
@@ -185,7 +186,7 @@ const Friends = () => {
               inline>
               <div id='dropdown-main' ref={dropdownRef}>
                 {dropdownItems.map((item, index) => (
-                  <DropdownItem key={index}>
+                  <DropdownItem key={index} className='!py-1.5'>
                     <div className='flex items-center gap-3'>
                       <span>{item.icon}</span>
                       <div className='flex flex-col items-start'>
@@ -232,7 +233,7 @@ const Friends = () => {
                         className='relative rounded-full h-20 w-20 mx-auto z-20'
                       />
                       <button
-                        className='chat-buton absolute z-20 h-9 w-9 bottom-0 right-0 flex-center bg-blue-600 border-[3px] border-white rounded-full scale-0 group-hover:scale-100'
+                        className='chat-buton absolute z-20 h-9 w-9 bottom-0 right-0 flex-center bg-blue-600 group-hover:border-[3px] group-hover:border-white rounded-full scale-0 group-hover:scale-100'
                         style={{ transition: 'all 0.3s ease' }}>
                         <FontAwesomeIcon
                           icon={faMessage}
