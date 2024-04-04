@@ -4,7 +4,13 @@ import SearchIcon from '@/shared/components/icons/SearchIcon';
 import avatar from '@/assets/images/avatar-w.webp';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMessage } from '@fortawesome/free-solid-svg-icons';
+import {
+  faMessage,
+  faHeart,
+  faBell,
+  faCoffee,
+  faEnvelope,
+} from '@fortawesome/free-solid-svg-icons';
 import { Dropdown, DropdownItem } from 'flowbite-react';
 
 const friendsArray = [
@@ -127,18 +133,22 @@ const friendsArray = [
 const dropdownItems = [
   {
     title: 'Close Friends',
+    icon: <FontAwesomeIcon icon={faHeart} />,
     description: 'your closest friends list',
   },
   {
     title: 'Followed',
+    icon: <FontAwesomeIcon icon={faBell} />,
     description: 'Friends you are following',
   },
   {
     title: 'Work relations',
+    icon: <FontAwesomeIcon icon={faCoffee} />,
     description: 'Your work relations',
   },
   {
     title: 'Friend Requests',
+    icon: <FontAwesomeIcon icon={faEnvelope} />,
     description: 'Your pending friend requests',
   },
 ];
@@ -166,16 +176,25 @@ const Friends = () => {
           <div className='dropdown'>
             <Dropdown
               label=''
-              className='w-64 z-40 rounded-xl'
-              renderTrigger={() => <span className='cursor-pointer'>All Friends</span>}
+              className='w-72 z-40 rounded-xl'
+              renderTrigger={() => (
+                <span className='cursor-pointer bg-gray-100 p-2 pe-8 text-sm rounded-full'>
+                  All Friends
+                </span>
+              )}
               inline>
               <div id='dropdown-main' ref={dropdownRef}>
                 {dropdownItems.map((item, index) => (
-                  <DropdownItem key={index} className='flex flex-col items-start'>
-                    <h3>{item.title}</h3>
-                    <small className='text-[.875em] text-[#a2a59b]'>
-                      {item.description}
-                    </small>
+                  <DropdownItem key={index}>
+                    <div className='flex items-center gap-3'>
+                      <span>{item.icon}</span>
+                      <div className='flex flex-col items-start'>
+                        <h3>{item.title}</h3>
+                        <small className='text-[.875em] text-[#a2a59b]'>
+                          {item.description}
+                        </small>
+                      </div>
+                    </div>
                   </DropdownItem>
                 ))}
               </div>
@@ -212,8 +231,13 @@ const Friends = () => {
                         alt={friend.name}
                         className='relative rounded-full h-20 w-20 mx-auto z-20'
                       />
-                      <button className='chat-buton'>
-                        <i data-feather='message-circle'></i>{' '}
+                      <button
+                        className='chat-buton absolute z-20 h-9 w-9 bottom-0 right-0 flex-center bg-blue-600 border-[3px] border-white rounded-full scale-0 group-hover:scale-100'
+                        style={{ transition: 'all 0.3s ease' }}>
+                        <FontAwesomeIcon
+                          icon={faMessage}
+                          className='text-white h-3 w-3 scale-0 group-hover:scale-100'
+                        />
                       </button>
                       <div
                         className='circle border h-10 w-10 border-gray-400/85 rounded-full absolute inset-0 m-auto group-hover:h-full group-hover:w-full z-10'
