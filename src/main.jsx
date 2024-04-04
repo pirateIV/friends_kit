@@ -8,6 +8,7 @@ import { RouterProvider } from 'react-router-dom';
 import router from './routes/routes.jsx';
 import { ThemeProvider } from '@material-tailwind/react';
 
+// import 'bulma/css/bulma.min.css'
 import './index.css';
 import { setTheme } from './redux/reducers/themeReducer.js';
 import { getAllUsers } from './auth/reducers/users/usersSlice.js';

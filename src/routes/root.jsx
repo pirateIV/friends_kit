@@ -6,7 +6,7 @@ import { getAllUsers } from '@/auth/reducers/users/usersSlice';
 import banner from '../assets/images/default-profile-banner.png';
 import jenna from '@/assets/images/jenna.webp';
 
-import userAvatar from '../assets/images/signup/avatar-w.webp';
+import userAvatar from '../assets/images/avatar-w.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { Link, Outlet } from 'react-router-dom';
