@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import useDocumentTitle from '@/hooks/useDocumentTitle';
 import SearchIcon from '@/shared/components/icons/SearchIcon';
 import avatar from '@/assets/images/avatar-w.webp';
@@ -123,35 +124,54 @@ const friendsArray = [
   },
 ];
 
+const dropdownItems = [
+  {
+    title: 'Close Friends',
+    description: 'your closest friends list',
+  },
+  {
+    title: 'Followed',
+    description: 'Friends you are following',
+  },
+  {
+    title: 'Work relations',
+    description: 'Your work relations',
+  },
+  {
+    title: 'Friend Requests',
+    description: 'Your pending friend requests',
+  },
+];
+
+// const dropdownNode = document.getElementById('dropdown-main');
 const Friends = () => {
+  const dropdownRef = useRef();
   useDocumentTitle('profile-friends');
+
+  useEffect(() => {
+    console.log(dropdownRef.current);
+  }, []);
+
   return (
     <section className='friends-list'>
       <header>
         <div className='flex items-center justify-between mt-3 ps-4 p-2 bg-white rounded-md shadow-tiny'>
           <div className='dropdown'>
-            {' '}
             <Dropdown
               label=''
-              className='w-56 z-40'
+              className='w-64 z-40 rounded-xl'
               renderTrigger={() => <span className='cursor-pointer'>All Friends</span>}
               inline>
-              <DropdownItem className='flex flex-col items-start'>
-                <h3>Close Friends</h3>
-                <small>your closest friends list</small>
-              </DropdownItem>
-              <DropdownItem className='flex flex-col items-start'>
-                <h3>Followed</h3>
-                <small>Friends you are following</small>
-              </DropdownItem>
-              <DropdownItem className='flex flex-col items-start'>
-                <h3>Work relations</h3>
-                <small>Your work relations</small>
-              </DropdownItem>
-              <DropdownItem className='flex flex-col items-start'>
-                <h3>Sign out</h3>
-                <small>Your pending friend requests</small>
-              </DropdownItem>
+              <div id='dropdown-main' ref={dropdownRef}>
+                {dropdownItems.map((item, index) => (
+                  <DropdownItem key={index} className='flex flex-col items-start'>
+                    <h3>{item.title}</h3>
+                    <small className='text-[.875em] text-[#a2a59b]'>
+                      {item.description}
+                    </small>
+                  </DropdownItem>
+                ))}
+              </div>
             </Dropdown>
           </div>
           <div className='relative w-64 me-3' id='search-friends-input'>
