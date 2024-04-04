@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useDocumentTitle from '@/hooks/useDocumentTitle';
 import SearchIcon from '@/shared/components/icons/SearchIcon';
 import avatar from '@/assets/images/avatar-w.webp';
@@ -143,14 +143,21 @@ const dropdownItems = [
   },
 ];
 
-// const dropdownNode = document.getElementById('dropdown-main');
 const Friends = () => {
-  const dropdownRef = useRef();
   useDocumentTitle('profile-friends');
+  const dropdownRef = useRef();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredFriends, setFilteredFriends] = useState([...friendsArray]);
 
-  useEffect(() => {
-    console.log(dropdownRef.current);
-  }, []);
+  const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    const filtered = friendsArray.filter((friend) =>
+      friend.name.toLowerCase().includes(query)
+    );
+    setFilteredFriends(filtered);
+  };
 
   return (
     <section className='friends-list'>
@@ -180,6 +187,7 @@ const Friends = () => {
               type='search'
               className='peer block w-full p-1.5 ps-9 text-sm text-gray-800 bg-white border border-gray-300 rounded-full outline-none  focus:border focus:border-blue-600 focus:shadow-sm transition-03'
               placeholder='Search'
+              onChange={(e) => handleSearch(e)}
             />
             <div
               id='icon'
@@ -192,33 +200,39 @@ const Friends = () => {
       </header>
 
       <div className='friends-grid'>
-        <div className='friend-item grid grid-cols-4 text-center mt-4'>
-          {friendsArray.map((friend) => (
-            <div className='p-2'>
-              <div className='group flex flex-col items-center justify-center text-center p-[30px] bg-white border border-gray-300 rounded-md hover:shadow-lg'>
-                <Link to='#'>
-                  <div className='relative flex-center h-[90px] w-[90px]'>
-                    <img
-                      src={friend.imgSrc ? avatar : friend.imgSrc}
-                      alt={friend.name}
-                      className='relative rounded-full h-20 w-20 mx-auto z-20'
-                    />
-                    <button className='chat-buton'>
-                      <i data-feather='message-circle'></i>{' '}
-                    </button>
-                    <div
-                      className='circle border h-10 w-10 border-gray-400/85 rounded-full absolute inset-0 m-auto group-hover:h-full group-hover:w-full z-10'
-                      style={{ transition: 'all 0.3s ease' }}></div>
-                  </div>
-                </Link>
-                <h3 className='font-montserrat mt-1.5 font-medium text-[.9rem]'>
-                  {friend.name}
-                </h3>
-                <p className='text-sm text-gray-500'>{friend.location}</p>
+        {filteredFriends.length > 0 ? (
+          <div className='friend-item grid grid-cols-4 text-center mt-4'>
+            {filteredFriends.map((friend, i) => (
+              <div className='p-2' key={i}>
+                <div className='group flex flex-col items-center justify-center text-center p-[30px] bg-white border border-gray-300 rounded-md hover:shadow-lg'>
+                  <Link to='#'>
+                    <div className='relative flex-center h-[90px] w-[90px]'>
+                      <img
+                        src={friend.imgSrc ? avatar : friend.imgSrc}
+                        alt={friend.name}
+                        className='relative rounded-full h-20 w-20 mx-auto z-20'
+                      />
+                      <button className='chat-buton'>
+                        <i data-feather='message-circle'></i>{' '}
+                      </button>
+                      <div
+                        className='circle border h-10 w-10 border-gray-400/85 rounded-full absolute inset-0 m-auto group-hover:h-full group-hover:w-full z-10'
+                        style={{ transition: 'all 0.3s ease' }}></div>
+                    </div>
+                  </Link>
+                  <h3 className='font-montserrat mt-1.5 font-medium text-[.9rem]'>
+                    {friend.name}
+                  </h3>
+                  <p className='text-sm text-gray-500'>{friend.location}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div>
+            <p className='mt-5 text-center'>Could not find result for, "{searchQuery}"</p>
+          </div>
+        )}
       </div>
     </section>
   );
