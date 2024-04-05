@@ -14,7 +14,8 @@ const UserProfileMain = () => {
         <section
           className='mt-1 banner profile-cover h-[327px] w-full bg-cover group'
           style={{
-            backgroundImage: `url(${banner})`,
+            // backgroundImage: `url(${banner})`,
+            backgroundImage: `url("https://source.unsplash.com/random?wallpapers")`,
             backgroundSize: 'cover',
           }}>
           <div className='absolute top-0 w-full h-full bg-black/20 z-20 transition-colors group-hover:bg-black/40'></div>
@@ -38,7 +39,7 @@ const UserProfileMain = () => {
         </section>
       </header>
       <div className='profile-menu flex items-center justify-between mt-3'>
-        <div className='*:border *:border-gray-400 *:py-2 *:w-28 *:rounded-lg *:bg-white flex gap-2 *:text-gray-500'>
+        <div className='*:border *:border-gray-400 *:py-2 *:w-28 *:rounded-lg *:bg-white dark:*:bg-[#151a23] dark:*:text-white dark:*:border-[#283143] flex gap-2 *:text-gray-500'>
           <NavLink
             to='/timeline'
             className='hover:text-gray-700 text-sm text-center font-medium hover:border-gray-500'>
@@ -50,7 +51,7 @@ const UserProfileMain = () => {
             About
           </NavLink>
         </div>
-        <div className='*:border *:border-gray-400 *:py-2 *:w-28 *:rounded-lg *:bg-white flex gap-2 *:text-gray-500'>
+        <div className='*:border *:border-gray-400 *:py-2 *:w-28 *:rounded-lg *:bg-white dark:*:bg-[#151a23] dark:*:text-white dark:*:border-[#283143] flex gap-2 *:text-gray-500'>
           <NavLink
             to='/user-profile/friends'
             className='hover:text-gray-700 text-sm text-center font-medium hover:border-gray-500'>
@@ -70,11 +71,11 @@ const UserProfileMain = () => {
           <small className='uppercase text-xs text-gray-500 font-medium'>Friends</small>
         </div>
         <div className='user-name w-1/3 text-center'>
-          <h2 className='font-bold text-[1.65rem] text-[#393a4f]'>John Doe</h2>
-          <small className='text-gray-500'>Media Influencer</small>
+          <h2 className='font-bold text-[1.65rem] text-[#393a4f] dark:text-white'>John Doe</h2>
+          <small className='text-[#a2a5b9]'>Media Influencer</small>
         </div>
         <div className='w-1/3 text-end text-sm font-medium'>
-          <button className='inline-flex items-center gap-1 bg-white border border-gray-400 px-4 py-1.5 rounded-lg'>
+          <button className='inline-flex items-center gap-1 bg-white border border-gray-400 px-4 py-1.5 rounded-lg dark:bg-[#151a23] dark:text-white dark:border-[#283143] '>
             <ClockIcon />
             <span>History</span>
           </button>

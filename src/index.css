@@ -14,9 +14,13 @@ main {
   transition: all 0.3s ease;
 }
 
-hr {
+/* hr {
   @apply border-t border-gray-300 bg-white
-}
+} */
+
+/* .dark hr {
+  @apply border-t border-gray-300 bg-[#313848]
+} */
 
 @layer components {
   .flex-center {

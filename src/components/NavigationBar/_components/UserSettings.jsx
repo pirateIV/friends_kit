@@ -27,12 +27,14 @@ const UserSettings = () => {
     <div className='user-settings'>
       {dropdownItems.map((item, index) => (
         <DropdownItem key={index}>
-          {item.icon}
-          <div className='text-[#393a4f]' style={{ lineHeight: 1.1 }}>
-            <h4 className='text-[.8rem] font-medium' id='user-name'>
+          <span className='flex-center h-[35px] w-[35px]'>{item.icon}</span>
+          <div style={{ lineHeight: 1.1 }}>
+            <h4
+              className='text-[.8rem] text-[#393a4f] font-medium dark:text-white'
+              id='user-name'>
               {item.title}
             </h4>
-            <small className='text-[.75rem]'>{item.description}</small>
+            <small className='text-[.75rem] text-[#757a91]'>{item.description}</small>
           </div>
         </DropdownItem>
       ))}

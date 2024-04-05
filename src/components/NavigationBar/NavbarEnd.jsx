@@ -11,11 +11,10 @@ const NavbarEnd = () => {
   return (
     <div className='relative navbar-end flex items-center gap-7 transition-all'>
       <div className='relative w-80 me-3'>
-        {/* Search Input */}
         <input
           id='search'
           type='search'
-          className='peer block w-full p-1.5 ps-12 text-sm bg-gray-100 border border-gray-100 rounded-full outline-none focus:bg-white focus:border focus:border-gray-300 focus:shadow-sm transition-03'
+          className='peer block w-full p-1.5 ps-12 text-sm bg-gray-100 border border-gray-100 rounded-full outline-none focus:bg-white focus:border focus:border-gray-300 focus:shadow-sm transition-03 dark:text-gray-50 dark:bg-[#283143] dark:border-[#283143]'
           placeholder='Search'
         />
         <div
@@ -25,7 +24,6 @@ const NavbarEnd = () => {
           <span className='sr-only'>Search icon</span>
         </div>
       </div>
-      {/* User Avatar Dropdown */}
       <div className='relative'>
         <button
           id='user-avatar'
@@ -38,17 +36,14 @@ const NavbarEnd = () => {
             alt='user photo'
           />
         </button>
-        {/* User Avatar Dropdown Content */}
-        <div className='flex flex-col justify-start absolute z-20 bg-white rounded-lg shadow w-[298px] top-[calc(100%+20px)] -right-4 dark:bg-gray-700 dark:divide-gray-600'>
+        <div className='flex flex-col justify-start absolute z-20 bg-white rounded-lg shadow w-[298px] top-[calc(100%+20px)] -right-4 dark:bg-[#171c26] dark:divide-gray-600'>
           <div className='flex items-center justify-between p-4 text-sm text-gray-900 dark:text-white'>
             <small className='text-gray-500 font-semibold uppercase'>John Doe</small>
-            {/* Dark Mode Toggle */}
             <ThemeSwitcher />
           </div>
-          {/* <hr /> */}
           <Profile />
           <UserSettings />
-          <div className='arrow absolute -top-1.5 right-6 h-3 w-3 transform rotate-45 bg-white'></div>
+          <div className='arrow absolute -top-1.5 right-6 h-3 w-3 transform rotate-45 bg-white dark:bg-[#171c26]'></div>
         </div>
       </div>
     </div>

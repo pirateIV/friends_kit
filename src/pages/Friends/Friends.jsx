@@ -174,13 +174,13 @@ const Friends = () => {
   return (
     <section className='friends-list'>
       <header>
-        <div className='flex items-center justify-between mt-3 ps-4 p-2 bg-white rounded-md shadow-tiny'>
+        <div className='flex items-center justify-between mt-3 ps-4 p-2 bg-white rounded-md shadow-tiny dark:bg-[#202836]'>
           <div className='dropdown'>
             <Dropdown
               label=''
               className='w-72 z-40 transition-transform -translate-y-4 rounded-xl'
               renderTrigger={() => (
-                <span className='cursor-pointer bg-gray-100 p-2 pe-8 text-sm rounded-full'>
+                <span className='cursor-pointer bg-gray-100 p-2 pe-8 text-sm rounded-full dark:text-white dark:bg-[#202836]'>
                   All Friends
                 </span>
               )}
@@ -215,7 +215,7 @@ const Friends = () => {
             <input
               id='search'
               type='search'
-              className='peer block w-full p-1.5 ps-9 text-sm text-gray-800 bg-white border border-gray-300 rounded-full outline-none  focus:border focus:border-blue-600 focus:shadow-sm transition-03'
+              className='peer block w-full p-1.5 ps-9 text-sm text-gray-800 bg-white border border-gray-300 rounded-full outline-none  focus:border focus:border-blue-600 focus:shadow-sm transition- dark:border-[#334056] dark:focus:border-blue-600 dark:bg-[#283143]'
               placeholder='Search'
               onChange={(e) => handleSearch(e)}
             />

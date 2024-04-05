@@ -16,7 +16,7 @@ const Root = () => {
   console.log(users);
   return (
     <main>
-      <div className='relative w-full h-full bg-[#f4f4f4]'>
+      <div className='relative w-full h-full bg-[#f4f4f4] dark:bg-[#2f3b50]'>
         <Navigation />
         <Outlet />{' '}
         {/* <Link to='/profile-minimal' >Visit profile minimal</Link> <br />
