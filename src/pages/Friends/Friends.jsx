@@ -12,6 +12,7 @@ import {
   faEnvelope,
 } from '@fortawesome/free-solid-svg-icons';
 import { Dropdown, DropdownItem } from 'flowbite-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const friendsArray = [
   {
@@ -177,7 +178,7 @@ const Friends = () => {
           <div className='dropdown'>
             <Dropdown
               label=''
-              className='w-72 z-40 -translate-y-3 rounded-xl'
+              className='w-72 z-40 transition-transform -translate-y-4 rounded-xl'
               renderTrigger={() => (
                 <span className='cursor-pointer bg-gray-100 p-2 pe-8 text-sm rounded-full'>
                   All Friends
@@ -185,19 +186,28 @@ const Friends = () => {
               )}
               inline>
               <div id='dropdown-main' ref={dropdownRef}>
-                {dropdownItems.map((item, index) => (
-                  <DropdownItem key={index} className='!py-1.5'>
-                    <div className='flex items-center gap-3'>
-                      <span>{item.icon}</span>
-                      <div className='flex flex-col items-start'>
-                        <h3>{item.title}</h3>
-                        <small className='text-[.875em] text-[#a2a59b]'>
-                          {item.description}
-                        </small>
-                      </div>
-                    </div>
-                  </DropdownItem>
-                ))}
+                <AnimatePresence>
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className='dropdown-items'>
+                    {dropdownItems.map((item, index) => (
+                      <DropdownItem key={index} className='!py-1.5'>
+                        <div className='flex items-center gap-3'>
+                          <span>{item.icon}</span>
+                          <div className='flex flex-col items-start'>
+                            <h3>{item.title}</h3>
+                            <small className='text-[.875em] text-[#a2a59b]'>
+                              {item.description}
+                            </small>
+                          </div>
+                        </div>
+                      </DropdownItem>
+                    ))}
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </Dropdown>
           </div>

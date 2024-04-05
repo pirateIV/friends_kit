@@ -1,11 +1,17 @@
-import jenna from '@/assets/images/jenna.webp';
+import React, { useState } from 'react';
 import SearchIcon from '@/shared/components/icons/SearchIcon';
-import ThemeSwitcher from '@/shared/components/ThemeSwitcher';
+import UserSettings from './_components/UserSettings';
+import './index.css';
+import Profile from './_components/Profile';
+import ThemeSwitcher from './_components/ThemeSwitcher';
 
+// import jenna from '@/assets/images/jenna.webp';
+// import { Avatar } from '@material-tailwind/react';
 const NavbarEnd = () => {
   return (
     <div className='relative navbar-end flex items-center gap-7 transition-all'>
       <div className='relative w-80 me-3'>
+        {/* Search Input */}
         <input
           id='search'
           type='search'
@@ -19,12 +25,32 @@ const NavbarEnd = () => {
           <span className='sr-only'>Search icon</span>
         </div>
       </div>
-      <div className='user-avatar'>
-        <a className='block h-10 w-10 rounded-full bg-gray-200'>
-          <img src={jenna} className='bg-cover rounded-full' />
-        </a>
+      {/* User Avatar Dropdown */}
+      <div className='relative'>
+        <button
+          id='user-avatar'
+          className='relative block h-10 w-10 rounded-full bg-gray-200'>
+          <span className='sr-only'>Open user menu</span>
+          <span className='active absolute h-3 w-3 bg-green-300 border-2 border-white rounded-full top-0 right-0'></span>
+          <img
+            src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80'
+            className='bg-cover rounded-full'
+            alt='user photo'
+          />
+        </button>
+        {/* User Avatar Dropdown Content */}
+        <div className='flex flex-col justify-start absolute z-20 bg-white rounded-lg shadow w-[298px] top-[calc(100%+20px)] -right-4 dark:bg-gray-700 dark:divide-gray-600'>
+          <div className='flex items-center justify-between p-4 text-sm text-gray-900 dark:text-white'>
+            <small className='text-gray-500 font-semibold uppercase'>John Doe</small>
+            {/* Dark Mode Toggle */}
+            <ThemeSwitcher />
+          </div>
+          {/* <hr /> */}
+          <Profile />
+          <UserSettings />
+          <div className='arrow absolute -top-1.5 right-6 h-3 w-3 transform rotate-45 bg-white'></div>
+        </div>
       </div>
-      <ThemeSwitcher /> 
     </div>
   );
 };

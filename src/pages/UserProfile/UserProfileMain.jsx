@@ -28,7 +28,7 @@ const UserProfileMain = () => {
           </button>
 
           <div className='user-avatar absolute h-[130px] w-[130px] mx-auto flex justify-center z-30 -bottom-[65px] inset-x-0'>
-            <img src={jenna} className='rounded-full' alt='user-profile-pic' />
+            <img src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80' className='rounded-full' alt='user-profile-pic' />
             <div className='relative'>
               <a className='upload-button absolute bottom-0 right-0 flex-center h-[36px] w-[36px] text-white rounded-full bg-blue-800 cursor-pointer hover:bg-blue-700'>
                 <PlusIcon />
@@ -70,7 +70,7 @@ const UserProfileMain = () => {
           <small className='uppercase text-xs text-gray-500 font-medium'>Friends</small>
         </div>
         <div className='user-name w-1/3 text-center'>
-          <h2 className='font-bold text-[1.65rem] text-[#393a4f]'>Jenna Davis</h2>
+          <h2 className='font-bold text-[1.65rem] text-[#393a4f]'>John Doe</h2>
           <small className='text-gray-500'>Media Influencer</small>
         </div>
         <div className='w-1/3 text-end text-sm font-medium'>

@@ -14,6 +14,10 @@ main {
   transition: all 0.3s ease;
 }
 
+hr {
+  @apply border-t border-gray-300 bg-white
+}
+
 @layer components {
   .flex-center {
     @apply flex items-center justify-center;

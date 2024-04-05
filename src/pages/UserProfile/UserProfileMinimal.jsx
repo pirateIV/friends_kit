@@ -22,7 +22,7 @@ const UserProfileMinimal = () => {
               <div className='user-avatar flex flex-col items-center'>
                 <div className='absolute -top-1/2  border-[5px] border-[#f4f4f4] *:rounded-full rounded-full'>
                   <img
-                    src={jenna}
+                    src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80'
                     className='h-[130px] w-[130px]'
                     alt='user-profile-pic'
                   />
@@ -41,7 +41,7 @@ const UserProfileMinimal = () => {
             <div className='right ps-5 w-full'>
               <div className='user'>
                 <div className='head w-full flex items-center justify-between'>
-                  <h1 className='user-name text-[1.4rem]'>Jenna Davis</h1>
+                  <h1 className='user-name text-[1.4rem]'>John Doe</h1>
                   <button className='min-w-32 bg-light-green-500 text-white p-2 rounded-md hover:bg-light-green-400'>
                     Follow
                   </button>
