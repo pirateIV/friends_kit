@@ -215,7 +215,7 @@ const Friends = () => {
             <input
               id='search'
               type='search'
-              className='peer block w-full p-1.5 ps-9 text-sm text-gray-800 bg-white border border-gray-300 rounded-full outline-none  focus:border focus:border-blue-600 focus:shadow-sm transition- dark:border-[#334056] dark:focus:border-blue-600 dark:bg-[#283143]'
+              className='peer block w-full p-1.5 ps-9 text-sm text-gray-800 bg-white border border-gray-300 rounded-full outline-none  focus:border focus:border-blue-600 focus:shadow-sm transition-03 dark:text-gray-50 dark:border-[#334056] dark:focus:border-blue-600 dark:bg-[#283143]'
               placeholder='Search'
               onChange={(e) => handleSearch(e)}
             />
@@ -234,7 +234,7 @@ const Friends = () => {
           <div className='friend-item grid grid-cols-4 text-center mt-4'>
             {filteredFriends.map((friend, i) => (
               <div className='p-2' key={i}>
-                <div className='group flex flex-col items-center justify-center text-center p-[30px] bg-white border border-gray-300 rounded-md hover:shadow-lg'>
+                <div className='group flex flex-col items-center justify-center text-center p-[30px] bg-white border border-gray-300 rounded-md hover:shadow-lg dark:border-[#2f3b50] dark:bg-[#202836]'>
                   <Link to='#'>
                     <div className='relative flex-center h-[90px] w-[90px]'>
                       <img
@@ -243,11 +243,11 @@ const Friends = () => {
                         className='relative rounded-full h-20 w-20 mx-auto z-20'
                       />
                       <button
-                        className='chat-buton absolute z-20 h-9 w-9 bottom-0 right-0 flex-center bg-blue-600 group-hover:border-[3px] group-hover:border-white rounded-full scale-0 group-hover:scale-100'
+                        className='chat-button flex-center absolute z-20 h-9 w-9 bottom-0 right-0  bg-blue-600 group-hover:border-[3px] group-hover:border-white rounded-full scale-0 group-hover:scale-100 dark:group-hover:border-[#202836]'
                         style={{ transition: 'all 0.3s ease' }}>
                         <FontAwesomeIcon
                           icon={faMessage}
-                          className='text-white h-3 w-3 scale-0 group-hover:scale-100'
+                          className='text-white h-3 w-3'
                         />
                       </button>
                       <div
@@ -255,7 +255,7 @@ const Friends = () => {
                         style={{ transition: 'all 0.3s ease' }}></div>
                     </div>
                   </Link>
-                  <h3 className='font-montserrat mt-1.5 font-medium text-[.9rem]'>
+                  <h3 className='font-montserrat mt-1.5 font-medium text-[.9rem] dark:text-gray-50'>
                     {friend.name}
                   </h3>
                   <p className='text-sm text-gray-500'>{friend.location}</p>

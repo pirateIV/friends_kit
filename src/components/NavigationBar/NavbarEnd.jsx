@@ -27,9 +27,9 @@ const NavbarEnd = () => {
       <div className='relative'>
         <button
           id='user-avatar'
-          className='relative block h-10 w-10 rounded-full bg-gray-200'>
+          className='relative block h-10 w-10 rounded-full'>
           <span className='sr-only'>Open user menu</span>
-          <span className='active absolute h-3 w-3 bg-green-300 border-2 border-white rounded-full top-0 right-0'></span>
+          <span className='active absolute h-3 w-3 bg-green-300 border-2 border-white rounded-full top-0 right-0 dark:border-[#1c2330]'></span>
           <img
             src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80'
             className='bg-cover rounded-full'
