@@ -19,8 +19,8 @@ const Root = () => {
       <div className='relative w-full h-full bg-[#f4f4f4]'>
         <Navigation />
         <Outlet />{' '}
-        <Link to='/profile-minimal' >Visit profile minimal</Link> <br />
-        <Link to='/user-profile' >Visit user profile</Link>
+        {/* <Link to='/profile-minimal' >Visit profile minimal</Link> <br />
+        <Link to='/user-profile' >Visit user profile</Link> */}
       </div>
     </main>
   );

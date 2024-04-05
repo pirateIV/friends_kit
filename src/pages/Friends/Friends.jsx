@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import useDocumentTitle from '@/hooks/useDocumentTitle';
+import setDocumentTitle from '@/helpers/setDocumentTitle';
 import SearchIcon from '@/shared/components/icons/SearchIcon';
 import avatar from '@/assets/images/avatar-w.webp';
 import { Link } from 'react-router-dom';
@@ -154,7 +154,7 @@ const dropdownItems = [
 ];
 
 const Friends = () => {
-  useDocumentTitle('profile-friends');
+  setDocumentTitle('profile-friends');
   const dropdownRef = useRef();
   console.log(dropdownRef.current);
   const [searchQuery, setSearchQuery] = useState('');

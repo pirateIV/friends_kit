@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import useDocumentTitle from '../../hooks/useDocumentTitle';
+import setDocumentTitle from '../../helpers/setDocumentTitle';
 
 const NotFoundPage = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const NotFoundPage = () => {
   const handleRedirect = () => {
     navigate(-1);
   };
-  useDocumentTitle('Not Found');
+  setDocumentTitle('Not Found');
 
   return (
     <div className='min-h-screen'>

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const useDocumentTitle = (title) => {
+const setDocumentTitle = (title) => {
   useEffect(() => {
     document.title = `Friendskit | ${title}`;
     return () => {
@@ -9,4 +9,4 @@ const useDocumentTitle = (title) => {
   }, [title]);
 };
 
-export default useDocumentTitle;
+export default setDocumentTitle;

@@ -13,12 +13,14 @@ import NotFoundPage from '@/pages/404/NotFound';
 // import UserProfile from '@/pages/UserProfile/UserProfile';
 import UserProfileMain from '@/pages/UserProfile/UserProfileMain';
 import UserProfileMinimal from '@/pages/UserProfile/UserProfileMinimal';
-import AboutUser from '@/pages/About/AboutUser';
 import Friends from '@/pages/Friends/Friends';
-import Overview from '@/pages/About/components/Overview';
-import PersonalInfo from '@/pages/About/components/PersonalInfo';
-import Education from '@/pages/About/components/Education';
-import Jobs from '@/pages/About/components/Jobs';
+
+// About
+import AboutUser from '@/pages/About/AboutUser';
+import Jobs from '@/pages/About/routes/Jobs';
+import Overview from '@/pages/About/routes/Overview';
+import Education from '@/pages/About/routes/Education';
+import PersonalInfo from '@/pages/About/routes/PersonalInfo';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +28,7 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       {
-        path: '/profile-minimal',
+        path: '/timeline',
         element: <UserProfileMinimal />,
       },
       {
@@ -37,20 +39,20 @@ const router = createBrowserRouter([
             path: '/user-profile/about',
             element: <AboutUser />,
             children: [
+              // {
+              //   path: '/user-profile/about/overview',
+              //   element: <Overview />,
+              // },
               {
-                path: '/user-profile/about',
-                element: <Overview />,
-              },
-              {
-                path: '/user-profile/about',
+                path: '/user-profile/about/personalInfo',
                 element: <PersonalInfo />,
               },
               {
-                path: '/user-profile/about',
+                path: '/user-profile/about/education',
                 element: <Education />,
               },
               {
-                path: '/user-profile/about',
+                path: '/user-profile/about/jobs',
                 element: <Jobs />,
               },
             ],
