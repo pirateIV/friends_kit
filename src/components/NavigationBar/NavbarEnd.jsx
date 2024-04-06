@@ -8,6 +8,8 @@ import ThemeSwitcher from './_components/ThemeSwitcher';
 // import jenna from '@/assets/images/jenna.webp';
 // import { Avatar } from '@material-tailwind/react';
 const NavbarEnd = () => {
+  const [isHidden, setisHidden] = useState(true);
+
   return (
     <div className='relative navbar-end flex items-center gap-7 transition-all'>
       <div className='relative w-80 me-3'>
@@ -27,7 +29,8 @@ const NavbarEnd = () => {
       <div className='relative'>
         <button
           id='user-avatar'
-          className='relative block h-10 w-10 rounded-full'>
+          className='relative block h-10 w-10 rounded-full'
+          onClick={() => setisHidden(!isHidden)}>
           <span className='sr-only'>Open user menu</span>
           <span className='active absolute h-3 w-3 bg-green-300 border-2 border-white rounded-full top-0 right-0 dark:border-[#1c2330]'></span>
           <img
@@ -36,7 +39,12 @@ const NavbarEnd = () => {
             alt='user photo'
           />
         </button>
-        <div className='flex flex-col justify-start absolute z-20 bg-white rounded-lg shadow w-[298px] top-[calc(100%+20px)] -right-4 dark:bg-[#171c26] dark:divide-gray-600'>
+        <div
+          className={
+            isHidden
+              ? 'hidden'
+              : 'flex flex-col justify-start absolute z-20 bg-white rounded-lg shadow w-[298px] top-[calc(100%+20px)] -right-4 dark:bg-[#171c26] dark:divide-gray-600'
+          }>
           <div className='flex items-center justify-between p-4 text-sm text-gray-900 dark:text-white'>
             <small className='text-gray-500 font-semibold uppercase'>John Doe</small>
             <ThemeSwitcher />
