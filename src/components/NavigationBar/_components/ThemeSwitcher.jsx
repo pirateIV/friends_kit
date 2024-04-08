@@ -7,26 +7,23 @@ import LightModeIcon from '@/shared/components/icons/LightModeIcon';
 const ThemeSwitcher = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // const toggleDarkMode = () => {
-  //   setIsDarkMode(!isDarkMode);
-  // };
-
   const theme = useSelector(getTheme());
   const dispatch = useDispatch();
-  useEffect(() => {
-    theme === 'dark' ? setIsDarkMode(true) : setIsDarkMode(false);
-  }, [theme]);
 
   const selectedTheme = theme === 'dark' ? 'light' : 'dark';
   const changePreference = () => {
     dispatch(setTheme(selectedTheme));
   };
 
+  useEffect(() => {
+    theme === 'dark' ? setIsDarkMode(true) : setIsDarkMode(false);
+  }, [theme]);
+
   return (
     <div id='theme-switcher'>
       <label
         className={`animated-toggle flex items-center border h-6 w-[46px] p-0.5 rounded-full cursor-pointer ${
-          isDarkMode ? 'border-blue-500' : 'border-gray-700'
+          isDarkMode ? 'border-blue-500' : 'border-gray-400'
         }`}>
         <input
           type='checkbox'
@@ -36,10 +33,10 @@ const ThemeSwitcher = () => {
         />
         <span>
           <div
-            className={`text-white h-5 w-5 flex-center p-1 rounded-full transition-03 ${
+            className={`text-white h-5 w-5 flex-center p-1 rounded-full transition-03 shadow-tiny ${
               isDarkMode
                 ? 'bg-blue-500 translate-x-full rotate-0'
-                : 'bg-yellow-800 translate-x-0 rotate-180'
+                : 'bg-yellow-700 translate-x-0 rotate-180'
             }`}>
             {!isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
           </div>

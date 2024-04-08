@@ -13,7 +13,7 @@ module.exports = withMT({
   prefix: '',
   theme: {
     colors: {
-      'blue': {
+      blue: {
         50: '#EBF5FF',
         100: '#E1EFFE',
         200: '#C3DDFD',
@@ -24,7 +24,7 @@ module.exports = withMT({
         700: '#1A56DB',
         800: '#1E429F',
         900: '#233876',
-      }
+      },
     },
     container: {
       center: true,
@@ -76,4 +76,4 @@ module.exports = withMT({
     },
   },
   plugins: [require('tailwindcss-animate')],
-}); 
+});

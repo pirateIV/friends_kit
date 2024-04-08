@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import SearchIcon from '@/shared/components/icons/SearchIcon';
 import UserSettings from './_components/UserSettings';
 import './index.css';
@@ -9,6 +9,18 @@ import ThemeSwitcher from './_components/ThemeSwitcher';
 // import { Avatar } from '@material-tailwind/react';
 const NavbarEnd = () => {
   const [isHidden, setisHidden] = useState(true);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setisHidden(true);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [dropdownRef]);
 
   return (
     <div className='relative navbar-end flex items-center gap-7 transition-all'>
@@ -40,11 +52,11 @@ const NavbarEnd = () => {
           />
         </button>
         <div
-          className={
-            isHidden
-              ? 'hidden'
-              : 'flex flex-col justify-start absolute z-20 bg-white rounded-lg shadow w-[298px] top-[calc(100%+20px)] -right-4 dark:bg-[#171c26] dark:divide-gray-600'
-          }>
+          ref={dropdownRef}
+          id='dropdown'
+          className={`${
+            isHidden ? 'hidden' : 'flex'
+          } flex-col justify-start absolute z-20 bg-white rounded-lg shadow w-[298px] top-[calc(100%+20px)] -right-4 dark:bg-[#171c26] dark:divide-gray-600`}>
           <div className='flex items-center justify-between p-4 text-sm text-gray-900 dark:text-white'>
             <small className='text-gray-500 font-semibold uppercase'>John Doe</small>
             <ThemeSwitcher />

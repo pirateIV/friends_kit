@@ -2,25 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-main {
-  height: 100%;
+main > * {
+  min-height: 100vh;
 }
-
-.cropper {
-  height: 300px !important;
-}
-
-.transition-03 {
-  transition: all 0.3s ease;
-}
-
-/* hr {
-  @apply border-t border-gray-300 bg-white
-} */
-
-/* .dark hr {
-  @apply border-t border-gray-300 bg-[#313848]
-} */
 
 @layer components {
   .flex-center {
@@ -32,4 +16,12 @@ main {
   .flex-end {
     @apply flex items-end;
   }
+}
+
+.cropper {
+  height: 300px !important;
+}
+
+.transition-03 {
+  transition: all 0.3s ease;
 }
