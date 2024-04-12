@@ -20,7 +20,7 @@ const Root = () => {
         <Navigation />
         <Outlet />{' '}
         {/* <Link to='/profile-minimal' >Visit profile minimal</Link> <br />
-        <Link to='/user-profile' >Visit user profile</Link> */}
+        <Link to='@me' >Visit user profile</Link> */}
       </div>
     </main>
   );

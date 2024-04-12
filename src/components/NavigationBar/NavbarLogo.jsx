@@ -1,5 +1,4 @@
 import logo from '@/assets/images/logo/logo.svg';
-import logoDark from '@/assets/images/logo/logo-dark.svg';
 
 const NavbarLogo = () => {
   return (

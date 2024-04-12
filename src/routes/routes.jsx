@@ -32,33 +32,33 @@ const router = createBrowserRouter([
         element: <UserProfileMinimal />,
       },
       {
-        path: '/user-profile',
+        path: '@me',
         element: <UserProfileMain />,
         children: [
           {
-            path: '/user-profile/about',
+            path: '@me/about',
             element: <AboutUser />,
             children: [
               // {
-              //   path: '/user-profile/about/overview',
+              //   path: '@me/about/overview',
               //   element: <Overview />,
               // },
               {
-                path: '/user-profile/about/personalInfo',
+                path: '@me/about/personalInfo',
                 element: <PersonalInfo />,
               },
               {
-                path: '/user-profile/about/education',
+                path: '@me/about/education',
                 element: <Education />,
               },
               {
-                path: '/user-profile/about/jobs',
+                path: '@me/about/jobs',
                 element: <Jobs />,
               },
             ],
           },
           {
-            path: '/user-profile/friends',
+            path: '@me/friends',
             element: <Friends />,
           },
         ],

@@ -4,11 +4,8 @@ import { getTheme } from '@/redux/reducers/themeReducer';
 import { useLoginMutation } from '@/app/api/apiSlice';
 import { setCredentials } from '@/auth/reducers/login/loginSlice';
 import LoginContent from '@/auth/components/Login/LoginContent';
-import loginIlustrDark from '@/assets/images/login/illustration-dark.svg';
-import loginIlustrLight from '@/assets/images/login/illustration-light.svg';
 
 const Login = () => {
-  const theme = useSelector(getTheme());
   const dispatch = useDispatch();
   const [isError, setIsError] = useState(false);
   const [login, { error }] = useLoginMutation();
@@ -25,11 +22,8 @@ const Login = () => {
     <LoginContent
       error={error}
       login={login}
-      theme={theme}
       isError={isError}
       setIsError={setIsError}
-      loginIlustrLight={loginIlustrLight}
-      loginIlustrDark={loginIlustrDark}
     />
   );
 };

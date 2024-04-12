@@ -1,0 +1,1 @@
+export const submitBtnClass = `my-3 w-full py-2.5 text-white font-medium text-sm rounded-md bg-blue-600 dark:border-t border-blue-300 disabled:bg-blue-300 disabled:cursor-not-allowed`

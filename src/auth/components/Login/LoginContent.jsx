@@ -4,25 +4,13 @@ import FakeNavigation from '@/auth/components/FakeNavigation';
 import LoginIllustration from './LoginIllustration';
 import LoginFormContainer from './LoginFormContainer';
 
-const LoginContent = ({
-  theme,
-  login,
-  error,
-  loginIlustrLight,
-  loginIlustrDark,
-  isError,
-  setIsError,
-}) => {
+const LoginContent = ({ login, error, isError, setIsError }) => {
   return (
     <AuthContainer>
       <FakeNavigation />
       <section className='p-2' style={{ height: 'calc(100vh - 100px)' }}>
         <div className='flex-center max-w-[1140px] w-full h-full mx-auto'>
-          <LoginIllustration
-            theme={theme}
-            loginIlustrLight={loginIlustrLight}
-            loginIlustrDark={loginIlustrDark}
-          />
+          <LoginIllustration />
           <aside className='w-full px-10 sm:px-0 mx-auto sm:w-3/4 md:w-[67%] lg:w-1/2'>
             <div>
               <h2 className='text-[1.5rem] font-montserrat font-normal dark:text-[#fafafa]'>
@@ -33,7 +21,6 @@ const LoginContent = ({
               </small>
             </div>
             <LoginFormContainer
-              theme={theme}
               error={error}
               login={login}
               isError={isError}

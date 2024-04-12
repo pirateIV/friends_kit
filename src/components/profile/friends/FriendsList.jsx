@@ -3,16 +3,17 @@ import { useSelector } from 'react-redux';
 import { faMessage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import avatar from '@/assets/images/avatar-w.webp';
+import { query } from './searchQuerySlice';
 
 const FriendsList = () => {
-  const searchQuery = useSelector((state) => state.query);
-  const filteredFriends = useSelector((state) => state.usersFilter);
+  const searchQuery = useSelector((state) => state.query)
+  const friends = useSelector((state) => state.usersFilter);
 
   return (
     <div className='friends-grid'>
-      {filteredFriends.length > 0 ? (
+      {friends.length > 0 ? (
         <div className='friend-item grid grid-cols-4 text-center mt-4'>
-          {filteredFriends.map((friend, i) => (
+          {friends.map((friend, i) => (
             <div className='p-2' key={i}>
               <div className='group flex flex-col items-center justify-center text-center p-[30px] bg-white border border-gray-300 rounded-md hover:shadow-lg dark:border-[#2f3b50] dark:bg-[#202836]'>
                 <Link to='#'>
@@ -42,7 +43,7 @@ const FriendsList = () => {
         </div>
       ) : (
         <div>
-          <p className='mt-5 text-center'>Could not find result for, "{searchQuery}"</p>
+          <p className='mt-5 text-center'>Could not find result for "{searchQuery}"</p>
         </div>
       )}
     </div>

@@ -3,10 +3,10 @@ import { Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { useLoginMutation } from '@/app/api/apiSlice';
 import InputField from '@/components/common/InputField';
 import ForgotPassword from '@/components/login/ForgotPassword';
 import { setCredentials } from '@/auth/reducers/login/loginSlice';
+import { submitBtnClass } from '.';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('required!'),
@@ -19,10 +19,9 @@ const LoginSchema = Yup.object().shape({
     ),
 });
 
-const LoginForm = ({ theme, login, isError, setIsError }) => {
+const LoginForm = ({ login, isError }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const [login, { error }] = useLoginMutation();
 
   const submitForm = async (values) => {
     const user = await login(values).unwrap();
@@ -34,8 +33,7 @@ const LoginForm = ({ theme, login, isError, setIsError }) => {
     <Formik
       initialValues={{ email: '', password: '' }}
       validationSchema={LoginSchema}
-      onSubmit={(values) => submitForm(values)}
-    >
+      onSubmit={(values) => submitForm(values)}>
       <Form>
         <section className='inputs w-full mt-4 space-y-2 xl:w-3/4'>
           <div>
@@ -55,11 +53,7 @@ const LoginForm = ({ theme, login, isError, setIsError }) => {
           </div>
 
           <ForgotPassword />
-          <button
-            type='submit'
-            className='my-3 w-full py-2.5 text-white font-medium text-sm rounded-md bg-blue-600 dark:border-t border-blue-300 disabled:bg-blue-300 disabled:cursor-not-allowed'
-            disabled={isError}
-          >
+          <button type='submit' className={submitBtnClass} disabled={isError}>
             Login
           </button>
         </section>

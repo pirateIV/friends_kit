@@ -1,16 +1,20 @@
 import { useDispatch } from 'react-redux';
-import { setSearchQuery } from './searchQuerySlice';
 import { setFilteredFriends } from './userFilterSlice';
 import SearchIcon from '@/shared/components/icons/SearchIcon';
+import { friendsArray } from '.';
+import { setSearchQuery } from './searchQuerySlice';
 
 const SearchInput = () => {
   const dispatch = useDispatch();
 
   const handleSearch = (e) => {
-    const query = e.target.value.toLowerCase();
-
-    dispatch(setSearchQuery(query));
-    dispatch(setFilteredFriends());
+    let query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+    dispatch(
+      setFilteredFriends(
+        friendsArray.filter((friend) => friend.name.toLowerCase().includes(query))
+      )
+    );
   };
 
   return (

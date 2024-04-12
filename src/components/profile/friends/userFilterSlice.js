@@ -5,11 +5,8 @@ const usersFilterSlice = createSlice({
   name: 'usersFilter',
   initialState: friendsArray,
   reducers: {
-    setFilteredFriends(state, action) {
-      const filtered = state.filter((friend) =>
-        friend.name.toLowerCase().includes(action.payload)
-      );
-      return filtered;
+    setFilteredFriends(_, action) {
+      return [...action.payload];
     },
   },
 });

@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 
 const useDarkMode = () => {
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+  // Initialize theme from localStorage or default to 'light'
+  const initialTheme = localStorage.getItem('theme') || 'light';
+  const [theme, setTheme] = useState(initialTheme);
 
   useEffect(() => {
-    console.log(theme);
-    setTheme(localStorage.getItem('theme'));
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const isDarkMode = theme === 'dark' ? true : false;
-  console.log(isDarkMode);
 
   return {
     isDarkMode,
