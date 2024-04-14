@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
-import jenna from '@/assets/images/jenna.webp';
+// import jenna from '@/assets/images/jenna.webp';
 import { ClockIcon } from '@radix-ui/react-icons';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PlusIcon from '@/shared/components/icons/PlusIcon';
-import banner from '@/assets/images/default-profile-banner.png';
 
 const UserProfileMain = () => {
   return (
