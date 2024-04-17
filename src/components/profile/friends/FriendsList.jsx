@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { faMessage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import avatar from '@/assets/images/avatar-w.webp';
-import { query } from './searchQuerySlice';
+// import { query } from './searchQuerySlice';
 
 const FriendsList = () => {
   const searchQuery = useSelector((state) => state.query)
@@ -43,7 +43,7 @@ const FriendsList = () => {
         </div>
       ) : (
         <div>
-          <p className='mt-5 text-center'>Could not find result for "{searchQuery}"</p>
+          <p className='mt-5 text-center'>Could not find result for &quot;{searchQuery}&quot;</p>
         </div>
       )}
     </div>
