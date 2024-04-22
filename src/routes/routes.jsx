@@ -18,7 +18,7 @@ import Friends from '@/pages/Friends/Friends';
 // About
 import AboutUser from '@/pages/About/AboutUser';
 import Jobs from '@/pages/About/routes/Jobs';
-import Overview from '@/pages/About/routes/Overview';
+// import Overview from '@/pages/About/routes/Overview';
 import Education from '@/pages/About/routes/Education';
 import PersonalInfo from '@/pages/About/routes/PersonalInfo';
 
@@ -34,28 +34,26 @@ const router = createBrowserRouter([
       {
         path: '@me',
         element: <UserProfileMain />,
+      },
+      {
+        path: '@me/friends',
+        element: <Friends />,
+      },
+      {
+        path: '@me/about',
+        element: <AboutUser />,
         children: [
           {
-            path: '@me/about',
-            element: <AboutUser />,
-            children: [
-              {
-                path: '@me/about/personalInfo',
-                element: <PersonalInfo />,
-              },
-              {
-                path: '@me/about/education',
-                element: <Education />,
-              },
-              {
-                path: '@me/about/jobs',
-                element: <Jobs />,
-              },
-            ],
+            path: '@me/about/personalInfo',
+            element: <PersonalInfo />,
           },
           {
-            path: '@me/friends',
-            element: <Friends />,
+            path: '@me/about/education',
+            element: <Education />,
+          },
+          {
+            path: '@me/about/jobs',
+            element: <Jobs />,
           },
         ],
       },

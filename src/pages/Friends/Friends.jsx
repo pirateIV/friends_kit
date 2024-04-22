@@ -1,22 +1,24 @@
-import setDocumentTitle from '@/helpers/setDocumentTitle';
+import { header } from '..';
 import Dropdown from '@/components/profile/friends/Dropdown';
 import SearchInput from '@/components/profile/friends/SearchInput';
 import FriendsList from '@/components/profile/friends/FriendsList';
-import { header } from '..';
+import UserProfileMain from '../UserProfile/UserProfileMain';
 
 const Friends = () => {
-  setDocumentTitle('profile-friends');
-
   return (
-    <section>
-      <header>
-        <div className={header.childClass}>
-          <Dropdown />
-          <SearchInput />
-        </div>
-      </header>
-      <FriendsList />
-    </section>
+    <>
+      <UserProfileMain>
+        <section>
+          <header>
+            <div {...header}>
+              <Dropdown />
+              <SearchInput />
+            </div>
+          </header>
+          <FriendsList />
+        </section>
+      </UserProfileMain>
+    </>
   );
 };
 

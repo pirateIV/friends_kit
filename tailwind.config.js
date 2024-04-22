@@ -14,18 +14,18 @@ module.exports = withMT({
   prefix: '',
   theme: {
     colors: {
-      // blue: {
-      //   50: '#EBF5FF',
-      //   100: '#E1EFFE',
-      //   200: '#C3DDFD',
-      //   300: '#A4CAFE',
-      //   400: '#76A9FA',
-      //   500: '#3F83F8',
-      //   600: '#1C64F2',
-      //   700: '#1A56DB',
-      //   800: '#1E429F',
-      //   900: '#233876',
-      // },
+      blue: {
+        50: '#EBF5FF',
+        100: '#E1EFFE',
+        200: '#C3DDFD',
+        300: '#A4CAFE',
+        400: '#76A9FA',
+        500: '#3F83F8',
+        600: '#1C64F2',
+        700: '#1A56DB',
+        800: '#1E429F',
+        900: '#233876',
+      },
     },
     container: {
       center: true,
@@ -70,9 +70,11 @@ module.exports = withMT({
         inter: ['Inter'],
       },
       boxShadow: {
-        tiny: '0 1px 0.5px rgba(0, 0, 0, 0.13), 0 1px 1px rgba(0, 0, 0, 0.2)',
-        'mui-1':
-          '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)',
+        tiny: `0 1px 0.5px rgba(0, 0, 0, 0.13),
+         0 1px 1px rgba(0, 0, 0, 0.2)`,
+        'mui-1': `0px 2px 1px -1px rgba(0,0,0,0.2),
+           0px 1px 1px 0px rgba(0,0,0,0.14),
+            0px 1px 3px 0px rgba(0,0,0,0.12)`,
       },
     },
   },

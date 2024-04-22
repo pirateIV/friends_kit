@@ -1,4 +1,4 @@
-import jenna from '@/assets/images/jenna.webp';
+// import jenna from '@/assets/images/jenna.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera, faPlus } from '@fortawesome/free-solid-svg-icons';
 import banner from '@/assets/images/default-profile-banner.png';
