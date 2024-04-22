@@ -53,23 +53,21 @@ const AuthorizeAccount = () => {
         initialValues={{ password, confirmPassword }}
         validationSchema={passwordSchema}
         onSubmit={(values) => handleLoading(handleSubmit(values))}>
-        {({}) => (
-          <Form className='w-full max-w-[540px]'>
-            <PasswordInput />
-            <div className='flex justify-end gap-1 mt-4'>
-              <CustomButton
-                type='button'
-                content='Back'
-                variant='outlined'
-                handleClick={prev}
-                className={prevBtnClass}
-              />
-              <Button type='submit' loading={loading} className={nextBtnClass}>
-                Next
-              </Button>
-            </div>
-          </Form>
-        )}
+        <Form className='w-full max-w-[540px]'>
+          <PasswordInput />
+          <div className='flex justify-end gap-1 mt-4'>
+            <CustomButton
+              type='button'
+              content='Back'
+              variant='outlined'
+              handleClick={prev}
+              className={prevBtnClass}
+            />
+            <Button type='submit' loading={loading} className={nextBtnClass}>
+              Next
+            </Button>
+          </div>
+        </Form>
       </Formik>
     </SignupWrapper>
   );

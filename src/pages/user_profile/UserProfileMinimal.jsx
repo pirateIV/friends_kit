@@ -1,9 +1,7 @@
-// import jenna from '@/assets/images/jenna.webp';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCamera, faPlus } from '@fortawesome/free-solid-svg-icons';
-import banner from '@/assets/images/default-profile-banner.png';
 import PlusIcon from '@/shared/components/icons/PlusIcon';
-// import { PlusIcon } from '@radix-ui/react-icons';
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import banner from '@/assets/images/default-profile-banner.png';
 
 const UserProfileMinimal = () => {
   return (
@@ -26,9 +24,7 @@ const UserProfileMinimal = () => {
                     className='h-[130px] w-[130px]'
                     alt='user-profile-pic'
                   />
-                  <a
-                    className='upload-button absolute bottom-0 right-0 flex-center h-[36px] w-[36px] text-white  rounded-full bg-light-green-500 cursor-pointer hover:bg-blue-500'
-                    onClick={(e) => handleImageUpload(e)}>
+                  <a className='upload-button absolute bottom-0 right-0 flex-center h-[36px] w-[36px] text-white  rounded-full bg-light-green-500 cursor-pointer hover:bg-blue-500'>
                     <PlusIcon />
                   </a>
                 </div>

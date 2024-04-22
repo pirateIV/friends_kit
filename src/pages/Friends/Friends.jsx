@@ -2,7 +2,7 @@ import { header } from '..';
 import Dropdown from '@/components/profile/friends/Dropdown';
 import SearchInput from '@/components/profile/friends/SearchInput';
 import FriendsList from '@/components/profile/friends/FriendsList';
-import UserProfileMain from '../UserProfile/UserProfileMain';
+import UserProfileMain from '../user_profile/UserProfileMain';
 
 const Friends = () => {
   return (

@@ -1,26 +1,29 @@
+import Root from './root';
 import { createBrowserRouter } from 'react-router-dom';
 
-import Root from './root';
+// auth
 import Login from '@/auth/pages/Login/Login';
 import Signup from '@/auth/pages/Signup/Signup';
 
+// signup
 import UserInfo from '@/components/signup/steps/UserInfo';
 import ProfileUpload from '@/components/signup/steps/ProfileUpload';
 import AccountCreated from '@/components/signup/steps/AccountCreated';
 import AuthorizeAccount from '@/components/signup/steps/AuthorizeAccount';
 
-import NotFoundPage from '@/pages/404/NotFound';
-// import UserProfile from '@/pages/UserProfile/UserProfile';
-import UserProfileMain from '@/pages/UserProfile/UserProfileMain';
-import UserProfileMinimal from '@/pages/UserProfile/UserProfileMinimal';
-import Friends from '@/pages/Friends/Friends';
+// user
+import Friends from '@/pages/friends/Friends';
+import UserProfileMain from '@/pages/user_profile/UserProfileMain';
+import UserProfileMinimal from '@/pages/user_profile/UserProfileMinimal';
 
-// About
+// about
 import AboutUser from '@/pages/About/AboutUser';
 import Jobs from '@/pages/About/routes/Jobs';
-// import Overview from '@/pages/About/routes/Overview';
 import Education from '@/pages/About/routes/Education';
 import PersonalInfo from '@/pages/About/routes/PersonalInfo';
+
+// 404
+import NotFoundPage from '@/pages/404/NotFound';
 
 const router = createBrowserRouter([
   {

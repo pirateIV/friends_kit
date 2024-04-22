@@ -1,8 +1,8 @@
-import { PlusIcon } from "@radix-ui/react-icons";
-import { faCamera } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { PlusIcon } from '@radix-ui/react-icons';
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const ProfileHeader = () => {
+const ProfileHeader = ({ triggerModal }) => {
   return (
     <header className='relative'>
       <section
@@ -13,13 +13,17 @@ const ProfileHeader = () => {
           backgroundSize: 'cover',
         }}>
         <div className='absolute top-0 w-full h-full bg-black/20 z-20 transition-colors group-hover:bg-black/40'></div>
-        <span
-          className='absolute top-2.5 text-white left-3 text-xl me-3 py-1.5 ps-2 z-30 group-hover:scale-90 !hover:opacity-100'
-          style={{ transition: 'transform 0.2s ease-in' }}>
-          <FontAwesomeIcon icon={faCamera} />
-        </span>
-        <button className='absolute border border-white py-1.5 ps-9 pe-3 text-white rounded-sm top-3 left-3 z-30  transition-opacity opacity-0 group-hover:opacity-100 text-sm'>
-          Edit cover image
+        <button>
+          <span
+            className='absolute top-2.5 text-white left-3 text-xl me-3 py-1.5 ps-2 z-30 group-hover:scale-90 !hover:opacity-100'
+            style={{ transition: 'transform 0.2s ease-in' }}>
+            <FontAwesomeIcon icon={faCamera} />
+          </span>
+          <button
+            onClick={() => triggerModal()}
+            className='absolute border border-white py-1.5 ps-9 pe-3 text-white rounded-sm top-3 left-3 z-30  transition-opacity opacity-0 group-hover:opacity-100 text-sm'>
+            Edit cover image
+          </button>
         </button>
 
         <div className='user-avatar absolute h-[130px] w-[130px] mx-auto flex justify-center z-30 -bottom-[65px] inset-x-0'>

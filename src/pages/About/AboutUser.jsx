@@ -2,7 +2,7 @@ import Icon from '@mdi/react';
 import { NavLink, Link } from 'react-router-dom';
 import { mdiProgressCheck, mdiApps, mdiSchool, mdiBriefcasePlus } from '@mdi/js';
 import setDocumentTitle from '@/helpers/setDocumentTitle';
-import UserProfileMain from '../UserProfile/UserProfileMain';
+import UserProfileMain from '../user_profile/UserProfileMain';
 
 const btnTabsArrayIcons = [
   { tabContent: 'Overview', icon: mdiProgressCheck },
