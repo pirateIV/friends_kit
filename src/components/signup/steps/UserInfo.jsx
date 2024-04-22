@@ -1,18 +1,17 @@
-import { useEffect } from 'react';
 import * as Yup from 'yup';
+import { useEffect } from 'react';
 import { Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '@material-tailwind/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, ButtonGroup } from '@material-tailwind/react';
-
-import { nextBtnClass, prevBtnClass, stepProps } from '.';
-import { setProgress } from '../../../redux/reducers/progressReducer';
 
 import FormContent from '../Form/FormContent';
-import CustomButton from '../../common/CustomButton';
-import SignupWrapper from '../../common/SignupWrapper';
-import useLoadingState from '../../../hooks/useLoading';
-import { getUserInfo, setUserInfo } from '../../../auth/reducers/user/userSlice';
+import useLoadingState from '@/hooks/useLoading';
+import { nextBtnClass, prevBtnClass, stepProps } from '.';
+import CustomButton from '@/components/common/CustomButton';
+import SignupWrapper from '@/components/common/SignupWrapper';
+import { setProgress } from '@/redux/reducers/progressReducer';
+import { getUserInfo, setUserInfo } from '@/auth/reducers/user/userSlice';
 
 const UserInfoSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('required!'),
