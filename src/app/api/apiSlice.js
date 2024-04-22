@@ -19,6 +19,8 @@ export const authApi = createApi({
       }),
     }),
   }),
+
 });
 
+// Export hooks for usage in functional components
 export const { useLoginMutation } = authApi;

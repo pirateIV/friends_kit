@@ -9,12 +9,14 @@ const AccountCard = ({ id, type, title, imgSrc }) => {
             <img
               src={imgSrc}
               className='max-w-full h-auto scale-125 -translate-y-[20%]'
+              height='253'
+               width='328'
               alt='company'
             />
           </div>
           <div className='card-content'>
             <h3 className='font-montserrat font-semibold py-2 text-[#344258] dark:text-[#fafafa]'>{title}</h3>
-            <p className='text-sm text-[#a2a5b9]'>
+            <p className='text-sm text-gray-500'>
               {`Create a ${type} account to be able to do some awesome things.`}
             </p>
             <div className='mt-5'>

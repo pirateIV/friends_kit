@@ -17,6 +17,7 @@ const ThemeSwitcher = () => {
 
   return (
     <button
+      type='button'
       id='theme-toggle'
       className={themeBtnClass}
       onClick={() => changePreference()}>

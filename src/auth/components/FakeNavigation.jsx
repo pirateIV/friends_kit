@@ -4,7 +4,7 @@ import ThemeSwitcher from '@/shared/components/ThemeSwitcher';
 const FakeNavigation = () => {
   return (
     <nav className='fake-nav relative flex-center w-full h-[55px] bg-white dark:bg-[#1c2330]'>
-      <img src={logo} className='max-w-[48px] h-auto' alt='Logo' />
+      <img src={logo} height='48' width='48' alt='Logo' />
       <ThemeSwitcher />
     </nav>
   );
