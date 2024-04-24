@@ -12,15 +12,15 @@ const FakeNavigation = () => {
   if (isSignupPage) {
     content = (
       <button
-        className='absolute right-20 text-white px-6 py-1.5 rounded-md bg-blue-500'
+        className='absolute text-sm right-20 text-white px-5 py-1.5 border-t border-teal-300 rounded-full bg-teal-600'
         onClick={() => navigate('/login')}>
-        Login
+        login
       </button>
     );
   } else {
     content = (
       <button
-        className='absolute right-20 text-white px-6 py-1.5 rounded-md bg-blue-500'
+        className='absolute text-sm right-20 text-white px-5 py-1.5 border-t border-teal-300 rounded-full bg-teal-600'
         onClick={() => navigate('/signup')}>
         sign up
       </button>
@@ -30,8 +30,8 @@ const FakeNavigation = () => {
   return (
     <nav className='fake-nav relative flex-center w-full h-[55px] bg-white dark:bg-[#1c2330]'>
       <img src={logo} height='48' width='48' alt='Logo' />
-      <ThemeSwitcher />
       {content}
+      <ThemeSwitcher />
     </nav>
   );
 };

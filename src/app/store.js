@@ -1,4 +1,4 @@
-import { authApi } from '@/app/api/apiSlice';
+import { authApi } from '@/app/api/authSlice';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import userReducer from '@/auth/reducers/user/userSlice';
@@ -8,6 +8,7 @@ import themeReducer from '@/redux/reducers/themeReducer';
 import authReducer from '@/auth/reducers/login/loginSlice';
 import usersFilterReducer from '@/components/profile/friends/userFilterSlice';
 import searchQueryReducer from '@/components/profile/friends/searchQuerySlice';
+import uploadAreaReducer from '@/components/modals/ui/uploadAreaSlice';
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   query: searchQueryReducer,
   progress: progressReducer,
   usersFilter: usersFilterReducer,
+  uploadArea: uploadAreaReducer,
   [authApi.reducerPath]: authApi.reducer,
 });
 

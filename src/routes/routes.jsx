@@ -88,10 +88,6 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Login />,
   },
-  // {
-  //   path: '/me',
-  //   element: <UserProfile />,
-  // },
   {
     path: '*',
     element: <NotFoundPage />,

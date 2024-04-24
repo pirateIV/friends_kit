@@ -9,7 +9,7 @@ const ProfileHeader = ({ triggerModal }) => {
         className='mt-3 banner profile-cover h-[327px] w-full bg-cover group bg-gray-400'
         style={{
           // backgroundImage: `url(${banner})`,
-          // backgroundImage: `url("https://source.unsplash.com/random?wallpapers")`,
+          backgroundImage: `url("https://source.unsplash.com/random?wallpapers")`,
           backgroundSize: 'cover',
         }}>
         <div className='absolute top-0 w-full h-full bg-black/20 z-20 transition-colors group-hover:bg-black/40'></div>

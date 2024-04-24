@@ -7,6 +7,7 @@ export const authApi = createApi({
       const token = getState().auth.token;
       if (token) {
         headers.set('authorization', `Bearer ${token}`);
+        // loca
       }
     },
   }),
@@ -18,9 +19,14 @@ export const authApi = createApi({
         body: credentials,
       }),
     }),
+    // endpoint to fetch user details
+    getUserDetails: builder.query({
+      query: 'user',
+    }),
   }),
-
 });
 
 // Export hooks for usage in functional components
 export const { useLoginMutation } = authApi;
+
+export const selectCurrentUser = (state) => state.auth.user;

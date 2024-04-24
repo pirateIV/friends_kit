@@ -22,6 +22,9 @@ main > * {
   .alert {
     @apply flex items-center p-3 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800;
   }
+  .banner-area {
+    @apply  mt-4 mb-2 border-2 border-dashed border-gray-400 rounded-lg
+  }
 
   .nav-start {
     @apply flex items-center gap-6 *:text-gray-400 *:last:text-gray-500 *:last-of-type:text-gray-500 *:h-9 *:w-9 *:rounded-md;

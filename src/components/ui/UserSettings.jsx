@@ -9,16 +9,19 @@ const UserSettings = () => {
     {
       icon: <SettingsIcon />,
       title: 'Settings',
+      path: '',
       description: 'Access widget settings',
     },
     {
       icon: <HelpIcon />,
       title: 'Help',
+      path: '',
       description: 'Contact our support',
     },
     {
       icon: <LogoutIcon />,
       title: 'Log out',
+      path: '/login',
       description: 'Log out from your account',
     },
   ];
@@ -26,7 +29,7 @@ const UserSettings = () => {
   return (
     <div className='user-settings'>
       {dropdownItems.map((item, index) => (
-        <DropdownItem key={index}>
+        <DropdownItem key={index} path={item.path}>
           <span className='flex-center h-[35px] w-[35px]'>{item.icon}</span>
           <div style={{ lineHeight: 1.1 }}>
             <h4

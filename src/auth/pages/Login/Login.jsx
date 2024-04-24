@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTheme } from '@/redux/reducers/themeReducer';
-import { useLoginMutation } from '@/app/api/apiSlice';
+import { useLoginMutation } from '@/app/api/authSlice';
 import { setCredentials } from '@/auth/reducers/login/loginSlice';
 import LoginContent from '@/auth/components/Login/LoginContent';
 

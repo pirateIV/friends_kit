@@ -21,7 +21,7 @@ if (localStorage.theme === 'dark') {
 }
 
 store.dispatch(getAllUsers());
-// console.log(store.getState());
+console.log(store.getState());
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>

@@ -1,10 +1,22 @@
-const UploadCard = ({ imageSrc, title, description }) => {
+const UploadCard = ({ imageSrc, title, description, triggerPcUpload }) => {
+  const uploadBanner = () => {
+    switch (title) {
+      case 'Upload':
+        triggerPcUpload();
+        break;
+      case 'Choose':
+        console.log('file uploaded from photos');
+        break;
+    }
+  };
   return (
-    <div className='group w-1/2 bg-gray-200 cursor-pointer h-[250px] flex-center flex-col rounded-md hover:bg-gray-300'>
+    <div
+      className='group w-1/2 bg-gray-200 cursor-pointer h-[250px] flex-center flex-col rounded-md hover:bg-gray-300'
+      onClick={() => uploadBanner()}>
       <div className='flex-center h-32 w-36'>
         <img
           src={imageSrc}
-          className='bg-cover grayscale transition duration-300 group-hover:grayscale-0'
+          className='bg-cover grayscale select-none group-hover:grayscale-0'
           alt=''
         />
       </div>
