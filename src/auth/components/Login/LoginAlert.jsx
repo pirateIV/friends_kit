@@ -1,18 +1,19 @@
-import { useLoginMutation } from '@/app/api/authSlice';
+import PropTypes from 'prop-types';
 import Alert from '@/components/common/Alert';
 
 const LoginAlert = ({ error, isError }) => {
-  // let error;
-  let errorContent;
+  let content;
+  if (error && error.data.error) {
+    content = error.data.error;
+  } else if (error && error.error) {
+    content = error.error;
+  }
+  return <div className='mt-2'>{error && isError ? <Alert>{content}</Alert> : null}</div>;
+};
 
-  // if(error && isError) {
-  //   error = <Alert>{}</Alert> 
-  // } else
-  return (
-    <div className='mt-2'>
-      {error && isError ? <Alert>{JSON.stringify(error)}</Alert> : null}
-    </div>
-  );
+LoginAlert.propTypes = {
+  error: PropTypes.object,
+  isError: PropTypes.bool.isRequired,
 };
 
 export default LoginAlert;

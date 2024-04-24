@@ -1,4 +1,5 @@
 import StepCircle from './StepCircle';
+import PropTypes from 'prop-types';
 
 const Steps = ({ steps }) => {
   return (
@@ -8,6 +9,10 @@ const Steps = ({ steps }) => {
       ))}
     </>
   );
+};
+
+Steps.propTypes = {
+  steps: PropTypes.array,
 };
 
 export default Steps;

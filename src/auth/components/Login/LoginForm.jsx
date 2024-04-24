@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import InputField from '@/components/common/InputField';
 import ForgotPassword from '@/components/login/ForgotPassword';
@@ -60,6 +61,11 @@ const LoginForm = ({ login, isError }) => {
       </Form>
     </Formik>
   );
+};
+
+LoginForm.propTypes = {
+  login: PropTypes.func,
+  isError: PropTypes.bool.isRequired,
 };
 
 export default LoginForm;

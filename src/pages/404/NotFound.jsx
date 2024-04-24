@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import setDocumentTitle from '../../helpers/setDocumentTitle';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 const NotFoundPage = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const NotFoundPage = () => {
   const handleRedirect = () => {
     navigate(-1);
   };
-  setDocumentTitle('Not Found');
+  useDocumentTitle('Not Found');
 
   return (
     <div className='min-h-screen'>
@@ -47,7 +47,7 @@ const NotFoundPage = () => {
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.4, duration: 0.8 }}>
-                    We couldn't find that page
+                    We couldn&apos;t find that page
                   </motion.h3>
                   <motion.p
                     className='text-[#a2a5b9] mb-4  text-[1.1rem]'

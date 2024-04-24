@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 const useDarkMode = () => {
   // Initialize theme from localStorage or default to 'light'
   const initialTheme = localStorage.getItem('theme') || 'light';
-  const [theme, setTheme] = useState(initialTheme);
+  const [theme] = useState(initialTheme);
 
   useEffect(() => {
     localStorage.setItem('theme', theme);

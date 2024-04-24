@@ -1,4 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -74,6 +75,12 @@ export const UploadFromPcModal = ({ pcUploadTrigger }) => {
       </DialogClose>
     </Dialog>
   );
+};
+
+BannerUploadModal.propTypes = {
+  dialogTrigger: PropTypes.func,
+  dialogClose: PropTypes.func,
+  triggerPcUpload: PropTypes.func,
 };
 
 export default BannerUploadModal;

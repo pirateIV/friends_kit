@@ -1,6 +1,7 @@
-import { Button } from "@material-tailwind/react";
-import { nextBtnClass, prevBtnClass } from "../steps";
-import CustomButton from "@/components/common/CustomButton";
+import PropTypes from 'prop-types';
+import { Button } from '@material-tailwind/react';
+import { nextBtnClass, prevBtnClass } from '../steps';
+import CustomButton from '@/components/common/CustomButton';
 
 const FormButtons = ({ loading, handlePrevious }) => {
   return (
@@ -23,6 +24,11 @@ const FormButtons = ({ loading, handlePrevious }) => {
       </Button>
     </div>
   );
+};
+
+FormButtons.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  handlePrevious: PropTypes.func,
 };
 
 export default FormButtons;

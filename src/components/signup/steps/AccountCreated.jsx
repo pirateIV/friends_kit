@@ -13,7 +13,7 @@ const AccountCreated = () => {
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(setProgress(100));
-  }, []);
+  }, [dispatch]);
   const next = () => navigate('/');
 
   return (

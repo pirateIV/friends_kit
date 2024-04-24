@@ -14,7 +14,7 @@ const ProfileUpload = () => {
 
   useEffect(() => {
     dispatch(setProgress(50));
-  }, []);
+  }, [dispatch]);
   const prev = () => navigate('/signup/info');
   const next = () => navigate('/signup/auth');
 

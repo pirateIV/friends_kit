@@ -1,7 +1,7 @@
 import Icon from '@mdi/react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { mdiProgressCheck, mdiApps, mdiSchool, mdiBriefcasePlus } from '@mdi/js';
-import setDocumentTitle from '@/helpers/setDocumentTitle';
+import useDocumentTitle from '@/hooks/useDocumentTitle';
 import UserProfileMain from '../user_profile/UserProfileMain';
 
 const btnTabsArrayIcons = [
@@ -12,7 +12,7 @@ const btnTabsArrayIcons = [
 ];
 
 const AboutUser = () => {
-  setDocumentTitle('About');
+  useDocumentTitle('About');
   return (
     <>
       <UserProfileMain>

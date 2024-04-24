@@ -8,7 +8,7 @@ const useCustomLocation = (path) => {
   useEffect(() => {
     const currentPath = location.pathname;
     setCustomPath(currentPath === `/${path}` || currentPath === `/${path}/`);
-  }, [location]);
+  }, [path, location]);
 
   return customPath;
 };

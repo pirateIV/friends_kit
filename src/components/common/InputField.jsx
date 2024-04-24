@@ -3,6 +3,7 @@ import { Input } from '@material-tailwind/react';
 import useInputState from '@/hooks/useInputState';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 
 const InputField = ({ label, type, ...props }) => {
   const [field, meta] = useField(props);
@@ -32,6 +33,10 @@ const InputField = ({ label, type, ...props }) => {
       </div>
     </>
   );
+};
+InputField.propTypes = {
+  label: PropTypes.string,
+  type: PropTypes.string,
 };
 
 export default InputField;

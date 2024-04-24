@@ -1,5 +1,6 @@
 import { Button } from '@material-tailwind/react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { btnClass } from '.';
 import mailbox from '@/assets/images/signup/cards/mailbox.svg';
@@ -40,6 +41,10 @@ const AcctCreatedContent = ({ next }) => {
       </form>
     </section>
   );
+};
+
+AcctCreatedContent.propTypes = {
+  next: PropTypes.func.isRequired,
 };
 
 export default AcctCreatedContent;

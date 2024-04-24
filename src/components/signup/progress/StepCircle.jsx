@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { currentProgress } from '@/redux/reducers/progressReducer';
 
 const StepCircle = ({ step }) => {
@@ -28,6 +29,10 @@ const StepCircle = ({ step }) => {
       </div>
     </div>
   );
+};
+
+StepCircle.propTypes = {
+  step: PropTypes.object,
 };
 
 export default StepCircle;

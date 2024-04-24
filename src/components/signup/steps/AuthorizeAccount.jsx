@@ -45,7 +45,7 @@ const AuthorizeAccount = () => {
 
   useEffect(() => {
     dispatch(setProgress(75));
-  }, []);
+  }, [dispatch]);
 
   return (
     <SignupWrapper {...stepProps.authorizeAcct}>

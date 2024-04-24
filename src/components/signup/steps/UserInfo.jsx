@@ -27,7 +27,7 @@ const UserInfo = () => {
 
   useEffect(() => {
     dispatch(setProgress(25));
-  }, []);
+  }, [dispatch]);
 
   const handlePrevious = () => {
     return;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const DropdownItem = ({ path, children }) => {
@@ -10,6 +11,10 @@ const DropdownItem = ({ path, children }) => {
       </Link>
     </div>
   );
+};
+
+DropdownItem.propTypes = {
+  path: PropTypes.string.isRequired,
 };
 
 export default DropdownItem;

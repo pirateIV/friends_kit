@@ -1,8 +1,8 @@
-import React from 'react';
 import LoginForm from './LoginForm';
 import LoginAlert from './LoginAlert';
 import { getTheme } from '@/redux/reducers/themeReducer';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const LoginFormContainer = ({ error, login, isError, setIsError }) => {
   const theme = useSelector(getTheme());
@@ -12,6 +12,13 @@ const LoginFormContainer = ({ error, login, isError, setIsError }) => {
       <LoginForm login={login} theme={theme} isError={isError} setIsError={setIsError} />
     </div>
   );
+};
+
+LoginFormContainer.propTypes = {
+  error: PropTypes.object,
+  login: PropTypes.func,
+  setIsError: PropTypes.func,
+  isError: PropTypes.bool.isRequired,
 };
 
 export default LoginFormContainer;

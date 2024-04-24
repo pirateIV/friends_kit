@@ -5,7 +5,7 @@ import 'cropperjs/dist/cropper.css';
 
 import { assets, uploadClass } from '.';
 import PlusIcon from '@/shared/components/icons/PlusIcon';
-import returnFileSize from '@/helpers/returnFileSize';
+// import returnFileSize from '@/helpers/returnFileSize';
 import { getUserInfo, setProfileUpload } from '@/auth/reducers/user/userSlice';
 
 import { Button } from '@/components/ui/button';
@@ -24,9 +24,9 @@ const ProfileUploadContent = () => {
   const inputFileRef = useRef();
   const cropBtnRef = useRef();
   const dispatch = useDispatch();
-  const user = useSelector(getUserInfo);
+  // const user = useSelector(getUserInfo);
 
-  const [fileSize, setFileSize] = useState('');
+  // const [fileSize, setFileSize] = useState('');
   const { profilePic } = useSelector(getUserInfo);
   const [image, setImage] = useState(defaultSrc);
   const [cropData, setCropData] = useState('');
@@ -63,7 +63,7 @@ const ProfileUploadContent = () => {
 
   useEffect(() => {
     cropData && dispatch(setProfileUpload(cropData));
-  }, [cropData]);
+  }, [dispatch, cropData]);
 
   return (
     <>
