@@ -1,12 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
-import SearchIcon from '@/shared/components/icons/SearchIcon';
-import UserSettings from './_components/UserSettings';
 import './index.css';
-import Profile from './_components/Profile';
-import ThemeSwitcher from './_components/ThemeSwitcher';
+import { useEffect, useRef, useState } from 'react';
+import Profile from '../ui/Profile';
+import UserSettings from '../ui/UserSettings';
+import ThemeSwitcher from '../ui/ThemeSwitcher';
+import SearchIcon from '@/shared/components/icons/SearchIcon';
 
-// import jenna from '@/assets/images/jenna.webp';
-// import { Avatar } from '@material-tailwind/react';
 const NavbarEnd = () => {
   const [isHidden, setisHidden] = useState(true);
   const dropdownRef = useRef(null);

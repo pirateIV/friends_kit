@@ -1,5 +1,4 @@
 import { Button } from '@material-tailwind/react';
-
 import { useNavigate } from 'react-router-dom';
 import useLoadingState from '@/hooks/useLoading';
 
@@ -20,10 +19,10 @@ const CustomButton = (props) => {
       color='gray'
       type={type}
       variant={variant}
-      className={`${className}
-       ${'disabled:cursor-not-allowed'}`}
       loading={loading}
       disabled={loading}
+      className={`${className}
+       ${'disabled:cursor-not-allowed'}`}
       onClick={() => handleLoading(handleOnClick())}>
       {content}
     </Button>

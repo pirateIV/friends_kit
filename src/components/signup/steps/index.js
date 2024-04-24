@@ -1,4 +1,3 @@
-// import type1 from '@/assets/images/signup/cards/type-1.svg';
 import type1 from '@/assets/images/signup/cards/type-1.svg';
 import type2 from '@/assets/images/signup/cards/type-2.svg';
 import type3 from '@/assets/images/signup/cards/type-3.svg';
@@ -14,6 +13,7 @@ export const prevBtnClass = `${baseBtnClass} bg-gray-600 border border-gray-300 
 // Next button class with specific styles
 export const nextBtnClass = `${baseBtnClass} bg-blue-600 border border-white hover:opacity-90 disabled:bg-blue-400 dark:border-0 dark:border-t dark:border-blue-300`;
 
+// Signup card details
 export const accountTypes = [
   { id: 1, type: 'company', title: 'Company', illustration: type1 },
   { id: 2, type: 'public', title: 'Public Person', illustration: type2 },

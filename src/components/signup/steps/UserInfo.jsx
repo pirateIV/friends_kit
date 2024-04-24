@@ -2,13 +2,12 @@ import * as Yup from 'yup';
 import { useEffect } from 'react';
 import { Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@material-tailwind/react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { stepProps } from '.';
+import FormButtons from '../Form/FormButtons';``
 import FormContent from '../Form/FormContent';
 import useLoadingState from '@/hooks/useLoading';
-import { nextBtnClass, prevBtnClass, stepProps } from '.';
-import CustomButton from '@/components/common/CustomButton';
 import SignupWrapper from '@/components/common/SignupWrapper';
 import { setProgress } from '@/redux/reducers/progressReducer';
 import { getUserInfo, setUserInfo } from '@/auth/reducers/user/userSlice';
@@ -49,24 +48,7 @@ const UserInfo = () => {
           {() => (
             <Form className='w-full max-w-[540px]'>
               <FormContent />
-              <div className='flex justify-end mt-4 gap-1'>
-                <CustomButton
-                  type='button'
-                  content='Back'
-                  variant='outlined'
-                  navigateTo='/signup'
-                  handleClick={handlePrevious}
-                  className={prevBtnClass}
-                />
-                <Button
-                  type='submit'
-                  content='Next'
-                  variant='outlined'
-                  loading={loading}
-                  className={nextBtnClass}>
-                  Next
-                </Button>
-              </div>
+              <FormButtons loading={loading} handlePrevious={handlePrevious} />
             </Form>
           )}
         </Formik>

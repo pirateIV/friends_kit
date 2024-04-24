@@ -30,14 +30,16 @@ const UserProfileMain = ({ children }) => {
       <ProfileMenu />
       <ProfileSubHeader />
 
-      <div className='dialog-container'>
+      <div id='upload-dida'>
         <Dialog>
           <DialogTrigger ref={dialogTrigger} className='hidden' asChild>
             <Button variant='outline'>Edit Profile</Button>
           </DialogTrigger>
           <DialogContent className='sm:max-w-[650px]'>
             <DialogHeader>
-              <DialogTitle className='font-montserrat font-medium'>Update cover</DialogTitle>
+              <DialogTitle className='font-montserrat font-medium'>
+                Update cover
+              </DialogTitle>
               <DialogDescription className='text-gray-600'>
                 Make changes to your profile banner here.
               </DialogDescription>
@@ -45,16 +47,20 @@ const UserProfileMain = ({ children }) => {
 
             <div className='banner-upload'>
               <div className='flex-center gap-5'>
-                <UploadCard
-                  title='Upload'
-                  imageSrc={uploadCover}
-                  description='From your phone/pc'
-                />
-                <UploadCard
-                  title='Choose'
-                  imageSrc={changeCover}
-                  description='From your photos'
-                />
+                {[
+                  {
+                    title: 'Upload',
+                    imageSrc: uploadCover,
+                    description: 'From your phone/pc',
+                  },
+                  {
+                    title: 'Choose',
+                    imageSrc: changeCover,
+                    description: 'From your photos',
+                  },
+                ].map((props) => (
+                  <UploadCard key={props.title} {...props} />
+                ))}
               </div>
             </div>
           </DialogContent>

@@ -10,11 +10,24 @@ main > * {
   .flex-center {
     @apply flex items-center justify-center;
   }
-  .inline-flex-center {
-    @apply inline-flex items-center justify-center;
+  .flex-between {
+    @apply flex items-center justify-between;
   }
   .flex-end {
     @apply flex items-end;
+  }
+  .inline-flex-center {
+    @apply inline-flex items-center justify-center;
+  }
+  .alert {
+    @apply flex items-center p-3 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800;
+  }
+
+  .nav-start {
+    @apply flex items-center gap-6 *:text-gray-400 *:last:text-gray-500 *:last-of-type:text-gray-500 *:h-9 *:w-9 *:rounded-md;
+  }
+  .nav-section {
+    @apply fixed top-0 inset-x-0 flex items-center px-1 bg-white border-b border-gray-300 shadow-sm dark:bg-[#1c2330] dark:border-[#2c3544];
   }
 }
 
