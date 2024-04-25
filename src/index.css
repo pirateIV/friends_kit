@@ -43,9 +43,12 @@ main > * {
   .settings-section {
     @apply block bg-white p-[30px] ml-[280px] border border-gray-300 h-full rounded-md;
   }
-  /* .settings-form {
-    @apply p-5;
-  } */
+  .settings-form-wrapper {
+    @apply flex;
+  }
+  .settings-form {
+    @apply pt-5 w-full max-w-[680px];
+  }
   .settings-form .control {
     @apply relative flex items-center;
   }
@@ -63,6 +66,15 @@ main > * {
   }
   .settings-form input {
     @apply border-0 text-[#5b5d7e] text-[.9rem] h-9 w-full pt-0 pl-10 pb-2 outline-none;
+  }
+  .settings .illustration {
+    @apply p-10 flex-grow-[2];
+  }
+  .settings .illustration img {
+    @apply max-w-[200px] block mx-auto;
+  }
+  .settings button {
+    @apply h-11 min-w-40 text-sm rounded-md mb-2 mr-2;
   }
 
   /* @media and (max-width: ) {
