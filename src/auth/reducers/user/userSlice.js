@@ -46,12 +46,11 @@ const userSlice = createSlice({
       localStorage.setItem('user', JSON.stringify(state.user));
       console.log(JSON.parse(JSON.stringify(state.user)));
     },
-    deleteUserFromStorage(state, _) {
+    deleteUserFromStorage(state) {
       localStorage.removeItem('user');
       state.user = null;
     },
   },
-  extraReducers(builder) {},
 });
 
 export const {

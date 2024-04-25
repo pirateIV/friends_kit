@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { useDispatch, useSelector } from 'react-redux';
 import { exitUploadArea } from './uploadAreaSlice';
@@ -14,11 +13,11 @@ const BannerUploadArea = () => {
     console.log(showArea);
   };
 
-  const cropperRef = useRef(null);
-  const onCrop = () => {
-    const cropper = cropperRef.current?.cropper;
-    console.log(cropper.getCroppedCanvas().toDataURL());
-  };
+  // const cropperRef = useRef(null);
+  // const onCrop = () => {
+  //   const cropper = cropperRef.current?.cropper;
+  //   console.log(cropper.getCroppedCanvas().toDataURL());
+  // };
 
   const bgImageLink =
     'https://cdn.thedesigninspiration.com/wp-content/uploads/2014/07/Icon-Pattern-l.jpg';

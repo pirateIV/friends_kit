@@ -1,23 +1,13 @@
-import axios from 'axios';
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { createApi } from '@reduxjs/toolkit/query/react';
+import { createSlice } from '@reduxjs/toolkit';
 
-// export const signInUser = createAsyncThunk('auth/signInUser', async (userDetails) => {
-//   try {
-//     const res = await axios.post('http://localhost:5000/api/login', userDetails);
-//     console.log('log in successful');
-//     const token = res.data.token;
-//     console.log(token);
-//     // axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-//     return await res.data;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
+const initialState = {
+  user: null,
+  token: localStorage.getItem('token') || null,
+};
 
 const authReducer = createSlice({
   name: 'auth',
-  initialState: { user: null, token: null },
+  initialState,
   reducers: {
     setCredentials: (state, { payload }) => {
       const { user, token } = payload;
@@ -25,7 +15,7 @@ const authReducer = createSlice({
       state.token = token;
       localStorage.setItem('token', token);
     },
-    logout: (state, action) => {
+    logout: (state) => {
       state.user = null;
       state.token = null;
       localStorage.removeItem('token');
@@ -35,7 +25,7 @@ const authReducer = createSlice({
 
 export const { setCredentials, logout } = authReducer.actions;
 
-export default authReducer.reducer;
-
 export const selectCurrentUser = (state) => state.auth.user;
 export const selectCurrentToken = (state) => state.auth.token;
+
+export default authReducer.reducer;

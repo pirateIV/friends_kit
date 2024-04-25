@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import AuthContainer from '@/auth/components/AuthContainer';
 import FakeNavigation from '@/auth/components/FakeNavigation';
@@ -28,7 +29,7 @@ const LoginContent = ({ login, error, isError, setIsError }) => {
             />
             <div className='mt-5 lg:w-3/4 text-center'>
               <Link to='/signup' className='text-sm text-gray-500 hover:text-blue-500'>
-                Don't have an account? Sign Up
+                Don&apos;t have an account? Sign Up
               </Link>
             </div>
           </aside>
@@ -36,6 +37,13 @@ const LoginContent = ({ login, error, isError, setIsError }) => {
       </section>
     </AuthContainer>
   );
+};
+
+LoginContent.propTypes = {
+  login: PropTypes.func,
+  error: PropTypes.func,
+  isError: PropTypes.bool.isRequired,
+  setIsError: PropTypes.func,
 };
 
 export default LoginContent;

@@ -23,7 +23,7 @@ main > * {
     @apply flex items-center p-3 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800;
   }
   .banner-area {
-    @apply  mt-4 mb-2 border-2 border-dashed border-gray-400 rounded-lg
+    @apply mt-4 mb-2 border-2 border-dashed border-gray-400 rounded-lg;
   }
 
   .nav-start {
@@ -32,6 +32,38 @@ main > * {
   .nav-section {
     @apply fixed top-0 inset-x-0 flex items-center px-1 bg-white border-b border-gray-300 shadow-sm dark:bg-[#1c2330] dark:border-[#2c3544];
   }
+
+  /* settings */
+  .settings {
+    @apply relative min-h-screen p-[30px];
+  }
+  .settings-sidebar {
+    @apply fixed bg-[#fafafa] w-[280px] min-h-screen top-[60px] left-0 border-r border-gray-300;
+  }
+  .settings-section {
+    @apply block bg-white p-[30px] ml-[280px] border border-gray-300 h-full rounded-md;
+  }
+  .settings-form {
+    @apply p-5;
+  }
+  .settings-form .control {
+    @apply relative flex items-center;
+  }
+  .settings-form .field {
+    @apply border border-gray-500 mb-3 rounded-md;
+  }
+  .settings-form label {
+    @apply text-xs ps-1 text-gray-500;
+  }
+  .settings-form .form-icon svg {
+    @apply absolute h-[17px] w-[17px] text-gray-400 inset-y-0;
+  }
+  .settings-form input {
+    @apply border-0 text-[#5b5d7e] h-9 w-full pl-10 mb-2 outline-none;
+  }
+
+  /* @media and (max-width: ) {
+  } */
 }
 
 .cropper {
@@ -40,4 +72,11 @@ main > * {
 
 .transition-03 {
   transition: all 0.3s ease;
+}
+
+.settings-sidebar {
+  height: calc(100% - 56px);
+}
+.settings-section {
+  width: calc(100% - 280px);
 }

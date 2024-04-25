@@ -7,7 +7,7 @@ const Profile = () => {
   return (
     <>
       <hr className='h-px border-0 bg-gray-300 dark:bg-[#464e61]' />
-      <DropdownItem>
+      <DropdownItem path='@me'>
         <Avatar
           src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80'
           className='h-[35px] w-[35px] rounded-full'

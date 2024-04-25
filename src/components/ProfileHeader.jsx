@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { PlusIcon } from '@radix-ui/react-icons';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -41,6 +42,10 @@ const ProfileHeader = ({ triggerModal }) => {
       </section>
     </header>
   );
+};
+
+ProfileHeader.propTypes = {
+  triggerModal: PropTypes.obj,
 };
 
 export default ProfileHeader;

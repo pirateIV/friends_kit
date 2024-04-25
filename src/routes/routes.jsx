@@ -13,12 +13,13 @@ import AuthorizeAccount from '@/components/signup/steps/AuthorizeAccount';
 
 // user
 import Friends from '@/pages/friends/Friends';
+import Settings from '@/pages/settings/Settings';
 import UserProfileMain from '@/pages/user_profile/UserProfileMain';
 import UserProfileMinimal from '@/pages/user_profile/UserProfileMinimal';
 
 // about
-import AboutUser from '@/pages/About/AboutUser';
 import Jobs from '@/pages/About/routes/Jobs';
+import AboutUser from '@/pages/About/AboutUser';
 import Education from '@/pages/About/routes/Education';
 import PersonalInfo from '@/pages/About/routes/PersonalInfo';
 
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: '@me/settings',
+        element: <Settings />
+      }
     ],
   },
   {

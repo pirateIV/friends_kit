@@ -1,6 +1,7 @@
-import { Button } from '@material-tailwind/react';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import useLoadingState from '@/hooks/useLoading';
+import { Button } from '@material-tailwind/react';
 
 const CustomButton = (props) => {
   const navigate = useNavigate();
@@ -15,7 +16,6 @@ const CustomButton = (props) => {
 
   return (
     <Button
-      style={{}}
       color='gray'
       type={type}
       variant={variant}
@@ -27,6 +27,15 @@ const CustomButton = (props) => {
       {content}
     </Button>
   );
+};
+
+CustomButton.propTypes = {
+  type: PropTypes.string,
+  content: PropTypes.string,
+  variant: PropTypes.string,
+  className: PropTypes.string,
+  handleClick: PropTypes.func,
+  navigateTo: PropTypes.func,
 };
 
 export default CustomButton;

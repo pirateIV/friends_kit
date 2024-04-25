@@ -9,13 +9,13 @@ const UserSettings = () => {
     {
       icon: <SettingsIcon />,
       title: 'Settings',
-      path: '',
+      path: '/@me/settings',
       description: 'Access widget settings',
     },
     {
       icon: <HelpIcon />,
       title: 'Help',
-      path: '',
+      path: '/@me/help',
       description: 'Contact our support',
     },
     {

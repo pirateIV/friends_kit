@@ -1,5 +1,4 @@
-import { ButtonGroup } from '@material-tailwind/react';
-
+import PropTypes from 'prop-types';
 import Button from './CustomButton';
 import { nextBtnClass, prevBtnClass } from '../signup/steps';
 
@@ -22,6 +21,11 @@ const CustomButtonGroup = ({ prev, next }) => {
       />
     </div>
   );
+};
+
+CustomButtonGroup.propTypes = {
+  prev: PropTypes.func,
+  next: PropTypes.func,
 };
 
 export default CustomButtonGroup;

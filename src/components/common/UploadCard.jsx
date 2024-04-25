@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const UploadCard = ({ imageSrc, title, description, triggerPcUpload }) => {
   const uploadBanner = () => {
     switch (title) {
@@ -26,6 +28,13 @@ const UploadCard = ({ imageSrc, title, description, triggerPcUpload }) => {
       </div>
     </div>
   );
+};
+
+UploadCard.propTypes = {
+  imageSrc: PropTypes.string,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  triggerPcUpload: PropTypes.func,
 };
 
 export default UploadCard;

@@ -1,14 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { selectCurrentToken } from '@/auth/reducers/login/loginSlice';
 
 export const authApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:5000/api/',
     prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.token;
+      const token = selectCurrentToken(getState());
       if (token) {
         headers.set('authorization', `Bearer ${token}`);
       }
-      return headers;
     },
   }),
   endpoints: (builder) => ({
@@ -19,14 +19,10 @@ export const authApi = createApi({
         body: credentials,
       }),
     }),
-    // endpoint to fetch user details
     getUserDetails: builder.query({
       query: 'user',
     }),
   }),
 });
 
-// Export hooks for usage in functional components
-export const { useLoginMutation } = authApi;
-
-export const selectCurrentUser = (state) => state.auth.user;
+export const { useLoginMutation, useGetUserDetailsQuery } = authApi;

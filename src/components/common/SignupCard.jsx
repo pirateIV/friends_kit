@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import CustomButtonGroup from './CustomButtonGroup';
 import useCustomLocation from '@/hooks/useCustomLocation';
 
@@ -13,4 +14,9 @@ const SignupCard = ({ children, prev, next }) => {
   );
 };
 
-export default SignupCard;    
+SignupCard.propTypes = {
+  prev: PropTypes.func,
+  next: PropTypes.func,
+};
+
+export default SignupCard;

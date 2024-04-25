@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const SignupWrapper = ({ id, title, children }) => {
   return (
     <section id={id}>
@@ -11,6 +13,11 @@ const SignupWrapper = ({ id, title, children }) => {
       </div>
     </section>
   );
+};
+
+SignupWrapper.propTypes = {
+  id: PropTypes.string,
+  title: PropTypes.string,
 };
 
 export default SignupWrapper;

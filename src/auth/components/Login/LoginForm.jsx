@@ -48,7 +48,7 @@ const LoginForm = ({ login, isError }) => {
               type='password'
               name='password'
               label='Password'
-              autoComplete='current-password'
+              // autoComplete='current-password'
               placeholder='Enter your password'
             />
           </div>
