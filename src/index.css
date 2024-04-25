@@ -43,23 +43,26 @@ main > * {
   .settings-section {
     @apply block bg-white p-[30px] ml-[280px] border border-gray-300 h-full rounded-md;
   }
-  .settings-form {
+  /* .settings-form {
     @apply p-5;
-  }
+  } */
   .settings-form .control {
     @apply relative flex items-center;
   }
   .settings-form .field {
-    @apply border border-gray-500 mb-3 rounded-md;
+    @apply border border-gray-300 mb-3 pb-0.5 rounded-md;
   }
   .settings-form label {
-    @apply text-xs ps-1 text-gray-500;
+    @apply text-xs text-[.65rem] ps-2 text-gray-500;
+  }
+  .settings-form .form-icon {
+    @apply absolute h-6 w-6 flex-center left-[10px] text-gray-400 inset-y-0;
   }
   .settings-form .form-icon svg {
-    @apply absolute h-[17px] w-[17px] text-gray-400 inset-y-0;
+    @apply h-[17px] w-[17px];
   }
   .settings-form input {
-    @apply border-0 text-[#5b5d7e] h-9 w-full pl-10 mb-2 outline-none;
+    @apply border-0 text-[#5b5d7e] text-[.9rem] h-9 w-full pt-0 pl-10 pb-2 outline-none;
   }
 
   /* @media and (max-width: ) {

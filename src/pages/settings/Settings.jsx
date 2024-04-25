@@ -1,4 +1,14 @@
+import UserIcon from '@/shared/components/icons/UserIcon';
+import MessageIcon from '@/shared/components/icons/MessageIcon';
+import SettingsInput from '@/components/ui/SettingsInput';
+
 const Settings = () => {
+  const settingInputList = [
+    { id: 1, name: 'first-name', label: 'FIRST NAME', icon: <UserIcon /> },
+    { id: 2, name: 'last-name', label: 'LAST NAME', icon: <UserIcon /> },
+    { id: 3, name: 'email', label: 'EMAIL', icon: <MessageIcon /> },
+    { id: 4, name: 'backup-email', label: 'BACKUP EMAIL', icon: <MessageIcon /> },
+  ];
   return (
     <div className='settings'>
       <div className='settings-sidebar'>
@@ -15,45 +25,20 @@ const Settings = () => {
 
           <div className='settings-form-wrapper'>
             <div className='settings-form'>
-              <div className='grid'>
-                <div className='field'>
-                  <label htmlFor='first-name'>FIRST NAME</label>
-                  <div className='control'>
-                    <div className='form-icon'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                    </div>
-                    <input type='text' name='first-name' />
-                  </div>
-                </div>
-                <div className='field'>
-                  <label htmlFor='first-name'>FIRST NAME</label>
-                  <div className='control'>
-                    <div className='form-icon'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                    </div>
-                    <input type='text' name='first-name' />
-                  </div>
-                </div>
-                <div className='field'>
-                  <label htmlFor='first-name'>FIRST NAME</label>
-                  <div className='control'>
-                    <div className='form-icon'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                    </div>
-                    <input type='text' name='first-name' />
-                  </div>
-                </div>
-                <div className='field'>
-                  <label htmlFor='first-name'>FIRST NAME</label>
-                  <div className='control'>
-                    <div className='form-icon'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                    </div>
-                    <input type='text' name='first-name' />
-                  </div>
-                </div>
-              
+              <div className='grid grid-cols-2 gap-x-4'>
+                {settingInputList.map(({ id, name, icon, label }) => (
+                  <SettingsInput key={id} name={name} icon={icon} label={label} />
+                ))}
               </div>
+                <div className='field !pb-0'>
+                  <label htmlFor='address'>ADDRESS</label>
+                  <textarea
+                    name='address'
+                    className='w-full mt-1 text-[1rem] outline-none px-4'
+                    placeholder='Fill in your address...'
+                    cols='30'
+                    rows='3'></textarea>
+                </div>
             </div>
           </div>
         </div>
