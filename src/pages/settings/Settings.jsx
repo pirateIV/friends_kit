@@ -1,20 +1,21 @@
 import UserIcon from '@/shared/components/icons/UserIcon';
-import MessageIcon from '@/shared/components/icons/MessageIcon';
 import SettingsInput from '@/components/ui/SettingsInput';
-import settings1 from '@/assets/illustrations/settings/1.svg';
 import GlobeIcon from '@/shared/components/icons/GlobeIcon';
 import MapPinIcon from '@/shared/components/icons/MapPinIcon';
+import MessageIcon from '@/shared/components/icons/MessageIcon';
+import settings1 from '@/assets/illustrations/settings/1.svg';
 // import settings1_dark from '@/assets/illustrations/settings/1-dark.svg';
 
+const settingInputList = [
+  { id: 1, name: 'first-name', label: 'FIRST NAME', icon: <UserIcon /> },
+  { id: 2, name: 'last-name', label: 'LAST NAME', icon: <UserIcon /> },
+  { id: 3, name: 'email', label: 'EMAIL', icon: <MessageIcon /> },
+  { id: 4, name: 'backup-email', label: 'BACKUP EMAIL', icon: <MessageIcon /> },
+  { id: 5, name: 'city', label: 'CITY', icon: <MapPinIcon /> },
+  { id: 6, name: 'country', label: 'COUNTRY', icon: <GlobeIcon /> },
+];
+
 const Settings = () => {
-  const settingInputList = [
-    { id: 1, name: 'first-name', label: 'FIRST NAME', icon: <UserIcon /> },
-    { id: 2, name: 'last-name', label: 'LAST NAME', icon: <UserIcon /> },
-    { id: 3, name: 'email', label: 'EMAIL', icon: <MessageIcon /> },
-    { id: 4, name: 'backup-email', label: 'BACKUP EMAIL', icon: <MessageIcon /> },
-    { id: 4, name: 'city', label: 'CITY', icon: <MapPinIcon /> },
-    { id: 4, name: 'country', label: 'COUNTRY', icon: <GlobeIcon /> },
-  ];
   return (
     <div className='settings'>
       <div className='settings-sidebar'>
@@ -40,7 +41,7 @@ const Settings = () => {
                 <label htmlFor='address'>ADDRESS</label>
                 <textarea
                   name='address'
-                  className='w-full mt-1 text-[.9rem] outline-none px-4'
+                  className='w-full -mt-1 translate-y-2 h-full text-[.9rem] outline-none px-4'
                   placeholder='Fill in your address...'
                   cols='30'
                   rows='3'></textarea>

@@ -53,7 +53,7 @@ main > * {
     @apply relative flex items-center;
   }
   .settings-form .field {
-    @apply border border-gray-300 mb-3 pb-0.5 rounded-md;
+    @apply border border-gray-300 mb-3 rounded-md overflow-hidden;
   }
   .settings-form label {
     @apply text-xs text-[.65rem] ps-2 text-gray-500;

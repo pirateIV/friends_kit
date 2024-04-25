@@ -6,7 +6,7 @@ const SettingsInput = ({ label, name, icon }) => {
       <label htmlFor={name}>{label}</label>
       <div className='control'>
         <input type='text' className='peer' name={name} />
-        <div className='form-icon peer-focus:text-blue-400'>{icon}</div>
+        <div className='form-icon peer-focus:text-blue-600'>{icon}</div>
       </div>
     </div>
   );
