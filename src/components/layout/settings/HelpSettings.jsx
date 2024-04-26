@@ -1,9 +1,7 @@
 import SettingsLayout from './SettingsLayout';
 
 const HelpSettings = () => {
-  return (
-      <SettingsLayout title='Help Settings'></SettingsLayout>
-  )
-}
+  return <SettingsLayout title='Help Settings'></SettingsLayout>;
+};
 
-export default HelpSettings
+export default HelpSettings;

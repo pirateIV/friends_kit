@@ -1,7 +1,7 @@
-import SettingsLayout from "./SettingsLayout"
+import SettingsLayout from './SettingsLayout';
 
 const Notifications = () => {
-  <SettingsLayout title="Notifications"></SettingsLayout>
-}
+  return <SettingsLayout title='Notifications'></SettingsLayout>;
+};
 
-export default Notifications
+export default Notifications;

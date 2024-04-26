@@ -44,8 +44,8 @@ const MenuBlock = ({ tabs, activeTab, setActiveTab }) => (
     <ul>
       {tabs.map((tab) => (
         <TabList
-          key={tab.id}
           tab={tab}
+          key={tab.id}
           activeTab={activeTab}
           handleClick={() => setActiveTab(tab.id)}
         />
@@ -77,19 +77,19 @@ const Settings = () => {
 
         <div className='user-menu divide-y divide-gray-300 h-full overflow-auto'>
           <MenuBlock
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
             tabs={settingsTabs.slice(0, 3)}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
           />
           <MenuBlock
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
             tabs={settingsTabs.slice(3, 5)}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
           />
           <MenuBlock
-            tabs={settingsTabs.slice(5, 7)}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
+            tabs={settingsTabs.slice(5, 7)}
           />
         </div>
       </div>
