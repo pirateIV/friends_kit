@@ -1,7 +1,7 @@
+import SettingsLayout from "./SettingsLayout"
+
 const Notifications = () => {
-  return (
-    <div>Notifications</div>
-  )
+  <SettingsLayout title="Notifications"></SettingsLayout>
 }
 
 export default Notifications

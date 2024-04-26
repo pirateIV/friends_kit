@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* import for image sprites */
+@import url('../src/assets/css/sprites.css');
+
 main > * {
   min-height: 100vh;
 }
@@ -77,10 +80,10 @@ main > * {
     @apply h-11 min-w-40 text-sm rounded-md mb-2 mr-2;
   }
   .settings .user-block {
-    @apply mx-5 mt-5 border-b h-24 border-gray-400;
+    @apply mx-5 mt-5 border-b h-24 border-gray-300;
   }
   .settings .avatar {
-    @apply relative flex items-center gap-9 p-2 border border-gray-400 w-auto rounded-full;
+    @apply relative flex items-center gap-9 p-2 border border-gray-300 w-auto rounded-full;
   }
   .settings .badge {
     @apply absolute bottom-0 right-0 w-3 h-3 text-white bg-green-500 p-1 rounded-full;
@@ -89,17 +92,16 @@ main > * {
     @apply flex items-center cursor-pointer font-montserrat;
   }
   .tab-item a {
-    @apply first-letter:uppercase py-[14px] px-10 w-full hover:bg-gray-100 border-l-4 transition-colors;
+    @apply flex items-center gap-4 py-[14px] px-10 w-full hover:bg-gray-100 border-l-4 transition-colors;
   }
   .tab-item span {
-    @apply text-[.8rem] text-[#a5a5a5] font-semibold;
+    @apply text-[.8rem] first-letter:uppercase font-semibold;
   }
 }
 
 .cropper {
   height: 300px !important;
 }
-
 .transition-03 {
   transition: all 0.3s ease;
 }

@@ -1,7 +1,7 @@
-const SecuritySettings = () => {
-  return (
-    <div>SecuritySettings</div>
-  )
-}
+import SettingsLayout from './SettingsLayout';
 
-export default SecuritySettings
+const SecuritySettings = () => {
+  return <SettingsLayout title='Security Settings'></SettingsLayout>;
+};
+
+export default SecuritySettings;

@@ -18,6 +18,7 @@ const SignupWrapper = ({ id, title, children }) => {
 SignupWrapper.propTypes = {
   id: PropTypes.string,
   title: PropTypes.string,
+  children: PropTypes.node.isRequired,
 };
 
 export default SignupWrapper;

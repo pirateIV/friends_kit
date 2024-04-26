@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { Avatar } from '@material-tailwind/react';
 import PropTypes from 'prop-types';
+import { Avatar } from '@material-tailwind/react';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import GeneralSettings from '@/components/layout/settings/GeneralSettings';
 import SecuritySettings from '@/components/layout/settings/SecuritySettings';
 import AccountSettings from '@/components/layout/settings/AccountSettings';
@@ -8,17 +10,16 @@ import PrivacySettings from '@/components/layout/settings/PrivacySettings';
 import Preferences from '@/components/layout/settings/Preferences';
 import Notifications from '@/components/layout/settings/Notifications';
 import HelpSettings from '@/components/layout/settings/HelpSettings';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import sprites from '../../assets/sprites/settings_icons.svg';
 
 const settingsTabs = [
-  { id: 1, section: 'general', tabIcon: '', tab: <GeneralSettings /> },
-  { id: 2, section: 'security', tabIcon: '', tab: <SecuritySettings /> },
-  { id: 3, section: 'personal', tabIcon: '', tab: <AccountSettings /> },
-  { id: 4, section: 'privacy', tabIcon: '', tab: <PrivacySettings /> },
-  { id: 5, section: 'preferences', tabIcon: '', tab: <Preferences /> },
-  { id: 6, section: 'notifications', tabIcon: '', tab: <Notifications /> },
-  { id: 7, section: 'help', tabIcon: '', tab: <HelpSettings /> },
+  { id: 1, section: 'general', tab: <GeneralSettings /> },
+  { id: 2, section: 'security', tab: <SecuritySettings /> },
+  { id: 3, section: 'account', tab: <AccountSettings /> },
+  { id: 4, section: 'privacy', tab: <PrivacySettings /> },
+  { id: 5, section: 'preferences', tab: <Preferences /> },
+  { id: 6, section: 'notifications', tab: <Notifications /> },
+  { id: 7, section: 'help', tab: <HelpSettings /> },
 ];
 
 const TabList = ({ tab, activeTab, handleClick }) => {
@@ -27,11 +28,31 @@ const TabList = ({ tab, activeTab, handleClick }) => {
   return (
     <li id={tab.section} className='tab-item' data-section={`${tab.section}`}>
       <a href={`#${tab.section}`} className={tabState} onClick={handleClick}>
-        <span>{tab.section}</span>
+        <svg className='text-gray-400 max-h-[18px] max-w-[18px]'>
+          <use height='18' width='18' href={`${sprites}#${tab.section}`}></use>
+        </svg>
+        <span className={tab.id === activeTab ? 'text-gray-900' : 'text-[#a5a5a5]'}>
+          {tab.section}
+        </span>
       </a>
     </li>
   );
 };
+
+const MenuBlock = ({ tabs, activeTab, setActiveTab }) => (
+  <div className='menu-block py-5'>
+    <ul>
+      {tabs.map((tab) => (
+        <TabList
+          key={tab.id}
+          tab={tab}
+          activeTab={activeTab}
+          handleClick={() => setActiveTab(tab.id)}
+        />
+      ))}
+    </ul>
+  </div>
+);
 
 const Settings = () => {
   const [activeTab, setActiveTab] = useState(1);
@@ -54,47 +75,22 @@ const Settings = () => {
           </div>
         </div>
 
-        {/* for an active class: text-[#393a4f] */}
-
         <div className='user-menu divide-y divide-gray-300 h-full overflow-auto'>
-          <div className='menu-block py-5'>
-            <ul>
-              {settingsTabs.slice(0, 3).map((tab) => (
-                <TabList
-                  key={tab.id}
-                  tab={tab}
-                  activeTab={activeTab}
-                  handleClick={() => setActiveTab(tab.id)}
-                />
-              ))}
-            </ul>
-          </div>
-
-          <div className='menu-block py-5'>
-            <ul>
-              {settingsTabs.slice(3, 5).map((tab) => (
-                <TabList
-                  key={tab.id}
-                  tab={tab}
-                  activeTab={activeTab}
-                  handleClick={() => setActiveTab(tab.id)}
-                />
-              ))}
-            </ul>
-          </div>
-
-          <div className='menu-block py-5'>
-            <ul>
-              {settingsTabs.slice(5, 7).map((tab) => (
-                <TabList
-                  key={tab.id}
-                  tab={tab}
-                  activeTab={activeTab}
-                  handleClick={() => setActiveTab(tab.id)}
-                />
-              ))}
-            </ul>
-          </div>
+          <MenuBlock
+            tabs={settingsTabs.slice(0, 3)}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
+          <MenuBlock
+            tabs={settingsTabs.slice(3, 5)}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
+          <MenuBlock
+            tabs={settingsTabs.slice(5, 7)}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
         </div>
       </div>
       {settingsTabs.map((tab) => (tab.id === activeTab ? tab.tab : null))}
@@ -106,6 +102,12 @@ TabList.propTypes = {
   tab: PropTypes.object,
   activeTab: PropTypes.number,
   handleClick: PropTypes.func,
+};
+
+MenuBlock.propTypes = {
+  tabs: PropTypes.array,
+  activeTab: PropTypes.number,
+  setActiveTab: PropTypes.func,
 };
 
 export default Settings;

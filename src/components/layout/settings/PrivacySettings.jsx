@@ -1,7 +1,7 @@
+import SettingsLayout from './SettingsLayout';
+
 const PrivacySettings = () => {
-  return (
-    <div>PrivacySettings</div>
-  )
+  return  <SettingsLayout title='Privacy Settings'></SettingsLayout>
 }
 
 export default PrivacySettings

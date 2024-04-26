@@ -1,6 +1,8 @@
+import SettingsLayout from './SettingsLayout';
+
 const HelpSettings = () => {
   return (
-    <div>HelpSettings</div>
+      <SettingsLayout title='Help Settings'></SettingsLayout>
   )
 }
 

@@ -12,7 +12,6 @@ const AccountCard = ({ id, type, title, imgSrc }) => {
               className='max-w-full h-auto scale-125 -translate-y-[20%]'
               height='253'
               width='328'
-              alt='company'
             />
           </div>
           <div className='card-content'>

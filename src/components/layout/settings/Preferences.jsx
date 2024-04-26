@@ -1,7 +1,7 @@
+import SettingsLayout from './SettingsLayout';
+
 const Preferences = () => {
-  return (
-    <div>Preferences</div>
-  )
+  return <SettingsLayout title='Preferences'></SettingsLayout>;
 }
 
 export default Preferences

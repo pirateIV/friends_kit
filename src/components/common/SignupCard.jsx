@@ -17,6 +17,7 @@ const SignupCard = ({ children, prev, next }) => {
 SignupCard.propTypes = {
   prev: PropTypes.func,
   next: PropTypes.func,
+  children: PropTypes.node.isRequired,
 };
 
 export default SignupCard;
