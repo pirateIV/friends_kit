@@ -15,7 +15,7 @@ const SettingsInput = ({ label, name, icon }) => {
 SettingsInput.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
-  icon: PropTypes.string,
+  icon: PropTypes.object,
 };
 
 export default SettingsInput;

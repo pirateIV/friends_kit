@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Avatar } from '@material-tailwind/react';
-import { CheckIcon } from '@radix-ui/react-icons';
+import PropTypes from 'prop-types';
 import GeneralSettings from '@/components/layout/settings/GeneralSettings';
 import SecuritySettings from '@/components/layout/settings/SecuritySettings';
 import AccountSettings from '@/components/layout/settings/AccountSettings';
@@ -21,18 +21,13 @@ const settingsTabs = [
   { id: 7, section: 'help', tabIcon: '', tab: <HelpSettings /> },
 ];
 
-const TabList = ({ tab, handleClick }) => {
+const TabList = ({ tab, activeTab, handleClick }) => {
+  const tabState = ` ${tab.id === activeTab ? 'border-blue-400' : 'border-transparent'}`;
+
   return (
-    <li
-      key={tab.id}
-      id={tab.section}
-      className='flex items-center cursor-pointer font-montserrat '
-      data-section={`${tab.section}`}>
-      <a
-        href={`#${tab.section}`}
-        className='first-letter:uppercase py-[14px] px-10 w-full hover:bg-gray-100 border-l-8 border-transparent'
-        onClick={handleClick}>
-        <span className='text-[.8rem] text-[#a5a5a5] font-semibold'>{tab.section}</span>
+    <li id={tab.section} className='tab-item' data-section={`${tab.section}`}>
+      <a href={`#${tab.section}`} className={tabState} onClick={handleClick}>
+        <span>{tab.section}</span>
       </a>
     </li>
   );
@@ -41,9 +36,6 @@ const TabList = ({ tab, handleClick }) => {
 const Settings = () => {
   const [activeTab, setActiveTab] = useState(1);
 
-  // const handleTabClick = () => {
-  //   setActiveTab();
-  // };
   return (
     <div className='settings'>
       <div className='settings-sidebar'>
@@ -64,37 +56,40 @@ const Settings = () => {
 
         {/* for an active class: text-[#393a4f] */}
 
-        <div className='user-menu overflow-scroll'>
+        <div className='user-menu divide-y divide-gray-300 h-full overflow-auto'>
           <div className='menu-block py-5'>
             <ul>
               {settingsTabs.slice(0, 3).map((tab) => (
                 <TabList
                   key={tab.id}
                   tab={tab}
+                  activeTab={activeTab}
                   handleClick={() => setActiveTab(tab.id)}
                 />
               ))}
             </ul>
           </div>
-          <div className=' divide-y divide-gray-600'></div>
+
           <div className='menu-block py-5'>
             <ul>
               {settingsTabs.slice(3, 5).map((tab) => (
                 <TabList
                   key={tab.id}
                   tab={tab}
+                  activeTab={activeTab}
                   handleClick={() => setActiveTab(tab.id)}
                 />
               ))}
             </ul>
           </div>
-          <div className=' divide-y divide-gray-600'></div>
+
           <div className='menu-block py-5'>
             <ul>
               {settingsTabs.slice(5, 7).map((tab) => (
                 <TabList
                   key={tab.id}
                   tab={tab}
+                  activeTab={activeTab}
                   handleClick={() => setActiveTab(tab.id)}
                 />
               ))}
@@ -105,6 +100,12 @@ const Settings = () => {
       {settingsTabs.map((tab) => (tab.id === activeTab ? tab.tab : null))}
     </div>
   );
+};
+
+TabList.propTypes = {
+  tab: PropTypes.object,
+  activeTab: PropTypes.number,
+  handleClick: PropTypes.func,
 };
 
 export default Settings;
