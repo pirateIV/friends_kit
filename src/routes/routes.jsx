@@ -12,7 +12,7 @@ import AccountCreated from '@/components/signup/steps/AccountCreated';
 import AuthorizeAccount from '@/components/signup/steps/AuthorizeAccount';
 
 // user
-import Friends from '@/pages/friends/Friends';
+// import Friends from '@/pages/friends/Friends';
 import Settings from '@/pages/settings/Settings';
 import UserProfileMain from '@/pages/user_profile/UserProfileMain';
 import UserProfileMinimal from '@/pages/user_profile/UserProfileMinimal';

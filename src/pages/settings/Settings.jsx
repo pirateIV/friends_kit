@@ -30,7 +30,7 @@ const TabList = ({ tab, handleClick }) => {
       data-section={`${tab.section}`}>
       <a
         href={`#${tab.section}`}
-        className='first-letter:uppercase py-[14px] px-10 w-full hover:bg-gray-100 border-l-8 border-white'
+        className='first-letter:uppercase py-[14px] px-10 w-full hover:bg-gray-100 border-l-8 border-transparent'
         onClick={handleClick}>
         <span className='text-[.8rem] text-[#a5a5a5] font-semibold'>{tab.section}</span>
       </a>
