@@ -39,10 +39,10 @@ const router = createBrowserRouter([
         path: '@me',
         element: <UserProfileMain />,
       },
-      {
-        path: '@me/friends',
-        element: <Friends />,
-      },
+      // {
+      //   path: '@me/friends',
+      //   element: <Friends />,
+      // },
       {
         path: '@me/about',
         element: <AboutUser />,
