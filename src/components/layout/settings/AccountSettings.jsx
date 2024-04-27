@@ -1,7 +1,7 @@
 import SettingsLayout from './SettingsLayout';
 
 const AccountSettings = () => {
-  return <SettingsLayout title='Personal'></SettingsLayout>;
+  return <SettingsLayout tab='3' title='Personal'></SettingsLayout>;
 };
 
 export default AccountSettings;

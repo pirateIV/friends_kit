@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { getTheme } from '@/redux/reducers/themeReducer';
-import settings1_dark from '@/assets/illustrations/settings/1-dark.svg';
-import settings1 from '@/assets/illustrations/settings/1.svg';
+import sprites from '@/assets/sprites/settings_illustrations.svg';
 
-const SettingsLayout = ({ id, title, children }) => {
+const SettingsLayout = ({ id, tab, title, children }) => {
   const theme = useSelector(getTheme());
 
   return (
@@ -15,11 +14,19 @@ const SettingsLayout = ({ id, title, children }) => {
             {title}
           </h2>
         </div>
-
         <div className='settings-form-wrapper'>
           <div className='settings-form'>{children}</div>
           <div className='illustration'>
-            <img src={theme === 'light' ? settings1 : settings1_dark} alt='' />
+            <svg>
+              <use
+                href={
+                  theme === 'light'
+                    ? `${sprites}#${tab}`
+                    : tab == '2' || tab == '6'
+                    ? `${sprites}#${tab}`
+                    : `${sprites}#${tab}-dark`
+                }></use>
+            </svg>
             <p className='text-sm m-5 mx-auto'>
               If you&apos;d like to learn more about general settings, you can read about
               it in the{' '}
@@ -37,6 +44,7 @@ const SettingsLayout = ({ id, title, children }) => {
 SettingsLayout.propTypes = {
   id: PropTypes.string,
   title: PropTypes.string,
+  tab: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
 

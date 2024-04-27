@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* import for image sprites */
-@import url('../src/assets/css/sprites.css');
+/* @import url('../src/assets/css/sprites.css'); */
 
 main > * {
   min-height: 100vh;

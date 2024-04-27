@@ -1,11 +1,7 @@
 import SettingsLayout from './SettingsLayout';
 
 const SecuritySettings = () => {
-  return (
-    <SettingsLayout title='Security'>
-     
-    </SettingsLayout>
-  );
+  return <SettingsLayout tab='2' title='Security'></SettingsLayout>;
 };
 
 export default SecuritySettings;

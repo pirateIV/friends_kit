@@ -4,7 +4,7 @@ import SettingsInput from '@/components/ui/SettingsInput';
 
 const GeneralSettings = () => {
   return (
-    <SettingsLayout id='general settings' title='General Settings'>
+    <SettingsLayout tab='1' id='general settings' title='General Settings'>
       <div>
         <div className='grid grid-cols-2 gap-x-4'>
           {settingInputList.slice(0, 4).map(({ id, name, icon, label }) => (
