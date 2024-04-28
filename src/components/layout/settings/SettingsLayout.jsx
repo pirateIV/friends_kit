@@ -21,10 +21,10 @@ const SettingsLayout = ({ id, tab, title, children }) => {
               <use
                 href={
                   theme === 'light'
-                    ? `${sprites}#${tab}`
+                    ? `${sprites}#svg${tab}`
                     : tab == '2' || tab == '6'
-                    ? `${sprites}#${tab}`
-                    : `${sprites}#${tab}-dark`
+                    ? `${sprites}#svg${tab}`
+                    : `${sprites}#svg${tab}-dark`
                 }></use>
             </svg>
             <p className='text-sm m-5 mx-auto'>

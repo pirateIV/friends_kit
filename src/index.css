@@ -119,22 +119,8 @@ main > * {
   width: calc(100% - 280px);
 }
 
-/* st .st0 {
-  fill: #e6e6e6;
+/* .st0{fill:#e6e6e6}.st1{fill:#2f2e41}.st2{fill:#575a89}.st3{fill:#ffb8b8}.st4{opacity:.2;enable-background:new}.st5{fill:#fff} */
+
+#svg1 {
+  fill: red;
 }
-st .st1 {
-  fill: #2f2e41;
-}
-st .st2 {
-  fill: #575a89;
-}
-.st3 {
-  fill: #ffb8b8;
-}
-.st4 {
-  opacity: 0.2;
-  enable-background: new;
-}
-.st5 {
-  fill: #fff;
-} */
