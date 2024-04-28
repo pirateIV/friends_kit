@@ -15,6 +15,7 @@ const DropdownItem = ({ path, children }) => {
 
 DropdownItem.propTypes = {
   path: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default DropdownItem;

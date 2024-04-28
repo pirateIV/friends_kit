@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
-const SettingsInput = ({ label, name, icon }) => {
+const SettingsInput = ({ label, name, span, icon }) => {
   return (
-    <div className='field'>
+    <div className={`field ${span}`}>
       <label htmlFor={name}>{label}</label>
       <div className='control'>
         <input type='text' className='peer' name={name} />
@@ -16,6 +16,7 @@ SettingsInput.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
   icon: PropTypes.object,
+  span: PropTypes.string,
 };
 
 export default SettingsInput;

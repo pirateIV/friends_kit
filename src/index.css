@@ -70,6 +70,9 @@ main > * {
   .settings-form input {
     @apply border-0 text-[#5b5d7e] text-[.9rem] h-9 w-full pt-0 pl-10 pb-2 outline-none;
   }
+  .settings .user-menu {
+    @apply divide-y divide-gray-300 h-full overflow-auto;
+  }
   .settings .illustration {
     @apply p-10 flex-grow-[2];
   }
@@ -87,6 +90,9 @@ main > * {
   }
   .settings .badge {
     @apply absolute bottom-0 right-0 w-3 h-3 text-white bg-green-500 p-1 rounded-full;
+  }
+  .settings .form-text {
+    @apply p-3 text-sm max-w-[450px];
   }
   .tab-item {
     @apply flex items-center cursor-pointer font-montserrat;
@@ -112,3 +118,23 @@ main > * {
 .settings-section {
   width: calc(100% - 280px);
 }
+
+/* st .st0 {
+  fill: #e6e6e6;
+}
+st .st1 {
+  fill: #2f2e41;
+}
+st .st2 {
+  fill: #575a89;
+}
+.st3 {
+  fill: #ffb8b8;
+}
+.st4 {
+  opacity: 0.2;
+  enable-background: new;
+}
+.st5 {
+  fill: #fff;
+} */

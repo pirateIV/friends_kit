@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Avatar } from '@material-tailwind/react';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -23,6 +23,7 @@ const settingsTabs = [
 ];
 
 const TabList = ({ tab, activeTab, handleClick }) => {
+  const textState = tab.id === activeTab ? 'text-gray-900' : 'text-[#a5a5a5]';
   const tabState = ` ${tab.id === activeTab ? 'border-blue-400' : 'border-transparent'}`;
 
   return (
@@ -31,9 +32,7 @@ const TabList = ({ tab, activeTab, handleClick }) => {
         <svg className='text-gray-400 max-h-[18px] max-w-[18px]'>
           <use height='18' width='18' href={`${sprites}#${tab.section}`}></use>
         </svg>
-        <span className={tab.id === activeTab ? 'text-gray-900' : 'text-[#a5a5a5]'}>
-          {tab.section}
-        </span>
+        <span className={textState}>{tab.section}</span>
       </a>
     </li>
   );
@@ -56,17 +55,15 @@ const MenuBlock = ({ tabs, activeTab, setActiveTab }) => (
 
 const Settings = () => {
   const [activeTab, setActiveTab] = useState(1);
+  const avatarSrc =
+    'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80';
 
   return (
     <div className='settings'>
       <div className='settings-sidebar'>
         <div className='user-block'>
           <div className='avatar'>
-            <Avatar
-              src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80'
-              className='h-[58px] w-[58px] rounded-full'
-              alt=''
-            />
+            <Avatar src={avatarSrc} className='h-[58px] w-[58px] rounded-full' alt='' />
             <div className='user leading-[1]'>
               <h4 className='name'>John Doe</h4>
               <small className='text-xs text-gray-500'>Melbourne, AU</small>
@@ -75,7 +72,7 @@ const Settings = () => {
           </div>
         </div>
 
-        <div className='user-menu divide-y divide-gray-300 h-full overflow-auto'>
+        <div className='user-menu'>
           <MenuBlock
             activeTab={activeTab}
             setActiveTab={setActiveTab}
@@ -93,7 +90,9 @@ const Settings = () => {
           />
         </div>
       </div>
-      {settingsTabs.map((tab) => (tab.id === activeTab ? tab.tab : null))}
+      <Suspense fallback='loading...'>
+        {settingsTabs.map((tab) => (tab.id === activeTab ? tab.tab : null))}
+      </Suspense>
     </div>
   );
 };

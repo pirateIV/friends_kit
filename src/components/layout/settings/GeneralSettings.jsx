@@ -1,17 +1,13 @@
-import { settingInputList } from '.';
+import InputGroup from './InputGroup';
 import SettingsLayout from './SettingsLayout';
-import SettingsInput from '@/components/ui/SettingsInput';
 
 const GeneralSettings = () => {
   return (
-    <SettingsLayout tab='1' id='general settings' title='General Settings'>
-      <div>
-        <div className='grid grid-cols-2 gap-x-4'>
-          {settingInputList.slice(0, 4).map(({ id, name, icon, label }) => (
-            <SettingsInput key={id} name={name} icon={icon} label={label} />
-          ))}
-        </div>
-        <div className='field !pb-0'>
+    <SettingsLayout tab='1' id='general-settings' title='General Settings'>
+      <div className='grid grid-cols-4 gap-x-4'>
+        <InputGroup start='0' end='4' />
+
+        <div className='field !pb-0 col-span-4'>
           <label htmlFor='address'>ADDRESS</label>
           <textarea
             name='address'
@@ -21,18 +17,14 @@ const GeneralSettings = () => {
             rows='3'></textarea>
         </div>
 
-        <p className='p-3 text-sm max-w-[450px]'>
+        <p className='form-text col-span-4'>
           Be sure to fill out your location settings. This will help us suggest you
           relevant friends and places you could like.
         </p>
 
-        <div className='grid grid-cols-2 gap-x-4 mt-3'>
-          {settingInputList.slice(4, 6).map(({ id, name, icon, label }) => (
-            <SettingsInput key={id} name={name} icon={icon} label={label} />
-          ))}
-        </div>
+        <InputGroup start='4' end='6' />
 
-        <div className='settings-buttons mt-5'>
+        <div className='settings-buttons mt-5 col-span-4'>
           <button className='bg-green-600 text-white hover:bg-green-700'>
             Save changes
           </button>

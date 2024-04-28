@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-
+import PropTypes from 'prop-types';
 import { profileProps } from '..';
 import ProfileMenu from '@/components/ProfileMenu';
 import ProfileHeader from '@/components/ProfileHeader';
@@ -36,6 +36,10 @@ const UserProfileMain = ({ children }) => {
       {children}
     </div>
   );
+};
+
+UserProfileMain.propTypes = {
+  children: PropTypes.node,
 };
 
 export default UserProfileMain;

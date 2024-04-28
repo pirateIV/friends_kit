@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { currentProgress } from '@/redux/reducers/progressReducer';
 
@@ -27,6 +28,10 @@ const ProgressBar = ({ children }) => {
       </div>{' '}
     </div>
   );
+};
+
+ProgressBar.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default ProgressBar;

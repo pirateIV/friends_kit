@@ -28,7 +28,7 @@ const UserProfileMinimal = () => {
                     <PlusIcon />
                   </a>
                 </div>
-                <button className='inline-flex-center border border-gray-300 p-2 w-full font-medium gap-1 rounded-md hover:border-gray-400'>
+                <button className='inline-flex-center border border-gray-300 p-2 w-full font-medium gap-1 rounded-md hover:border-gray-400' type='button'>
                   <FontAwesomeIcon icon={faCamera} />
                   Update cover
                 </button>
