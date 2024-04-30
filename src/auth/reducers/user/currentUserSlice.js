@@ -1,23 +1,43 @@
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { selectCurrentToken } from '../login/loginSlice';
 import axios from 'axios';
 
 const baseUrl = 'http://localhost:5000/api/users/user';
 
-import { createSlice } from '@reduxjs/toolkit';
+export const getCurrentUser = createAsyncThunk(
+  '/users/getCurrentUser',
+  async (_, thunkApi) => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await axios.get(baseUrl, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      // console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.log(error.response.data);
+      return thunkApi.rejectWithValue(error.response.data);
+    }
+  }
+);
 
 const currentUserReducer = createSlice({
   name: 'currentUser',
-  initialState: null,
+  initialState: { user: null, isAuthenticated: false },
   reducers: {
-    async getCurrentUser(state, action) {
-      const token = localStorage.getItem('token');
-      const res = await axios.get(baseUrl, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      return res.data;
+    setIsAuthenticated(state, { payload }) {
+      state.isAuthenticated = payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(getCurrentUser.fulfilled, (state, { payload }) => {
+      state.user = payload;
+    });
   },
 });
 
-export const { getCurrentUser } = currentUserReducer.actions;
+export const { setIsAuthenticated } = currentUserReducer.actions;
+
+export const selectCurrentUser = (state) => state.currentUser.user;
 
 export default currentUserReducer.reducer;

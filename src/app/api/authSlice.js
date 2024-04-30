@@ -29,4 +29,4 @@ export const authApi = createApi({
 // Export hooks for usage in functional components
 export const { useLoginMutation } = authApi;
 
-export const selectCurrentUser = (state) => state.auth.user;
+// export const selectCurrentUser = (state) => state.auth.user;

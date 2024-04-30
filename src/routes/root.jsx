@@ -1,18 +1,28 @@
-import { Navigate, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-
-const baseUrl = 'http://localhost:5000/api/users/user';
+import App from '@/App';
+import Login from '@/auth/pages/Login/Login';
+import { selectCurrentToken, setCredentials } from '@/auth/reducers/login/loginSlice';
+import { getCurrentUser } from '@/auth/reducers/user/currentUserSlice';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, useLocation, Outlet, useNavigate } from 'react-router-dom';
 
 const Root = () => {
   const location = useLocation();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const isAuthenticated = useSelector((state) => state.currentUser.isAuthenticated);
+  // const navigate = useNavigate();
 
-  return isAuthenticated ? (
-    <Navigate to='/' state={{ from: location }} />
-  ) : (
-    <Navigate to='/login' state={{ from: location }} />
-  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setCredentials(selectCurrentToken));
+  }, []);
+  
+  console.log(isAuthenticated, 'isAuthenticated');
+  return isAuthenticated && <App>{<Outlet />}</App>;
+  // :
+  //  (
+  // <Navigate to='/loginff' state={{ from: location }} />
+  // );
 };
 
 export default Root;
