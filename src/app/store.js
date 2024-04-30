@@ -8,7 +8,7 @@ import authReducer from '@/auth/reducers/login/loginSlice';
 import usersFilterReducer from '@/components/profile/friends/userFilterSlice';
 import searchQueryReducer from '@/components/profile/friends/searchQuerySlice';
 import uploadAreaReducer from '@/components/modals/ui/uploadAreaSlice';
-import currentUserReducer from '@/auth/reducers/user/currentUserSlice';
+// import currentUserReducer from '@/auth/reducers/user/currentUserSlice';
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   query: searchQueryReducer,
   progress: progressReducer,
   usersFilter: usersFilterReducer,
-  currentUser: currentUserReducer,
+  // currentUser: currentUserReducer,
   uploadArea: uploadAreaReducer,
   [authApi.reducerPath]: authApi.reducer,
 });

@@ -1,18 +1,15 @@
 import * as Yup from 'yup';
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 
+import { submitBtnClass } from '.';
 import InputField from '@/components/common/InputField';
 import ForgotPassword from '@/components/login/ForgotPassword';
 import { setCredentials } from '@/auth/reducers/login/loginSlice';
-import { submitBtnClass } from '.';
-import {
-  getCurrentUser,
-  setIsAuthenticated,
-} from '@/auth/reducers/user/currentUserSlice';
-import { useEffect } from 'react';
+import { getCurrentUser, setIsAuthenticated } from '@/auth/reducers/login/loginSlice';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('required!'),
@@ -27,14 +24,16 @@ const LoginSchema = Yup.object().shape({
 
 const LoginForm = ({ login, isError }) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.currentUser.user);
-  const isAuthenticated = useSelector((state) => state.currentUser.isAuthenticated);
   const navigate = useNavigate();
+
+  const user = useSelector((state) => state.auth.user);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   console.log(user);
 
   const submitForm = async (values) => {
-    const token = await login(values).unwrap();
+    const { token } = await login(values).unwrap();
+    console.log(token);
     localStorage.setItem('token', token);
     dispatch(setCredentials(token));
     dispatch(getCurrentUser());
