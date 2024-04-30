@@ -20,7 +20,7 @@ const InputField = ({ label, type, ...props }) => {
             label={label}
             icon={iconType}
             type={inputType}
-            className='!outline-none'
+            className='!outline-none dark:!text-white'
             color={meta.error ? 'red' : 'blue'}
           />
         </div>
