@@ -3,7 +3,22 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   user: null,
   token: localStorage.getItem('token') || null,
+  isAuthenticated: false,
+  loading: false,
+  error: null,
 };
+
+// const authenticateUser = createAsyncThunk('users/authenticateUser', async () => {
+//   await axios
+//     .get(baseUrl, {
+//       headers: { Authorization: `Bearer ${initialState.token}` },
+//     })
+//     .then((res) => {
+//       initialState.isAuthenticated = true;
+//       console.log(res.data);
+//     })
+//     .catch((err) => console.log(err));
+// });
 
 const authReducer = createSlice({
   name: 'auth',
@@ -20,6 +35,7 @@ const authReducer = createSlice({
       state.token = null;
       localStorage.removeItem('token');
     },
+    authenticateUser: (state, action) => {},
   },
 });
 

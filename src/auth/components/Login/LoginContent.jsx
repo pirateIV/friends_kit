@@ -1,49 +1,57 @@
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useLoginMutation } from '@/app/api/authSlice';
+import { getTheme } from '@/redux/reducers/themeReducer';
 import AuthContainer from '@/auth/components/AuthContainer';
 import FakeNavigation from '@/auth/components/FakeNavigation';
-import LoginIllustration from './LoginIllustration';
+
+import Wrapper from './Wrapper';
+import LoginForm from './LoginForm';
+import LoginAlert from './LoginAlert';
+import LoginMessage from './LoginMessage';
 import LoginFormContainer from './LoginFormContainer';
 
-const LoginContent = ({ login, error, isError, setIsError }) => {
+const LoginContent = () => {
+  const theme = useSelector(getTheme());
+
+  const [isError, setIsError] = useState(false);
+  const [login, { error }] = useLoginMutation();
+
+  useEffect(() => {
+    if (error) {
+      console.log(error);
+      setIsError(true);
+    }
+    setTimeout(() => setIsError(false), 5000);
+  }, [error]);
+
+  let content;
+
+  if (error) {
+    if (error.status === 'FETCH_ERROR') {
+      content = 'Please connect to the internet';
+    } else if (error.data.error) {
+      content = error.data.error;
+    }
+  }
+
   return (
     <AuthContainer>
       <FakeNavigation />
-      <section className='p-2' style={{ height: 'calc(100vh - 100px)' }}>
-        <div className='flex-center max-w-[1140px] w-full h-full mx-auto'>
-          <LoginIllustration />
-          <aside className='w-full px-10 sm:px-0 mx-auto sm:w-3/4 md:w-[67%] lg:w-1/2'>
-            <div>
-              <h2 className='text-[1.5rem] font-montserrat font-normal dark:text-[#fafafa]'>
-                Welcome back
-              </h2>
-              <small className='dark:text-gray-200/50'>
-                Enter your credentials to sign in.
-              </small>
-            </div>
-            <LoginFormContainer
-              error={error}
-              login={login}
-              isError={isError}
-              setIsError={setIsError}
-            />
-            <div className='mt-5 lg:w-3/4 text-center'>
-              <Link to='/signup' className='text-sm text-gray-500 hover:text-blue-500'>
-                Don&apos;t have an account? Sign Up
-              </Link>
-            </div>
-          </aside>
-        </div>
-      </section>
+      <Wrapper>
+        <LoginFormContainer>
+          <LoginAlert content={content} isError={isError} />
+          <LoginForm
+            login={login}
+            theme={theme}
+            isError={isError}
+            setIsError={setIsError}
+          />
+        </LoginFormContainer>
+        <LoginMessage />
+      </Wrapper>
     </AuthContainer>
   );
-};
-
-LoginContent.propTypes = {
-  login: PropTypes.func,
-  error: PropTypes.func,
-  isError: PropTypes.bool.isRequired,
-  setIsError: PropTypes.func,
 };
 
 export default LoginContent;

@@ -19,9 +19,6 @@ export const authApi = createApi({
         body: credentials,
       }),
     }),
-    getUserDetails: builder.query({
-      query: 'user',
-    }),
   }),
 });
 

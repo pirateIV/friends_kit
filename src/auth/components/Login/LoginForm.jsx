@@ -22,12 +22,10 @@ const LoginSchema = Yup.object().shape({
 
 const LoginForm = ({ login, isError }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const submitForm = async (values) => {
     const user = await login(values).unwrap();
     dispatch(setCredentials(user));
-    navigate('/');
   };
 
   return (
