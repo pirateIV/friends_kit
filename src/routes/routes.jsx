@@ -1,5 +1,5 @@
 import Root from './root';
-import { createBrowserRouter } from 'react-router-dom';
+import { Navigate, Route, createBrowserRouter } from 'react-router-dom';
 
 // auth
 import Login from '@/auth/pages/Login/Login';
@@ -25,6 +25,7 @@ import PersonalInfo from '@/pages/About/routes/PersonalInfo';
 
 // 404
 import NotFoundPage from '@/pages/404/NotFound';
+import ProtectedRoute from '@/utils/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
@@ -32,66 +33,72 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       {
-        path: '/timeline',
-        element: <UserProfileMinimal />,
-      },
-      {
-        path: '@me',
-        element: <UserProfileMain />,
-      },
-      {
-        path: '@me/friends',
-        element: <Friends />,
-      },
-      {
-        path: '@me/about',
-        element: <AboutUser />,
+        path: '/app',
+        element: <ProtectedRoute />,
         children: [
           {
-            path: '@me/about/personalInfo',
-            element: <PersonalInfo />,
+            path: '/app/timeline',
+            element: <UserProfileMinimal />,
           },
           {
-            path: '@me/about/education',
-            element: <Education />,
+            path: '/app/@me',
+            element: <UserProfileMain />,
           },
           {
-            path: '@me/about/jobs',
-            element: <Jobs />,
+            path: '/app/@me/friends',
+            element: <Friends />,
+          },
+          {
+            path: '/app/@me/about',
+            element: <AboutUser />,
+            children: [
+              {
+                path: '/app/@me/about/personalInfo',
+                element: <PersonalInfo />,
+              },
+              {
+                path: '/app/@me/about/education',
+                element: <Education />,
+              },
+              {
+                path: '/app/@me/about/jobs',
+                element: <Jobs />,
+              },
+            ],
+          },
+          {
+            path: '/app/@me/settings',
+            element: <Settings />,
           },
         ],
       },
       {
-        path: '@me/settings',
-        element: <Settings />
-      }
+        path: '/signup',
+        element: <Signup />,
+        children: [
+          {
+            path: '/signup/info',
+            element: <UserInfo />,
+          },
+          {
+            path: '/signup/upload-profile',
+            element: <ProfileUpload />,
+          },
+          {
+            path: '/signup/auth',
+            element: <AuthorizeAccount />,
+          },
+          {
+            path: '/signup/created',
+            element: <AccountCreated />,
+          },
+        ],
+      },
+      {
+        path: '/login',
+        element: <Login />,
+      },
     ],
-  },
-  {
-    path: '/signup',
-    element: <Signup />,
-    children: [
-      {
-        path: '/signup/info',
-        element: <UserInfo />,
-      },
-      {
-        path: '/signup/upload-profile',
-        element: <ProfileUpload />,
-      },
-      {
-        path: '/signup/auth',
-        element: <AuthorizeAccount />,
-      },
-      {
-        path: '/signup/created',
-        element: <AccountCreated />,
-      },
-    ],
-  },
-  {
-    path: '/login',
-    element: <Login />,
   },
   {
     path: '*',

@@ -24,21 +24,18 @@ const LoginSchema = Yup.object().shape({
 
 const LoginForm = ({ login, isError }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const user = useSelector((state) => state.auth.user);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  console.log(user);
+  // console.log(user);
 
   const submitForm = async (values) => {
     const { token } = await login(values).unwrap();
-    console.log(token);
     localStorage.setItem('token', token);
     dispatch(setCredentials(token));
     dispatch(getCurrentUser());
     dispatch(setIsAuthenticated(true));
-    navigate('/');
   };
 
   useEffect(() => {
@@ -65,7 +62,6 @@ const LoginForm = ({ login, isError }) => {
               type='password'
               name='password'
               label='Password'
-              // autoComplete='current-password'
               placeholder='Enter your password'
             />
           </div>

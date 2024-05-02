@@ -1,6 +1,9 @@
-import { ClockIcon } from "@radix-ui/react-icons";
+import { useSelector } from 'react-redux';
+import { ClockIcon } from '@radix-ui/react-icons';
+import { selectCurrentUser } from '@/auth/reducers/login/loginSlice';
 
 const ProfileSubHeader = () => {
+  const user = useSelector(selectCurrentUser);
   return (
     <header className='profile-sub-header mt-5 text-center flex items-center justify-between'>
       <div className='friends w-1/3 text-start leading-none'>
@@ -9,7 +12,7 @@ const ProfileSubHeader = () => {
       </div>
       <div className='user-name w-1/3 text-center leading-none'>
         <h2 className='font-bold text-[1.65rem] text-[#393a4f] dark:text-white'>
-          John Doe
+          {`${user?.firstName} ${user?.lastName}`}
         </h2>
         <small className='text-[#a2a5b9]'>Media Influencer</small>
       </div>

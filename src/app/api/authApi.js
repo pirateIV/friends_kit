@@ -19,6 +19,11 @@ export const authApi = createApi({
         body: credentials,
       }),
     }),
+    // logout: builder.query({
+    //   query: () => ({
+    //     url: 
+    //   })
+    // })
   }),
 });
 

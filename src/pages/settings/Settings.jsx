@@ -90,9 +90,7 @@ const Settings = () => {
           />
         </div>
       </div>
-      <Suspense fallback='loading...'>
-        {settingsTabs.map((tab) => (tab.id === activeTab ? tab.tab : null))}
-      </Suspense>
+      {settingsTabs.map((tab) => (tab.id === activeTab ? tab.tab : null))}
     </div>
   );
 };

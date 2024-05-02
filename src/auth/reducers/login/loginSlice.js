@@ -41,8 +41,13 @@ const authReducer = createSlice({
     },
     logout: (state) => {
       state.token = null;
+      state.isAuthenticated = false;
       localStorage.removeItem('token');
     },
+  },
+  selectors: {
+    selectCurrentToken: (state) => state.token,
+    selectCurrentUser: (state) => state.user,
   },
   extraReducers: (builder) => {
     builder
@@ -54,7 +59,6 @@ const authReducer = createSlice({
       });
   },
 });
-
 
 export const selectCurrentToken = (state) => state.auth.token;
 export const selectCurrentUser = (state) => state.auth.user;

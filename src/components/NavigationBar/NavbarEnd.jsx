@@ -4,9 +4,12 @@ import Profile from '../ui/Profile';
 import UserSettings from '../ui/UserSettings';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
 import SearchIcon from '@/shared/components/icons/SearchIcon';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from '@/auth/reducers/login/loginSlice';
 
 const NavbarEnd = () => {
   const [isHidden, setisHidden] = useState(true);
+  const user = useSelector(selectCurrentUser);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -56,7 +59,7 @@ const NavbarEnd = () => {
             isHidden ? 'hidden' : 'flex'
           } flex-col justify-start absolute z-20 bg-white rounded-lg shadow w-[298px] top-[calc(100%+20px)] -right-4 dark:bg-[#171c26] dark:divide-gray-600`}>
           <div className='flex items-center justify-between p-4 text-sm text-gray-900 dark:text-white'>
-            <small className='text-gray-500 font-semibold uppercase'>John Doe</small>
+            <small className='text-gray-500 font-semibold uppercase'>{`${user?.firstName} ${user?.lastName}`}</small>
             <ThemeSwitcher />
           </div>
           <Profile />

@@ -1,9 +1,12 @@
+import { selectCurrentUser } from '@/auth/reducers/login/loginSlice';
 import DropdownItem from './DropdownItem';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Avatar } from '@material-tailwind/react';
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
+  const user = useSelector(selectCurrentUser);
   return (
     <>
       <hr className='h-px border-0 bg-gray-300 dark:bg-[#464e61]' />
@@ -17,7 +20,7 @@ const Profile = () => {
           <h4
             className='text-[.8rem] text-[#393a4f] font-medium dark:text-white'
             id='user-name'>
-            John Doe
+            {`${user?.firstName} ${user?.lastName}`}
           </h4>
           <small className='text-[.75rem] text-[#757a91]'>Main account</small>
         </div>

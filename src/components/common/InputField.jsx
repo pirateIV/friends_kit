@@ -34,6 +34,7 @@ const InputField = ({ label, type, ...props }) => {
     </>
   );
 };
+
 InputField.propTypes = {
   label: PropTypes.string,
   type: PropTypes.string,

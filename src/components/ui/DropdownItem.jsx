@@ -1,11 +1,23 @@
+import { logout, setIsAuthenticated } from '@/auth/reducers/login/loginSlice';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 
-const DropdownItem = ({ path, children }) => {
+const DropdownItem = ({ title, path, children }) => {
   const itemClass =
     'profile relative flex items-center gap-4 py-2 px-4 my-2 cursor-pointer hover:bg-gray-100/70 transition-03 hover:dark:bg-[#313848]';
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (title.includes('Log out')) {
+      dispatch(logout());
+      navigate('/login');
+    }
+  };
+
   return (
-    <div>
+    <div onClick={(e) => handleClick(e)}>
       <Link to={path} className={itemClass}>
         {children}
       </Link>
@@ -14,7 +26,8 @@ const DropdownItem = ({ path, children }) => {
 };
 
 DropdownItem.propTypes = {
-  path: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  path: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
 
