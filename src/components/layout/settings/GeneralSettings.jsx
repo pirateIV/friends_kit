@@ -2,6 +2,7 @@ import InputGroup from './InputGroup';
 import SettingsLayout from './SettingsLayout';
 
 const GeneralSettings = () => {
+  
   return (
     <SettingsLayout tab='1' id='general-settings' title='General Settings'>
       <div className='grid grid-cols-4 gap-x-4'>

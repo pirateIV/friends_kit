@@ -2,8 +2,12 @@ import PlusIcon from '@/shared/components/icons/PlusIcon';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import banner from '@/assets/images/default-profile-banner.png';
+import { selectCurrentUser } from '@/auth/reducers/login/loginSlice';
+import { useSelector } from 'react-redux';
 
 const UserProfileMinimal = () => {
+  const user = useSelector(selectCurrentUser);
+  
   return (
     <>
       <header>
@@ -28,7 +32,9 @@ const UserProfileMinimal = () => {
                     <PlusIcon />
                   </a>
                 </div>
-                <button className='inline-flex-center border border-gray-300 p-2 w-full font-medium gap-1 rounded-md hover:border-gray-400' type='button'>
+                <button
+                  className='inline-flex-center border border-gray-300 p-2 w-full font-medium gap-1 rounded-md hover:border-gray-400'
+                  type='button'>
                   <FontAwesomeIcon icon={faCamera} />
                   Update cover
                 </button>
@@ -37,7 +43,7 @@ const UserProfileMinimal = () => {
             <div className='right ps-5 w-full'>
               <div className='user'>
                 <div className='head w-full flex items-center justify-between'>
-                  <h1 className='user-name text-[1.4rem]'>John Doe</h1>
+                  <h1 className='user-name text-[1.4rem]'>{`${user?.firstName} ${user?.lastName}`}</h1>
                   <button className='min-w-32 bg-light-green-500 text-white p-2 rounded-md hover:bg-light-green-400'>
                     Follow
                   </button>
@@ -48,12 +54,7 @@ const UserProfileMinimal = () => {
                   <span id='following'>104 following </span>
                 </div>
                 <div className='bio text-sm max-w-[480px]'>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iam enim
-                    adesse poterit. Quis est tam dissimile homini. At ille pellit, qui
-                    permulcet sensum voluptate. Vide, quaeso, rectumne sit. Primum quid tu
-                    dicis breve?
-                  </p>
+                  <p>{user?.bio}</p>
                 </div>
               </div>
             </div>
