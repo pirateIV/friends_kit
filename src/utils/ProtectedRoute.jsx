@@ -7,15 +7,9 @@ const ProtectedRoute = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const { error, user, token, isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
-  // if (error) {
-  //   return <Navigate to='/login' state={{ from: location }} />;
-  // }
-
-  // useEffect(() => {
-  //   console.log(error)
-  // },[error])
+  console.log(isAuthenticated);
 
   return isAuthenticated ? (
     <App>

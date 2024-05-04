@@ -1,10 +1,13 @@
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import { submitBtnClass } from '.';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLoginMutation } from '@/app/api/authSlice';
 import InputField from '@/components/common/InputField';
 import ForgotPassword from '@/components/login/ForgotPassword';
-import { useSelector } from 'react-redux';
-import { useLoginMutation } from '@/app/api/authSlice';
+// import { useEffect } from 'react';
+import { getCurrentUser } from '@/auth/reducers/login/loginSlice';
+// import { getCurrentUser, setCredentials } from '@/auth/reducers/login/loginSlice';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('required!'),
@@ -18,13 +21,15 @@ const LoginSchema = Yup.object().shape({
 });
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const [login, { isLoading }] = useLoginMutation();
   const { isAuthenticated, isError } = useSelector((state) => state.auth);
 
   console.log(isAuthenticated);
 
   const submitForm = async (values) => {
-    const token = await login(values).unwrap();
+    const { token } = await login(values).unwrap();
+    dispatch(getCurrentUser());
     console.log(token);
   };
 
