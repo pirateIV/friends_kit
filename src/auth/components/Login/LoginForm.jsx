@@ -1,15 +1,10 @@
 import * as Yup from 'yup';
-import { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Form, Formik } from 'formik';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-
 import { submitBtnClass } from '.';
 import InputField from '@/components/common/InputField';
 import ForgotPassword from '@/components/login/ForgotPassword';
-import { setCredentials } from '@/auth/reducers/login/loginSlice';
-import { getCurrentUser, setIsAuthenticated } from '@/auth/reducers/login/loginSlice';
+import { useSelector } from 'react-redux';
+import { useLoginMutation } from '@/app/api/authSlice';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('required!'),
@@ -22,27 +17,16 @@ const LoginSchema = Yup.object().shape({
     ),
 });
 
-const LoginForm = ({ login, isError }) => {
-  const dispatch = useDispatch();
+const LoginForm = () => {
+  const [login, { isLoading }] = useLoginMutation();
+  const { isAuthenticated, isError } = useSelector((state) => state.auth);
 
-  const user = useSelector((state) => state.auth.user);
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-
-  // console.log(user);
+  console.log(isAuthenticated);
 
   const submitForm = async (values) => {
-    const { token } = await login(values).unwrap();
-    localStorage.setItem('token', token);
-    dispatch(setCredentials(token));
-    dispatch(getCurrentUser());
-    dispatch(setIsAuthenticated(true));
+    const token = await login(values).unwrap();
+    console.log(token);
   };
-
-  useEffect(() => {
-    if (user) {
-      dispatch(setIsAuthenticated(true));
-    }
-  }, [user, dispatch]);
 
   return (
     <Formik
@@ -70,18 +54,13 @@ const LoginForm = ({ login, isError }) => {
           <button
             type='submit'
             className={submitBtnClass}
-            disabled={isAuthenticated || isError}>
-            Login
+            disabled={isLoading || isError}>
+            {isLoading ? 'logging in...' : 'Login'}
           </button>
         </section>
       </Form>
     </Formik>
   );
-};
-
-LoginForm.propTypes = {
-  login: PropTypes.func,
-  isError: PropTypes.bool.isRequired,
 };
 
 export default LoginForm;

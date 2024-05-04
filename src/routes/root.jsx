@@ -10,11 +10,11 @@ const Root = () => {
   const { isAuthenticated } = useSelector((state) => state.auth);
   const token = useSelector(selectCurrentToken);
 
-  console.log(isAuthenticated);
+  // console.log(isAuthenticated);
 
-  useEffect(() => {
-    token ? navigate('/app') : navigate('/login');
-  }, [token, navigate]);
+  // useEffect(() => {
+  //   isAuthenticated ? navigate('/app') : navigate('/login');
+  // }, [token, isAuthenticated]);
 
   return <Outlet />;
 };

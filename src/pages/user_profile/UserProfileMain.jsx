@@ -5,7 +5,6 @@ import ProfileMenu from '@/components/ProfileMenu';
 import ProfileHeader from '@/components/ProfileHeader';
 import ProfileSubHeader from '@/components/ProfileSubHeader';
 import BannerUploadModal, { UploadFromPcModal } from '@/components/modals/banner_modals';
-import { Button } from 'flowbite-react';
 
 const UserProfileMain = ({ children }) => {
   const dialogTrigger = useRef();
@@ -26,7 +25,6 @@ const UserProfileMain = ({ children }) => {
       <ProfileHeader triggerModal={triggerModal} />
       <ProfileMenu />
       <ProfileSubHeader />
-   
 
       {/* modals */}
       <BannerUploadModal
@@ -35,9 +33,13 @@ const UserProfileMain = ({ children }) => {
         triggerPcUpload={triggerPcUpload}
       />
       <UploadFromPcModal pcUploadTrigger={pcUploadTrigger} />
-      {children}
+      {location.pathname !== '/app' ? children : <UserDetails />}
     </div>
   );
+};
+
+const UserDetails = () => {
+  return <h1>User Details</h1>;
 };
 
 UserProfileMain.propTypes = {

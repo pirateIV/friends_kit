@@ -1,4 +1,5 @@
 import App from '@/App';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
@@ -8,12 +9,13 @@ const ProtectedRoute = () => {
 
   const { error, user, token, isAuthenticated } = useSelector((state) => state.auth);
 
-  // const authSucess = token && isAuthenticated
-  console.log(user)
+  // if (error) {
+  //   return <Navigate to='/login' state={{ from: location }} />;
+  // }
 
-  if (error) {
-    return <Navigate to='/login' state={{ from: location }} />;
-  }
+  // useEffect(() => {
+  //   console.log(error)
+  // },[error])
 
   return isAuthenticated ? (
     <App>

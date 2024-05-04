@@ -1,7 +1,7 @@
+import { useSelector } from 'react-redux';
+import { getTheme } from '@/redux/reducers/themeReducer';
 import loginIlustrDark from '@/assets/images/login/illustration-dark.svg';
 import loginIlustrLight from '@/assets/images/login/illustration-light.svg';
-import { getTheme } from '@/redux/reducers/themeReducer';
-import { useSelector } from 'react-redux';
 
 const LoginIllustration = () => {
   const theme = useSelector(getTheme());

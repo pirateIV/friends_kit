@@ -48,6 +48,7 @@ const authReducer = createSlice({
   selectors: {
     selectCurrentToken: (state) => state.token,
     selectCurrentUser: (state) => state.user,
+    selectAuthState: (state) => state.isAuthenticated
   },
   extraReducers: (builder) => {
     builder
