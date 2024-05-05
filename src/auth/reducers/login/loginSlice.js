@@ -1,29 +1,31 @@
 import axios from 'axios';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const baseUrl = 'http://localhost:5000/api/users/user';
+const baseUrl = 'http://localhost:5000/api/protected';
 
-const token = localStorage.getItem('token');
+const token = localStorage.getItem('token') || null;
 
 const initialState = {
   user: null,
   error: null,
   loading: false,
   isAuthenticated: false,
-  token: token || null,
+  token: token,
 };
+
+// console.log(initialState.token);
 
 export const getCurrentUser = createAsyncThunk(
   '/users/getCurrentUser',
   async (_, thunkApi) => {
     try {
       const response = await axios.get(baseUrl, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${initialState.token}` },
       });
       console.log(response.data);
       return response.data;
     } catch (error) {
-      console.log(error.response.data);
+      console.log(error);
       return thunkApi.rejectWithValue(error.response.data);
     }
   }
@@ -34,8 +36,8 @@ const authReducer = createSlice({
   initialState,
   reducers: {
     setCredentials: (state, { payload }) => {
-      const { token } = payload;
-      state.token = token;
+      localStorage.setItem('token', payload);
+      state.token = payload;
     },
     setIsAuthenticated(state, { payload }) {
       state.isAuthenticated = payload;
