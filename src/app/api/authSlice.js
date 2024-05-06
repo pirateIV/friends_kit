@@ -19,14 +19,9 @@ export const authApi = createApi({
         body: credentials,
       }),
     }),
-    // endpoint to fetch user details
-    getUserDetails: builder.query({
-      query: 'user',
-    }),
   }),
 });
 
 // Export hooks for usage in functional components
 export const { useLoginMutation } = authApi;
 
-// export const selectCurrentUser = (state) => state.auth.user;

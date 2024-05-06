@@ -1,6 +1,8 @@
 import * as Yup from 'yup';
+import { useEffect } from 'react';
 import { submitBtnClass } from '.';
 import { Form, Formik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@material-tailwind/react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -22,6 +24,7 @@ const LoginSchema = Yup.object().shape({
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [login, { isLoading }] = useLoginMutation();
   const { isAuthenticated, isError } = useSelector((state) => state.auth);
 
@@ -32,6 +35,13 @@ const LoginForm = () => {
     dispatch(setCredentials(token));
     dispatch(getCurrentUser());
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/app');
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthenticated]);
 
   return (
     <Formik

@@ -1,5 +1,6 @@
-import { Suspense, useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { Avatar } from '@material-tailwind/react';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,6 +12,7 @@ import Preferences from '@/components/layout/settings/Preferences';
 import Notifications from '@/components/layout/settings/Notifications';
 import HelpSettings from '@/components/layout/settings/HelpSettings';
 import sprites from '../../assets/sprites/settings_icons.svg';
+import { selectCurrentUser } from '@/auth/reducers/login/loginSlice';
 
 const settingsTabs = [
   { id: 1, section: 'general', tab: <GeneralSettings /> },
@@ -55,6 +57,8 @@ const MenuBlock = ({ tabs, activeTab, setActiveTab }) => (
 
 const Settings = () => {
   const [activeTab, setActiveTab] = useState(1);
+  const user = useSelector(selectCurrentUser);
+
   const avatarSrc =
     'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80';
 
@@ -65,8 +69,8 @@ const Settings = () => {
           <div className='avatar'>
             <Avatar src={avatarSrc} className='h-[58px] w-[58px] rounded-full' alt='' />
             <div className='user leading-[1]'>
-              <h4 className='name'>John Doe</h4>
-              <small className='text-xs text-gray-500'>Melbourne, AU</small>
+              <h4 className='name text-sm'>{`${user.firstName} ${user.lastName}`}</h4>
+              <small className='text-xs text-gray-500'>{user.location || 'NA'}</small>
             </div>
             <FontAwesomeIcon icon={faCheck} className='badge' />
           </div>

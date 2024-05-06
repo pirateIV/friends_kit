@@ -1,5 +1,5 @@
 import Root from './root';
-import { Navigate, Route, createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 
 // auth
 import Login from '@/auth/pages/Login/Login';

@@ -3,26 +3,22 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const baseUrl = 'http://localhost:5000/api/protected';
 
-const token = localStorage.getItem('token') || null;
-
 const initialState = {
   user: null,
   error: null,
   loading: false,
   isAuthenticated: false,
-  token: token,
+  token: localStorage.getItem('token') || null,
 };
-
-// console.log(initialState.token);
 
 export const getCurrentUser = createAsyncThunk(
   '/users/getCurrentUser',
   async (_, thunkApi) => {
     try {
+      const token = thunkApi.getState().auth.token;
       const response = await axios.get(baseUrl, {
-        headers: { Authorization: `Bearer ${initialState.token}` },
+        headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -44,6 +40,7 @@ const authReducer = createSlice({
     },
     logout: (state) => {
       state.token = null;
+      state.user = null;
       state.isAuthenticated = false;
       localStorage.removeItem('token');
     },
@@ -53,15 +50,17 @@ const authReducer = createSlice({
     selectCurrentUser: (state) => state.user,
     selectAuthState: (state) => state.isAuthenticated,
   },
-  // extraReducers: (builder) => {
-  //   builder
-  //     .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
-  //       state.user = payload;
-  //     })
-  //     .addCase(getCurrentUser.rejected, (state, { payload }) => {
-  //       state.error = payload;
-  //     });
-  // },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
+        state.user = payload;
+        state.isAuthenticated = true;
+      })
+      .addCase(getCurrentUser.rejected, (state, { payload }) => {
+        console.error(payload);
+        state.error = payload;
+      });
+  },
 });
 
 export const selectCurrentToken = (state) => state.auth.token;

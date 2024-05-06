@@ -7,7 +7,9 @@ const ProfileSubHeader = () => {
   return (
     <header className='profile-sub-header mt-5 text-center flex items-center justify-between'>
       <div className='friends w-1/3 text-start leading-none'>
-        <h2 className='font-bold text-[1.65rem] font-montserrat text-[#393a4f]'>3.4k </h2>
+        <h2 className='font-bold text-[1.65rem] font-montserrat text-[#393a4f]'>
+          {user.friends.length}
+        </h2>
         <small className='uppercase text-xs text-gray-500 font-medium'>Friends</small>
       </div>
       <div className='user-name w-1/3 text-center leading-none'>

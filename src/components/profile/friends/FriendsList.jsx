@@ -3,24 +3,43 @@ import { useSelector } from 'react-redux';
 import { faMessage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import avatar from '@/assets/images/avatar-w.webp';
+import { selectCurrentUser } from '@/auth/reducers/login/loginSlice';
+import { useEffect, useState } from 'react';
 // import { query } from './searchQuerySlice';
 
 const FriendsList = () => {
-  const searchQuery = useSelector((state) => state.query)
-  const friends = useSelector((state) => state.usersFilter);
+  const searchQuery = useSelector((state) => state.query);
+  const user = useSelector(selectCurrentUser);
+  // const friends = useSelector((state) => state.usersFilter);
+
+  const [friends, setFriends] = useState([]);
+
+  useEffect(() => {
+    const getUserFriends = async () => {
+      const promises = user.friends.forEach(async (id) => {
+        const res = await fetch(`http://localhost:5000/api/users/${id}`);
+        return await res.json();
+      });
+
+      const friendsData = await Promise.all(promises);
+      setFriends(friendsData);
+    };
+
+    getUserFriends();
+  }, []);
 
   return (
     <div className='friends-grid'>
-      {friends.length > 0 ? (
+      {user.friends.length > 0 ? (
         <div className='friend-item grid grid-cols-4 text-center mt-4'>
-          {friends.map((friend, i) => (
+          {friends?.map((friend, i) => (
             <div className='p-2' key={i}>
               <div className='group flex flex-col items-center justify-center text-center p-[30px] bg-white border border-gray-300 rounded-md hover:shadow-lg dark:border-[#2f3b50] dark:bg-[#202836]'>
                 <Link to='#'>
                   <div className='relative flex-center h-[90px] w-[90px]'>
                     <img
-                      src={friend.imgSrc ? avatar : friend.imgSrc}
-                      alt={friend.name}
+                      src={avatar}
+                      alt={friend.firstName}
                       className='relative rounded-full h-20 w-20 mx-auto z-20'
                     />
                     <button
@@ -34,16 +53,18 @@ const FriendsList = () => {
                   </div>
                 </Link>
                 <h3 className='font-montserrat mt-1.5 font-medium text-[.9rem] dark:text-gray-50'>
-                  {friend.name}
+                  {friend.firstName} {friend.lastName}
                 </h3>
-                <p className='text-sm text-gray-500'>{friend.location}</p>
+                <p className='text-sm text-gray-500'>{friend.location || null}</p>
               </div>
             </div>
           ))}
         </div>
       ) : (
         <div>
-          <p className='mt-5 text-center'>Could not find result for &quot;{searchQuery}&quot;</p>
+          <p className='mt-5 text-center'>
+            Could not find result for &quot;{searchQuery}&quot;
+          </p>
         </div>
       )}
     </div>
