@@ -24,9 +24,14 @@ const ProtectedRoute = () => {
 
   if (loading) {
     return (
-      <div className='min-h-screen w-full p-32 flex items-center justify-center'>
-        <img src={logoLoading} className='object-cover h-3/4' alt='' />
-        {/* <p>loading...</p> */}
+      <div className='min-h-screen w-full p-32 flex flex-col items-center justify-center'>
+        <img
+          width='300'
+          height='500'
+          src={logoLoading}
+          className='object-cover h-3/4'
+          alt='loading'
+        />
       </div>
     );
   }

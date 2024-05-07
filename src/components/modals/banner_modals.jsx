@@ -78,8 +78,8 @@ export const UploadFromPcModal = ({ pcUploadTrigger }) => {
 };
 
 BannerUploadModal.propTypes = {
-  dialogTrigger: PropTypes.func,
-  dialogClose: PropTypes.func,
+  dialogTrigger: PropTypes.object,
+  dialogClose: PropTypes.object,
   triggerPcUpload: PropTypes.func,
 };
 

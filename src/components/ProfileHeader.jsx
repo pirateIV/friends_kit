@@ -45,7 +45,7 @@ const ProfileHeader = ({ triggerModal }) => {
 };
 
 ProfileHeader.propTypes = {
-  triggerModal: PropTypes.obj,
+  triggerModal: PropTypes.func,
 };
 
 export default ProfileHeader;

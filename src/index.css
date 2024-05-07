@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* import for image sprites */
-/* @import url('../src/assets/css/sprites.css'); */
-
 main > * {
   min-height: 100vh;
 }
@@ -120,7 +117,41 @@ main > * {
 }
 
 /* .st0{fill:#e6e6e6}.st1{fill:#2f2e41}.st2{fill:#575a89}.st3{fill:#ffb8b8}.st4{opacity:.2;enable-background:new}.st5{fill:#fff} */
+/* Change the fill color of elements with class "st0" */
+#svg1 .st0 {
+  fill: #ff0000; /* Red color */
+}
+
+/* Change the fill color of elements with class "st1" */
+#svg1 .st1 {
+  fill: #00ff00; /* Green color */
+}
+
+/* Change the fill color of elements with class "st2" */
+#svg1 .st2 {
+  fill: #0000ff; /* Blue color */
+}
+
+/* Change the fill color of elements with class "st3" */
+#svg1 .st3 {
+  fill: #ffff00; /* Yellow color */
+}
+
+/* Change the fill color of elements with class "st4" */
+#svg1 .st4 {
+  fill: #ff00ff; /* Magenta color */
+}
+
+/* Change the fill color of elements with class "st5" */
+#svg1 .st5 {
+  fill: #00ffff; /* Cyan color */
+}
 
 #svg1 {
   fill: red;
+}
+
+#icon-1 #svg1 {
+  fill: red;
+  /* display: none; */
 }

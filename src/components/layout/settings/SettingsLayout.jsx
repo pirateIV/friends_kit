@@ -45,7 +45,7 @@ SettingsLayout.propTypes = {
   id: PropTypes.string,
   title: PropTypes.string,
   tab: PropTypes.string,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export default SettingsLayout;

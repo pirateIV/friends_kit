@@ -21,9 +21,6 @@ if (localStorage.theme === 'dark') {
 }
 
 store.dispatch(getAllUsers());
-console.log(store.getState());
-
-console.log(store.getState().auth.isAuthenticated);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>

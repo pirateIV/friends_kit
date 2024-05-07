@@ -1,7 +1,7 @@
-import { logout, setIsAuthenticated } from '@/auth/reducers/login/loginSlice';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { logout } from '@/auth/reducers/login/loginSlice';
 
 const DropdownItem = ({ title, path, children }) => {
   const itemClass =

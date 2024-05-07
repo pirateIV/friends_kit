@@ -1,9 +1,13 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Avatar } from '@material-tailwind/react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ReactFancyBox from 'react-fancybox';
+import 'react-fancybox/lib/fancybox.css';
+
+import { selectCurrentUser } from '@/auth/reducers/login/loginSlice';
 import GeneralSettings from '@/components/layout/settings/GeneralSettings';
 import SecuritySettings from '@/components/layout/settings/SecuritySettings';
 import AccountSettings from '@/components/layout/settings/AccountSettings';
@@ -11,8 +15,7 @@ import PrivacySettings from '@/components/layout/settings/PrivacySettings';
 import Preferences from '@/components/layout/settings/Preferences';
 import Notifications from '@/components/layout/settings/Notifications';
 import HelpSettings from '@/components/layout/settings/HelpSettings';
-import sprites from '../../assets/sprites/settings_icons.svg';
-import { selectCurrentUser } from '@/auth/reducers/login/loginSlice';
+import MenuBlock from '@/components/profile/settings/MenuBlock';
 
 const settingsTabs = [
   { id: 1, section: 'general', tab: <GeneralSettings /> },
@@ -24,40 +27,23 @@ const settingsTabs = [
   { id: 7, section: 'help', tab: <HelpSettings /> },
 ];
 
-const TabList = ({ tab, activeTab, handleClick }) => {
-  const textState = tab.id === activeTab ? 'text-gray-900' : 'text-[#a5a5a5]';
-  const tabState = ` ${tab.id === activeTab ? 'border-blue-400' : 'border-transparent'}`;
-
-  return (
-    <li id={tab.section} className='tab-item' data-section={`${tab.section}`}>
-      <a href={`#${tab.section}`} className={tabState} onClick={handleClick}>
-        <svg className='text-gray-400 max-h-[18px] max-w-[18px]'>
-          <use height='18' width='18' href={`${sprites}#${tab.section}`}></use>
-        </svg>
-        <span className={textState}>{tab.section}</span>
-      </a>
-    </li>
-  );
-};
-
-const MenuBlock = ({ tabs, activeTab, setActiveTab }) => (
-  <div className='menu-block py-5'>
-    <ul>
-      {tabs.map((tab) => (
-        <TabList
-          tab={tab}
-          key={tab.id}
-          activeTab={activeTab}
-          handleClick={() => setActiveTab(tab.id)}
-        />
-      ))}
-    </ul>
-  </div>
-);
-
 const Settings = () => {
-  const [activeTab, setActiveTab] = useState(1);
   const user = useSelector(selectCurrentUser);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const searchParams = new URLSearchParams(location.search);
+  const tab = searchParams.get('tab');
+
+  const [activeTab, setActiveTab] = useState(tab);
+
+  // Update the tab according to URL params
+  useEffect(() => {
+    if (location.pathname === '/app/@me/settings') {
+      navigate(`/app/@me/settings?tab=${activeTab || 'general'}`);
+    }
+    setActiveTab(tab);
+  }, [tab, activeTab, location.pathname, navigate]);
 
   const avatarSrc =
     'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80';
@@ -68,6 +54,7 @@ const Settings = () => {
         <div className='user-block'>
           <div className='avatar'>
             <Avatar src={avatarSrc} className='h-[58px] w-[58px] rounded-full' alt='' />
+            {/* <ReactFancyBox image={avatarSrc} className='h-[58px] w-[58px] rounded-full'/> */}
             <div className='user leading-[1]'>
               <h4 className='name text-sm'>{`${user.firstName} ${user.lastName}`}</h4>
               <small className='text-xs text-gray-500'>{user.location || 'NA'}</small>
@@ -94,21 +81,13 @@ const Settings = () => {
           />
         </div>
       </div>
-      {settingsTabs.map((tab) => (tab.id === activeTab ? tab.tab : null))}
+      <div className='settings-tabs'>
+        {settingsTabs.map((tab) =>
+          tab.section === activeTab ? <div key={tab.id}>{tab.tab}</div> : null
+        )}
+      </div>
     </div>
   );
-};
-
-TabList.propTypes = {
-  tab: PropTypes.object,
-  activeTab: PropTypes.number,
-  handleClick: PropTypes.func,
-};
-
-MenuBlock.propTypes = {
-  tabs: PropTypes.array,
-  activeTab: PropTypes.number,
-  setActiveTab: PropTypes.func,
 };
 
 export default Settings;
