@@ -10,7 +10,7 @@ import FormContent from '../Form/FormContent';
 import useLoadingState from '@/hooks/useLoading';
 import SignupWrapper from '@/components/common/SignupWrapper';
 import { setProgress } from '@/redux/reducers/progressReducer';
-import { getUserInfo, setUserInfo } from '@/auth/reducers/user/userSlice';
+import { getUserInfo, setUserInfo } from '@/features/auth/reducers/user/userSlice';
 
 const UserInfoSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('required!'),

@@ -12,7 +12,7 @@ import PasswordInput from '@/components/signup/Form/PasswordInput';
 
 import { nextBtnClass, prevBtnClass, stepProps } from '.';
 import { setProgress } from '@/redux/reducers/progressReducer';
-import { getUserInfo, setUserPassword } from '@/auth/reducers/user/userSlice';
+import { getUserInfo, setUserPassword } from '@/features/auth/reducers/user/userSlice';
 
 const passwordSchema = Yup.object().shape({
   password: Yup.string()

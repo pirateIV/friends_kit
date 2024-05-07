@@ -2,10 +2,9 @@ import InputGroup from './InputGroup';
 import SettingsLayout from './SettingsLayout';
 
 const GeneralSettings = () => {
-  
   return (
     <SettingsLayout tab='1' id='general-settings' title='General Settings'>
-      <div className='grid grid-cols-4 gap-x-4'>
+      <form className='grid grid-cols-4 gap-x-4'>
         <InputGroup start='0' end='4' />
 
         <div className='field !pb-0 col-span-4'>
@@ -26,12 +25,14 @@ const GeneralSettings = () => {
         <InputGroup start='4' end='6' />
 
         <div className='settings-buttons mt-5 col-span-4'>
-          <button className='bg-green-600 text-white hover:bg-green-700'>
+          <button type='submit' className='bg-green-600 text-white hover:bg-green-700'>
             Save changes
           </button>
-          <button className='bg-gray-100 hover:bg-gray-200'>Advanced</button>
+          <button type='button' className='bg-gray-100 hover:bg-gray-200'>
+            Advanced
+          </button>
         </div>
-      </div>
+      </form>
     </SettingsLayout>
   );
 };

@@ -1,4 +1,3 @@
-import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import store from './app/store.js';
@@ -10,7 +9,7 @@ import { ThemeProvider } from '@material-tailwind/react';
 
 import './index.css';
 import { setTheme } from './redux/reducers/themeReducer.js';
-import { getAllUsers } from './auth/reducers/users/usersSlice.js';
+import { getAllUsers } from './features/auth/reducers/users/usersSlice.js';
 
 if (localStorage.theme === 'dark') {
   document.documentElement.classList.add('dark');

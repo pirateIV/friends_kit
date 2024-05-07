@@ -9,8 +9,8 @@ import SelectAccount from '@/components/signup/steps/SelectAccount.jsx';
 import CustomSignupProgress from '@/components/signup/progress/CustomSignupProgress.jsx';
 
 import './Signup.css';
-import AuthContainer from '@/auth/components/AuthContainer.jsx';
-import FakeNavigation from '@/auth/components/FakeNavigation.jsx';
+import AuthContainer from '@/features/auth/components/AuthContainer.jsx';
+import FakeNavigation from '@/features/auth/components/FakeNavigation.jsx';
 
 const Signup = () => {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { ClockIcon } from '@radix-ui/react-icons';
-import { selectCurrentUser } from '@/auth/reducers/login/loginSlice';
+import { selectCurrentUser } from '@/features/auth/reducers/login/loginSlice';
 
 const ProfileSubHeader = () => {
   const user = useSelector(selectCurrentUser);

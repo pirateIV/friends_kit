@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLoginMutation } from '@/app/api/authSlice';
 import InputField from '@/components/common/InputField';
 import ForgotPassword from '@/components/login/ForgotPassword';
-import { getCurrentUser, setCredentials } from '@/auth/reducers/login/loginSlice';
+import { getCurrentUser, setCredentials } from '@/features/auth/reducers/login/loginSlice';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('required!'),

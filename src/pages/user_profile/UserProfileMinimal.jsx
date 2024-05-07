@@ -2,7 +2,7 @@ import PlusIcon from '@/shared/components/icons/PlusIcon';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import banner from '@/assets/images/default-profile-banner.png';
-import { selectCurrentUser } from '@/auth/reducers/login/loginSlice';
+import { selectCurrentUser } from '@/features/auth/reducers/login/loginSlice';
 import { useSelector } from 'react-redux';
 
 const UserProfileMinimal = () => {

@@ -6,7 +6,7 @@ import 'cropperjs/dist/cropper.css';
 import { assets, uploadClass } from '.';
 import PlusIcon from '@/shared/components/icons/PlusIcon';
 // import returnFileSize from '@/helpers/returnFileSize';
-import { getUserInfo, setProfileUpload } from '@/auth/reducers/user/userSlice';
+import { getUserInfo, setProfileUpload } from '@/features/auth/reducers/user/userSlice';
 
 import { Button } from '@/components/ui/button';
 import {

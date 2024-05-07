@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReactFancyBox from 'react-fancybox';
 import 'react-fancybox/lib/fancybox.css';
 
-import { selectCurrentUser } from '@/auth/reducers/login/loginSlice';
+import { selectCurrentUser } from '@/features/auth/reducers/login/loginSlice';
 import GeneralSettings from '@/components/layout/settings/GeneralSettings';
 import SecuritySettings from '@/components/layout/settings/SecuritySettings';
 import AccountSettings from '@/components/layout/settings/AccountSettings';

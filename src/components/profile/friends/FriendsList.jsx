@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { faMessage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import avatar from '@/assets/images/avatar-w.webp';
-import { selectCurrentUser } from '@/auth/reducers/login/loginSlice';
+import { selectCurrentUser } from '@/features/auth/reducers/login/loginSlice';
 import { useEffect, useState } from 'react';
 // import { query } from './searchQuerySlice';
 

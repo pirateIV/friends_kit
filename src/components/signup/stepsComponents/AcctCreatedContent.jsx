@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 import { btnClass } from '.';
 import mailbox from '@/assets/images/signup/cards/mailbox.svg';
-import { createNewUser } from '@/auth/reducers/users/usersSlice';
-import { deleteUserFromStorage } from '@/auth/reducers/user/userSlice';
+import { createNewUser } from '@/features/auth/reducers/users/usersSlice';
+import { deleteUserFromStorage } from '@/features/auth/reducers/user/userSlice';
 import sprite from '../../../assets/sprites/signup_sprites.svg';  
 
 const AcctCreatedContent = ({ next }) => {

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import CustomButton from '@/components/common/CustomButton';
-import { setAcctType } from '@/auth/reducers/user/userSlice';
+import { setAcctType } from '@/features/auth/reducers/user/userSlice';
 
 const AccountCardButton = ({ title }) => {
   const navigate = useNavigate();

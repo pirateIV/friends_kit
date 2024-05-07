@@ -6,7 +6,7 @@ import {
   getCurrentUser,
   selectCurrentToken,
   setCredentials,
-} from '@/auth/reducers/login/loginSlice';
+} from '@/features/auth/reducers/login/loginSlice';
 import logoLoading from '@/assets/images/logo/logo.svg';
 
 const ProtectedRoute = () => {

@@ -2,8 +2,8 @@ import Root from './root';
 import { createBrowserRouter } from 'react-router-dom';
 
 // auth
-import Login from '@/auth/pages/Login/Login';
-import Signup from '@/auth/pages/Signup/Signup';
+import Login from '@/features/auth/pages/Login/Login';
+import Signup from '@/features/auth/pages/Signup/Signup';
 
 // signup
 import UserInfo from '@/components/signup/steps/UserInfo';
@@ -26,6 +26,7 @@ import PersonalInfo from '@/pages/About/routes/PersonalInfo';
 // 404
 import NotFoundPage from '@/pages/404/NotFound';
 import ProtectedRoute from '@/utils/ProtectedRoute';
+
 
 const router = createBrowserRouter([
   {

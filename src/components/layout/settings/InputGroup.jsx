@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import SettingsInput from '@/components/ui/SettingsInput';
-import { selectCurrentUser } from '@/auth/reducers/login/loginSlice';
 import { useSelector } from 'react-redux';
+import SettingsInput from '@/components/ui/SettingsInput';
+import { selectCurrentUser } from '@/features/auth/reducers/login/loginSlice';
 
 import UserIcon from '@/shared/components/icons/UserIcon';
 import GlobeIcon from '@/shared/components/icons/GlobeIcon';
@@ -15,7 +15,7 @@ const InputGroup = ({ start, end }) => {
     {
       span: 'col-span-2',
       id: 1,
-      name: 'first-name',
+      name: 'firstName',
       label: 'FIRST NAME',
       icon: <UserIcon />,
       value: user.firstName,
@@ -23,7 +23,7 @@ const InputGroup = ({ start, end }) => {
     {
       span: 'col-span-2',
       id: 2,
-      name: 'last-name',
+      name: 'lastName',
       label: 'LAST NAME',
       icon: <UserIcon />,
       value: user.lastName,
@@ -39,7 +39,7 @@ const InputGroup = ({ start, end }) => {
     {
       span: 'col-span-2',
       id: 4,
-      name: 'backup-email',
+      name: 'backupEmail',
       label: 'BACKUP EMAIL',
       icon: <MessageIcon />,
       value: '',

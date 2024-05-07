@@ -5,7 +5,7 @@ import UserSettings from '../ui/UserSettings';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
 import SearchIcon from '@/shared/components/icons/SearchIcon';
 import { useSelector } from 'react-redux';
-import { selectCurrentUser } from '@/auth/reducers/login/loginSlice';
+import { selectCurrentUser } from '@/features/auth/reducers/login/loginSlice';
 
 const NavbarEnd = () => {
   const [isHidden, setisHidden] = useState(true);

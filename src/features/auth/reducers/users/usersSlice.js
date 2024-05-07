@@ -1,6 +1,6 @@
 // import axios from 'axios';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import usersService from '@/auth/services/users';
+import usersService from '@/features/auth/services/users';
 
 // const baseUrl = 'http://localhost:5000/api/users';
 

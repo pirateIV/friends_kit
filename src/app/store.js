@@ -1,14 +1,14 @@
 import { authApi } from '@/app/api/authSlice';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import userReducer from '@/auth/reducers/user/userSlice';
+import userReducer from '@/features/auth/reducers/user/userSlice';
 import progressReducer from '@/redux/reducers/progressReducer';
 import themeReducer from '@/redux/reducers/themeReducer';
-import authReducer from '@/auth/reducers/login/loginSlice';
+import authReducer from '@/features/auth/reducers/login/loginSlice';
 import usersFilterReducer from '@/components/profile/friends/userFilterSlice';
 import searchQueryReducer from '@/components/profile/friends/searchQuerySlice';
 import uploadAreaReducer from '@/components/modals/ui/uploadAreaSlice';
-// import currentUserReducer from '@/auth/reducers/user/currentUserSlice';
+// import currentUserReducer from '@/features/auth/reducers/user/currentUserSlice';
 
 const rootReducer = combineReducers({
   user: userReducer,

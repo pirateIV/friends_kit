@@ -1,7 +1,7 @@
 import SettingsInput from '@/components/ui/SettingsInput';
 import SettingsLayout from './SettingsLayout';
 import LockIcon from '@/shared/components/icons/LockIcon';
-import { selectCurrentUser } from '@/auth/reducers/login/loginSlice';
+import { selectCurrentUser } from '@/features/auth/reducers/login/loginSlice';
 import { useSelector } from 'react-redux';
 import PhoneIcon from '@/shared/components/icons/PhoneIcon';
 
