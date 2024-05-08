@@ -10,13 +10,13 @@ const SettingsLayout = ({ id, tab, title, children }) => {
     <div id={id} className='settings-section'>
       <div className='settings-panel'>
         <div className='title-wrap text-start'>
-          <h2 className='font-montserrat text-[1.2rem] font-medium text-[#999]'>
+          <h2 className='font-montserrat text-[1.2rem] font-medium text-[#999] dark:text-white'>
             {title}
           </h2>
         </div>
         <div className='settings-form-wrapper'>
           <div className='settings-form'>{children}</div>
-          <div className='illustration'>
+          <div className='illustration hidden xl:block'>
             <svg>
               <use
                 href={
@@ -27,7 +27,7 @@ const SettingsLayout = ({ id, tab, title, children }) => {
                     : `${sprites}#svg${tab}-dark`
                 }></use>
             </svg>
-            <p className='text-sm m-5 mx-auto'>
+            <p>
               If you&apos;d like to learn more about general settings, you can read about
               it in the{' '}
               <a href='#' className='underline text-blue-500 max-w-[280px]'>

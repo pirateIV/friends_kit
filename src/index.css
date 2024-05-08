@@ -30,7 +30,7 @@ main > * {
     @apply flex items-center gap-6 *:text-gray-400 *:last:text-gray-500 *:last-of-type:text-gray-500 *:h-9 *:w-9 *:rounded-md;
   }
   .nav-section {
-    @apply fixed top-0 inset-x-0 flex items-center px-1 bg-white border-b border-gray-300 shadow-sm dark:bg-[#1c2330] dark:border-[#2c3544];
+    @apply fixed top-0 inset-x-0 flex items-center px-1 bg-white border-b border-[#e8e8e8] dark:bg-[#151a23] dark:border-[#151a23];
   }
 
   /* settings */
@@ -38,10 +38,10 @@ main > * {
     @apply relative min-h-screen p-[30px];
   }
   .settings-sidebar {
-    @apply fixed bg-[#fafafa] w-[280px] min-h-screen top-[60px] left-0 border-r border-gray-300;
+    @apply fixed bg-[#fafafa] w-[250px] xl:w-[280px] min-h-screen top-[59px] left-0 border-r border-gray-300 dark:bg-[#1c2330] border-[#e8e8e8] dark:border-[#283143];
   }
   .settings-section {
-    @apply block bg-white p-[30px] ml-[280px] border border-gray-300 h-full rounded-md;
+    @apply block bg-white p-[30px] ml-[280px] border border-gray-300 h-full rounded-md dark:bg-[#202836] dark:border-[#283143];
   }
   .settings-form-wrapper {
     @apply flex;
@@ -53,7 +53,7 @@ main > * {
     @apply relative flex items-center;
   }
   .settings-form .field {
-    @apply border border-gray-300 mb-3 rounded-md overflow-hidden;
+    @apply border border-gray-300 mb-3 rounded-md overflow-hidden dark:bg-[#242d3c] dark:border-[#334056];
   }
   .settings-form label {
     @apply text-xs text-[.65rem] ps-2 text-gray-500;
@@ -65,37 +65,40 @@ main > * {
     @apply h-[17px] w-[17px];
   }
   .settings-form input {
-    @apply border-0 text-[#5b5d7e] text-[.9rem] h-9 w-full pt-0 pl-10 pb-2 outline-none;
+    @apply border-0 bg-transparent text-[#5b5d7e] text-[.9rem] h-9 w-full pt-0 pl-10 pb-2 outline-none dark:text-white;
   }
   .settings .user-menu {
-    @apply divide-y divide-gray-300 h-full overflow-auto;
+    @apply divide-y divide-gray-300 h-full max-h-[100%] overflow-auto dark:divide-[#2f3b50];
   }
   .settings .illustration {
     @apply p-10 flex-grow-[2];
   }
-  .settings .illustration img {
+  .settings .illustration svg {
     @apply max-w-[200px] block mx-auto;
+  }
+  .settings .illustration p {
+    @apply text-[.8rem] max-w-[280px] m-5 mx-auto text-[#a2a5b9];
   }
   .settings button {
     @apply h-11 min-w-40 text-sm rounded-md mb-2 mr-2;
   }
   .settings .user-block {
-    @apply mx-5 mt-5 border-b h-24 border-gray-300;
+    @apply mx-5 mt-5 border-b h-24 border-gray-300 dark:border-[#2f3b50];
   }
   .settings .avatar {
-    @apply relative flex items-center gap-9 p-2 border border-gray-300 w-auto rounded-full;
+    @apply relative flex items-center gap-9 p-2 border border-gray-300 w-auto rounded-full dark:border-[#425370];
   }
   .settings .badge {
     @apply absolute bottom-0 right-0 w-3 h-3 text-white bg-green-500 p-1 rounded-full;
   }
   .settings .form-text {
-    @apply p-3 text-sm max-w-[450px];
+    @apply p-3 text-sm max-w-[450px] dark:text-[#a2a5b9];
   }
   .tab-item {
     @apply flex items-center cursor-pointer font-montserrat;
   }
   .tab-item a {
-    @apply flex items-center gap-4 py-[14px] px-10 w-full hover:bg-gray-100 border-l-4 transition-colors;
+    @apply flex items-center gap-4 py-[14px] px-10 w-full hover:bg-gray-100 border-l-4 transition-colors dark:hover:bg-[#1c2330];
   }
   .tab-item span {
     @apply text-[.8rem] first-letter:uppercase font-semibold;
@@ -111,47 +114,13 @@ main > * {
 
 .settings-sidebar {
   height: calc(100% - 56px);
+  transition: 0.3s ease;
 }
 .settings-section {
   width: calc(100% - 280px);
+  transition: 0.3s ease;
 }
 
-/* .st0{fill:#e6e6e6}.st1{fill:#2f2e41}.st2{fill:#575a89}.st3{fill:#ffb8b8}.st4{opacity:.2;enable-background:new}.st5{fill:#fff} */
-/* Change the fill color of elements with class "st0" */
-#svg1 .st0 {
-  fill: #ff0000; /* Red color */
-}
-
-/* Change the fill color of elements with class "st1" */
-#svg1 .st1 {
-  fill: #00ff00; /* Green color */
-}
-
-/* Change the fill color of elements with class "st2" */
-#svg1 .st2 {
-  fill: #0000ff; /* Blue color */
-}
-
-/* Change the fill color of elements with class "st3" */
-#svg1 .st3 {
-  fill: #ffff00; /* Yellow color */
-}
-
-/* Change the fill color of elements with class "st4" */
-#svg1 .st4 {
-  fill: #ff00ff; /* Magenta color */
-}
-
-/* Change the fill color of elements with class "st5" */
-#svg1 .st5 {
-  fill: #00ffff; /* Cyan color */
-}
-
-#svg1 {
+/* svg {
   fill: red;
-}
-
-#icon-1 #svg1 {
-  fill: red;
-  /* display: none; */
-}
+} */

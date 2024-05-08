@@ -11,7 +11,7 @@ const GeneralSettings = () => {
           <label htmlFor='address'>ADDRESS</label>
           <textarea
             name='address'
-            className='w-full -mt-1 translate-y-2 h-full text-[.9rem] outline-none px-4'
+            className='w-full bg-transparent border-0 -mt-1 translate-y-2 h-full text-[.9rem] outline-none px-4 dark:text-white'
             placeholder='Fill in your address...'
             cols='30'
             rows='3'></textarea>
@@ -25,10 +25,10 @@ const GeneralSettings = () => {
         <InputGroup start='4' end='6' />
 
         <div className='settings-buttons mt-5 col-span-4'>
-          <button type='submit' className='bg-green-600 text-white hover:bg-green-700'>
+          <button type='submit' className='bg-green-600 col-span-2 text-white hover:bg-green-700'>
             Save changes
           </button>
-          <button type='button' className='bg-gray-100 hover:bg-gray-200'>
+          <button type='button' className='bg-gray-100 col-span-2 hover:bg-gray-200'>
             Advanced
           </button>
         </div>

@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReactFancyBox from 'react-fancybox';
 import 'react-fancybox/lib/fancybox.css';
 
+import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { selectCurrentUser } from '@/features/auth/reducers/login/loginSlice';
 import GeneralSettings from '@/components/layout/settings/GeneralSettings';
 import SecuritySettings from '@/components/layout/settings/SecuritySettings';
@@ -28,6 +29,7 @@ const settingsTabs = [
 ];
 
 const Settings = () => {
+  useDocumentTitle('Settings')
   const user = useSelector(selectCurrentUser);
 
   const location = useLocation();
@@ -50,13 +52,13 @@ const Settings = () => {
 
   return (
     <div className='settings'>
-      <div className='settings-sidebar'>
+      <div className='settings-sidebar hidden md:block'>
         <div className='user-block'>
           <div className='avatar'>
             <Avatar src={avatarSrc} className='h-[58px] w-[58px] rounded-full' alt='' />
             {/* <ReactFancyBox image={avatarSrc} className='h-[58px] w-[58px] rounded-full'/> */}
             <div className='user leading-[1]'>
-              <h4 className='name text-sm'>{`${user.firstName} ${user.lastName}`}</h4>
+              <h4 className='name text-sm dark:text-white'>{`${user.firstName} ${user.lastName}`}</h4>
               <small className='text-xs text-gray-500'>{user.location || 'NA'}</small>
             </div>
             <FontAwesomeIcon icon={faCheck} className='badge' />

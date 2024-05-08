@@ -21,7 +21,7 @@ const NavbarStart = () => {
     <div className='nav-start'>
       {navIconButtons.map((icon, i) => (
         <Button key={i}>
-          <Icon path={icon} size={0.9} />
+          <Icon path={icon} size={0.8} />
         </Button>
       ))}
     </div>

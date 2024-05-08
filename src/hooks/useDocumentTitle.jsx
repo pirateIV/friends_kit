@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 const useDocumentTitle = (title) => {
   useEffect(() => {
-    document.title = `Friendskit | ${title}`;
+    document.title = `${title} - Friendskit`;
     return () => {
       document.title = 'Friendskit';
     };
