@@ -53,19 +53,32 @@ const Settings = () => {
   return (
     <div className='settings'>
       <div className='settings-sidebar hidden md:block'>
-        <div className='user-block'>
-          <div className='avatar'>
+        <div className='user-block-2'>
+          {/* <div className='flex flex-col items-center justify-center text-center'>
             <Avatar src={avatarSrc} className='h-[58px] w-[58px] rounded-full' alt='' />
-            {/* <ReactFancyBox image={avatarSrc} className='h-[58px] w-[58px] rounded-full'/> */}
+          
+            {/* <ReactFancyBox image={avatarSrc} className='h-[58px] w-[58px] rounded-full'/> 
             <div className='user leading-[1]'>
               <h4 className='name text-sm dark:text-white'>{`${user.firstName} ${user.lastName}`}</h4>
               <small className='text-xs text-gray-500'>{user.location || 'NA'}</small>
             </div>
             <FontAwesomeIcon icon={faCheck} className='badge' />
+          </div> */}
+          <div className='flex flex-col items-center justify-center text-center'>
+            <div className='relative border border-[#d8d8d8] dark:border-[#425370] p-2 rounded-full'>
+              <Avatar src={avatarSrc} className='w-[70px] h-[70px] rounded-full' alt='' />
+            <FontAwesomeIcon icon={faCheck} className='badge' />
+            </div>
+            {/* <ReactFancyBox image={avatarSrc} className='h-[58px] w-[58px] rounded-full'/> */}
+            <div className='user leading-[1]'>
+              <h4 className='name text-sm dark:text-white'>{`${user.firstName} ${user.lastName}`}</h4>
+              <small className='text-xs text-gray-500'>{user.location || 'NA'}</small>
+            </div>
           </div>
         </div>
 
         <div className='user-menu'>
+          <div className='user-menu-inner'>
           <MenuBlock
             activeTab={activeTab}
             setActiveTab={setActiveTab}
@@ -81,6 +94,7 @@ const Settings = () => {
             setActiveTab={setActiveTab}
             tabs={settingsTabs.slice(5, 7)}
           />
+          </div>
         </div>
       </div>
       <div className='settings-tabs'>

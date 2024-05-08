@@ -15,6 +15,7 @@ const GeneralSettings = () => {
             placeholder='Fill in your address...'
             cols='30'
             rows='3'></textarea>
+            
         </div>
 
         <p className='form-text col-span-4'>

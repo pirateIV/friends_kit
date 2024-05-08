@@ -1,13 +1,14 @@
 import App from '@/App';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { 
+  Navigate, Outlet, useLocation 
+} from 'react-router-dom';
 import {
-  getCurrentUser,
-  selectCurrentToken,
-  setCredentials,
+  getCurrentUser
 } from '@/features/auth/reducers/login/loginSlice';
-import logoLoading from '@/assets/images/logo/logo.svg';
+import '@/assets/css/loader.css'
+
 
 const ProtectedRoute = () => {
   const location = useLocation();
@@ -23,17 +24,7 @@ const ProtectedRoute = () => {
   }, []);
 
   if (loading) {
-    return (
-      <div className='min-h-screen w-full p-32 flex flex-col items-center justify-center'>
-        <img
-          width='300'
-          height='500'
-          src={logoLoading}
-          className='object-cover h-3/4'
-          alt='loading'
-        />
-      </div>
-    );
+    return <div className="pageloader is-active"></div>
   }
 
   return isAuthenticated ? (
