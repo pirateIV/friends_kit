@@ -1,9 +1,9 @@
-import SettingsInput from '@/components/ui/SettingsInput';
-import SettingsLayout from './SettingsLayout';
-import LockIcon from '@/shared/components/icons/LockIcon';
-import { selectCurrentUser } from '@/features/auth/reducers/login/loginSlice';
 import { useSelector } from 'react-redux';
+import SettingsLayout from './SettingsLayout';
+import SettingsInput from '@/components/ui/SettingsInput';
+import LockIcon from '@/shared/components/icons/LockIcon';
 import PhoneIcon from '@/shared/components/icons/PhoneIcon';
+import { selectCurrentUser } from '@/features/auth/reducers/login/loginSlice';
 
 const SecuritySettings = () => {
   const user = useSelector(selectCurrentUser);

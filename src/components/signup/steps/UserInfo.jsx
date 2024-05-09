@@ -21,8 +21,8 @@ const UserInfoSchema = Yup.object().shape({
 const UserInfo = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, handleLoading } = useLoadingState();
   const user = useSelector(getUserInfo);
+  const { loading, handleLoading } = useLoadingState();
   const { firstName, lastName, email } = user;
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const UserInfo = () => {
   return (
     <>
       <SignupWrapper {...stepProps.userInfo}>
-        <Formik
+        <Formik 
           initialValues={{ firstName, lastName, email }}
           validationSchema={UserInfoSchema}
           onSubmit={(values) => handleLoading(handleNext(values))}>

@@ -22,4 +22,6 @@ const settingsSlice = createSlice({
 
 export const { getUserSettings } = settingsSlice.actions
 
+export const selectCurrentUserSettings = (state) => state.settings
+
 export default settingsSlice.reducer

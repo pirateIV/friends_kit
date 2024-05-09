@@ -65,7 +65,7 @@ main > * {
     @apply h-[17px] w-[17px];
   }
   .settings-form input {
-    @apply border-0 bg-transparent text-[#5b5d7e] text-[.9rem] h-9 w-full pt-0 pl-10 pb-2 outline-none dark:text-white;
+    @apply border-0 bg-transparent text-[#5b5d7e] text-[.9rem] h-9 w-full pt-0 pl-10 pb-2 outline-none dark:text-white disabled:cursor-not-allowed disabled:bg-gray-200;
   }
   .settings .user-menu {
     @apply divide-y divide-gray-300 max-h-full h-[500px] overflow-y-auto dark:divide-[#2f3b50];
