@@ -1,9 +1,9 @@
 import { useField } from 'formik';
+import PropTypes from 'prop-types';
 import { Input } from '@material-tailwind/react';
 import useInputState from '@/hooks/useInputState';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import PropTypes from 'prop-types';
 
 const InputField = ({ label, type, ...props }) => {
   const [field, meta] = useField(props);
