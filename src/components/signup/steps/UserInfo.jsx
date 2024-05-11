@@ -1,21 +1,31 @@
-import * as Yup from 'yup';
-import { useEffect } from 'react';
-import { Form, Formik } from 'formik';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import * as Yup from "yup";
+import { useEffect } from "react";
+import { Form, Formik } from "formik";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { stepProps } from '.';
-import FormButtons from '../Form/FormButtons';``
-import FormContent from '../Form/FormContent';
-import useLoadingState from '@/hooks/useLoading';
-import SignupWrapper from '@/components/common/SignupWrapper';
-import { setProgress } from '@/redux/reducers/progressReducer';
-import { getUserInfo, setUserInfo } from '@/features/auth/reducers/user/userSlice';
+import { stepProps } from ".";
+import FormButtons from "../Form/FormButtons";
+``;
+import FormContent from "../Form/FormContent";
+import useLoadingState from "@/hooks/useLoading";
+import SignupWrapper from "@/components/common/SignupWrapper";
+import { setProgress } from "@/redux/reducers/progressReducer";
+import {
+  getUserInfo,
+  setUserInfo,
+} from "@/features/auth/reducers/user/userSlice";
 
 const UserInfoSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('required!'),
-  firstName: Yup.string().min(2, 'too short!').max(25, 'too long!').required('required'),
-  lastName: Yup.string().min(2, 'too short!').max(25, 'too long!').required('required'),
+  email: Yup.string().email("Invalid email").required("required!"),
+  firstName: Yup.string()
+    .min(2, "too short!")
+    .max(25, "too long!")
+    .required("required"),
+  lastName: Yup.string()
+    .min(2, "too short!")
+    .max(25, "too long!")
+    .required("required"),
 });
 
 const UserInfo = () => {
@@ -35,18 +45,19 @@ const UserInfo = () => {
   const handleNext = async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 600));
     dispatch(setUserInfo(values));
-    navigate('/signup/upload-profile');
+    navigate("/signup/upload-profile");
   };
 
   return (
     <>
       <SignupWrapper {...stepProps.userInfo}>
-        <Formik 
+        <Formik
           initialValues={{ firstName, lastName, email }}
           validationSchema={UserInfoSchema}
-          onSubmit={(values) => handleLoading(handleNext(values))}>
+          onSubmit={(values) => handleLoading(handleNext(values))}
+        >
           {() => (
-            <Form className='w-full max-w-[540px]'>
+            <Form className="w-full max-w-[540px]">
               <FormContent />
               <FormButtons loading={loading} handlePrevious={handlePrevious} />
             </Form>

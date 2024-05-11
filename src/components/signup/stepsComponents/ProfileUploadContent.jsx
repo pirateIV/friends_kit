@@ -1,14 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Cropper from 'react-cropper';
-import 'cropperjs/dist/cropper.css';
+import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
 
-import { assets, uploadClass } from '.';
-import PlusIcon from '@/shared/components/icons/PlusIcon';
+import { assets, uploadClass } from ".";
+import PlusIcon from "@/shared/components/icons/PlusIcon";
 // import returnFileSize from '@/helpers/returnFileSize';
-import { getUserInfo, setProfileUpload } from '@/features/auth/reducers/user/userSlice';
+import {
+  getUserInfo,
+  setProfileUpload,
+} from "@/features/auth/reducers/user/userSlice";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -16,7 +19,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTrigger,
-} from '@/components/ui/dialog';
+} from "@/components/ui/dialog";
 
 const defaultSrc = assets.avatar;
 
@@ -29,11 +32,11 @@ const ProfileUploadContent = () => {
   // const [fileSize, setFileSize] = useState('');
   const { profilePic } = useSelector(getUserInfo);
   const [image, setImage] = useState(defaultSrc);
-  const [cropData, setCropData] = useState('');
+  const [cropData, setCropData] = useState("");
   const [cropper, setCropper] = useState(null);
 
   const getCropData = () => {
-    if (typeof cropper !== 'undefined') {
+    if (typeof cropper !== "undefined") {
       setCropData(cropper.getCroppedCanvas().toDataURL());
     }
   };
@@ -68,37 +71,40 @@ const ProfileUploadContent = () => {
   return (
     <>
       <div className={uploadClass.container}>
-        <div className='photo-upload flex-center w-[100px] h-[100px] rounded-full overflow-hidden'>
-          <img src={!profilePic ? defaultSrc : profilePic} alt='Profile' />
-          <a className={uploadClass.photoUpload} onClick={(e) => handleImageUpload(e)}>
+        <div className="photo-upload flex-center w-[100px] h-[100px] rounded-full overflow-hidden">
+          <img src={!profilePic ? defaultSrc : profilePic} alt="Profile" />
+          <a
+            className={uploadClass.photoUpload}
+            onClick={(e) => handleImageUpload(e)}
+          >
             <PlusIcon />
           </a>
           <input
-            type='file'
-            id='file-input'
-            className='hidden'
+            type="file"
+            id="file-input"
+            className="hidden"
             ref={inputFileRef}
             onChange={handleFileChange}
           />
         </div>
       </div>
-      <div className='limitation mt-5 text-center'>
-        <small className='text-[#999] text-[.875em]'>
+      <div className="limitation mt-5 text-center">
+        <small className="text-[#999] text-[.875em]">
           Only images with a size lower than 3MB are allowed.
         </small>
       </div>
 
       <Dialog>
         <DialogTrigger asChild>
-          <Button ref={cropBtnRef} variant='outline' className='hidden'>
+          <Button ref={cropBtnRef} variant="outline" className="hidden">
             Share
           </Button>
         </DialogTrigger>
-        <DialogContent className='sm:max-w-xl'>
+        <DialogContent className="sm:max-w-xl">
           <DialogHeader>
             <h3> Crop your Picture</h3>
           </DialogHeader>
-          <section className='mt-4'>
+          <section className="mt-4">
             <Cropper
               zoomTo={0.5}
               viewMode={1}
@@ -106,7 +112,7 @@ const ProfileUploadContent = () => {
               autoCropArea={1}
               responsive={true}
               background={false}
-              className='cropper'
+              className="cropper"
               minCropBoxWidth={10}
               minCropBoxHeight={10}
               initialAspectRatio={1}
@@ -117,13 +123,14 @@ const ProfileUploadContent = () => {
               guides={true}
             />
           </section>
-          <DialogFooter className='sm:items-end'>
+          <DialogFooter className="sm:items-end">
             <DialogClose>
               <Button
-                type='button'
-                variant='secondary'
+                type="button"
+                variant="secondary"
                 onClick={() => getCropData()}
-                className='w-16 bg-green-600 text-white focus:outline-none'>
+                className="w-16 bg-green-600 text-white focus:outline-none"
+              >
                 Crop
               </Button>
             </DialogClose>

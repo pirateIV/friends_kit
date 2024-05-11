@@ -1,108 +1,107 @@
-import Root from './root';
-import { createBrowserRouter } from 'react-router-dom';
+import Root from "./root";
+import { createBrowserRouter } from "react-router-dom";
 
 // auth
-import Login from '@/features/auth/pages/Login/Login';
-import Signup from '@/features/auth/pages/Signup/Signup';
+import Login from "@/features/auth/pages/Login/Login";
+import Signup from "@/features/auth/pages/Signup/Signup";
 
 // signup
-import UserInfo from '@/components/signup/steps/UserInfo';
-import ProfileUpload from '@/components/signup/steps/ProfileUpload';
-import AccountCreated from '@/components/signup/steps/AccountCreated';
-import AuthorizeAccount from '@/components/signup/steps/AuthorizeAccount';
+import UserInfo from "@/components/signup/steps/UserInfo";
+import ProfileUpload from "@/components/signup/steps/ProfileUpload";
+import AccountCreated from "@/components/signup/steps/AccountCreated";
+import AuthorizeAccount from "@/components/signup/steps/AuthorizeAccount";
 
 // user
-import Friends from '@/pages/friends/Friends';
-import Settings from '@/pages/settings/Settings';
-import UserProfileMain from '@/pages/user_profile/UserProfileMain';
-import UserProfileMinimal from '@/pages/user_profile/UserProfileMinimal';
+import Friends from "@/pages/friends/Friends";
+import Settings from "@/pages/settings/Settings";
+import UserProfileMain from "@/pages/user_profile/UserProfileMain";
+import UserProfileMinimal from "@/pages/user_profile/UserProfileMinimal";
 
 // about
-import Jobs from '@/pages/About/routes/Jobs';
-import AboutUser from '@/pages/About/AboutUser';
-import Education from '@/pages/About/routes/Education';
-import PersonalInfo from '@/pages/About/routes/PersonalInfo';
+import Jobs from "@/pages/About/routes/Jobs";
+import AboutUser from "@/pages/About/AboutUser";
+import Education from "@/pages/About/routes/Education";
+import PersonalInfo from "@/pages/About/routes/PersonalInfo";
 
 // 404
-import NotFoundPage from '@/pages/404/NotFound';
-import ProtectedRoute from '@/utils/ProtectedRoute';
-
+import NotFoundPage from "@/pages/404/NotFound";
+import ProtectedRoute from "@/utils/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Root />,
     children: [
       {
-        path: '/app',
+        path: "/app",
         element: <ProtectedRoute />,
         children: [
           {
-            path: '/app/timeline',
+            path: "/app/timeline",
             element: <UserProfileMinimal />,
           },
           {
-            path: '/app/@me',
+            path: "/app/@me",
             element: <UserProfileMain />,
           },
           {
-            path: '/app/@me/friends',
+            path: "/app/@me/friends",
             element: <Friends />,
           },
           {
-            path: '/app/@me/about',
+            path: "/app/@me/about",
             element: <AboutUser />,
             children: [
               {
-                path: '/app/@me/about/personalInfo',
+                path: "/app/@me/about/personalInfo",
                 element: <PersonalInfo />,
               },
               {
-                path: '/app/@me/about/education',
+                path: "/app/@me/about/education",
                 element: <Education />,
               },
               {
-                path: '/app/@me/about/jobs',
+                path: "/app/@me/about/jobs",
                 element: <Jobs />,
               },
             ],
           },
           {
-            path: '/app/@me/settings',
+            path: "/app/@me/settings",
             element: <Settings />,
           },
         ],
       },
       {
-        path: '/signup',
+        path: "/signup",
         element: <Signup />,
         children: [
           {
-            path: '/signup/info',
+            path: "/signup/info",
             element: <UserInfo />,
           },
           {
-            path: '/signup/upload-profile',
+            path: "/signup/upload-profile",
             element: <ProfileUpload />,
           },
           {
-            path: '/signup/auth',
+            path: "/signup/auth",
             element: <AuthorizeAccount />,
           },
           {
-            path: '/signup/created',
+            path: "/signup/created",
             element: <AccountCreated />,
           },
         ],
       },
       {
-        path: '/login',
+        path: "/login",
         element: <Login />,
       },
     ],
   },
   {
-    path: '*',
+    path: "*",
     element: <NotFoundPage />,
   },
 ]);

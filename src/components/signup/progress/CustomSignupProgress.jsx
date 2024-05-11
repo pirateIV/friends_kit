@@ -1,8 +1,8 @@
-import Steps from './Steps';
-import { progressDetails } from './icons';
-import ProgressBar from './ProgressBar';
+import Steps from "./Steps";
+import { progressDetails } from "./icons";
+import ProgressBar from "./ProgressBar";
 
-import './CustomSignupProgress.css';
+import "./CustomSignupProgress.css";
 
 const CustomSignupProgress = () => {
   return (

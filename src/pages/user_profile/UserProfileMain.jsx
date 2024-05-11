@@ -1,10 +1,12 @@
-import { useRef } from 'react';
-import PropTypes from 'prop-types';
-import { profileProps } from '..';
-import ProfileMenu from '@/components/ProfileMenu';
-import ProfileHeader from '@/components/ProfileHeader';
-import ProfileSubHeader from '@/components/ProfileSubHeader';
-import BannerUploadModal, { UploadFromPcModal } from '@/components/modals/banner_modals';
+import { useRef } from "react";
+import PropTypes from "prop-types";
+import { profileProps } from "..";
+import ProfileMenu from "@/components/ProfileMenu";
+import ProfileHeader from "@/components/ProfileHeader";
+import ProfileSubHeader from "@/components/ProfileSubHeader";
+import BannerUploadModal, {
+  UploadFromPcModal,
+} from "@/components/modals/banner_modals";
 
 const UserProfileMain = ({ children }) => {
   const dialogTrigger = useRef();
@@ -33,7 +35,7 @@ const UserProfileMain = ({ children }) => {
         triggerPcUpload={triggerPcUpload}
       />
       <UploadFromPcModal pcUploadTrigger={pcUploadTrigger} />
-      {location.pathname !== '/app' ? children : <UserDetails />}
+      {location.pathname !== "/app" ? children : <UserDetails />}
     </div>
   );
 };

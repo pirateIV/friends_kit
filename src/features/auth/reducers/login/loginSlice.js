@@ -1,18 +1,18 @@
-import axios from 'axios';
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from "axios";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const baseUrl = 'http://localhost:5000/api/protected';
+const baseUrl = "http://localhost:5000/api/protected";
 
 const initialState = {
   user: null,
   error: null,
   loading: false,
   isAuthenticated: false,
-  token: localStorage.getItem('token') || null,
+  token: localStorage.getItem("token") || null,
 };
 
 export const getCurrentUser = createAsyncThunk(
-  '/users/getCurrentUser',
+  "/users/getCurrentUser",
   async (_, thunkApi) => {
     try {
       const token = thunkApi.getState().auth.token;
@@ -24,15 +24,15 @@ export const getCurrentUser = createAsyncThunk(
       console.log(error);
       return thunkApi.rejectWithValue(error.response.data);
     }
-  }
+  },
 );
 
 const authReducer = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     setCredentials: (state, { payload }) => {
-      localStorage.setItem('token', payload);
+      localStorage.setItem("token", payload);
       state.token = payload;
     },
     setIsAuthenticated(state, { payload }) {
@@ -42,7 +42,7 @@ const authReducer = createSlice({
       state.token = null;
       state.user = null;
       state.isAuthenticated = false;
-      localStorage.removeItem('token');
+      localStorage.removeItem("token");
     },
   },
   selectors: {
@@ -66,6 +66,7 @@ const authReducer = createSlice({
 export const selectCurrentToken = (state) => state.auth.token;
 export const selectCurrentUser = (state) => state.auth.user;
 
-export const { setCredentials, logout, setIsAuthenticated } = authReducer.actions;
+export const { setCredentials, logout, setIsAuthenticated } =
+  authReducer.actions;
 
 export default authReducer.reducer;

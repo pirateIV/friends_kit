@@ -1,16 +1,16 @@
-import changeCover from '@/assets/illustrations/change-cover.svg';
-import uploadCover from '@/assets/illustrations/upload-cover.svg';
+import changeCover from "@/assets/illustrations/change-cover.svg";
+import uploadCover from "@/assets/illustrations/upload-cover.svg";
 export const uploadDialogs = [
   {
-    title: 'Upload',
+    title: "Upload",
     imageSrc: uploadCover,
-    
-    description: 'From your phone/pc',
+
+    description: "From your phone/pc",
   },
   {
-    title: 'Choose',
+    title: "Choose",
     imageSrc: changeCover,
-   
-    description: 'From your photos',
+
+    description: "From your photos",
   },
 ];

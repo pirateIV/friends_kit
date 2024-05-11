@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import { stepProps } from '.';
-import SignupCard from '@/components/common/SignupCard';
-import SignupWrapper from '@/components/common/SignupWrapper';
-import { setProgress } from '@/redux/reducers/progressReducer';
-import AcctCreatedContent from '../stepsComponents/AcctCreatedContent';
+import { stepProps } from ".";
+import SignupCard from "@/components/common/SignupCard";
+import SignupWrapper from "@/components/common/SignupWrapper";
+import { setProgress } from "@/redux/reducers/progressReducer";
+import AcctCreatedContent from "../stepsComponents/AcctCreatedContent";
 
 const AccountCreated = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const AccountCreated = () => {
   useEffect(() => {
     dispatch(setProgress(100));
   }, [dispatch]);
-  const next = () => navigate('/');
+  const next = () => navigate("/");
 
   return (
     <SignupWrapper {...stepProps.accountCreated}>

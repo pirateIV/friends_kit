@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 const useDocumentTitle = (title) => {
   useEffect(() => {
     document.title = `${title} - Friendskit`;
     return () => {
-      document.title = 'Friendskit';
+      document.title = "Friendskit";
     };
   }, [title]);
 };

@@ -1,8 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { friendsArray } from '.';
+import { createSlice } from "@reduxjs/toolkit";
+import { friendsArray } from ".";
 
 const usersFilterSlice = createSlice({
-  name: 'usersFilter',
+  name: "usersFilter",
   initialState: friendsArray,
   reducers: {
     setFilteredFriends(_, action) {

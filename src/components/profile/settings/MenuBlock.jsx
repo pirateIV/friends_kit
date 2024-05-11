@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types'
-import TabList from './TabList';
+import PropTypes from "prop-types";
+import TabList from "./TabList";
 
 const MenuBlock = ({ tabs, activeTab, setActiveTab }) => (
-  <div className='menu-block py-5'>
+  <div className="menu-block py-5">
     <ul>
       {tabs.map((tab) => (
         <TabList
@@ -22,4 +22,4 @@ MenuBlock.propTypes = {
   setActiveTab: PropTypes.func,
 };
 
-export default MenuBlock
+export default MenuBlock;

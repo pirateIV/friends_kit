@@ -4,9 +4,9 @@ import {
   mdiBellOutline,
   mdiHeartOutline,
   mdiMessageOutline,
-} from '@mdi/js';
-import Icon from '@mdi/react';
-import Button from './Button';
+} from "@mdi/js";
+import Icon from "@mdi/react";
+import Button from "./Button";
 
 const NavbarStart = () => {
   const navIconButtons = [
@@ -18,7 +18,7 @@ const NavbarStart = () => {
   ];
 
   return (
-    <div className='nav-start'>
+    <div className="nav-start">
       {navIconButtons.map((icon, i) => (
         <Button key={i}>
           <Icon path={icon} size={0.8} />

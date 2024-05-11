@@ -1,15 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: 0,
 };
 
 const progressSlice = createSlice({
-  name: 'progress',
+  name: "progress",
   initialState,
   reducers: {
     setProgress(state, action) {
-     (state.value = Number(action.payload));
+      state.value = Number(action.payload);
     },
   },
 });

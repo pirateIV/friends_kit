@@ -1,5 +1,5 @@
-import StepCircle from './StepCircle';
-import PropTypes from 'prop-types';
+import StepCircle from "./StepCircle";
+import PropTypes from "prop-types";
 
 const Steps = ({ steps }) => {
   return (

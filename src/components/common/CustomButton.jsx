@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
-import useLoadingState from '@/hooks/useLoading';
-import { Button } from '@material-tailwind/react';
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+import useLoadingState from "@/hooks/useLoading";
+import { Button } from "@material-tailwind/react";
 
 const CustomButton = (props) => {
   const navigate = useNavigate();
@@ -16,14 +16,15 @@ const CustomButton = (props) => {
 
   return (
     <Button
-      color='gray'
+      color="gray"
       type={type}
       variant={variant}
       loading={loading}
       disabled={loading}
       className={`${className}
-       ${'disabled:cursor-not-allowed'}`}
-      onClick={() => handleLoading(handleOnClick())}>
+       ${"disabled:cursor-not-allowed"}`}
+      onClick={() => handleLoading(handleOnClick())}
+    >
       {content}
     </Button>
   );

@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const uploadAreaReducer = createSlice({
-  name: 'uploadArea',
+  name: "uploadArea",
   initialState: false,
   reducers: {
     showUploadArea() {

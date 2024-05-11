@@ -1,53 +1,53 @@
 .bg-mailbox {
   width: 151px;
   height: 150px;
-  background: url('../sprites/signup_css_sprites.png') -652px -10px;
+  background: url("../sprites/signup_css_sprites.png") -652px -10px;
 }
 
 .bg-type_1 {
   width: 194px;
   height: 150px;
-  background: url('../sprites/signup_css_sprites.png') -224px -10px;
+  background: url("../sprites/signup_css_sprites.png") -224px -10px;
 }
 .bg-type_1_bg {
   width: 194px;
   height: 150px;
-  background: url('../sprites/signup_css_sprites.png') -224px -350px;
+  background: url("../sprites/signup_css_sprites.png") -224px -350px;
 }
 .bg-type_1_bg_dark {
   width: 194px;
   height: 150px;
-  background: url('../sprites/signup_css_sprites.png') -10px -350px;
+  background: url("../sprites/signup_css_sprites.png") -10px -350px;
 }
 
 .bg-type_2 {
   width: 194px;
   height: 150px;
-  background: url('../sprites/signup_css_sprites.png') -438px -350px;
+  background: url("../sprites/signup_css_sprites.png") -438px -350px;
 }
 .bg-type_2_bg {
   width: 194px;
   height: 150px;
-  background: url('../sprites/signup_css_sprites.png') -224px -180px;
+  background: url("../sprites/signup_css_sprites.png") -224px -180px;
 }
 .bg-type_2_bg_dark {
   width: 194px;
   height: 150px;
-  background: url('../sprites/signup_css_sprites.png') -10px -180px;
+  background: url("../sprites/signup_css_sprites.png") -10px -180px;
 }
 
 .bg-type_3 {
   width: 194px;
   height: 150px;
-  background: url('../sprites/signup_css_sprites.png') -438px -10px;
+  background: url("../sprites/signup_css_sprites.png") -438px -10px;
 }
 .bg-type_3_bg {
   width: 194px;
   height: 150px;
-  background: url('../sprites/signup_css_sprites.png') -10px -10px;
+  background: url("../sprites/signup_css_sprites.png") -10px -10px;
 }
 .bg-type_3_bg_dark {
   width: 194px;
   height: 150px;
-  background: url('../sprites/signup_css_sprites.png') -438px -180px;
+  background: url("../sprites/signup_css_sprites.png") -438px -180px;
 }
