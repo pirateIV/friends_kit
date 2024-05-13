@@ -7,7 +7,7 @@ const ProfileSubHeader = () => {
   return (
     <header className="profile-sub-header mt-5 text-center flex items-center justify-between">
       <div className="friends w-1/3 text-start leading-none">
-        <h2 className="font-bold text-[1.65rem] font-montserrat text-[#393a4f]">
+        <h2 className="font-bold text-[1.65rem] font-montserrat text-[#393a4f] dark:text-gray-200">
           {user.friends.length}
         </h2>
         <small className="uppercase text-xs text-gray-500 font-medium">
@@ -15,7 +15,7 @@ const ProfileSubHeader = () => {
         </small>
       </div>
       <div className="user-name w-1/3 text-center leading-none">
-        <h2 className="font-bold text-[1.65rem] text-[#393a4f] dark:text-white">
+        <h2 className="font-bold text-[1.65rem] text-[#393a4f] dark:text-gray-200">
           {`${name}`}
         </h2>
         <small className="text-[#a2a5b9]">Media Influencer</small>
