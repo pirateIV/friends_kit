@@ -7,16 +7,21 @@ import ProfileSubHeader from "@/components/ProfileSubHeader";
 import BannerUploadModal, {
   UploadFromPcModal,
 } from "@/components/modals/banner_modals";
-import { Tabs } from "flowbite-react";
+import { Avatar, Tabs } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
 import { getAllUserPosts } from "@/features/auth/reducers/posts/postsSlice";
+import { Button, Timeline } from "flowbite-react";
+
+import photo from "@/assets/images/photo.png";
+import feeling from "@/assets/images/feeling.png";
+import liveVideo from "@/assets/images/live-video.png";
 
 const UserProfileMain = ({ children }) => {
   const { name, user } = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
-  const userPosts = useSelector((state) => state.posts);
+  const posts = useSelector((state) => state.posts.posts);
 
   const dialogTrigger = useRef();
   const dialogClose = useRef();
@@ -33,8 +38,14 @@ const UserProfileMain = ({ children }) => {
 
   useEffect(() => {
     dispatch(getAllUserPosts());
-    console.log(userPosts);
   }, []);
+
+  const buttonStyles = {
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    color: "#999",
+  };
 
   return (
     <>
@@ -66,7 +77,141 @@ const UserProfileMain = ({ children }) => {
                   <div className="col-span-7">
                     <h4 className="text-lg dark:text-gray-200">Posts</h4>
 
-                    <div className="user-posts-list"></div>
+                    <div id="create-post" aria-label="Create a Post">
+                      <div className="bg-white p-3 shadow-mui-1 rounded-md space-y-3 divide-y divide-gray-300 dark:divide-gray-700 dark:bg-[#1c232e]">
+                        <div className="create-post-header flex items-center gap-4 *:flex-shrink-0">
+                          <div className="avatar w-10 h-10 overflow-hidden rounded-full">
+                            <Avatar />
+                          </div>
+                          <input
+                            type="text"
+                            className="flex-1 border-t bg-gray-200 p-2.5 cursor-pointer rounded-full outline-none focus:bg-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:focus:bg-gray-800/80"
+                            placeholder={`What's on your mind, ${user.firstName} ?`}
+                          />
+                        </div>
+                        <div className="create-post-footer">
+                          <div className="post-types flex items-center justify-center *:flex-1 *:gap-3 gap-3 *:text-sm text-gray-600 *:flex-center *:py-1 *:rounded-md pt-1">
+                            <button className="hover:bg-gray-300">
+                              <img width="20" height="20" src={photo} alt="" />
+                              <span>Live video</span>
+                            </button>
+                            <button className="hover:bg-gray-300">
+                              <img
+                                width="20"
+                                height="20"
+                                src={feeling}
+                                alt=""
+                              />
+                              <span>Photo/video</span>
+                            </button>
+                            <button className="hover:bg-gray-300">
+                              <img
+                                width="20"
+                                height="20"
+                                src={liveVideo}
+                                alt=""
+                              />
+                              <span>Feeling/activity</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="user-posts-list">
+                      <Timeline>
+                        {posts &&
+                          posts.map((post) => (
+                            <Timeline.Item
+                              key={post._id}
+                              className="bg-white shadow-mui-1 text-sm my-5 rounded-md dark:text-gray-200 dark:bg-[#1c232e]"
+                            >
+                              <Timeline.Point />
+                              <Timeline.Content>
+                                <div className="post-header p-4 mb-1">
+                                  <div className="mini-post-header flex items-center gap-3">
+                                    <div className="avatar w-10 h-10 overflow-hidden rounded-full">
+                                      <Avatar />
+                                    </div>
+                                    <div>
+                                      <h5 className="header-title">You</h5>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="px-4">{post.content}</div>
+                                <div className="image">
+                                  <img
+                                    src={
+                                      "@/c8c70e92-d705-4279-932b-2c30ed62da2c.jpg"
+                                    }
+                                    height="300"
+                                    alt=""
+                                  />
+                                </div>
+                                <div className="post-footer p-3 mx-4 border-t flex items-center justify-center *:flex-1 *:flex-center *:py-1 border-gray-300 mt-4 pt-2 dark:border-gray-700">
+                                  <div>
+                                    <button style={buttonStyles}>
+                                      <i
+                                        data-visualcompletion="css-img"
+                                        className="x1b0d499 x1d69dk1"
+                                        style={{
+                                          backgroundImage: `url("https://static.xx.fbcdn.net/rsrc.php/v3/ys/r/mJW0r_GFye-.png?_nc_eui2=AeHHvosbKnrsYwroyxlczufaZq-ImSmmtj1mr4iZKaa2PZX8SZibZ1v52nDkujEXee_7iPbyKr0G_aQ0dVowBI4S")`,
+                                          backgroundPosition: "0px -718px",
+                                          backgroundSize: "auto",
+                                          width: "20px",
+                                          height: "20px",
+                                          backgroundRepeat: "no-repeat",
+                                          display: "inline-block",
+                                          opacity: "0.6",
+                                        }}
+                                      ></i>
+                                      Like
+                                    </button>
+                                  </div>
+                                  <div>
+                                    <button style={buttonStyles}>
+                                      <i
+                                        data-visualcompletion="css-img"
+                                        className="x1b0d499 x1d69dk1"
+                                        style={{
+                                          backgroundImage: `url("https://static.xx.fbcdn.net/rsrc.php/v3/ys/r/mJW0r_GFye-.png?_nc_eui2=AeHHvosbKnrsYwroyxlczufaZq-ImSmmtj1mr4iZKaa2PZX8SZibZ1v52nDkujEXee_7iPbyKr0G_aQ0dVowBI4S")`,
+                                          backgroundPosition: "0px -529px",
+                                          backgroundSize: "auto",
+                                          width: "20px",
+                                          height: "20px",
+                                          backgroundRepeat: "no-repeat",
+                                          display: "inline-block",
+                                          opacity: "0.6",
+                                        }}
+                                      ></i>
+                                      Comment
+                                    </button>
+                                  </div>
+                                  <div>
+                                    <button style={buttonStyles}>
+                                      <i
+                                        data-visualcompletion="css-img"
+                                        className="x1b0d499 x1d69dk1"
+                                        style={{
+                                          backgroundImage: `url("https://static.xx.fbcdn.net/rsrc.php/v3/ys/r/mJW0r_GFye-.png?_nc_eui2=AeHHvosbKnrsYwroyxlczufaZq-ImSmmtj1mr4iZKaa2PZX8SZibZ1v52nDkujEXee_7iPbyKr0G_aQ0dVowBI4S")`,
+                                          backgroundPosition: "0px -865px",
+                                          backgroundSize: "auto",
+                                          width: "20px",
+                                          height: "20px",
+                                          backgroundRepeat: "no-repeat",
+                                          display: "inline-block",
+                                          opacity: "0.6",
+                                        }}
+                                      ></i>
+                                      Share
+                                    </button>
+                                  </div>
+                                </div>
+                              </Timeline.Content>
+                            </Timeline.Item>
+                          ))}
+                      </Timeline>
+                    </div>
                   </div>
                 </div>
               </Tabs.Item>
