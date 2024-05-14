@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 import PostHeader from "./PostHeader";
 import Button from "./Button";
+import image from "C:/Users/Benjamin/Desktop/441878728_120210388485290683_7670975021207809707_n.jpg";
 
 const Feed = () => {
   const posts = useSelector((state) => state.posts.posts);
@@ -21,13 +22,20 @@ const Feed = () => {
 
               <div className="px-4 mb-4">{post.content}</div>
 
-              <div className="image">
-                <img src={post.image} height="500" alt="" />
+              <div className="image h-[450px]">
+                <img
+                  src={image}
+                  height="300"
+                  className="h-full w-full object-cover"
+                  alt=""
+                />
               </div>
 
-              <Button iconUrl={icons_2} label="Like" />
-              <Button iconUrl={icons_2} label="Comment" />
-              <Button iconUrl={icons_2} label="Share" />
+              <div className="flex items-center justify-center *:flex-1 *:gap-3 gap-3 *:text-sm text-gray-600 *:flex-center *:py-1 *:rounded-md pt-1">
+                <Button iconUrl={icons_2} label="Like" />
+                <Button iconUrl={icons_2} label="Comment" />
+                <Button iconUrl={icons_2} label="Share" />
+              </div>
             </Timeline.Item>
           ))}
       </Timeline>
