@@ -17,6 +17,8 @@ import { Button, Timeline } from "flowbite-react";
 import photo from "@/assets/images/photo.png";
 import feeling from "@/assets/images/feeling.png";
 import liveVideo from "@/assets/images/live-video.png";
+import icons_1 from "@/assets/sprites/icon-sprites.png";
+import icons_2 from "@/assets/sprites/icon-sprites-2.png";
 
 const UserProfileMain = ({ children }) => {
   const { name, user } = useSelector(selectCurrentUser);
@@ -83,32 +85,38 @@ const UserProfileMain = ({ children }) => {
                           <div className="avatar w-10 h-10 overflow-hidden rounded-full">
                             <Avatar />
                           </div>
-                          <input
-                            type="text"
-                            className="flex-1 border-t bg-gray-200 p-2.5 cursor-pointer rounded-full outline-none focus:bg-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:focus:bg-gray-800/80"
-                            placeholder={`What's on your mind, ${user.firstName} ?`}
-                          />
+                          <button
+                            type="button"
+                            className="flex-1 border-t text-[14px] text-start bg-gray-200 p-2.5 px-3.5 cursor-pointer rounded-full outline-none focus:bg-gray-300 dark:text-gray-500 dark:border-[#3a455b] dark:bg-[#283143]  dark:focus:bg-[#283143]/80"
+                          >
+                            What's on your mind {user.firstName}
+                          </button>
                         </div>
                         <div className="create-post-footer">
                           <div className="post-types flex items-center justify-center *:flex-1 *:gap-3 gap-3 *:text-sm text-gray-600 *:flex-center *:py-1 *:rounded-md pt-1">
-                            <button className="hover:bg-gray-300">
-                              <img width="20" height="20" src={photo} alt="" />
-                              <span>Live video</span>
-                            </button>
-                            <button className="hover:bg-gray-300">
-                              <img
-                                width="20"
-                                height="20"
-                                src={feeling}
-                                alt=""
-                              />
-                              <span>Photo/video</span>
-                            </button>
-                            <button className="hover:bg-gray-300">
+                            <button className="hover:bg-gray-300  dark:hover:bg-[#2d3546]">
                               <img
                                 width="20"
                                 height="20"
                                 src={liveVideo}
+                                alt="live-video-icon"
+                              />
+                              <span>Live video</span>
+                            </button>
+                            <button className="hover:bg-gray-300 dark:hover:bg-[#2d3546]">
+                              <img
+                                width="20"
+                                height="20"
+                                src={photo}
+                                alt="photo-icon"
+                              />
+                              <span>Photo/video</span>
+                            </button>
+                            <button className="hover:bg-gray-300 dark:hover:bg-[#2d3546]">
+                              <img
+                                width="20"
+                                height="20"
+                                src={feeling}
                                 alt=""
                               />
                               <span>Feeling/activity</span>
@@ -126,25 +134,56 @@ const UserProfileMain = ({ children }) => {
                               key={post._id}
                               className="bg-white shadow-mui-1 text-sm my-5 rounded-md dark:text-gray-200 dark:bg-[#1c232e]"
                             >
-                              <Timeline.Point />
+                              <Timeline.Point>
+                                <img
+                                  src=""
+                                  className="absolute -left-1.5 mt-1.5"
+                                />
+                              </Timeline.Point>
                               <Timeline.Content>
                                 <div className="post-header p-4 mb-1">
-                                  <div className="mini-post-header flex items-center gap-3">
-                                    <div className="avatar w-10 h-10 overflow-hidden rounded-full">
-                                      <Avatar />
+                                  <header className="mini-post-header flex items-center justify-between">
+                                    <div className="flex items-center gap-3">
+                                      <div className="avatar w-10 h-10 overflow-hidden rounded-full">
+                                        <Avatar />
+                                      </div>
+                                      <div>
+                                        <h5 className="header-title font-medium dark:font-normal">
+                                          You
+                                        </h5>
+                                      </div>
                                     </div>
                                     <div>
-                                      <h5 className="header-title">You</h5>
+                                      <a
+                                        aria-label="Hide post"
+                                        role="link"
+                                        tabIndex="0"
+                                      >
+                                        <i
+                                          dat
+                                          a-visualcompletion="css-img"
+                                          style={{
+                                            backgroundImage: `url("${icons_1}")`,
+                                            backgroundPosition: "0 -448px",
+                                            backgroundSize: "auto",
+                                            width: "20px",
+                                            height: "20px",
+                                            backgroundRepeat: "no-repeat",
+                                            display: "inline-block",
+                                          }}
+                                        ></i>
+                                      </a>
                                     </div>
-                                  </div>
+                                  </header>
                                 </div>
-                                <div className="px-4">{post.content}</div>
+                                <div className="px-4 mb-4">{post.content}</div>
                                 <div className="image">
                                   <img
                                     src={
-                                      "@/c8c70e92-d705-4279-932b-2c30ed62da2c.jpg"
+                                      "https://scontent.flos2-2.fna.fbcdn.net/v/t45.1600-4/441945606_120210388485590683_3368822919076019966_n.jpg?stp=cp0_dst-jpg_p960x960_q75_spS444&_nc_cat=1&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHxoCIe_3_37hN1a_qdQD4Sw8f9sKHPT8jDx_2woc9PyOOCNnDaQDyAt19-lryOsKZ9_VCKRFjGK6qCTTu3nr76&_nc_ohc=3bQiIeiYfY8Q7kNvgEQIZot&_nc_ht=scontent.flos2-2.fna&oh=00_AYCEJxEwp9egPwyfhqYwDPw6wFm9t1p4V-z_pW1_gDjWXg&oe=664852DE"
                                     }
-                                    height="300"
+                                    height="500"
+                                    // className="h-[500px]"
                                     alt=""
                                   />
                                 </div>
@@ -155,9 +194,10 @@ const UserProfileMain = ({ children }) => {
                                         data-visualcompletion="css-img"
                                         className="x1b0d499 x1d69dk1"
                                         style={{
-                                          backgroundImage: `url("https://static.xx.fbcdn.net/rsrc.php/v3/ys/r/mJW0r_GFye-.png?_nc_eui2=AeHHvosbKnrsYwroyxlczufaZq-ImSmmtj1mr4iZKaa2PZX8SZibZ1v52nDkujEXee_7iPbyKr0G_aQ0dVowBI4S")`,
+                                          backgroundImage: `url("${icons_2}")`,
                                           backgroundPosition: "0px -718px",
                                           backgroundSize: "auto",
+                                          filter: "grayscale(100%)",
                                           width: "20px",
                                           height: "20px",
                                           backgroundRepeat: "no-repeat",
@@ -174,7 +214,7 @@ const UserProfileMain = ({ children }) => {
                                         data-visualcompletion="css-img"
                                         className="x1b0d499 x1d69dk1"
                                         style={{
-                                          backgroundImage: `url("https://static.xx.fbcdn.net/rsrc.php/v3/ys/r/mJW0r_GFye-.png?_nc_eui2=AeHHvosbKnrsYwroyxlczufaZq-ImSmmtj1mr4iZKaa2PZX8SZibZ1v52nDkujEXee_7iPbyKr0G_aQ0dVowBI4S")`,
+                                          backgroundImage: `url("${icons_2}")`,
                                           backgroundPosition: "0px -529px",
                                           backgroundSize: "auto",
                                           width: "20px",
@@ -193,7 +233,7 @@ const UserProfileMain = ({ children }) => {
                                         data-visualcompletion="css-img"
                                         className="x1b0d499 x1d69dk1"
                                         style={{
-                                          backgroundImage: `url("https://static.xx.fbcdn.net/rsrc.php/v3/ys/r/mJW0r_GFye-.png?_nc_eui2=AeHHvosbKnrsYwroyxlczufaZq-ImSmmtj1mr4iZKaa2PZX8SZibZ1v52nDkujEXee_7iPbyKr0G_aQ0dVowBI4S")`,
+                                          backgroundImage: `url("${icons_2}")`,
                                           backgroundPosition: "0px -865px",
                                           backgroundSize: "auto",
                                           width: "20px",

@@ -25,7 +25,7 @@ const themeReducer = createSlice({
   },
 });
 
-export const { setTheme } = themeReducer.actions;
+export const { setTheme, switchCaseOnTheme } = themeReducer.actions;
 
 export const getTheme = () => (state) => state.theme.theme;
 

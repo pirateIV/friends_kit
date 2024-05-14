@@ -1,10 +1,10 @@
 import "./index.css";
+import { useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import Profile from "../ui/Profile";
 import UserSettings from "../ui/UserSettings";
 import ThemeSwitcher from "../ui/ThemeSwitcher";
 import SearchIcon from "@/shared/components/icons/SearchIcon";
-import { useSelector } from "react-redux";
 import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
 
 const NavbarEnd = () => {
