@@ -8,7 +8,12 @@ import image from "C:/Users/Benjamin/Desktop/441878728_120210388485290683_767097
 
 const Feed = () => {
   const posts = useSelector((state) => state.posts.posts);
-
+  const buttonStyles = {
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    color: "#999",
+  };
   return (
     <div className="user-posts-list">
       <Timeline>
@@ -31,10 +36,65 @@ const Feed = () => {
                 />
               </div>
 
-              <div className="flex items-center justify-center *:flex-1 *:gap-3 gap-3 *:text-sm text-gray-600 *:flex-center *:py-1 *:rounded-md pt-1">
-                <Button iconUrl={icons_2} label="Like" />
-                <Button iconUrl={icons_2} label="Comment" />
-                <Button iconUrl={icons_2} label="Share" />
+              <div className="post-footer p-3 mx-4 border-t flex items-center justify-center *:flex-1 *:flex-center *:py-1 border-gray-300 mt-4 pt-2 dark:border-gray-700">
+                <div>
+                  <button style={buttonStyles}>
+                    <i
+                      data-visualcompletion="css-img"
+                      className="x1b0d499 x1d69dk1"
+                      style={{
+                        backgroundImage: `url("${icons_2}")`,
+                        backgroundPosition: "0px -718px",
+                        backgroundSize: "auto",
+                        width: "20px",
+                        height: "20px",
+                        backgroundRepeat: "no-repeat",
+                        display: "inline-block",
+                        // opacity: "0.6",
+                        filter: "contrast(0%)",
+                      }}
+                    ></i>
+                    Like
+                  </button>
+                </div>
+                <div>
+                  <button style={buttonStyles}>
+                    <i
+                      data-visualcompletion="css-img"
+                      className="x1b0d499 x1d69dk1"
+                      style={{
+                        backgroundImage: `url("${icons_2}")`,
+                        backgroundPosition: "0px -529px",
+                        backgroundSize: "auto",
+                        width: "20px",
+                        height: "20px",
+                        backgroundRepeat: "no-repeat",
+                        display: "inline-block",
+                        filter: "contrast(0%)",
+                      }}
+                    ></i>
+                    Comment
+                  </button>
+                </div>
+                <div>
+                  <button style={buttonStyles}>
+                    <i
+                      data-visualcompletion="css-img"
+                      className="x1b0d499 x1d69dk1"
+                      style={{
+                        backgroundImage: `url("${icons_2}")`,
+                        backgroundPosition: "0px -865px",
+                        backgroundSize: "auto",
+                        width: "20px",
+                        height: "20px",
+                        backgroundRepeat: "no-repeat",
+                        display: "inline-block",
+                        filter: "contrast(0%)",
+                      }}
+                    ></i>
+                    Share
+                  </button>
+                </div>
               </div>
             </Timeline.Item>
           ))}

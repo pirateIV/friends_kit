@@ -83,7 +83,7 @@ const UserProfileMain = ({ children }) => {
                             type="button"
                             className="flex-1 border-t text-[14px] text-start bg-gray-200 p-2.5 px-3.5 cursor-pointer rounded-full outline-none focus:bg-gray-300 dark:text-gray-500 dark:border-[#3a455b] dark:bg-[#283143]  dark:focus:bg-[#283143]/80"
                           >
-                            What's on your mind {user.firstName}
+                            What's on your mind, {user.firstName}
                           </button>
                         </div>
                         <div className="create-post-footer">
@@ -125,13 +125,12 @@ const UserProfileMain = ({ children }) => {
                 </div>
               </Tabs.Item>
               <Tabs.Item title="About">
-                This is{" "}
-                <span className="font-medium text-gray-800 dark:text-white">
-                  Dashboard tab's associated content
-                </span>
-                . Clicking another tab will toggle the visibility of this one
-                for the next. The tab JavaScript swaps classes to control the
-                content visibility and styling.
+                <div className="about-user-container">
+                  <div className="h-72 flex items-center  *:bg-white divide-x divide-gray-400">
+                    <aside className="h-full w-full shadow-mui-1"></aside>
+                    <aside className="h-full w-full shadow-mui-1"></aside>
+                  </div>
+                </div>
               </Tabs.Item>
               <Tabs.Item title="Friends">
                 This is{" "}
