@@ -19,6 +19,7 @@ import feeling from "@/assets/images/feeling.png";
 import liveVideo from "@/assets/images/live-video.png";
 import icons_1 from "@/assets/sprites/icon-sprites.png";
 import icons_2 from "@/assets/sprites/icon-sprites-2.png";
+import Feed from "@/components/feed/Feed";
 
 const UserProfileMain = ({ children }) => {
   const { name, user } = useSelector(selectCurrentUser);
@@ -41,13 +42,6 @@ const UserProfileMain = ({ children }) => {
   useEffect(() => {
     dispatch(getAllUserPosts());
   }, []);
-
-  const buttonStyles = {
-    display: "flex",
-    alignItems: "center",
-    gap: "10px",
-    color: "#999",
-  };
 
   return (
     <>
@@ -126,132 +120,7 @@ const UserProfileMain = ({ children }) => {
                       </div>
                     </div>
 
-                    <div className="user-posts-list">
-                      <Timeline>
-                        {posts &&
-                          posts.map((post) => (
-                            <Timeline.Item
-                              key={post._id}
-                              className="bg-white shadow-mui-1 text-sm my-5 rounded-md dark:text-gray-200 dark:bg-[#1c232e]"
-                            >
-                              <Timeline.Point>
-                                <img
-                                  src=""
-                                  className="absolute -left-1.5 mt-1.5"
-                                />
-                              </Timeline.Point>
-                              <Timeline.Content>
-                                <div className="post-header p-4 mb-1">
-                                  <header className="mini-post-header flex items-center justify-between">
-                                    <div className="flex items-center gap-3">
-                                      <div className="avatar w-10 h-10 overflow-hidden rounded-full">
-                                        <Avatar />
-                                      </div>
-                                      <div>
-                                        <h5 className="header-title font-medium dark:font-normal">
-                                          You
-                                        </h5>
-                                      </div>
-                                    </div>
-                                    <div>
-                                      <a
-                                        aria-label="Hide post"
-                                        role="link"
-                                        tabIndex="0"
-                                      >
-                                        <i
-                                          dat
-                                          a-visualcompletion="css-img"
-                                          style={{
-                                            backgroundImage: `url("${icons_1}")`,
-                                            backgroundPosition: "0 -448px",
-                                            backgroundSize: "auto",
-                                            width: "20px",
-                                            height: "20px",
-                                            backgroundRepeat: "no-repeat",
-                                            display: "inline-block",
-                                          }}
-                                        ></i>
-                                      </a>
-                                    </div>
-                                  </header>
-                                </div>
-                                <div className="px-4 mb-4">{post.content}</div>
-                                <div className="image">
-                                  <img
-                                    src={
-                                      "https://scontent.flos2-2.fna.fbcdn.net/v/t45.1600-4/441945606_120210388485590683_3368822919076019966_n.jpg?stp=cp0_dst-jpg_p960x960_q75_spS444&_nc_cat=1&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHxoCIe_3_37hN1a_qdQD4Sw8f9sKHPT8jDx_2woc9PyOOCNnDaQDyAt19-lryOsKZ9_VCKRFjGK6qCTTu3nr76&_nc_ohc=3bQiIeiYfY8Q7kNvgEQIZot&_nc_ht=scontent.flos2-2.fna&oh=00_AYCEJxEwp9egPwyfhqYwDPw6wFm9t1p4V-z_pW1_gDjWXg&oe=664852DE"
-                                    }
-                                    height="500"
-                                    // className="h-[500px]"
-                                    alt=""
-                                  />
-                                </div>
-                                <div className="post-footer p-3 mx-4 border-t flex items-center justify-center *:flex-1 *:flex-center *:py-1 border-gray-300 mt-4 pt-2 dark:border-gray-700">
-                                  <div>
-                                    <button style={buttonStyles}>
-                                      <i
-                                        data-visualcompletion="css-img"
-                                        className="x1b0d499 x1d69dk1"
-                                        style={{
-                                          backgroundImage: `url("${icons_2}")`,
-                                          backgroundPosition: "0px -718px",
-                                          backgroundSize: "auto",
-                                          filter: "grayscale(100%)",
-                                          width: "20px",
-                                          height: "20px",
-                                          backgroundRepeat: "no-repeat",
-                                          display: "inline-block",
-                                          opacity: "0.6",
-                                        }}
-                                      ></i>
-                                      Like
-                                    </button>
-                                  </div>
-                                  <div>
-                                    <button style={buttonStyles}>
-                                      <i
-                                        data-visualcompletion="css-img"
-                                        className="x1b0d499 x1d69dk1"
-                                        style={{
-                                          backgroundImage: `url("${icons_2}")`,
-                                          backgroundPosition: "0px -529px",
-                                          backgroundSize: "auto",
-                                          width: "20px",
-                                          height: "20px",
-                                          backgroundRepeat: "no-repeat",
-                                          display: "inline-block",
-                                          opacity: "0.6",
-                                        }}
-                                      ></i>
-                                      Comment
-                                    </button>
-                                  </div>
-                                  <div>
-                                    <button style={buttonStyles}>
-                                      <i
-                                        data-visualcompletion="css-img"
-                                        className="x1b0d499 x1d69dk1"
-                                        style={{
-                                          backgroundImage: `url("${icons_2}")`,
-                                          backgroundPosition: "0px -865px",
-                                          backgroundSize: "auto",
-                                          width: "20px",
-                                          height: "20px",
-                                          backgroundRepeat: "no-repeat",
-                                          display: "inline-block",
-                                          opacity: "0.6",
-                                        }}
-                                      ></i>
-                                      Share
-                                    </button>
-                                  </div>
-                                </div>
-                              </Timeline.Content>
-                            </Timeline.Item>
-                          ))}
-                      </Timeline>
-                    </div>
+                    <Feed />
                   </div>
                 </div>
               </Tabs.Item>
@@ -302,7 +171,6 @@ const UserPhotos = () => {
           See all photos
         </a>
       </div>
-
       <div className="photo-list"></div>
     </div>
   );
