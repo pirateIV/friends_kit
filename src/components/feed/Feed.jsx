@@ -76,7 +76,7 @@ const Feed = () => {
                       <div className="comment-buttons space-x-2">
                         <button
                           onClick={() => postComment(user.id, post._id)}
-                          className="p-2.5 rounded-md text-white bg-blue-700 border-t outline-none border-blue-500 dark:border-blue-400 hover:bg-blue-600 ring-offset-1 focus:ring focus:ring-blue-600 disabled:cursor-not-allowed disabled:bg-blue-400"
+                          className="p-2.5 rounded-md text-white bg-blue-700 border-t outline-none border-blue-500 dark:border-blue-400 hover:bg-blue-600 ring-offset-1 focus:ring focus:ring-blue-600 disabled:cursor-not-allowed disabled:bg-blue-400 dark:disabled:bg-blue-500"
                           disabled={!comment}
                         >
                           {!comment ? "Enter Comment..." : "Post Comment"}
