@@ -1,4 +1,6 @@
-const Button = ({ iconUrl, label }) => {
+import icons_2 from "@/assets/sprites/icon-sprites-2.png";
+
+const Button = ({ label, position, handleClick }) => {
   const buttonStyles = {
     display: "flex",
     alignItems: "center",
@@ -8,17 +10,17 @@ const Button = ({ iconUrl, label }) => {
 
   return (
     <div>
-      <button style={buttonStyles}>
+      <button style={buttonStyles} onClick={() => handleClick()}>
         <i
-          data-visualcompletion="css-img"
-          className="x1b0d499 x1d69dk1"
           style={{
-            backgroundImage: `url("${iconUrl}")`,
+            backgroundImage: `url("${icons_2}")`,
+            backgroundPosition: position,
             backgroundSize: "auto",
-            backgroundRepeat: "no-repeat",
             width: "20px",
             height: "20px",
-            opacity: "0.6",
+            backgroundRepeat: "no-repeat",
+            display: "inline-block",
+            filter: "contrast(0%)",
           }}
         ></i>
         {label}
@@ -26,5 +28,4 @@ const Button = ({ iconUrl, label }) => {
     </div>
   );
 };
-
 export default Button;

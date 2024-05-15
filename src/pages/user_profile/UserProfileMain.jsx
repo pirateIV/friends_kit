@@ -58,10 +58,9 @@ const UserProfileMain = ({ children }) => {
             triggerPcUpload={triggerPcUpload}
           />
           <UploadFromPcModal pcUploadTrigger={pcUploadTrigger} />
-          {/* {location.pathname !== "/app" ? children : <UserDetails />} */}
         </div>
         <div className="mt-4 ">
-          <div className="max-w-[1140px] mx-auto border-t border-gray-400">
+          <div className="max-w-[1140px] mx-auto border-t border-gray-400 dark:border-gray-700">
             <Tabs aria-label="Tabs with icons" style="underline">
               <Tabs.Item active title="Posts">
                 <div className="grid grid-cols-12 w-full gap-5">
@@ -125,10 +124,10 @@ const UserProfileMain = ({ children }) => {
                 </div>
               </Tabs.Item>
               <Tabs.Item title="About">
-                <div className="about-user-container">
-                  <div className="h-72 flex items-center  *:bg-white divide-x divide-gray-400">
-                    <aside className="h-full w-full shadow-mui-1"></aside>
-                    <aside className="h-full w-full shadow-mui-1"></aside>
+                <div className="about-user-container mb-7">
+                  <div className="h-72 grid grid-cols-12 *:bg-white divide-x divide-gray-400 dark:divide-gray-700">
+                    <aside className="col-span-3 h-full w-full shadow-mui-1 dark:bg-[#1c232e] rounded-e-md"></aside>
+                    <aside className="col-span-9 h-full w-full shadow-mui-1 dark:bg-[#1c232e]"></aside>
                   </div>
                 </div>
               </Tabs.Item>
