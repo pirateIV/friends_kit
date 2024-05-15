@@ -30,7 +30,7 @@ const Feed = () => {
   const postFooterClass =
     "post-footer p-3 mx-4 border-t flex items-center justify-center *:flex-1 *:flex-center *:py-1 border-gray-300 mt-2 pt-2 dark:border-gray-700";
   const commentFooterClass =
-    "border border-t-0 border-gray-300 dark:border-gray-600 peer-focus:border-gray-400 comment-footer flex items-center justify-between h-14 bg-gray-300 dark:bg-[#1c232e] -translate-y-3 rounded-b-md dark:peer-focus:!border-blue-600";
+    "border border-t-0 border-gray-300 dark:border-gray-600 peer-focus:border-gray-400 comment-footer flex items-center justify-between h-12 bg-gray-300 dark:bg-[#1c232e] -translate-y-3 rounded-b-md dark:peer-focus:!border-blue-600";
 
   return (
     <div className="user-posts-list">
@@ -56,7 +56,7 @@ const Feed = () => {
                     <Button
                       label="Comment"
                       position="0px -529px"
-                      handleClick={() => toggleCommentBox(post._id)}
+                      handleClick={() => toggleCommentBox(post?._id)}
                     />
                     <Button label="Share" position="0px -865px" />
                   </div>
@@ -82,14 +82,14 @@ const Feed = () => {
                         <div className="comment-buttons space-x-2">
                           <button
                             onClick={() => postComment(user.id, post._id)}
-                            className="p-2.5 rounded-md text-white bg-green-700 border-t outline-none border-green-500 dark:border-green-400 hover:bg-green-600 ring-offset-1 focus:ring focus:ring-green-600 disabled:cursor-not-allowed disabled:bg-green-400"
+                            className="p-2 text-xs rounded-md text-white bg-green-700 border-t outline-none border-green-500 dark:border-green-400 hover:bg-green-600 ring-offset-1 focus:ring focus:ring-green-600 disabled:cursor-not-allowed disabled:bg-green-400"
                             disabled={!comment}
                           >
                             {!comment ? "Enter Comment..." : "Post Comment"}
                           </button>
                           <button
                             onClick={() => setShowCommentBoxes({})}
-                            className="p-2.5 text-white rounded-md border-t border-red-500 dark:border-red-200 bg-red-500"
+                            className="p-2 text-xs text-white rounded-md border-t border-red-500 dark:border-red-200 bg-red-500"
                           >
                             Cancel
                           </button>
