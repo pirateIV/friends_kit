@@ -5,12 +5,15 @@ const Button = ({ label, position, handleClick }) => {
     display: "flex",
     alignItems: "center",
     gap: "10px",
-    color: "#999",
   };
 
   return (
     <div>
-      <button style={buttonStyles} onClick={() => handleClick()}>
+      <button
+        className="text-[#777] hover:text-gray-800 dark:hover:text-blue-400"
+        style={buttonStyles}
+        onClick={() => handleClick()}
+      >
         <i
           style={{
             backgroundImage: `url("${icons_2}")`,

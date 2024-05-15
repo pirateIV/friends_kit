@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { faPersonWalkingDashedLineArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const userPostsUrl = "http://localhost:5000/api/posts";
 
@@ -36,8 +37,14 @@ const postSlice = createSlice({
       );
     },
     updatePostComments(state, action) {
-      const comment = action.payload;
-      state.posts.push(comment);
+      console.log(action.payload);
+      const { postId, comment } = action.payload;
+      console.log(comment);
+      state.posts = state.posts.map((post) =>
+        post._id === postId
+          ? { ...post, comments: [...post.comments, comment] }
+          : post,
+      );
     },
   },
   extraReducers: (builder) => {

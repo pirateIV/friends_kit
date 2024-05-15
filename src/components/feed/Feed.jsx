@@ -115,14 +115,16 @@ const Feed = () => {
                       <div className="comment-buttons space-x-2">
                         <button
                           onClick={() => handlePostComment(post._id)}
-                          className="p-2 text-xs rounded-md text-white bg-green-700 border-t outline-none border-green-500 dark:border-green-400 hover:bg-green-600 ring-offset-1 focus:ring focus:ring-green-600 disabled:cursor-not-allowed disabled:bg-green-400"
+                          className="p-2 text-xs rounded-md text-white bg-green-700 border-y outline-none border-green-500 dark:border-green-400 hover:bg-green-600 ring-offset-1 focus:ring focus:ring-green-600 disabled:cursor-not-allowed disabled:bg-green-400"
                           disabled={!comment}
                         >
-                          {!comment ? "Enter Comment..." : "Post Comment"}
+                          {!comment
+                            ? `Enter Comment... (${post.comments.length})`
+                            : `Post Comment (${post.comments.length})`}
                         </button>
                         <button
                           onClick={() => setShowCommentBoxes({})}
-                          className="p-2 text-xs text-white rounded-md border-t border-red-500 dark:border-red-200 bg-red-500"
+                          className="p-2 text-xs text-white rounded-md border-y border-red-500 dark:border-red-200 bg-red-500"
                         >
                           Cancel
                         </button>

@@ -70,8 +70,6 @@ const UserProfileMain = ({ children }) => {
                     <UserSettings />
                   </div>
                   <div className="col-span-7">
-                    <h4 className="text-lg dark:text-gray-200">Posts</h4>
-
                     <div id="create-post" aria-label="Create a Post">
                       <div className="bg-white p-3 rounded-md space-y-3 shadow-tiny border-t divide-y divide-gray-300 dark:divide-gray-700 dark:border-gray-800 dark:bg-[#1c232e]">
                         <div className="create-post-header flex items-center gap-4 *:flex-shrink-0">
