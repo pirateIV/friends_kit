@@ -59,7 +59,7 @@ const UserProfileMain = ({ children }) => {
           />
           <UploadFromPcModal pcUploadTrigger={pcUploadTrigger} />
         </div>
-        <div className="mt-4 ">
+        <div className="mt-4">
           <div className="max-w-[1140px] mx-auto border-t border-gray-400 dark:border-gray-700">
             <Tabs aria-label="Tabs with icons" style="underline">
               <Tabs.Item active title="Posts">
@@ -176,7 +176,7 @@ const UserPhotos = () => {
 
 const UserFriends = () => {
   const { user } = useSelector(selectCurrentUser);
-  // console.log(user.friends);
+
   return (
     <div className="user-photos bg-white dark:bg-[#1c232e] shadow-tiny border-t dark:border-gray-800 h-40 py-3 px-4 rounded-md">
       <div className="header flex items-center justify-between">
@@ -186,12 +186,6 @@ const UserFriends = () => {
         </a>
       </div>
       <p className="friends-count text-sm">{user.friends.length} friends</p>
-
-      {/* <div className="friends-list">
-        {user.friends.map((f, i) => (
-          <div>{f.firstName}</div>
-        ))}
-      </div> */}
     </div>
   );
 };
@@ -202,7 +196,7 @@ const UserSettings = () => {
       <div className="header">
         <h4 className="font-semibold dark:text-gray-300">Settings</h4>
       </div>
-      <div className="button-settings mt-3 flex flex-col gap-2 items-start justify-center *:block *:py-1.5 *:bg-blue-400 dark:*:text-blue-300 dark:*:font-normal dark:*:bg-blue-800 *:border-t dark:*:border-blue-600 *:w-full *:rounded-md *:text-sm *:font-medium *:text-center">
+      <div className="button-settings mt-3 flex flex-col gap-2 items-start justify-center *:block *:py-1.5 *:bg-blue-400 dark:*:text-gray-100 dark:*:font-normal dark:*:bg-blue-800 *:border-t dark:*:border-blue-600 *:w-full *:rounded-md *:text-sm *:font-medium *:text-center">
         <button className="hover:bg-blue-400/90 dark:hover:bg-blue-800/90">
           Add bio
         </button>

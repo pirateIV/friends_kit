@@ -28,7 +28,18 @@ export const getAllUserPosts = createAsyncThunk(
 const postSlice = createSlice({
   name: "posts",
   initialState: { posts: [], error: null },
-  reducers: {},
+  reducers: {
+    updatePost(state, action) {
+      const updatedPost = action.payload;
+      state.posts = state.posts.map((post) =>
+        post._id === updatedPost._id ? updatedPost : post,
+      );
+    },
+    updatePostComments(state, action) {
+      const comment = action.payload;
+      state.posts.push(comment);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getAllUserPosts.fulfilled, (state, { payload }) => {
@@ -41,5 +52,7 @@ const postSlice = createSlice({
       });
   },
 });
+
+export const { updatePost, updatePostComments } = postSlice.actions;
 
 export default postSlice.reducer;

@@ -1,4 +1,4 @@
-import AvatarComponent from "./AvatarComponent";
+import { AvatarComponent } from ".";
 import { formatPostCreatedTime, formatPostDate } from "@/helpers/formatDate";
 
 const PostHeader = ({ post }) => {
