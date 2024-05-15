@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { faPersonWalkingDashedLineArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const userPostsUrl = "http://localhost:5000/api/posts";
 
@@ -28,7 +29,24 @@ export const getAllUserPosts = createAsyncThunk(
 const postSlice = createSlice({
   name: "posts",
   initialState: { posts: [], error: null },
-  reducers: {},
+  reducers: {
+    updatePost(state, action) {
+      const updatedPost = action.payload;
+      state.posts = state.posts.map((post) =>
+        post._id === updatedPost._id ? updatedPost : post,
+      );
+    },
+    updatePostComments(state, action) {
+      console.log(action.payload);
+      const { postId, comment } = action.payload;
+      console.log(comment);
+      state.posts = state.posts.map((post) =>
+        post._id === postId
+          ? { ...post, comments: [...post.comments, comment] }
+          : post,
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getAllUserPosts.fulfilled, (state, { payload }) => {
@@ -41,5 +59,7 @@ const postSlice = createSlice({
       });
   },
 });
+
+export const { updatePost, updatePostComments } = postSlice.actions;
 
 export default postSlice.reducer;

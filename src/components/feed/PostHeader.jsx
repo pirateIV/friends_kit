@@ -1,5 +1,5 @@
-import AvatarComponent from "./AvatarComponent";
-import formatPostCreatedTime from "@/helpers/formatDate";
+import { AvatarComponent } from ".";
+import { formatPostCreatedTime, formatPostDate } from "@/helpers/formatDate";
 
 const PostHeader = ({ post }) => {
   return (
@@ -9,9 +9,7 @@ const PostHeader = ({ post }) => {
           <AvatarComponent />
           <div>
             <h5 className="header-title font-medium dark:font-normal">You</h5>
-            <p className="text-gray-500">
-              {formatPostCreatedTime(post.createdAt)}
-            </p>
+            <p className="text-gray-500">{formatPostDate(post.createdAt)}</p>
           </div>
         </div>
       </header>
