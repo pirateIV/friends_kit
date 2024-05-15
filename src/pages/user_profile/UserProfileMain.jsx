@@ -73,7 +73,7 @@ const UserProfileMain = ({ children }) => {
                     <h4 className="text-lg dark:text-gray-200">Posts</h4>
 
                     <div id="create-post" aria-label="Create a Post">
-                      <div className="bg-white p-3 shadow-mui-1 rounded-md space-y-3 divide-y divide-gray-300 dark:divide-gray-700 dark:bg-[#1c232e]">
+                      <div className="bg-white p-3 rounded-md space-y-3 shadow-tiny border-t divide-y divide-gray-300 dark:divide-gray-700 dark:border-gray-800 dark:bg-[#1c232e]">
                         <div className="create-post-header flex items-center gap-4 *:flex-shrink-0">
                           <div className="avatar w-10 h-10 overflow-hidden rounded-full">
                             <Avatar />
@@ -126,8 +126,8 @@ const UserProfileMain = ({ children }) => {
               <Tabs.Item title="About">
                 <div className="about-user-container mb-7">
                   <div className="h-72 grid grid-cols-12 *:bg-white divide-x divide-gray-400 dark:divide-gray-700">
-                    <aside className="col-span-3 h-full w-full shadow-mui-1 dark:bg-[#1c232e] rounded-e-md"></aside>
-                    <aside className="col-span-9 h-full w-full shadow-mui-1 dark:bg-[#1c232e]"></aside>
+                    <aside className="col-span-3 shadow-tiny h-full w-full dark:bg-[#1c232e] rounded-e-md"></aside>
+                    <aside className="col-span-9 shadow-tiny h-full w-full dark:bg-[#1c232e]"></aside>
                   </div>
                 </div>
               </Tabs.Item>
@@ -162,7 +162,7 @@ const UserProfileMain = ({ children }) => {
 
 const UserPhotos = () => {
   return (
-    <div className="user-photos bg-white dark:bg-[#1c232e] h-40 shadow-mui-1 py-3 px-4 rounded-md">
+    <div className="user-photos bg-white dark:bg-[#1c232e] shadow-tiny border-t dark:border-gray-800 h-40 py-3 px-4 rounded-md">
       <div className="header flex items-center justify-between">
         <h4 className="font-semibold dark:text-gray-300">Photos</h4>
         <a href="" className="text-sm text-blue-500">
@@ -178,7 +178,7 @@ const UserFriends = () => {
   const { user } = useSelector(selectCurrentUser);
   // console.log(user.friends);
   return (
-    <div className="user-photos bg-white dark:bg-[#1c232e] h-40 shadow-mui-1 py-3 px-4 rounded-md">
+    <div className="user-photos bg-white dark:bg-[#1c232e] shadow-tiny border-t dark:border-gray-800 h-40 py-3 px-4 rounded-md">
       <div className="header flex items-center justify-between">
         <h4 className="font-semibold dark:text-gray-300">Friends</h4>
         <a href="" className="text-sm text-blue-500">
@@ -198,7 +198,7 @@ const UserFriends = () => {
 
 const UserSettings = () => {
   return (
-    <div className="user-photos bg-white dark:bg-[#1c232e] h-auto shadow-mui-1 py-3 px-4 rounded-md">
+    <div className="user-photos bg-white dark:bg-[#1c232e] shadow-tiny border-t dark:border-gray-800 h-auto py-3 px-4 rounded-md">
       <div className="header">
         <h4 className="font-semibold dark:text-gray-300">Settings</h4>
       </div>
