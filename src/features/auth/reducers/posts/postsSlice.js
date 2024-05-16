@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { faPersonWalkingDashedLineArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const userPostsUrl = "http://localhost:5000/api/posts";
 
@@ -11,14 +10,9 @@ export const getAllUserPosts = createAsyncThunk(
       const userId = thunkApi.getState().auth.user.user.id;
       const userToken = thunkApi.getState().auth.token;
 
-      console.log(userId);
-
       const res = await axios.get(`${userPostsUrl}/${userId}`, {
         headers: { Authorization: `Bearer ${userToken}` },
       });
-      console.log(`${userPostsUrl}/${userId}`);
-
-      //   console.log(res.data);
       return res.data;
     } catch (err) {
       return thunkApi.rejectWithValue(err.response.data);
@@ -47,6 +41,9 @@ const postSlice = createSlice({
       );
     },
   },
+  selectors: {
+    selectCurrentPosts: (state) => state.posts,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getAllUserPosts.fulfilled, (state, { payload }) => {
@@ -60,6 +57,7 @@ const postSlice = createSlice({
   },
 });
 
+export const { selectCurrentPosts } = postSlice.selectors;
 export const { updatePost, updatePostComments } = postSlice.actions;
 
 export default postSlice.reducer;

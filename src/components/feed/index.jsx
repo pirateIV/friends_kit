@@ -16,7 +16,7 @@ export const CommentBox = ({ children }) => {
 
 export const PostActions = ({ children }) => {
   return (
-    <div className="post-actions flex items-center justify-between mx-3.5 px-3.5 pt-2 border-t border-gray-300 dark:border-gray-700">
+    <div className="post-actions flex items-center justify-between mx-3.5 px-3.5 pt-2 border-t border-gray-300 dark:border-blue-gray-800">
       {children}
     </div>
   );
@@ -28,7 +28,7 @@ export const PostContent = ({ post }) => {
 
 export const PostsFooter = ({ children }) => {
   const postFooterClass =
-    "post-footer p-3 mx-4 border-t flex items-center justify-center *:flex-1 *:flex-center *:py-1 border-gray-300 mt-2 pt-2 dark:border-gray-700";
+    "post-footer p-3 mx-4 border-t flex items-center justify-center *:flex-1 *:flex-center *:py-1 border-gray-300 mt-2 pt-2 dark:border-blue-gray-800";
   return <div className={postFooterClass}>{children}</div>;
 };
 
