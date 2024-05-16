@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Textarea, Timeline } from "flowbite-react";
-import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
-import { postComment } from "@/services/comments";
 
-import PostHeader from "./PostHeader";
 import Button from "./Button";
-import EmojiPicker from "emoji-picker-react";
+import PostHeader from "./PostHeader";
+import { postComment } from "@/services/comments";
 import {
   AvatarComponent,
   CommentBox,
@@ -26,13 +24,6 @@ const Feed = () => {
     await postComment({ comment }, postId, dispatch);
     setComment("");
   };
-
-  // useEffect(() => {
-  //   if (posts) {
-  //     // Initialize showCommentBoxes state with an object where only the selected post has a truthy value
-  //     setShowCommentBoxes(Object.fromEntries(posts.map(post => [post._id, false])));
-  //   }
-  // }, [posts]);
 
   const toggleCommentBox = (postId) => {
     setShowCommentBoxes((prevState) => {
