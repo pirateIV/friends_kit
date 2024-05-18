@@ -70,6 +70,10 @@ const router = createBrowserRouter([
             path: "/app/@me/settings",
             element: <Settings />,
           },
+          {
+            path: "/app/user/:userId",
+            element: <UserProfileMain />,
+          },
         ],
       },
       {

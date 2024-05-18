@@ -16,6 +16,7 @@ import {
 } from ".";
 import { selectCurrentPosts } from "@/features/auth/reducers/posts/postsSlice";
 import { formatDistanceToNow } from "date-fns";
+import useCustomLocation from "@/hooks/useCustomLocation";
 
 const commentsBox = document.getElementById("commentsBox");
 console.log(commentsBox);
@@ -46,6 +47,8 @@ const Feed = () => {
     const selectedPost = posts.find((p) => (p._id === postId ? p : null));
     console.log(selectedPost);
   };
+
+  const isProfile = useCustomLocation("app/@me");
 
   return (
     <div className="user-posts-list">

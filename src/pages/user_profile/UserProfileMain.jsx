@@ -16,6 +16,7 @@ import { Button, Timeline } from "flowbite-react";
 
 import Feed from "@/components/feed/Feed";
 import CreatePostBannner from "@/components/layout/posts/CreatePostBanner";
+import useCustomLocation from "@/hooks/useCustomLocation";
 
 const UserProfileMain = ({ children }) => {
   const { name, user } = useSelector(selectCurrentUser);
@@ -38,6 +39,9 @@ const UserProfileMain = ({ children }) => {
   useEffect(() => {
     dispatch(getAllUserPosts());
   }, []);
+
+  const isProfile = useCustomLocation("app/@me");
+  console.log(isProfile);
 
   return (
     <>
@@ -62,7 +66,7 @@ const UserProfileMain = ({ children }) => {
                   <div className="flex flex-col gap-5 col-span-5">
                     <UserPhotos />
                     <UserFriends />
-                    <UserSettings />
+                    {isProfile && <UserSettings />}
                   </div>
                   <div className="col-span-7">
                     <CreatePostBannner />
@@ -96,6 +100,17 @@ const UserProfileMain = ({ children }) => {
                 for the next. The tab JavaScript swaps classes to control the
                 content visibility and styling.
               </Tabs.Item>
+              {isProfile && (
+                <Tabs.Item title="Settings">
+                  This is{" "}
+                  <span className="font-medium text-gray-800 dark:text-white">
+                    Contacts tab's associated content
+                  </span>
+                  . Clicking another tab will toggle the visibility of this one
+                  for the next. The tab JavaScript swaps classes to control the
+                  content visibility and styling.
+                </Tabs.Item>
+              )}
               <Tabs.Item disabled title="Disabled">
                 Disabled content
               </Tabs.Item>
