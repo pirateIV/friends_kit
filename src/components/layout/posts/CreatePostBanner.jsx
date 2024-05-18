@@ -7,7 +7,7 @@ import feeling from "@/assets/images/feeling.png";
 import liveVideo from "@/assets/images/live-video.png";
 
 const CreatePostBannner = () => {
-  const user = useSelector(selectCurrentUser);
+  const { user } = useSelector(selectCurrentUser);
 
   return (
     <div id="create-post" aria-label="Create a Post">
