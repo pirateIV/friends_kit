@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Textarea, Timeline } from "flowbite-react";
 
@@ -15,26 +15,24 @@ import {
   PostsFooter,
 } from ".";
 import { selectCurrentPosts } from "@/features/auth/reducers/posts/postsSlice";
+import { formatDistanceToNow } from "date-fns";
+
+const commentsBox = document.getElementById("commentsBox");
+console.log(commentsBox);
 
 const Feed = () => {
   const dispatch = useDispatch();
   const posts = useSelector(selectCurrentPosts);
   const [comment, setComment] = useState("");
   const [showCommentBoxes, setShowCommentBoxes] = useState({});
+  const commentsRef = useRef();
+
+  console.log(commentsRef.current);
 
   const handlePostComment = async (postId) => {
     await postComment({ comment }, postId, dispatch);
     setComment("");
   };
-
-  useEffect(() => {
-    if (posts) {
-      // Initialize showCommentBoxes state with an object where only the selected post has a truthy value
-      setShowCommentBoxes(
-        Object.fromEntries(posts.map((post) => [post._id, false])),
-      );
-    }
-  }, [posts]);
 
   const toggleCommentBox = (postId) => {
     setShowCommentBoxes((prevState) => {
@@ -99,9 +97,26 @@ const Feed = () => {
               ) : (
                 showCommentBoxes[post._id] && (
                   <div className="comment-area">
-                    {/* <div className="comments px-3.5">
+                    <div className="px-3.5">
                       <h3>Comments ({post.comments.length})</h3>
-                    </div> */}
+
+                      <div
+                        id="commentsBox"
+                        className="comments max-h-52 mb-3 overflow-y-auto divide-y divide-gray-200 dark:divide-blue-gray-800"
+                      >
+                        {post.comments.map((comment) => (
+                          <div className="p-1 text-right">
+                            <div className="user">
+                              <small>
+                                {" "}
+                                {formatDistanceToNow(comment.createdAt)}
+                              </small>
+                            </div>
+                            <p>{comment.content}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                     <CommentBox>
                       <Textarea
                         rows="6"
