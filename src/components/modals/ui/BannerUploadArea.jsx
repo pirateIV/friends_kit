@@ -13,18 +13,10 @@ const BannerUploadArea = () => {
     console.log(showArea);
   };
 
-  // const cropperRef = useRef(null);
-  // const onCrop = () => {
-  //   const cropper = cropperRef.current?.cropper;
-  //   console.log(cropper.getCroppedCanvas().toDataURL());
-  // };
-
   const bgImageLink =
     "https://cdn.thedesigninspiration.com/wp-content/uploads/2014/07/Icon-Pattern-l.jpg";
   return (
     <>
-      {/* <div className='banner-area h-80'> */}
-      {/* <div className='h-full'> */}
       <section className="mt-4">
         <Cropper
           zoomTo={0.5}
@@ -44,8 +36,6 @@ const BannerUploadArea = () => {
           guides={true}
         />
       </section>
-      {/* </div> */}
-      {/* </div> */}
 
       <Button onClick={() => handleUpdateArea()}>Reset Picture</Button>
     </>
