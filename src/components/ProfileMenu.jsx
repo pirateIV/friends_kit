@@ -9,13 +9,19 @@ const ProfileMenu = () => {
   const btnClass2 =
     "text-white bg-green-700 border-t border-green-500 dark:border-green-400 hover:bg-green-600";
 
+  const btn2Class =
+    "flex items-center justify-center bg-gray-400 gap-2  border-t border-gray-400 dark:border-gray-100 hover:bg-gray-400/70";
+
+  const btn2Class2 =
+    "flex items-center  text-white justify-center bg-blue-600 gap-2  border-t dark:border-blue-400 hover:bg-blue-500";
+
   return (
     <div className="profile-menu flex items-center justify-end mt-3">
       <div className="flex items-center gap-3 *:min-w-28 *:text-sm *:p-2.5 *:rounded-md *:font-medium">
         <button className={isProfile ? btnClass : btnClass2}>
           {isProfile ? " Create Post" : "Send Friend Request"}
         </button>
-        <button className="flex items-center justify-center bg-gray-400 gap-2  border-t border-gray-400 dark:border-gray-100 hover:bg-gray-400/70">
+        <button className={isProfile ? btn2Class : btn2Class2}>
           {isProfile && (
             <img
               className="x1b0d499 xep6ejk"
