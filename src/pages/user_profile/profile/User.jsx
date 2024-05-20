@@ -1,4 +1,5 @@
 import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
+import { Avatar } from "flowbite-react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -19,15 +20,34 @@ export const UserPhotos = () => {
 export const UserFriends = () => {
   const { user } = useSelector(selectCurrentUser);
 
+  console.log(user.friends);
+
   return (
-    <div className="user-photos bg-white dark:bg-[#1c232e] shadow-tiny border-t dark:border-gray-800 h-40 py-3 px-4 rounded-md">
-      <div className="header flex items-center justify-between">
-        <h4 className="font-semibold dark:text-gray-300">Friends</h4>
-        <a href="" className="text-sm text-blue-500">
-          See all friends
-        </a>
+    <div className="user-photos bg-white dark:bg-[#1c232e] shadow-tiny border-t dark:border-gray-800 min-h-40 py-3 px-4 rounded-md">
+      <div>
+        <div className="header flex items-center justify-between">
+          <h4 className="font-semibold dark:text-gray-300">Friends</h4>
+          <a href="" className="text-sm text-blue-500">
+            See all friends
+          </a>
+        </div>
+        <p className="friends-count text-sm">{user.friends.length} friends</p>
       </div>
-      <p className="friends-count text-sm">{user.friends.length} friends</p>
+      <div className="mt-4">
+        {user.friends.map((friend) => (
+          <div key={friend.id} className="friend-item grid grid-cols-4">
+            <Link
+              to={`/app/user/${friend.id}`}
+              className="flex flex-col col-span-1 items-center"
+            >
+              <Avatar size="lg" />
+              <small className="friend-name dark:text-gray-300">
+                {friend.firstName} {friend.lastName}
+              </small>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

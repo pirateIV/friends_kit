@@ -20,14 +20,19 @@ import useCustomLocation from "@/hooks/useCustomLocation";
 import { useParams } from "react-router-dom";
 import AboutTab from "./profile/AboutTab";
 import PostsTab from "./profile/PostsTab";
+import { getUserProfileInfo } from "@/features/auth/reducers/user/userProfileSlice";
 
 const UserProfileMain = ({ children }) => {
   const { name, user } = useSelector(selectCurrentUser);
+  const [currentUser, setCurrentUser] = useState(null);
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.posts);
 
   const { userId } = useParams();
-  console.log(userId);
+
+  useEffect(() => {
+    dispatch(getUserProfileInfo(userId));
+  }, [userId]);
 
   const dialogTrigger = useRef();
   const dialogClose = useRef();
@@ -44,6 +49,8 @@ const UserProfileMain = ({ children }) => {
 
   useEffect(() => {
     dispatch(getAllUserPosts());
+    setCurrentUser(user);
+    // dispatch(getUserProfileInfo('66074624166bf4523a845c8d'))
   }, []);
 
   const isProfile = useCustomLocation("app/@me");
