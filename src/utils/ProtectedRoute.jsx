@@ -7,20 +7,10 @@ import "@/assets/css/loader.css";
 
 const ProtectedRoute = () => {
   const location = useLocation();
-  const dispatch = useDispatch();
-  const [loading, setLoading] = useState(true);
 
   const { isAuthenticated } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    dispatch(getCurrentUser())
-      .then(() => setLoading(false))
-      .catch(() => setLoading(false));
-  }, []);
-
-  if (loading) {
-    return <div className="pageloader is-active"></div>;
-  }
+  console.log(isAuthenticated);
 
   return isAuthenticated ? (
     <App>

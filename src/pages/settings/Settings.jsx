@@ -31,7 +31,6 @@ const settingsTabs = [
 const Settings = () => {
   useDocumentTitle("Settings");
   const { name, user } = useSelector(selectCurrentUser);
-
   const location = useLocation();
   const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
