@@ -1,5 +1,9 @@
 import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
+import { selectCurrentUserProfile } from "@/features/auth/reducers/user/userProfileSlice";
+import useCustomLocation from "@/hooks/useCustomLocation";
+import useUserData from "@/hooks/useUserData";
 import { Avatar } from "flowbite-react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -18,9 +22,7 @@ export const UserPhotos = () => {
 };
 
 export const UserFriends = () => {
-  const { user } = useSelector(selectCurrentUser);
-
-  console.log(user.friends);
+  const userData = useUserData();
 
   return (
     <div className="user-photos bg-white dark:bg-[#1c232e] shadow-tiny border-t dark:border-gray-800 min-h-40 py-3 px-4 rounded-md">
@@ -31,10 +33,12 @@ export const UserFriends = () => {
             See all friends
           </a>
         </div>
-        <p className="friends-count text-sm">{user.friends.length} friends</p>
+        <p className="friends-count text-sm">
+          {userData?.friends.length} friends
+        </p>
       </div>
       <div className="mt-4">
-        {user.friends.map((friend) => (
+        {userData?.friends.map((friend) => (
           <div key={friend.id} className="friend-item grid grid-cols-4">
             <Link
               to={`/app/user/${friend.id}`}

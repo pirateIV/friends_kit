@@ -5,14 +5,12 @@ const userPostsUrl = "http://localhost:5000/api/posts";
 
 export const getAllUserPosts = createAsyncThunk(
   "/posts/getAllUserPosts",
-  async (_, thunkApi) => {
+  async (userId, thunkApi) => {
     try {
-      const userId = thunkApi.getState().auth.user.user.id;
+      // const userId = thunkApi.getState().auth.user.user.id;
       const userToken = thunkApi.getState().auth.token;
 
-      const res = await axios.get(`${userPostsUrl}/${userId}`, {
-        headers: { Authorization: `Bearer ${userToken}` },
-      });
+      const res = await axios.get(`${userPostsUrl}/${userId}`);
       return res.data;
     } catch (err) {
       return thunkApi.rejectWithValue(err.response.data);

@@ -3,10 +3,12 @@ import { AvatarComponent } from ".";
 import { formatPostCreatedTime, formatPostDate } from "@/helpers/formatDate";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
+import useUserData from "@/hooks/useUserData";
 
 const PostHeader = ({ post }) => {
   const isProfile = useCustomLocation("app/@me");
-  const { name } = useSelector(selectCurrentUser);
+  // const { name } = useSelector(selectCurrentUser);
+  const user = useUserData();
 
   return (
     <div className="post-header p-4 mb-1">
@@ -15,7 +17,7 @@ const PostHeader = ({ post }) => {
           <AvatarComponent />
           <div>
             <h5 className="header-title font-medium dark:font-normal">
-              {isProfile ? "You" : name}
+              {isProfile ? "You" : `${user?.firstName} ${user?.lastName}`}
             </h5>
             <p className="text-gray-500">{formatPostDate(post.createdAt)}</p>
           </div>

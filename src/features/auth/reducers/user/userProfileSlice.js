@@ -42,5 +42,7 @@ const userProfileSlice = createSlice({
   },
 });
 
+export const selectCurrentUserProfile = (state) => state.userProfile.data;
+
 export default userProfileSlice.reducer;
 export { getUserProfileInfo };

@@ -24,6 +24,7 @@ console.log(commentsBox);
 const Feed = () => {
   const dispatch = useDispatch();
   const posts = useSelector(selectCurrentPosts);
+  console.log(posts);
   const [comment, setComment] = useState("");
   const [showCommentBoxes, setShowCommentBoxes] = useState({});
   const commentsRef = useRef();
