@@ -15,7 +15,6 @@ const useUserData = () => {
     setUserData(isProfile ? user : currentProfile);
   }, [isProfile, currentProfile, user]);
 
-  console.log(userData);
   return userData;
 };
 

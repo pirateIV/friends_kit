@@ -23,6 +23,7 @@ export const UserPhotos = () => {
 
 export const UserFriends = () => {
   const userData = useUserData();
+  const { user } = useSelector(selectCurrentUser);
 
   return (
     <div className="user-photos bg-white dark:bg-[#1c232e] shadow-tiny border-t dark:border-gray-800 min-h-40 py-3 px-4 rounded-md">
@@ -39,9 +40,9 @@ export const UserFriends = () => {
       </div>
       <div className="mt-4">
         {userData?.friends.map((friend) => (
-          <div key={friend.id} className="friend-item grid grid-cols-4">
+          <div key={friend.id} className="friend-item grid grid-cols-3">
             <Link
-              to={`/app/user/${friend.id}`}
+              to={user.id === friend.id ? "/app/@me" : `/app/user/${friend.id}`}
               className="flex flex-col col-span-1 items-center"
             >
               <Avatar size="lg" />

@@ -67,7 +67,7 @@ module.exports = withMT({
           "Noto Color Emoji",
         ],
         montserrat: ["Montserrat"],
-        inter: ["Inter"],
+        inter: ["Roboto"],
       },
       boxShadow: {
         tiny: `0 1px 0.5px rgba(0, 0, 0, 0.13),

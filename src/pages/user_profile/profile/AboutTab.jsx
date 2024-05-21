@@ -38,7 +38,7 @@ const AboutTab = () => {
 
   return (
     <div className="about-user-container mb-7">
-      <div className=" h-80 grid grid-cols-12 bg-white divide-x divide-gray-400 dark:divide-gray-800">
+      <div className=" h-80 grid grid-cols-12 divide-x divide-gray-400 dark:divide-gray-800">
         <aside className="col-span-3 shadow-tiny h-full w-full dark:bg-[#1c232e] rounded-s-md">
           <h2 className="!text-xl ms-4 mt-4 dark:text-white">About</h2>
           <div className="mt-4">
