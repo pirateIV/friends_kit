@@ -5,7 +5,7 @@ import { Textarea, Timeline } from "flowbite-react";
 import Button from "./Button";
 import PostHeader from "./PostHeader";
 import PostsFallback from "./PostsFallback";
-import { postComment } from "@/services/comments";
+import { postComment } from "@/services";
 import {
   AvatarComponent,
   CommentBox,
