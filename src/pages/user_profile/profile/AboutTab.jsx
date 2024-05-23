@@ -1,5 +1,6 @@
 import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
 import useCustomLocation from "@/hooks/useCustomLocation";
+import useUserData from "@/hooks/useUserData";
 import { Button, Input, Textarea } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -8,7 +9,7 @@ const AboutTab = () => {
   const [activeTab, setActiveTab] = useState(
     localStorage.getItem("about_tab") || "overview",
   );
-  const { user } = useSelector(selectCurrentUser);
+  const user = useUserData();
   const isProfile = useCustomLocation("app/@me");
 
   const handleUpdateUser = (field, value) => {
@@ -85,7 +86,7 @@ const AboutTab = () => {
               <div className="bio">
                 <h3>Bio</h3>
                 <small className="text-gray-700 dark:text-gray-300">
-                  {user.bio || "This user has no bio"}
+                  {user?.bio || "This user has no bio"}
                 </small>
               </div>
             </div>

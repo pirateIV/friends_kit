@@ -43,11 +43,17 @@ const NavbarStart = () => {
   return (
     <div className="nav-start relative">
       {navIconButtons.map((icon, i) => (
-        <>
-          <Button key={i} handleClick={() => showMenu(icon.name)}>
-            <Icon path={icon.icon} size={0.8} />
-          </Button>
-          <DropdownMenu>
+        <Button key={i} handleClick={() => showMenu(icon.name)}>
+          <Icon path={icon.icon} size={0.8} />
+        </Button>
+      ))}
+    </div>
+  );
+};
+
+export default NavbarStart;
+{
+  /* <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <MenuButton
                 ref={dropdownRef}
@@ -105,11 +111,5 @@ const NavbarStart = () => {
                 <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
               </DropdownMenuItem>
             </DropdownMenuContent>
-          </DropdownMenu>
-        </>
-      ))}
-    </div>
-  );
-};
-
-export default NavbarStart;
+          </DropdownMenu> */
+}

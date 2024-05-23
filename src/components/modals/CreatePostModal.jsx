@@ -22,12 +22,8 @@ const CreatePostModal = ({ openModal, setOpenModal }) => {
   };
 
   const createNewPost = async () => {
-    console.log(post);
-    if (isError) {
-      console.log(isError);
-    }
     if (post) {
-      await createPost(post).unwrap();
+      await createPost({ content: post }).unwrap();
     }
   };
 
@@ -59,10 +55,8 @@ const CreatePostModal = ({ openModal, setOpenModal }) => {
             </div>
 
             <div className="w-full flex items-center gap-3 *:min-w-28 *:text-sm *:p-2.5 *:rounded-md *:font-medium justify-end">
-              <Button
+              <button
                 onClick={() => createNewPost()}
-                // loading={isLoading}
-                size=""
                 disabled={isLoading}
                 className="text-white py-1  bg-blue-700 border-t border-blue-500 dark:border-blue-400 hover:bg-blue-600  
                disabled:bg-blue-200 disabled:cursor-not-allowed"
@@ -73,7 +67,7 @@ const CreatePostModal = ({ openModal, setOpenModal }) => {
                     ? "Error creating post"
                     : "creating post..."
                   : "create post"}
-              </Button>
+              </button>
             </div>
           </div>
         </Modal.Body>

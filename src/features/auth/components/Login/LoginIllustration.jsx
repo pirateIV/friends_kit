@@ -10,6 +10,7 @@ const LoginIllustration = () => {
   return (
     <img
       src={switchImg(loginIlustrLight, loginIlustrDark)}
+      loading="lazy"
       className="max-w-[620px] hidden xl:flex"
       alt="login-illustration"
     />

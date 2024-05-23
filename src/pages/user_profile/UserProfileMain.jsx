@@ -21,6 +21,7 @@ import AboutTab from "./profile/AboutTab";
 import PostsTab from "./profile/PostsTab";
 import { getUserProfileInfo } from "@/features/auth/reducers/user/userProfileSlice";
 import useUserData from "@/hooks/useUserData";
+import NotifiicationsTab from "./profile/NotifiicationsTab";
 
 const UserProfileMain = ({ children }) => {
   // const { name, user } = useSelector(selectCurrentUser);
@@ -94,6 +95,11 @@ const UserProfileMain = ({ children }) => {
                 for the next. The tab JavaScript swaps classes to control the
                 content visibility and styling.
               </Tabs.Item>
+              {isProfile && (
+                <Tabs.Item title="Notifications">
+                  <NotifiicationsTab />
+                </Tabs.Item>
+              )}
               {isProfile && (
                 <Tabs.Item title="Settings">
                   This is{" "}
