@@ -2,26 +2,26 @@ import Root from "./root";
 import { createBrowserRouter } from "react-router-dom";
 
 // auth
-import Login from "@/features/auth/pages/Login/Login";
-import Signup from "@/features/auth/pages/Signup/Signup";
+import Login from "../features/auth/pages/Login/Login";
+import Signup from "../features/auth/pages/Signup/Signup";
 
 // signup
-import UserInfo from "@/components/signup/steps/UserInfo";
-import ProfileUpload from "@/components/signup/steps/ProfileUpload";
-import AccountCreated from "@/components/signup/steps/AccountCreated";
-import AuthorizeAccount from "@/components/signup/steps/AuthorizeAccount";
+import UserInfo from "../components/signup/steps/UserInfo";
+import ProfileUpload from "../components/signup/steps/ProfileUpload";
+import AccountCreated from "../components/signup/steps/AccountCreated";
+import AuthorizeAccount from "../components/signup/steps/AuthorizeAccount";
 
 // user
-import Friends from "@/pages/ProfileFriends/Friends";
-// import Settings from "@/pages/settings/Settings";
-import UserProfileMain from "@/pages/user_profile/UserProfileMain";
-import UserProfileMinimal from "@/pages/user_profile/UserProfileMinimal";
+import Friends from "../pages/ProfileFriends/Friends";
+// import Settings from "../pages/settings/Settings";
+import UserProfileMain from "../pages/user_profile/UserProfileMain";
+import UserProfileMinimal from "../pages/user_profile/UserProfileMinimal";
 
 // about
-import Jobs from "@/pages/About/routes/Jobs";
-import AboutUser from "@/pages/About/AboutUser";
-import Education from "@/pages/About/routes/Education";
-import PersonalInfo from "@/pages/About/routes/PersonalInfo";
+import Jobs from "../pages/About/routes/Jobs";
+import AboutUser from "../pages/About/AboutUser";
+import Education from "../pages/About/routes/Education";
+import PersonalInfo from "../pages/About/routes/PersonalInfo";
 
 // 404
 import NotFoundPage from "@/pages/404/NotFound";
