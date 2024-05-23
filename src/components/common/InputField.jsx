@@ -20,6 +20,7 @@ const InputField = ({ label, type, ...props }) => {
             label={label}
             icon={iconType}
             type={inputType}
+            // autoComplete={false}
             className="!outline-none dark:!text-white"
             color={meta.error ? "red" : "blue"}
           />

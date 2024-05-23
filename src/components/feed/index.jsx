@@ -22,12 +22,14 @@ export const PostActions = ({ children }) => {
   );
 };
 
-export const PostContent = ({ post }) => {
-  return (
-    <div className="px-4 mb-4">
-      {Array.isArray(post.content) ? post.content.join("\n") : post.content}
-    </div>
-  );
+export const PostContent = ({ post, error, isLoading }) => {
+  if (error) {
+    return <div>Error loading posts...</div>;
+  }
+  if (isLoading) {
+    return <div>Loading , please wait</div>;
+  }
+  return <div className="px-4 mb-4">{post.content}</div>;
 };
 
 export const PostsFooter = ({ children }) => {

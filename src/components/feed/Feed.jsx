@@ -14,22 +14,18 @@ import {
   PostContent,
   PostsFooter,
 } from ".";
-import { selectCurrentPosts } from "@/features/auth/reducers/posts/postsSlice";
+import { useGetAllUserPostsQuery } from "@/features/auth/reducers/posts/postsApi";
 import { formatDistanceToNow } from "date-fns";
-import useCustomLocation from "@/hooks/useCustomLocation";
+import useUserData from "@/hooks/useUserData";
 
 const commentsBox = document.getElementById("commentsBox");
 console.log(commentsBox);
 
 const Feed = () => {
   const dispatch = useDispatch();
-  const posts = useSelector(selectCurrentPosts);
-  console.log(posts);
+  const user = useUserData();
   const [comment, setComment] = useState("");
   const [showCommentBoxes, setShowCommentBoxes] = useState({});
-  const commentsRef = useRef();
-
-  console.log(commentsRef.current);
 
   const handlePostComment = async (postId) => {
     await postComment({ comment }, postId, dispatch);
@@ -44,12 +40,13 @@ const Feed = () => {
     });
   };
 
+  const { data: posts, error, isLoading } = useGetAllUserPostsQuery(user?.id);
+
+  console.log(posts);
   const showComments = async (postId) => {
     const selectedPost = posts.find((p) => (p._id === postId ? p : null));
     console.log(selectedPost);
   };
-
-  const isProfile = useCustomLocation("app/@me");
 
   return (
     <div className="user-posts-list">
@@ -64,7 +61,7 @@ const Feed = () => {
               <PostHeader post={post} />
               {!showCommentBoxes[post._id] ? (
                 <>
-                  <PostContent post={post} />
+                  <PostContent post={post} error={error} />
                   <PostActions>
                     <div></div>
                     <div>

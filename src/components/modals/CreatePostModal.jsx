@@ -1,3 +1,4 @@
+import { useCreatePostMutation } from "@/features/auth/reducers/posts/postsApi";
 import useUserData from "@/hooks/useUserData";
 import {
   Button,
@@ -11,12 +12,24 @@ import { useState } from "react";
 
 const CreatePostModal = ({ openModal, setOpenModal }) => {
   const [email, setEmail] = useState("");
+  const [post, setPost] = useState("");
   const user = useUserData();
+  const [createPost, { isLoading, isError }] = useCreatePostMutation();
 
-  function onCloseModal() {
+  const onCloseModal = () => {
     setOpenModal(false);
     setEmail("");
-  }
+  };
+
+  const createNewPost = async () => {
+    console.log(post);
+    if (isError) {
+      console.log(isError);
+    }
+    if (post) {
+      await createPost(post).unwrap();
+    }
+  };
 
   return (
     <>
@@ -38,6 +51,7 @@ const CreatePostModal = ({ openModal, setOpenModal }) => {
               <div className="post-content">
                 <Textarea
                   rows="9"
+                  onChange={(e) => setPost(e.target.value)}
                   className="p-3.5 border-gray-400 !bg-opacity-20 outline-none ring-0 placeholder:text-gray-600 focus:!border-blue-500"
                   placeholder={`What's on your mind, ${user?.firstName}`}
                 ></Textarea>
@@ -45,10 +59,21 @@ const CreatePostModal = ({ openModal, setOpenModal }) => {
             </div>
 
             <div className="w-full flex items-center gap-3 *:min-w-28 *:text-sm *:p-2.5 *:rounded-md *:font-medium justify-end">
-              <button class="text-white bg-blue-700 border-t border-blue-500 dark:border-blue-400 hover:bg-blue-600">
+              <Button
+                onClick={() => createNewPost()}
+                // loading={isLoading}
+                size=""
+                disabled={isLoading}
+                className="text-white py-1  bg-blue-700 border-t border-blue-500 dark:border-blue-400 hover:bg-blue-600  
+               disabled:bg-blue-200 disabled:cursor-not-allowed"
+              >
                 {" "}
-                Create Post
-              </button>
+                {isLoading || isError
+                  ? isError
+                    ? "Error creating post"
+                    : "creating post..."
+                  : "create post"}
+              </Button>
             </div>
           </div>
         </Modal.Body>

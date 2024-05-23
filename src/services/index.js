@@ -1,8 +1,7 @@
 import axios from "axios";
-import {
-  updatePost,
-  updatePostComments,
-} from "@/features/auth/reducers/posts/postsSlice";
+import {} from // updatePost,
+// updatePostComments,
+"@/features/auth/reducers/posts/postsApi";
 
 const baseUrl = "http://localhost:5000/api";
 

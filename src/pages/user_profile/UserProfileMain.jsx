@@ -11,7 +11,6 @@ import { Tabs } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
-import { getAllUserPosts } from "@/features/auth/reducers/posts/postsSlice";
 import { Button, Timeline } from "flowbite-react";
 
 import Feed from "@/components/feed/Feed";
@@ -28,7 +27,6 @@ const UserProfileMain = ({ children }) => {
   const userData = useUserData();
   // const [currentUser, setCurrentUser] = useState(null);
   const dispatch = useDispatch();
-  const posts = useSelector((state) => state.posts.posts);
 
   const { userId } = useParams();
 
@@ -50,10 +48,6 @@ const UserProfileMain = ({ children }) => {
   };
 
   console.log(userData);
-
-  useEffect(() => {
-    dispatch(getAllUserPosts(userData?.id));
-  }, [userData]);
 
   const isProfile = useCustomLocation("app/@me");
   console.log(isProfile);

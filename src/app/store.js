@@ -1,4 +1,5 @@
 import { authApi } from "@/app/api/authSlice";
+import { postsApi } from "@/features/auth/reducers/posts/postsApi";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 import userReducer from "@/features/auth/reducers/user/userSlice";
@@ -9,7 +10,6 @@ import usersFilterReducer from "@/components/profile/friends/userFilterSlice";
 import searchQueryReducer from "@/components/profile/friends/searchQuerySlice";
 import uploadAreaReducer from "@/components/modals/ui/uploadAreaSlice";
 import settingsReducer from "@/redux/reducers/settingsSlice";
-import postsReducer from "@/features/auth/reducers/posts/postsSlice";
 import userProfileReducer from "@/features/auth/reducers/user/userProfileSlice";
 // import currentUserReducer from '@/features/auth/reducers/user/currentUserSlice';
 
@@ -21,17 +21,19 @@ const rootReducer = combineReducers({
   progress: progressReducer,
   usersFilter: usersFilterReducer,
   settings: settingsReducer,
-  posts: postsReducer,
   userProfile: userProfileReducer,
   // currentUser: currentUserReducer,
   uploadArea: uploadAreaReducer,
   [authApi.reducerPath]: authApi.reducer,
+  [postsApi.reducerPath]: postsApi.reducer,
 });
 
 const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(authApi.middleware),
+    getDefaultMiddleware()
+      .concat(authApi.middleware)
+      .concat(postsApi.middleware),
 });
 
 export default store;
