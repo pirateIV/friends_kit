@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
 import { Textarea, Timeline } from "flowbite-react";
 
 import Button from "./Button";
@@ -18,35 +18,53 @@ import { useGetAllUserPostsQuery } from "@/features/auth/reducers/posts/postsApi
 import { formatDistanceToNow } from "date-fns";
 import useUserData from "@/hooks/useUserData";
 
-const commentsBox = document.getElementById("commentsBox");
-console.log(commentsBox);
-
 const Feed = () => {
   const dispatch = useDispatch();
   const user = useUserData();
-  const [comment, setComment] = useState("");
-  const [showCommentBoxes, setShowCommentBoxes] = useState({});
+  const [commentsState, setCommentsState] = useState({});
+  const [showCommentBox, setShowCommentBox] = useState(null);
+  const commentBoxRef = useRef(null);
 
   const handlePostComment = async (postId) => {
-    await postComment({ comment }, postId, dispatch);
-    setComment("");
+    if (commentsState[postId]) {
+      await postComment({ comment: commentsState[postId] }, postId, dispatch);
+      setCommentsState((prevState) => ({ ...prevState, [postId]: "" }));
+    }
   };
 
   const toggleCommentBox = (postId) => {
-    setShowCommentBoxes((prevState) => {
-      const newState = { ...prevState };
-      newState[postId] = !newState[postId];
-      return newState;
-    });
+    setShowCommentBox((prevPostId) => (prevPostId === postId ? null : postId));
+  };
+
+  const handleCommentChange = (postId, value) => {
+    setCommentsState((prevState) => ({
+      ...prevState,
+      [postId]: value,
+    }));
   };
 
   const { data: posts, error, isLoading } = useGetAllUserPostsQuery(user?.id);
 
-  console.log(posts);
-  const showComments = async (postId) => {
-    const selectedPost = posts.find((p) => (p._id === postId ? p : null));
+  const showComments = (postId) => {
+    const selectedPost = posts.find((p) => p._id === postId);
     console.log(selectedPost);
   };
+
+  const handleClickOutside = (event) => {
+    if (
+      commentBoxRef.current &&
+      !commentBoxRef.current.contains(event.target)
+    ) {
+      setShowCommentBox(null);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="user-posts-list">
@@ -59,7 +77,7 @@ const Feed = () => {
             >
               <Timeline.Point />
               <PostHeader post={post} />
-              {!showCommentBoxes[post._id] ? (
+              {showCommentBox !== post._id ? (
                 <>
                   <PostContent post={post} error={error} />
                   <PostActions>
@@ -96,64 +114,63 @@ const Feed = () => {
                   </PostsFooter>
                 </>
               ) : (
-                showCommentBoxes[post._id] && (
-                  <div className="comment-area">
-                    <div className="px-3.5">
-                      <h3>Comments ({post.comments.length})</h3>
+                <div className="comment-area" ref={commentBoxRef}>
+                  <div className="px-3.5">
+                    <h3>Comments ({post.comments.length})</h3>
 
-                      <div
-                        id="commentsBox"
-                        className="comments max-h-52 mb-3 overflow-y-auto divide-y divide-gray-200 dark:divide-blue-gray-800"
-                      >
-                        {post.comments.map((comment) => (
-                          <div className="p-1 text-right">
-                            <div className="user">
-                              <small>
-                                {" "}
-                                {formatDistanceToNow(comment.createdAt)}
-                              </small>
-                            </div>
-                            <p>{comment.content}</p>
+                    <div
+                      id="commentsBox"
+                      className="comments max-h-52 mb-3 overflow-y-auto divide-y divide-gray-200 dark:divide-blue-gray-800"
+                    >
+                      {post.comments.map((comment) => (
+                        <div key={comment._id} className="p-1 text-right">
+                          <div className="user">
+                            <small>
+                              {formatDistanceToNow(new Date(comment.createdAt))}
+                            </small>
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                    <CommentBox>
-                      <Textarea
-                        rows="6"
-                        value={comment}
-                        placeholder="Write a comment..."
-                        onChange={(e) => setComment(e.target.value)}
-                        onKeyUp={(e) =>
-                          e.key === "Escape" && setShowCommentBoxes({})
-                        }
-                        className="peer !bg-gray-100 focus:border-gray-400 dark:!bg-[#252e3b] dark:focus:!border-blue-600"
-                        autoFocus
-                      ></Textarea>
-
-                      <CommentsFooter>
-                        <AvatarComponent />
-                        <div className="comment-buttons space-x-2">
-                          <button
-                            onClick={() => handlePostComment(post._id)}
-                            className="p-2 text-xs rounded-md text-white bg-green-700 border-y outline-none border-green-500 dark:border-green-400 hover:bg-green-600 ring-offset-1 focus:ring focus:ring-green-600 disabled:cursor-not-allowed disabled:bg-green-400"
-                            disabled={!comment}
-                          >
-                            {!comment
-                              ? `Enter Comment... (${post.comments.length})`
-                              : `Post Comment (${post.comments.length})`}
-                          </button>
-                          <button
-                            onClick={() => setShowCommentBoxes({})}
-                            className="p-2 text-xs text-white rounded-md border-y border-red-500 dark:border-red-200 bg-red-500"
-                          >
-                            Cancel
-                          </button>
+                          <p>{comment.content}</p>
                         </div>
-                      </CommentsFooter>
-                    </CommentBox>
+                      ))}
+                    </div>
                   </div>
-                )
+                  <CommentBox>
+                    <Textarea
+                      rows="6"
+                      value={commentsState[post._id] || ""}
+                      placeholder="Write a comment..."
+                      onChange={(e) =>
+                        handleCommentChange(post._id, e.target.value)
+                      }
+                      onKeyUp={(e) =>
+                        e.key === "Escape" && setShowCommentBox(null)
+                      }
+                      className="peer !bg-gray-100 focus:border-gray-400 dark:!bg-[#252e3b] dark:focus:!border-blue-600"
+                      autoFocus
+                    ></Textarea>
+
+                    <CommentsFooter>
+                      <AvatarComponent />
+                      <div className="comment-buttons space-x-2">
+                        <button
+                          onClick={() => handlePostComment(post._id)}
+                          className="p-2 text-xs rounded-md text-white bg-green-700 border-y outline-none border-green-500 dark:border-green-400 hover:bg-green-600 ring-offset-1 focus:ring focus:ring-green-600 disabled:cursor-not-allowed disabled:bg-green-400"
+                          disabled={!commentsState[post._id]}
+                        >
+                          {!commentsState[post._id]
+                            ? `Enter Comment... (${post.comments.length})`
+                            : `Post Comment (${post.comments.length})`}
+                        </button>
+                        <button
+                          onClick={() => setShowCommentBox(null)}
+                          className="p-2 text-xs text-white rounded-md border-y border-red-500 dark:border-red-200 bg-red-500"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </CommentsFooter>
+                  </CommentBox>
+                </div>
               )}
             </Timeline.Item>
           ))

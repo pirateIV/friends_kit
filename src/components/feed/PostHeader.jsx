@@ -5,9 +5,13 @@ import { formatPostDate } from "@/helpers/formatDate";
 import useUserData from "@/hooks/useUserData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { useDeletePostMutation } from "@/features/auth/reducers/posts/postsApi";
 
 const PostHeader = ({ post }) => {
   const isProfile = useCustomLocation("app/@me");
+  const [deletePost, { isLoading: isDeleting }] = useDeletePostMutation(
+    post.id,
+  );
   const user = useUserData();
 
   // State for dropdown visibility
@@ -41,9 +45,10 @@ const PostHeader = ({ post }) => {
     };
   }, [isDropdownVisible]);
 
-  const deletePost = (id) => {
+  const deletePostById = async (id) => {
     if (confirm("Do you want to delete this post")) {
       console.log("post deleted", id);
+      await deletePost(id);
     }
   };
 
@@ -79,7 +84,7 @@ const PostHeader = ({ post }) => {
                   <li>
                     <button
                       href="#"
-                      onClick={() => deletePost(post._id)}
+                      onClick={() => deletePostById(post._id)}
                       className="!block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                       Delete post

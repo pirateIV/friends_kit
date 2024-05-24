@@ -23,14 +23,14 @@ const AboutTab = () => {
   }, [activeTab]);
 
   const [formData, setFormData] = useState({
-    bio: user.bio || "",
-    email: user.email || "",
-    phone: user.phone || "",
-    address: user.address || "",
-    interests: user.interests || "",
-    job: user.job || "",
-    education: user.education || "",
-    socialLinks: user.socialLinks || [],
+    bio: user?.bio || "",
+    email: user?.email || "",
+    phone: user?.phone || "",
+    address: user?.address || "",
+    interests: user?.interests || "",
+    job: user?.job || "",
+    education: user?.education || "",
+    socialLinks: user?.socialLinks || [],
   });
 
   const handleSubmit = () => {
@@ -104,7 +104,7 @@ const AboutTab = () => {
                       width="24"
                     />
                     <div>
-                      <p className="text-sm">{user.email}</p>
+                      <p className="text-sm">{user?.email}</p>
                       <small className="block w-full opacity-80">Email</small>
                     </div>
                   </div>
@@ -118,7 +118,7 @@ const AboutTab = () => {
                       width="24"
                     />
                     <div>
-                      <p className="text-sm">{user.phone || "Not added"}</p>
+                      <p className="text-sm">{user?.phone || "Not added"}</p>
                       <small className="block w-full opacity-80">Phone</small>
                     </div>
                   </div>
@@ -132,7 +132,7 @@ const AboutTab = () => {
                       width="24"
                     />
                     <div>
-                      <p className="text-sm">{user.address || "Not added"}</p>
+                      <p className="text-sm">{user?.address || "Not added"}</p>
                       <small className="opacity-80">Address</small>
                     </div>
                   </div>
