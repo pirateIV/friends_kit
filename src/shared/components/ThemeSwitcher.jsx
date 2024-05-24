@@ -3,7 +3,7 @@ import { getTheme, setTheme } from "@/redux/reducers/themeReducer";
 import ThemeIconLight from "./icons/ThemeIconLight";
 import ThemeIconDark from "./icons/ThemeIconDark";
 
-const ThemeSwitcher = () => {
+const ThemeSwitcher = ({ className }) => {
   const theme = useSelector(getTheme());
   const dispatch = useDispatch();
 
@@ -19,7 +19,7 @@ const ThemeSwitcher = () => {
     <button
       type="button"
       id="theme-toggle"
-      className={themeBtnClass}
+      className={`${themeBtnClass} ${className}`}
       onClick={() => changePreference()}
     >
       {theme !== "dark" ? <ThemeIconLight /> : <ThemeIconDark />}

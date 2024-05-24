@@ -26,6 +26,7 @@ import PersonalInfo from "../pages/About/routes/PersonalInfo";
 // 404
 import NotFoundPage from "@/pages/404/NotFound";
 import ProtectedRoute from "@/utils/ProtectedRoute";
+import Chat from "@/pages/Chat/Chat";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
                 element: <Jobs />,
               },
             ],
+          },
+          {
+            path: "/app/@me/chat",
+            element: <Chat />,
           },
           // {
           //   path: "/app/@me/settings",

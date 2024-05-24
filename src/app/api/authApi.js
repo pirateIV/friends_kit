@@ -27,4 +27,4 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLoginMutation, useGetUserDetailsQuery } = authApi;
+export const { tation, useGetUserDetailsQuery } = authApi;
