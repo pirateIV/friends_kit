@@ -1,17 +1,19 @@
+import { socket } from "@/socket";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import useUserData from "@/hooks/useUserData";
 import logo from "@/assets/images/logo/logo.svg";
 import { AvatarComponent } from "@/components/feed";
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher";
-import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
-import useUserData from "@/hooks/useUserData";
 import SearchIcon from "@/shared/components/icons/SearchIcon";
-import { Avatar } from "flowbite-react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
 
 const Chat = () => {
   const user = useUserData();
-  console.log(user);
   const { name } = useSelector(selectCurrentUser);
+  const [isConnected, setIsConnected] = useState(socket.connected);
 
   return (
     <div className="min-h-screen">
@@ -36,7 +38,9 @@ const Chat = () => {
 
                 <div className="flex flex-col">
                   <div className="username">{name}</div>
-                  <div className="status text-sm text-gray-600">online</div>
+                  <div className="status text-sm text-gray-600">
+                    {isConnected ? "online" : ""}
+                  </div>
                 </div>
               </div>
 
