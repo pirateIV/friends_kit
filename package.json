@@ -31,7 +31,7 @@
     "date-fns": "^3.6.0",
     "emoji-picker-react": "^4.9.2",
     "feather-icons-react": "^0.7.0",
-    "flowbite-react": "^0.7.8",
+    "flowbite-react": "^0.9.0",
     "formik": "^2.4.5",
     "framer-motion": "^11.0.12",
     "json-server": "^1.0.0-alpha.23",

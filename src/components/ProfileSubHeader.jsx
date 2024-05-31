@@ -1,6 +1,7 @@
 import useUserData from "@/hooks/useUserData";
 import { ClockIcon } from "@radix-ui/react-icons";
 import CreatePostModal from "./modals/CreatePostModal";
+import { Link } from "react-router-dom";
 
 const ProfileSubHeader = () => {
   const user = useUserData();
@@ -23,10 +24,13 @@ const ProfileSubHeader = () => {
           {/* <small className="text-[#a2a5b9]">Media Influencer</small> */}
         </div>
         <div className="w-1/3 text-end text-sm font-medium">
-          <button className="inline-flex items-center gap-1 bg-white border border-gray-400 px-4 py-1.5 rounded-lg dark:bg-[#151a23] dark:text-white dark:border-t dark:border-[#414d63] ">
+          <Link
+            to="chat"
+            className="inline-flex items-center gap-1 bg-white border border-gray-400 px-4 py-1.5 rounded-lg dark:bg-[#151a23] dark:text-white dark:border-t dark:border-[#414d63] "
+          >
             <ClockIcon />
             <span>History</span>
-          </button>
+          </Link>
         </div>
       </header>
     </>

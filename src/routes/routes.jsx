@@ -70,11 +70,13 @@ const router = createBrowserRouter([
           {
             path: "/app/@me/chat",
             element: <Chat />,
+            children: [
+              {
+                path: "/app/@me/chat/:userId",
+                element: <Chat />,
+              },
+            ],
           },
-          // {
-          //   path: "/app/@me/settings",
-          //   element: <Settings />,
-          // },
           {
             path: "/app/user/:userId",
             element: <UserProfileMain />,
