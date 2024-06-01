@@ -1,16 +1,25 @@
 import App from "@/App";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { getCurrentUser } from "@/features/auth/reducers/login/loginSlice";
 import "@/assets/css/loader.css";
 
 const ProtectedRoute = () => {
+  const dispatch = useDispatch();
   const location = useLocation();
+  const { isAuthenticated, loading } = useSelector((state) => state.auth);
+  const [initialCheck, setInitialCheck] = useState(true);
 
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  useEffect(() => {
+    if (initialCheck) {
+      dispatch(getCurrentUser()).finally(() => setInitialCheck(false));
+    }
+  }, [dispatch, initialCheck]);
 
-  console.log(isAuthenticated);
+  if (loading || initialCheck) {
+    return <div className="pageloader is-active"></div>;
+  }
 
   return isAuthenticated ? (
     <App>

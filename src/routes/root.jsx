@@ -12,7 +12,7 @@ import {
 const Root = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation(); // Add this line to define location
+  const location = useLocation();
   const [loading, setLoading] = useState(true);
 
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -23,15 +23,11 @@ const Root = () => {
       .catch(() => setLoading(false));
   }, [dispatch]);
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      location.pathname === "/" ? navigate("/app") : redirect("/app");
-    } else {
-      redirect("/login");
-    }
-  }, [isAuthenticated, navigate]);
+  // useEffect(() => {
+  //   redirect("/app");
+  // }, [isAuthenticated, navigate, redirect]);
 
-  console.log(isAuthenticated);
+  // console.log(isAuthenticated);
 
   if (loading) {
     return <div className="pageloader is-active"></div>;

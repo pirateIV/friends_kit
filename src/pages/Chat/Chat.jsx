@@ -104,7 +104,7 @@ const Chat = () => {
                 />
               </div>
 
-              <Link to="/app/@me">
+              <Link to="/@me">
                 <AvatarComponent />
               </Link>
               <ThemeSwitcher />
@@ -117,7 +117,7 @@ const Chat = () => {
             {messages.map((msg, index) => (
               <div
                 key={index}
-                className="ml-auto rounded-lg w-1/2 min-w-[200px] rounded-tr-none my-1 p-2 text-sm bg-[#b7b6ff] flex flex-col relative shadow-mui-1 speech-bubble-right"
+                className="ml-auto rounded-lg min-w-[200px] rounded-tr-none my-1 p-2 text-sm bg-[#b7b6ff] flex flex-col relative shadow-mui-1 speech-bubble-right"
               >
                 <p className="text-wrap">{msg.text}</p>
                 <p className="text-gray-600 text-xs text-right leading-none">

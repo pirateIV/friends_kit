@@ -1,5 +1,5 @@
 import Root from "./root";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, redirect } from "react-router-dom";
 
 // auth
 import Login from "../features/auth/pages/Login/Login";
@@ -27,89 +27,84 @@ import PersonalInfo from "../pages/About/routes/PersonalInfo";
 import NotFoundPage from "@/pages/404/NotFound";
 import ProtectedRoute from "@/utils/ProtectedRoute";
 import Chat from "@/pages/Chat/Chat";
+import { useSelector } from "react-redux";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <ProtectedRoute />,
     children: [
       {
-        path: "/app",
-        element: <ProtectedRoute />,
+        path: "/timeline",
+        element: <UserProfileMinimal />,
+      },
+      {
+        path: "/@me",
+        element: <UserProfileMain />,
+      },
+      {
+        path: "/@me/friends",
+        element: <Friends />,
+      },
+      {
+        path: "/@me/about",
+        element: <AboutUser />,
         children: [
           {
-            path: "/app/timeline",
-            element: <UserProfileMinimal />,
+            path: "/@me/about/personalInfo",
+            element: <PersonalInfo />,
           },
           {
-            path: "/app/@me",
-            element: <UserProfileMain />,
+            path: "/@me/about/education",
+            element: <Education />,
           },
           {
-            path: "/app/@me/friends",
-            element: <Friends />,
+            path: "/@me/about/jobs",
+            element: <Jobs />,
           },
+        ],
+      },
+      {
+        path: "/@me/chat",
+        element: <Chat />,
+        children: [
           {
-            path: "/app/@me/about",
-            element: <AboutUser />,
-            children: [
-              {
-                path: "/app/@me/about/personalInfo",
-                element: <PersonalInfo />,
-              },
-              {
-                path: "/app/@me/about/education",
-                element: <Education />,
-              },
-              {
-                path: "/app/@me/about/jobs",
-                element: <Jobs />,
-              },
-            ],
-          },
-          {
-            path: "/app/@me/chat",
+            path: "/@me/chat/:userId",
             element: <Chat />,
-            children: [
-              {
-                path: "/app/@me/chat/:userId",
-                element: <Chat />,
-              },
-            ],
-          },
-          {
-            path: "/app/user/:userId",
-            element: <UserProfileMain />,
           },
         ],
       },
       {
-        path: "/signup",
-        element: <Signup />,
-        children: [
-          {
-            path: "/signup/info",
-            element: <UserInfo />,
-          },
-          {
-            path: "/signup/upload-profile",
-            element: <ProfileUpload />,
-          },
-          {
-            path: "/signup/auth",
-            element: <AuthorizeAccount />,
-          },
-          {
-            path: "/signup/created",
-            element: <AccountCreated />,
-          },
-        ],
-      },
-      {
-        path: "/login",
-        element: <Login />,
+        path: "/user/:userId",
+        element: <UserProfileMain />,
       },
     ],
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+    children: [
+      {
+        path: "/signup/info",
+        element: <UserInfo />,
+      },
+      {
+        path: "/signup/upload-profile",
+        element: <ProfileUpload />,
+      },
+      {
+        path: "/signup/auth",
+        element: <AuthorizeAccount />,
+      },
+      {
+        path: "/signup/created",
+        element: <AccountCreated />,
+      },
+    ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
   {
     path: "*",

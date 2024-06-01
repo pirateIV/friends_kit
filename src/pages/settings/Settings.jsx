@@ -40,8 +40,8 @@ const Settings = () => {
 
   // Update the tab according to URL params
   useEffect(() => {
-    if (location.pathname === "/app/@me/settings") {
-      navigate(`/app/@me/settings?tab=${activeTab || "general"}`);
+    if (location.pathname === "/@me/settings") {
+      navigate(`/@me/settings?tab=${activeTab || "general"}`);
     }
     setActiveTab(tab);
   }, [tab, activeTab, location.pathname, navigate]);
