@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+import axios from "axios";
 import { useEffect } from "react";
 import { Form, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -42,10 +43,26 @@ const UserInfo = () => {
   const handlePrevious = () => {
     return;
   };
-  const handleNext = async (values) => {
+  const handleNext = async (values, setFieldError) => {
     await new Promise((resolve) => setTimeout(resolve, 600));
     dispatch(setUserInfo(values));
-    navigate("/signup/upload-profile");
+    if (await verifyEmail(values.email)) {
+      navigate("/signup/upload-profile");
+    } else {
+      setFieldError("email", "Email Verification Failed, user exists.");
+    }
+  };
+
+  const verifyEmail = async (email) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/users/checkEmail",
+        { email },
+      );
+      return true;
+    } catch ({ response }) {
+      return false;
+    }
   };
 
   return (
@@ -54,7 +71,9 @@ const UserInfo = () => {
         <Formik
           initialValues={{ firstName, lastName, email }}
           validationSchema={UserInfoSchema}
-          onSubmit={(values) => handleLoading(handleNext(values))}
+          onSubmit={(values, { setFieldError }) =>
+            handleLoading(handleNext(values, setFieldError))
+          }
         >
           {() => (
             <Form className="w-full max-w-[540px]">

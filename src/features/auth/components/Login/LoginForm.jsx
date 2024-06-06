@@ -2,7 +2,7 @@ import * as Yup from "yup";
 import { useEffect } from "react";
 import { submitBtnClass } from ".";
 import { Form, Formik } from "formik";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -41,10 +41,13 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/");
+      navigate("/", {
+        replace: true,
+      });
+      // redirect("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticated]);
+  }, [navigate, isAuthenticated]);
 
   return (
     <Formik

@@ -9,6 +9,7 @@ import { AvatarComponent } from "@/components/feed";
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher";
 import SearchIcon from "@/shared/components/icons/SearchIcon";
 import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
+import { Avatar } from "@material-tailwind/react";
 
 const Chat = () => {
   const user = useUserData();
@@ -43,11 +44,9 @@ const Chat = () => {
   const handleSendMessage = () => {
     if (newMessage.trim() !== "") {
       const message = {
-        user: name,
-        text: newMessage,
-        receiver: {
-          id: friendId || user.id,
-        },
+        content: newMessage,
+        user: { name, id: user.id },
+        receiver: { friendId } || { id: user.id },
       };
       socket.emit("message", message);
       // setMessages((prev) => [...prev, message]);
@@ -55,24 +54,28 @@ const Chat = () => {
     }
   };
 
+  console.log(user);
+
   return (
     <div className="min-h-screen flex">
       <aside className="sidebar py-4 flex flex-col items-center min-h-screen bg-white border-r border-gray-300">
         <img src={logo} width="45" height="45" alt="logo" />
 
-        <div className="friends-sidebar-list mt-5 flex-1 w-full">
+        <div className="friends-sidebar-list mt-5 px-t5 flex-1 w-full">
           {user?.friends.map((friend) => (
-            <button
+            <Link
               key={friend.id}
-              className="flex items-center w-full p-2 hover:bg-gray-200"
-              onClick={() => handleFriendClick(friend)}
+              className="p-2 px-4 mx-auto"
+              // className="flex items-center justify-center w-full p-2 hover:bg-gray-200"
+              to={friend.id}
             >
+              {/* <Avatar status="online" statusPosition="top-right" rounded/> */}
               <AvatarComponent />
               <div className="ml-4">
                 <div>{friend.name}</div>
                 <div className="text-sm text-gray-500">{friend.status}</div>
               </div>
-            </button>
+            </Link>
           ))}
         </div>
       </aside>

@@ -10,7 +10,6 @@ const AboutTab = () => {
     localStorage.getItem("about_tab") || "overview",
   );
   const user = useUserData();
-  const isProfile = useCustomLocation("app/@me");
 
   const handleUpdateUser = (field, value) => {
     const updatedUser = { ...user, [field]: value };

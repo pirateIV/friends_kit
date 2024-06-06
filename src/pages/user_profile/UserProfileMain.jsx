@@ -48,10 +48,7 @@ const UserProfileMain = ({ children }) => {
     dialogClose.current.click();
   };
 
-  console.log(userData);
-
-  const isProfile = useCustomLocation("app/@me");
-  console.log(isProfile);
+  const isProfile = useCustomLocation("@me");
 
   return (
     <>

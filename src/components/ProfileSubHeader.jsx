@@ -28,8 +28,8 @@ const ProfileSubHeader = () => {
             to="chat"
             className="inline-flex items-center gap-1 bg-white border border-gray-400 px-4 py-1.5 rounded-lg dark:bg-[#151a23] dark:text-white dark:border-t dark:border-[#414d63] "
           >
-            <ClockIcon />
-            <span>History</span>
+            {/* <ClockIcon /> */}
+            <span>Chat</span>
           </Link>
         </div>
       </header>

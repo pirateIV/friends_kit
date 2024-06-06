@@ -1,11 +1,10 @@
 import PropTypes from "prop-types";
 import Navigation from "./components/NavigationBar/Navigation";
-import useCustomLocation from "./hooks/useCustomLocation";
 import { useLocation } from "react-router-dom";
 
 const App = ({ children }) => {
   const location = useLocation();
-  const isChatApp = location.pathname.includes("app/@me/chat");
+  const isChatApp = location.pathname.includes("@me/chat");
 
   return (
     <main>

@@ -36,7 +36,7 @@ CustomButton.propTypes = {
   variant: PropTypes.string,
   className: PropTypes.string,
   handleClick: PropTypes.func,
-  navigateTo: PropTypes.func,
+  navigateTo: PropTypes.string,
 };
 
 export default CustomButton;

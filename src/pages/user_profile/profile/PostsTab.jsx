@@ -4,7 +4,7 @@ import { UserFriends, UserPhotos, UserSettings } from "./User";
 import CreatePostBannner from "@/components/layout/posts/CreatePostBanner";
 
 const PostsTab = () => {
-  const isProfile = useCustomLocation("app/@me");
+  const isProfile = useCustomLocation("@me");
 
   return (
     <div className="grid grid-cols-12 w-full gap-5">

@@ -4,9 +4,9 @@ import CreatePostModal from "./modals/CreatePostModal";
 import { btn2Class, btn2Class2, btnClass, btnClass2 } from ".";
 
 const ProfileMenu = () => {
-  const isProfile = useCustomLocation("app/@me");
   const [openModal, setOpenModal] = useState(false);
 
+  const isProfile = useCustomLocation("@me");
   const switchOnCase = (case_one, case_two) =>
     isProfile ? case_one : case_two;
 

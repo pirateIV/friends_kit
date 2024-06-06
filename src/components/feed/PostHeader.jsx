@@ -8,7 +8,6 @@ import { faEllipsis, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useDeletePostMutation } from "@/features/auth/reducers/posts/postsApi";
 
 const PostHeader = ({ post }) => {
-  const isProfile = useCustomLocation("app/@me");
   const [deletePost, { isLoading: isDeleting }] = useDeletePostMutation(
     post.id,
   );
@@ -51,6 +50,8 @@ const PostHeader = ({ post }) => {
       await deletePost(id);
     }
   };
+
+  const isProfile = useCustomLocation("@me");
 
   return (
     <div className="post-header p-4 mb-1">

@@ -17,7 +17,7 @@ const ProtectedRoute = () => {
     }
   }, [dispatch, initialCheck]);
 
-  if (loading || initialCheck) {
+  if (loading) {
     return <div className="pageloader is-active"></div>;
   }
 
