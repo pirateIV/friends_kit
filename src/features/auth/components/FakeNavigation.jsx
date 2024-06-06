@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import logo from "@/assets/images/logo/logo.svg";
 import useCustomLocation from "@/hooks/useCustomLocation";
 import ThemeSwitcher from "@/shared/components/ThemeSwitcher";
 
@@ -30,7 +29,7 @@ const FakeNavigation = () => {
 
   return (
     <nav className="fake-nav relative flex-center w-full h-[55px] bg-white dark:bg-[#1c2330]">
-      <img src={logo} height="48" width="48" alt="Logo" />
+      <img src="/logo.svg" height="48" width="48" alt="Logo" />
       {content}
       <ThemeSwitcher />
     </nav>

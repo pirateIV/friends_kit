@@ -4,12 +4,11 @@ import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import useUserData from "@/hooks/useUserData";
-import logo from "@/assets/images/logo/logo.svg";
+
 import { AvatarComponent } from "@/components/feed";
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher";
 import SearchIcon from "@/shared/components/icons/SearchIcon";
 import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
-import { Avatar } from "@material-tailwind/react";
 
 const Chat = () => {
   const user = useUserData();
@@ -46,7 +45,7 @@ const Chat = () => {
       const message = {
         content: newMessage,
         user: { name, id: user.id },
-        receiver: { friendId } || { id: user.id },
+        receiver: friendId.userId || user.id,
       };
       socket.emit("message", message);
       // setMessages((prev) => [...prev, message]);
@@ -54,12 +53,10 @@ const Chat = () => {
     }
   };
 
-  console.log(user);
-
   return (
     <div className="min-h-screen flex">
       <aside className="sidebar py-4 flex flex-col items-center min-h-screen bg-white border-r border-gray-300">
-        <img src={logo} width="45" height="45" alt="logo" />
+        <img src="/logo.svg" width="45" height="45" alt="logo" />
 
         <div className="friends-sidebar-list mt-5 px-t5 flex-1 w-full">
           {user?.friends.map((friend) => (

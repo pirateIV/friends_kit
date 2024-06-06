@@ -23,12 +23,6 @@ const Root = () => {
       .catch(() => setLoading(false));
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   redirect("/app");
-  // }, [isAuthenticated, navigate, redirect]);
-
-  // console.log(isAuthenticated);
-
   if (loading) {
     return <div className="pageloader is-active"></div>;
   }

@@ -38,7 +38,7 @@ const NotFoundPage = () => {
               <img
                 // width='540'
                 // height='409'
-                src="/images/404.svg"
+                src="/404.svg"
                 alt="not found page image illustration"
                 className="motion-safe:animate-fade-in-down"
               />
