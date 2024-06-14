@@ -1,72 +1,109 @@
-import { socket } from "@/socket";
-import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useState, useEffect, useCallback } from "react";
+import io from "socket.io-client";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import useUserData from "@/hooks/useUserData";
-
 import { AvatarComponent } from "@/components/feed";
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher";
 import SearchIcon from "@/shared/components/icons/SearchIcon";
 import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
+import axios from "axios";
+import { twMerge } from "tailwind-merge";
+
+const socket = io("http://localhost:5000");
 
 const Chat = () => {
-  const user = useUserData();
-  const { name } = useSelector(selectCurrentUser);
+  const location = useLocation();
+  const { user } = useSelector(selectCurrentUser);
+  const { name } = user || {};
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedFriend, setSelectedFriend] = useState(null);
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState("");
+  const [chat, setChat] = useState([]);
+  const [message, setMessage] = useState("");
+  const { userId } = useParams();
 
-  const friendId = useParams();
+  const handleSendMessage = async () => {
+    const messageObject = {
+      sent: true,
+      sender: user.id,
+      receiver: userId,
+      content: message,
+      timestamp: new Date(),
+    };
+    socket.emit("send_message", messageObject);
+    setChat((prevChat) => [...prevChat, messageObject]);
+    setMessage("");
+  };
 
   useEffect(() => {
-    socket.on("connect", () => setIsConnected(true));
-    socket.on("disconnect", () => setIsConnected(false));
-    socket.on("message", (message) =>
-      setMessages((prev) => [...prev, message]),
-    );
+    socket.on("connect", () => {
+      setIsConnected(true);
+      socket.emit("join", user.id); // Join room based on user ID
+    });
+
+    socket.on("disconnect", () => {
+      setIsConnected(false);
+    });
+
+    socket.on("receive_message", (message) => {
+      setChat((prevChat) => [...prevChat, message]);
+    });
 
     return () => {
       socket.off("connect");
       socket.off("disconnect");
-      socket.off("message");
+      socket.off("receive_message");
     };
-  }, []);
+  }, [user.id]);
 
-  const handleFriendClick = (friend) => {
-    setSelectedFriend(friend);
-    setIsDrawerOpen(true);
-  };
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const [receivedMessages, sentMessages] = await Promise.all([
+          axios.get(`http://localhost:5000/api/messages/received`, {
+            headers: { Authorization: `Bearer ${token}` },
+          }),
+          axios.get(`http://localhost:5000/api/messages/sent`, {
+            headers: { Authorization: `Bearer ${token}` },
+          }),
+        ]);
 
-  const handleSendMessage = () => {
-    if (newMessage.trim() !== "") {
-      const message = {
-        content: newMessage,
-        user: { name, id: user.id },
-        receiver: friendId.userId || user.id,
-      };
-      socket.emit("message", message);
-      // setMessages((prev) => [...prev, message]);
-      setNewMessage("");
+        const sent = sentMessages.data.map((msg) =>
+          msg ? { ...msg, sent: true } : null,
+        );
+        const received = receivedMessages.data.map((msg) =>
+          msg ? { ...msg, received: true } : null,
+        );
+        const allChats = [...sent, ...received].sort(
+          (a, b) => new Date(a.timestamp) - new Date(b.timestamp),
+        );
+        setChat(allChats);
+      } catch (error) {
+        console.error("Error fetching messages", error);
+      }
+    };
+
+    if (userId) {
+      fetchMessages();
     }
-  };
+  }, [userId]);
 
   return (
     <div className="min-h-screen flex">
       <aside className="sidebar py-4 flex flex-col items-center min-h-screen bg-white border-r border-gray-300">
         <img src="/logo.svg" width="45" height="45" alt="logo" />
-
         <div className="friends-sidebar-list mt-5 px-t5 flex-1 w-full">
+          <Link key={user.id} className="p-2 px-4 mx-auto" to={user.id}>
+            <AvatarComponent />
+            <div className="ml-4">
+              <div>{name}</div>
+              <div className="text-sm text-gray-500">{isConnected}</div>
+            </div>
+          </Link>
           {user?.friends.map((friend) => (
-            <Link
-              key={friend.id}
-              className="p-2 px-4 mx-auto"
-              // className="flex items-center justify-center w-full p-2 hover:bg-gray-200"
-              to={friend.id}
-            >
-              {/* <Avatar status="online" statusPosition="top-right" rounded/> */}
+            <Link key={friend.id} className="p-2 px-4 mx-auto" to={friend.id}>
               <AvatarComponent />
               <div className="ml-4">
                 <div>{friend.name}</div>
@@ -82,7 +119,6 @@ const Chat = () => {
           <div className="bg-white flex px-4 py-2 items-center justify-between border-b border-gray-300">
             <div className="header-left flex items-center gap-5">
               <AvatarComponent />
-
               <div className="flex flex-col">
                 <div className="username">{name}</div>
                 <div className="status text-sm text-gray-600">
@@ -93,17 +129,13 @@ const Chat = () => {
 
             <div className="header-right flex items-center gap-4">
               <div className="search relative text-sm flex items-center">
-                <SearchIcon cs={"absolute ms-2 text-gray-400"} />
-
+                <SearchIcon className="absolute ms-2 text-gray-400" />
                 <input
                   type="search"
                   className="border p-1.5 ps-9 rounded-full bg-gray-300 border-gray-300 placeholder:text-gray-500 focus:border-blue-500 outline-none"
                   placeholder="search friends"
-                  name=""
-                  id=""
                 />
               </div>
-
               <Link to="/@me">
                 <AvatarComponent />
               </Link>
@@ -112,17 +144,32 @@ const Chat = () => {
           </div>
         </header>
 
-        <div className="chats-container flex-1 flex flex-col p-4">
-          <div className="messages flex-1 overflow-y-auto p-4 bg-gray-100 rounded-lg">
-            {messages.map((msg, index) => (
+        <div className="chats-container flex-1 flex flex-col p-4 h-full overflow-scroll">
+          <div className="messages flex-1 overflow-y-auto p-4 bg-gray-100 dark:bg-[#202937] rounded-lg space-y-4">
+            {chat.map((msg, index) => (
               <div
                 key={index}
-                className="ml-auto rounded-lg min-w-[200px] rounded-tr-none my-1 p-2 text-sm bg-[#b7b6ff] flex flex-col relative shadow-mui-1 speech-bubble-right"
+                className={twMerge(
+                  "flex",
+                  msg.sent ? "justify-start" : "justify-end",
+                )}
               >
-                <p className="text-wrap">{msg.text}</p>
-                <p className="text-gray-600 text-xs text-right leading-none">
-                  {new Date().toLocaleTimeString()}
-                </p>
+                <div
+                  className={twMerge(
+                    msg.sent ? "bg-white" : "bg-[#3d70b2]",
+                    "rounded-lg p-2 px-4 shadow-mui-1 min-w-24 max-w-lg break-words",
+                  )}
+                >
+                  <p className="text-wrap text-[13px]">{msg.content}</p>
+                  <p
+                    className={twMerge(
+                      msg.sent ? "text-gray-600" : "text-white/70",
+                      "text-[11px] text-right leading-none mt-2",
+                    )}
+                  >
+                    {new Date(msg.timestamp).toLocaleTimeString()}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -130,8 +177,8 @@ const Chat = () => {
             <input
               type="text"
               className="flex-1 p-2 border border-gray-300 rounded-l-lg outline-none"
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               placeholder="Type your message..."
             />
             <button

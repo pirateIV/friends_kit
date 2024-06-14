@@ -32,7 +32,7 @@ const NotificationRequest = () => {
 
   return (
     <div
-      className={`relative w-full h-5 ${notificationPermission === "granted" ? "" : "hidden"}`}
+      className={`relative w-full h-5 ${notificationPermission === "granted" ? "hidden" : ""}`}
     >
       {notificationPermission === "denied" && (
         <div
