@@ -1,7 +1,8 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { baseURL } from "@/api/client";
 
-const baseUrl = "http://localhost:5000/api/protected";
+const baseUrl = `${baseURL}/protected`;
 
 const initialState = {
   user: null,

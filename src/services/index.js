@@ -2,15 +2,14 @@ import axios from "axios";
 import {} from // updatePost,
 // updatePostComments,
 "@/features/auth/reducers/posts/postsApi";
-
-const baseUrl = "http://localhost:5000/api";
+import { baseURL } from "@/api/client";
 
 const token = localStorage.getItem("token");
 
 export const postComment = async (commentData, postId, dispatch) => {
   try {
     const res = await axios.post(
-      `${baseUrl}/comments/create/${postId}`,
+      `${baseURL}/comments/create/${postId}`,
       commentData,
       {
         headers: { Authorization: `Bearer ${token}` },
@@ -27,7 +26,7 @@ export const postComment = async (commentData, postId, dispatch) => {
 
 export const createPost = async ({ content }) => {
   try {
-    const data = await axios.post(`${baseUrl}/posts/createPost`, content, {
+    const data = await axios.post(`${baseURL}/posts/createPost`, content, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const comment = await res.data;

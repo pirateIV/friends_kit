@@ -16,6 +16,7 @@ import {
   getUserInfo,
   setUserInfo,
 } from "@/features/auth/reducers/user/userSlice";
+import { baseURL } from "@/api/client";
 
 const UserInfoSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("required!"),
@@ -55,10 +56,7 @@ const UserInfo = () => {
 
   const verifyEmail = async (email) => {
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/users/checkEmail",
-        { email },
-      );
+      const res = await axios.post(`${baseURL}/users/checkEmail`, { email });
       return true;
     } catch ({ response }) {
       return false;

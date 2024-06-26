@@ -1,11 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { selectCurrentToken } from "../login/loginSlice";
 import { createPost } from "@/services";
+import { baseURL } from "@/api/client";
 
 export const postsApi = createApi({
   reducerPath: "postsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api/",
+    baseUrl: baseURL,
     prepareHeaders: (headers, { getState }) => {
       const token = selectCurrentToken(getState());
       if (token) {

@@ -17,7 +17,7 @@ const FriendsList = () => {
   useEffect(() => {
     const getUserFriends = async () => {
       const promises = user.friends.forEach(async (id) => {
-        const res = await fetch(`http://localhost:5000/api/users/${id}`);
+        const res = await fetch(`/users/${id}`);
         return await res.json();
       });
 

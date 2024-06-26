@@ -1,8 +1,9 @@
+import { baseURL } from "@/api/client";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const authApi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api/",
+    baseUrl: baseURL,
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
       if (token) {

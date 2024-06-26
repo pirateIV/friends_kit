@@ -1,7 +1,8 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { baseURL } from "@/api/client";
 
-const baseUrl = "http://localhost:5000/api/users";
+const baseUrl = `${baseURL}/users`;
 
 // Define the async thunk with a userId parameter
 const getUserProfileInfo = createAsyncThunk(

@@ -3,7 +3,7 @@ import { selectCurrentToken } from "@/auth/reducers/login/loginSlice";
 
 export const authApi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api/",
+    baseUrl: baseUrl,
     prepareHeaders: (headers, { getState }) => {
       const token = selectCurrentToken(getState());
       if (token) {
