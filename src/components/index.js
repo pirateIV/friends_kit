@@ -25,3 +25,6 @@ export const btn2Class =
 
 export const btn2Class2 =
   "flex items-center  text-white justify-center bg-blue-600 gap-2  border-t dark:border-blue-400 hover:bg-blue-500";
+
+export const btnClass3 =
+  "flex items-center  text-white justify-center bg-red-600 gap-2  border-t dark:border-red-400 hover:bg-red-500";

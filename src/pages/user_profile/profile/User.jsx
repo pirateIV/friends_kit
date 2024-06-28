@@ -38,16 +38,18 @@ export const UserFriends = () => {
           {userData?.friends.length} friends
         </p>
       </div>
-      <div className="mt-4">
+      <div className="mt-4 grid grid-cols-4">
         {userData?.friends.map((friend) => (
-          <div key={friend.id} className="friend-item grid grid-cols-3">
+          <div key={friend.id} className="friend-item col-span-1">
             <Link
               to={user.id === friend.id ? "/@me" : `/user/${friend.id}`}
-              className="flex flex-col col-span-1 items-center"
+              className="flex flex-col items-center text-center"
             >
               <Avatar size="lg" />
               <small className="friend-name dark:text-gray-300">
-                {friend.firstName} {friend.lastName}
+                {friend.id === user.id
+                  ? "You"
+                  : `${friend.firstName} ${friend.lastName}`}
               </small>
             </Link>
           </div>

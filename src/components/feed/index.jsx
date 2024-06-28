@@ -40,7 +40,7 @@ export const PostsFooter = ({ children }) => {
 
 export const AvatarComponent = () => {
   return (
-    <div className="avatar w-10 h-10 overflow-hidden rounded-full">
+    <div className="avatar w-10 h-10 dark:!bg-gray-600 overflow-hidden rounded-full">
       <Avatar />
     </div>
   );

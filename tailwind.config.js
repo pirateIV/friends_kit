@@ -51,7 +51,7 @@ module.exports = withMT({
       },
       fontFamily: {
         sans: [
-          "Inter",
+          "DM Sans",
           "ui-sans-serif",
           "system-ui",
           "-apple-system",

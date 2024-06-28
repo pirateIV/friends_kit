@@ -2,14 +2,14 @@ import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { baseURL } from "@/api/client";
 
-const baseUrl = `${baseURL}/users`;
+const baseUrl = `${baseURL}`;
 
 // Define the async thunk with a userId parameter
 const getUserProfileInfo = createAsyncThunk(
   "/users/getUserProfileInfo",
   async (userId, thunkApi) => {
     const token = thunkApi.getState().auth.token;
-    const res = await axios.get(`${baseUrl}/${userId}`, {
+    const res = await axios.get(`${baseUrl}/users/${userId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
