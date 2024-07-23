@@ -2,49 +2,36 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Avatar } from "flowbite-react";
-import io from "socket.io-client";
 
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher";
 import NavbarLogo from "@/components/NavigationBar/NavbarLogo";
 import { AvatarComponent } from "@/components/feed";
 import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
-
-const socket = io("http://localhost:5000");
+import { socket } from "@/socket";
 
 const ChatApp = () => {
   const { userId } = useParams();
   const { pathname } = useLocation();
   const { user } = useSelector(selectCurrentUser);
+  const [isConnected, setIsConnected] = useState(socket.connected);
 
   const [friendsList] = useState(user?.friends);
   const [currentFriendId, setCurrentFriendId] = useState(userId);
   const [currentFriend, setCurrentFriend] = useState(null);
-  const [isConnected, setIsConnected] = useState(socket.connected);
   const [messages, setMessages] = useState([]);
   const [messageInput, setMessageInput] = useState("");
 
   useEffect(() => {
-    // Handle socket connection
-    socket.on("connect", () => {
+    function onConnect() {
       setIsConnected(true);
-    });
+    }
 
-    // Handle socket disconnection
-    socket.on("disconnect", () => {
+    function onDisconnect() {
       setIsConnected(false);
-    });
+    }
 
-    // Handle incoming messages
-    socket.on("message", (message) => {
-      setMessages((prevMessages) => [...prevMessages, message]);
-    });
-
-    return () => {
-      // Clean up socket events on component unmount
-      socket.off("connect");
-      socket.off("disconnect");
-      socket.off("message");
-    };
+    socket.on("connect", onConnect);
+    socket.on("disconnect", onDisconnect);
   }, []);
 
   useEffect(() => {
@@ -70,7 +57,11 @@ const ChatApp = () => {
     <div className="flex h-screen overflow-hidden">
       <Sidebar friends={friendsList} />
       <div className="flex-1 flex flex-col">
-        <ChatHeader user={user} currentFriend={currentFriend} />
+        <ChatHeader
+          isConnected={isConnected}
+          user={user}
+          currentFriend={currentFriend}
+        />
         {currentFriendId && (
           <ChatContainer
             messages={messages}
@@ -110,14 +101,19 @@ const Sidebar = ({ friends }) => {
   );
 };
 
-const ChatHeader = ({ user, currentFriend }) => {
-  const isUserOnline = socket.connected ? "online" : "";
+const ChatHeader = ({ isConnected, user, currentFriend }) => {
+  const isUserOnline = isConnected ? "online" : "";
 
   return (
     <header className="border-b border-gray-300 dark:border-[#252525] dark:text-white p-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-1.5">
-          <AvatarComponent />
+          {/* <AvatarComponent /> */}
+          <Avatar
+            status={isConnected ? "online" : "offline"}
+            statusPosition="top-right"
+            rounded
+          />
           <div>
             {currentFriend ? (
               <div>
@@ -186,8 +182,9 @@ const ChatMessage = ({ sender, message }) => {
 const ChatInput = ({ messageInput, setMessageInput, handleSendMessage }) => {
   return (
     <footer className="bg-gray-100 p-4 flex items-center">
-      <input
+      <textarea
         type="text"
+        rows="5"
         className="flex-1 border border-gray-300 p-2 rounded-lg"
         placeholder="Type a message..."
         value={messageInput}

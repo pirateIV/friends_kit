@@ -5,12 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import avatar from "@/assets/images/avatar-w.webp";
 import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
 import { useEffect, useState } from "react";
-// import { query } from './searchQuerySlice';
 
 const FriendsList = () => {
   const searchQuery = useSelector((state) => state.query);
   const { user } = useSelector(selectCurrentUser);
-  // const friends = useSelector((state) => state.usersFilter);
 
   const [friends, setFriends] = useState([]);
 
