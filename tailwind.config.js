@@ -1,32 +1,22 @@
-/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
-const withMT = require("@material-tailwind/react/utils/withMT");
-
-module.exports = withMT({
-  darkMode: ["class"],
-  content: [
-    "./pages/**/*.{js,jsx}",
-    "./components/**/*.{js,jsx}",
-    "./app/**/*.{js,jsx}",
-    "./src/**/*.{js,jsx}",
-    "node_modules/flowbite-react/lib/esm/**/*.js",
-  ],
-  prefix: "",
+export default {
+  darkMode: "class",
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    colors: {
-      blue: {
-        50: "#EBF5FF",
-        100: "#E1EFFE",
-        200: "#C3DDFD",
-        300: "#A4CAFE",
-        400: "#76A9FA",
-        500: "#3F83F8",
-        600: "#1C64F2",
-        700: "#1A56DB",
-        800: "#1E429F",
-        900: "#233876",
-      },
-    },
+    // colors: {
+    // blue: {
+    //   50: "#EBF5FF",
+    //   100: "#E1EFFE",
+    //   200: "#C3DDFD",
+    //   300: "#A4CAFE",
+    //   400: "#76A9FA",
+    //   500: "#3F83F8",
+    //   600: "#1C64F2",
+    //   700: "#1A56DB",
+    //   800: "#1E429F",
+    //   900: "#233876",
+    // },
+    // },
     container: {
       center: true,
       padding: "2rem",
@@ -79,4 +69,4 @@ module.exports = withMT({
     },
   },
   plugins: [require("tailwindcss-animate")],
-});
+};

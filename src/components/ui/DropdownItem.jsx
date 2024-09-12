@@ -10,7 +10,7 @@ const DropdownItem = ({ title, path, children }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (title.includes("Log out")) {
+    if (title?.includes("Log out")) {
       dispatch(logout());
       navigate("/login");
     }

@@ -6,11 +6,14 @@ import UserSettings from "../ui/UserSettings";
 import ThemeSwitcher from "../ui/ThemeSwitcher";
 import SearchIcon from "@/shared/components/icons/SearchIcon";
 import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
+import Avatar from "../common/Avatar";
 
 const NavbarEnd = () => {
   const [isHidden, setisHidden] = useState(true);
-  const { name } = useSelector(selectCurrentUser);
+  const user = useSelector(selectCurrentUser);
   const dropdownRef = useRef(null);
+
+  const name = `${user.user.firstName} ${user.user.lastName}`;
 
   useEffect(() => {
     const handleClick = (e) => {
@@ -41,18 +44,8 @@ const NavbarEnd = () => {
         </div>
       </div>
       <div className="relative">
-        <button
-          id="user-avatar"
-          className="relative block h-10 w-10 rounded-full"
-          onClick={() => setisHidden(!isHidden)}
-        >
-          <span className="sr-only">Open user menu</span>
-          <span className="active absolute h-3 w-3 bg-green-300 border-2 border-white rounded-full top-0 right-0 dark:border-[#1c2330]"></span>
-          <img
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-            className="bg-cover rounded-full"
-            alt="user photo"
-          />
+        <button id="user-avatar" onClick={() => setisHidden(!isHidden)}>
+          <Avatar user={user.user} className="w-9 h-9 text-sm" status={false} />
         </button>
         <div
           ref={dropdownRef}

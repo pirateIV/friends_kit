@@ -1,17 +1,28 @@
+import { socket } from "@/socket";
 import { createSlice } from "@reduxjs/toolkit";
 
 const chatSlice = createSlice({
-  name: "chat",
+  name: "chatRoom",
   initialState: {
-    chatRoomList: [],
+    chatRoomUsers: [],
     chatMessages: [],
     selectedChatRoom: null,
     selectedChatMessage: null,
   },
   reducers: {
-    setChatRoomList: (state, action) => {
-      state.chatRoomList = action.payload;
+    setChatRoomUsers: (state, action) => {
+      const roomUsers = action.payload;
+
+      // state.chatRoomUsers = roomUsers.map((user) => ({
+      //   ...user,
+      //   ...initReactiveProperties(user.id),
+      // }));
+      state.chatRoomUsers = roomUsers;
+      console.log(socket.userID);
+      console.log(state.chatRoomUsers);
+      // state.chatRoomUsers = action.payload;
     },
+
     setChatMessages: (state, action) => {
       state.chatMessages = action.payload;
     },
@@ -23,5 +34,7 @@ const chatSlice = createSlice({
     },
   },
 });
+
+export const { setChatRoomUsers } = chatSlice.actions;
 
 export default chatSlice.reducer;
