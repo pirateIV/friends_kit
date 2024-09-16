@@ -1,16 +1,19 @@
 import { cn } from "@/lib/utils";
 import { getRandomColor } from "@/helpers/getRandomColor";
 
-const Avatar = ({ user, className, status = true }) => {
+const Avatar = ({ user, selectedUser, className, status = true }) => {
+  const updateUserStatusStyle = (user) =>
+    user.online ? "var(--color-online)" : "var(--color-offline)";
+
   return (
     <div className="relative">
       {user.avatar ? (
         <img
+          width="40"
+          height="40"
+          alt={user.name}
           src={user.avatar}
           className="rounded-full object-cover"
-          height="30"
-          width="30"
-          alt={user.name}
         />
       ) : (
         <div
@@ -25,10 +28,10 @@ const Avatar = ({ user, className, status = true }) => {
           </span>
         </div>
       )}
-      {status && (
+      {Boolean(status) && (
         <span
-          style={{ backgroundColor: user.online ? "green" : "red" }}
-          className="bottom-0 left-7 absolute w-3.5 h-3.5 border-2 border-white rounded-full"
+          style={{ backgroundColor: updateUserStatusStyle(user) }}
+          className="bottom-0 left-7 absolute w-3.5 h-3.5 border-2 rounded-full border-white dark:border-[#262626]"
         ></span>
       )}
     </div>

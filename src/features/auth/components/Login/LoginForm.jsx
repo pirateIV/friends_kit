@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { submitBtnClass } from ".";
 import { Form, Formik } from "formik";
 import { redirect, useNavigate } from "react-router-dom";
-import { Button } from "@material-tailwind/react";
+// import { Button } from "@material-tailwind/react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useLoginMutation } from "@/app/api/authSlice";
@@ -13,6 +13,7 @@ import {
   getCurrentUser,
   setCredentials,
 } from "@/features/auth/reducers/login/loginSlice";
+import Button from "@/components/common/buttons/Button";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("required!"),
@@ -74,7 +75,7 @@ const LoginForm = () => {
 
           <ForgotPassword />
 
-          <Button
+          {/* <Button
             type="submit"
             color="blue"
             fullWidth
@@ -83,6 +84,14 @@ const LoginForm = () => {
             disabled={isLoading || isError}
           >
             {isLoading ? "logging in..." : "Login"}
+          </Button> */}
+          <Button
+            type="submit"
+            size="large"
+            className="w-full"
+            loading={isLoading}
+          >
+            {isLoading ? "Please wait..." : "Login"}
           </Button>
         </section>
       </Form>

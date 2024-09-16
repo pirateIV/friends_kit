@@ -41,7 +41,7 @@ export default {
       },
       fontFamily: {
         sans: [
-          "DM Sans",
+          "Inter",
           "ui-sans-serif",
           "system-ui",
           "-apple-system",

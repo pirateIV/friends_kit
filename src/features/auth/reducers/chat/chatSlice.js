@@ -8,6 +8,8 @@ const chatSlice = createSlice({
     chatMessages: [],
     selectedChatRoom: null,
     selectedChatMessage: null,
+    selectedUser: null,
+    showUserInfo: false,
   },
   reducers: {
     setChatRoomUsers: (state, action) => {
@@ -22,9 +24,23 @@ const chatSlice = createSlice({
       console.log(state.chatRoomUsers);
       // state.chatRoomUsers = action.payload;
     },
+    setUserConnection: (state, action) => {
+      const user = action.payload;
+
+      state.chatRoomUsers = state.chatRoomUsers.map((u) => {
+        if (u.id === user.userID) {
+          return { ...u, online: user.online };
+        } else {
+          return u;
+        }
+      });
+    },
 
     setChatMessages: (state, action) => {
       state.chatMessages = action.payload;
+    },
+    setSelectedUser: (state, action) => {
+      state.selectedUser = action.payload;
     },
     setSelectedChatRoom: (state, action) => {
       state.selectedChatRoom = action.payload;
@@ -32,9 +48,17 @@ const chatSlice = createSlice({
     setSelectedChatMessage: (state, action) => {
       state.selectedChatMessage = action.payload;
     },
+    setShowUserInfo: (state, action) => {
+      state.showUserInfo = !state.showUserInfo;
+    },
   },
 });
 
-export const { setChatRoomUsers } = chatSlice.actions;
+export const {
+  setChatRoomUsers,
+  setUserConnection,
+  setSelectedUser,
+  setShowUserInfo,
+} = chatSlice.actions;
 
 export default chatSlice.reducer;
