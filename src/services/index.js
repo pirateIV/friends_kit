@@ -34,3 +34,12 @@ export const createPost = async ({ content }) => {
     console.log(error);
   }
 };
+
+export const getUserMessages = async (id) => {
+  try {
+    const res = fetch(`${baseURL}/messages/${id}`);
+    return (await res).json();
+  } catch (error) {
+    console.log(error);
+  }
+};

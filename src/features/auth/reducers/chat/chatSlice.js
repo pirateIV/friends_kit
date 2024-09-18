@@ -5,11 +5,11 @@ const chatSlice = createSlice({
   name: "chatRoom",
   initialState: {
     chatRoomUsers: [],
-    chatMessages: [],
     selectedChatRoom: null,
     selectedChatMessage: null,
     selectedUser: null,
     showUserInfo: false,
+    userMessages: {},
   },
   reducers: {
     setChatRoomUsers: (state, action) => {
@@ -36,8 +36,9 @@ const chatSlice = createSlice({
       });
     },
 
-    setChatMessages: (state, action) => {
-      state.chatMessages = action.payload;
+    setUserMessages: (state, action) => {
+      const { userId, messages } = action.payload;
+      state.userMessages[userId] = messages;
     },
     setSelectedUser: (state, action) => {
       state.selectedUser = action.payload;
@@ -59,6 +60,7 @@ export const {
   setUserConnection,
   setSelectedUser,
   setShowUserInfo,
+  setUserMessages,
 } = chatSlice.actions;
 
 export default chatSlice.reducer;

@@ -1,21 +1,40 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Avatar from "@/components/common/Avatar";
-import { setSelectedUser } from "@/features/auth/reducers/chat/chatSlice";
+import {
+  setSelectedUser,
+  setUserMessages,
+} from "@/features/auth/reducers/chat/chatSlice";
 import {
   handleCompareCases,
   handleCompareUsers,
   handleUserName,
 } from "@/helpers";
-
+import { getUserMessages } from "@/services";
+import { useEffect } from "react";
 const ChatMessageList = ({ searchQuery }) => {
   const dispatch = useDispatch();
+  const { userId } = useParams();
+  const { userMessages } = useSelector((state) => state.chatRoom);
 
   const { chatRoomUsers, selectedUser } = useSelector(
     (state) => state.chatRoom,
   );
 
-  const handleSelectUser = (user) => {
+  useEffect(() => {
+    if (selectedUser && !userMessages[selectedUser.id]) {
+      fetchMessages(selectedUser.id);
+    }
+    console.log(userMessages);
+  }, [selectedUser]);
+
+  const fetchMessages = async (userId) => {
+    const messages = await getUserMessages(userId);
+    dispatch(setUserMessages({ userId, messages }));
+    console.log(messages);
+  };
+
+  const handleSelectUser = async (user) => {
     dispatch(setSelectedUser(user));
   };
 
