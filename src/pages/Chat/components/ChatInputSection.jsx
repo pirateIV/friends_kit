@@ -1,49 +1,64 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
-// Import the Slate editor factory.
-import { createEditor } from "slate";
+import EmojiPicker from "emoji-picker-react";
 
+// Import the Slate editor factory.
+import { createEditor, Editor, Transforms } from "slate";
 // Import the Slate components and React plugin.
 import { Slate, Editable, withReact } from "slate-react";
 
-import EmojiPicker from "emoji-picker-react";
-
 import { socket } from "@/socket";
+import { filterArray } from "@/helpers";
 
 const initialValue = [
   {
     type: "paragraph",
-    children: [{ text: "A line of text in a paragraph." }],
+    children: [{ text: "" }],
   },
 ];
 
-const getTypedText = (arr) => {
-  return arr.map((item) => item.children.map((child) => child.text).toString());
+const getTypedMesages = (arr) => {
+  return arr.map((item) =>
+    item.children.map((child) => child.text.trim()).toString(),
+  );
 };
 
 const ChatInputSection = () => {
-  const [editor] = useState(() => withReact(createEditor()));
   const { selectedUser } = useSelector((state) => state.chatRoom);
 
-  const [message, setMessage] = useState([]);
-
+  const [editor] = useState(() => withReact(createEditor()));
   const [selectedEmoji, setSelectedEmoji] = useState(null);
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage(e);
+    }
+  };
 
   const handleSendMessage = (e) => {
     e.preventDefault();
 
+    // Get the current value of the Slate editor.
+    const message = filterArray(getTypedMesages(editor.children));
+
     socket.emit("private message", {
       message,
-      to: selectedUser?.id,
+      senderId: socket.auth.userID,
+      receiverId: selectedUser?.id,
+    });
+
+    // clear the editor after sending
+    Transforms.delete(editor, {
+      at: {
+        anchor: Editor.start(editor, []),
+        focus: Editor.end(editor, []),
+      },
     });
   };
 
-  const handleSetMessage = (message) => {
-    // setMessage([...message]);
-  };
-
   const handleEmojiSelect = (emoji) => {
-    setSelectedEmoji(emoji);
+    // setSelectedEmoji(emoji);
     console.log(emoji.emoji);
   };
 
@@ -75,13 +90,14 @@ const ChatInputSection = () => {
             <Slate
               editor={editor}
               initialValue={initialValue}
-              onChange={handleSetMessage}
+              onChange={getTypedMesages}
             >
               <Editable
-                value={message}
-                className="px-4 py-2 w-full text-sm text-gray-900 border bg-white outline-none max-h-32 overflow-y-auto [scrollbar-width:thin] rounded-md placeholder:text-gray-600 dark:text-gray-100 dark:placeholder:text-gray-400 dark:bg-[#343434] dark:border-transparent"
+                value={[]}
+                onKeyDown={handleKeyDown}
                 onChange={(e) => setMessage(e)}
                 placeholder="Type your message..."
+                className="px-4 py-2 w-full text-sm text-gray-900 border bg-white outline-none max-h-32 overflow-y-auto [scrollbar-width:thin] rounded-md placeholder:text-gray-600 dark:text-gray-100 dark:placeholder:text-gray-400 dark:bg-[#343434] dark:border-transparent"
               />
             </Slate>
           </div>

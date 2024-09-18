@@ -8,7 +8,7 @@ const ChatRoomList = () => {
   return (
     <div className="chat-left-sidebar">
       <header className="p-5">
-        <h1 className="text-2xl text-slate-800 dark:text-white font-medium">
+        <h1 className="text-2xl text-slate-800 dark:text-white font-bold">
           Chats
         </h1>
         <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
