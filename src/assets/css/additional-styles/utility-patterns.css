@@ -1,0 +1,16 @@
+.text-11 {
+  font-size: 11px;
+}
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.base64-icon {
+  background-color: currentColor;
+  color: inherit;
+  height: 1.2em;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  width: 1.2em;
+}
