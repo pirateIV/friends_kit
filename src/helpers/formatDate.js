@@ -4,6 +4,13 @@ const formatPostCreatedTime = (date) => {
   return format(date, "dd MMMM 'at' hh:mm aa");
 };
 
+const formatTime = (timestamp) => {
+  return new Date(timestamp).toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+};
+
 function formatPostDate(postDate) {
   const currentDate = new Date();
 
@@ -22,4 +29,4 @@ function formatPostDate(postDate) {
   return distance;
 }
 
-export { formatPostCreatedTime, formatPostDate };
+export { formatPostCreatedTime, formatPostDate, formatTime };

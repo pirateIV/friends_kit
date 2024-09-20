@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setChatRoomUsers,
   setUserConnection,
+  setUserMessages,
 } from "@/features/auth/reducers/chat/chatSlice";
 import ChatInputSection from "./components/ChatInputSection";
 import UserProfileSidebar from "./components/UserProfileSidebar";
@@ -16,6 +17,8 @@ import ChatConversation from "./ChatConversation";
 const Chat = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth.user);
+
+  // const [messages, setMessages] = useState([]);
 
   const handleOnUsers = (user) => {
     const roomUsers = [{ ...user, online: true }, ...user.friends].map(
@@ -42,8 +45,14 @@ const Chat = () => {
       dispatch(setUserConnection(user));
     });
 
-    socket.on("private message", (message) => {
+    socket.on("sendMessage", (message) => {
       console.log(message);
+    });
+
+    socket.on("previousMessages", (messages) => {
+      // setMessages((previousMessages) => [...previousMessages, message]);
+      // console.log(message)
+      dispatch(setUserMessages(messages));
     });
 
     socket.on("connection message", (message) => {
@@ -53,7 +62,7 @@ const Chat = () => {
     return () => {
       socket.off("user connected");
       socket.off("user disconnected");
-      socket.off("private message");
+      socket.off("sendMessage");
     };
   }, []);
 

@@ -9,7 +9,7 @@ const chatSlice = createSlice({
     selectedChatMessage: null,
     selectedUser: null,
     showUserInfo: false,
-    userMessages: {},
+    userMessages: [],
   },
   reducers: {
     setChatRoomUsers: (state, action) => {
@@ -37,14 +37,30 @@ const chatSlice = createSlice({
     },
 
     setUserMessages: (state, action) => {
-      const { userId, messages } = action.payload;
-      state.userMessages[userId] = messages;
+      state.userMessages = action.payload;
     },
     setSelectedUser: (state, action) => {
+      // const selected = new URLSearchParams(location.search).get("selected");
+
+      //   if (selected) {
+      //     state.selectedUser = state.chatRoomUsers.find(
+      //       (user) => user.id === selected,
+      //     );
+      //     // console.log(state.chatRoomUsers.find((user) => user.id === selected));
+      //     console.log(state.selectedUser)
+      //   } else {
+      //   }
       state.selectedUser = action.payload;
     },
     setSelectedChatRoom: (state, action) => {
       state.selectedChatRoom = action.payload;
+
+      state.selectedChatRoom.forEach((room) => {
+        if (socket.auth.userID === room.id) {
+          console.log(room);
+        }
+        console.log(room);
+      });
     },
     setSelectedChatMessage: (state, action) => {
       state.selectedChatMessage = action.payload;

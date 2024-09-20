@@ -42,10 +42,10 @@ const ChatInputSection = () => {
     // Get the current value of the Slate editor.
     const message = filterArray(getTypedMesages(editor.children));
 
-    socket.emit("private message", {
+    socket.emit("sendMessage", {
       message,
-      senderId: socket.auth.userID,
-      receiverId: selectedUser?.id,
+      sender: socket.auth.userID,
+      receiver: selectedUser?.id,
     });
 
     // clear the editor after sending

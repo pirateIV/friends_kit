@@ -1,40 +1,28 @@
+import { useEffect, useState } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import Avatar from "@/components/common/Avatar";
+
+import { getUserMessages } from "@/services";
 import {
   setSelectedUser,
   setUserMessages,
 } from "@/features/auth/reducers/chat/chatSlice";
+import Avatar from "@/components/common/Avatar";
 import {
   handleCompareCases,
   handleCompareUsers,
   handleUserName,
 } from "@/helpers";
-import { getUserMessages } from "@/services";
-import { useEffect } from "react";
-const ChatMessageList = ({ searchQuery }) => {
-  const dispatch = useDispatch();
-  const { userId } = useParams();
-  const { userMessages } = useSelector((state) => state.chatRoom);
 
+const ChatMessageList = ({ searchQuery }) => {
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const { userMessages } = useSelector((state) => state.chatRoom);
   const { chatRoomUsers, selectedUser } = useSelector(
     (state) => state.chatRoom,
   );
 
-  useEffect(() => {
-    if (selectedUser && !userMessages[selectedUser.id]) {
-      fetchMessages(selectedUser.id);
-    }
-    console.log(userMessages);
-  }, [selectedUser]);
-
-  const fetchMessages = async (userId) => {
-    const messages = await getUserMessages(userId);
-    dispatch(setUserMessages({ userId, messages }));
-    console.log(messages);
-  };
-
-  const handleSelectUser = async (user) => {
+  const handleSelectUser = (user) => {
     dispatch(setSelectedUser(user));
   };
 
@@ -52,6 +40,19 @@ const ChatMessageList = ({ searchQuery }) => {
       "text-black hover:bg-gray-200 dark:hover:bg-gray-600/30",
     );
 
+  const setSelectedUserLink = (user) => {
+    const queryParams = new URLSearchParams({
+      selected: user.id,
+      username: user.firstName,
+    });
+
+    return "?" + queryParams.toString();
+  };
+  // useEffect(() => {
+  //   // handleSelectUser(filteredRoomUsers.find((user) => user.id === userId));
+  //   console.log(filteredRoomUsers.find((user) => user.id === userId))
+  // }, [userId]);
+
   return (
     <ul>
       {filteredRoomUsers.map((user, index) => (
@@ -59,7 +60,10 @@ const ChatMessageList = ({ searchQuery }) => {
           key={index}
           className={`${activeUser(user)} py-1.5 ps-5 transition-all duration-300`}
         >
-          <Link to={user.id} onClick={() => handleSelectUser(user)}>
+          <Link
+            to={setSelectedUserLink(user)}
+            onClick={() => handleSelectUser(user)}
+          >
             <div
               className="flex items-center"
               onClick={() => handleSelectUser(user)}
