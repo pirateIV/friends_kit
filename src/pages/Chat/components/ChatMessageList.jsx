@@ -1,12 +1,7 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getUserMessages } from "@/services";
-import {
-  setSelectedUser,
-  setUserMessages,
-} from "@/features/auth/reducers/chat/chatSlice";
+import { setSelectedUser } from "@/features/auth/reducers/chat/chatSlice";
 import Avatar from "@/components/common/Avatar";
 import {
   handleCompareCases,
@@ -15,16 +10,10 @@ import {
 } from "@/helpers";
 
 const ChatMessageList = ({ searchQuery }) => {
-  const location = useLocation();
   const dispatch = useDispatch();
-  const { userMessages } = useSelector((state) => state.chatRoom);
   const { chatRoomUsers, selectedUser } = useSelector(
     (state) => state.chatRoom,
   );
-
-  const handleSelectUser = (user) => {
-    dispatch(setSelectedUser(user));
-  };
 
   const filteredRoomUsers = chatRoomUsers.filter((user) =>
     handleUserName(user).toLowerCase().includes(searchQuery.toLowerCase()),
@@ -48,10 +37,10 @@ const ChatMessageList = ({ searchQuery }) => {
 
     return "?" + queryParams.toString();
   };
-  // useEffect(() => {
-  //   // handleSelectUser(filteredRoomUsers.find((user) => user.id === userId));
-  //   console.log(filteredRoomUsers.find((user) => user.id === userId))
-  // }, [userId]);
+
+  const handleSelectUser = (user) => {
+    dispatch(setSelectedUser(user));
+  };
 
   return (
     <ul>

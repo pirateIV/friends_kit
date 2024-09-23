@@ -10,19 +10,12 @@ const chatSlice = createSlice({
     selectedUser: null,
     showUserInfo: false,
     userMessages: [],
+    conversations: {},
   },
   reducers: {
     setChatRoomUsers: (state, action) => {
       const roomUsers = action.payload;
-
-      // state.chatRoomUsers = roomUsers.map((user) => ({
-      //   ...user,
-      //   ...initReactiveProperties(user.id),
-      // }));
       state.chatRoomUsers = roomUsers;
-      console.log(socket.userID);
-      console.log(state.chatRoomUsers);
-      // state.chatRoomUsers = action.payload;
     },
     setUserConnection: (state, action) => {
       const user = action.payload;
@@ -35,21 +28,36 @@ const chatSlice = createSlice({
         }
       });
     },
+    setUserConversations: (state, action) => {
+      if (Array.isArray(action.payload)) {
+        state.userMessages = action.payload;
+      } else if (
+        typeof action.payload === "object" &&
+        action.payload !== null
+      ) {
+        state.userMessages = [...state.userMessages, action.payload];
+      } else {
+        console.error("Payload must be an array or an object");
+      }
 
-    setUserMessages: (state, action) => {
-      state.userMessages = action.payload;
+      state.chatRoomUsers
+        .filter((user) => user.id !== socket.auth.userID)
+        .forEach((user) => {
+          const messagesPerUser = state.userMessages.filter((message) => {
+            const { sender, receiver } = message;
+            return user.id === sender || user.id === receiver;
+          });
+
+          const privateMessages = state.userMessages.filter((message) => {
+            const { sender, receiver } = message;
+            return sender === receiver;
+          });
+
+          state.conversations[user.id] = messagesPerUser;
+          state.conversations[socket.auth.userID] = privateMessages;
+        });
     },
     setSelectedUser: (state, action) => {
-      // const selected = new URLSearchParams(location.search).get("selected");
-
-      //   if (selected) {
-      //     state.selectedUser = state.chatRoomUsers.find(
-      //       (user) => user.id === selected,
-      //     );
-      //     // console.log(state.chatRoomUsers.find((user) => user.id === selected));
-      //     console.log(state.selectedUser)
-      //   } else {
-      //   }
       state.selectedUser = action.payload;
     },
     setSelectedChatRoom: (state, action) => {
@@ -68,6 +76,9 @@ const chatSlice = createSlice({
     setShowUserInfo: (state, action) => {
       state.showUserInfo = !state.showUserInfo;
     },
+    setConversations: (state, action) => {
+      state.conversations = action.payload;
+    },
   },
 });
 
@@ -76,7 +87,8 @@ export const {
   setUserConnection,
   setSelectedUser,
   setShowUserInfo,
-  setUserMessages,
+  setConversations,
+  setUserConversations,
 } = chatSlice.actions;
 
 export default chatSlice.reducer;

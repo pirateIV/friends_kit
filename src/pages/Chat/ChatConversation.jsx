@@ -1,45 +1,31 @@
-import { useSelector } from "react-redux";
-
-import { socket } from "@/socket";
+import { useDispatch, useSelector } from "react-redux";
 import ChatBubble from "./components/ChatBubble";
+import { useEffect, useState } from "react";
+import { socket } from "@/socket";
 
 const ChatConversation = () => {
-  const { selectedUser, chatRoomUsers, userMessages } = useSelector(
+  const dispatch = useDispatch();
+  const { conversations, selectedUser } = useSelector(
     (state) => state.chatRoom,
   );
+  const [selectedUserMessages, setSelectedUserMessages] = useState([]);
 
-  const handleConversations = () => {
-    let conversations = {};
+  useEffect(() => {
+    setSelectedUserMessages(conversations[selectedUser?.id]);
+  }, [selectedUser]);
 
-    chatRoomUsers
-      .filter((user) => user.id !== socket.auth.userID)
-      .forEach((user) => {
-        const messagesPerUser = userMessages.filter((message) => {
-          const { sender, receiver } = message;
-          return user.id === sender || user.id === receiver;
-        });
-
-        const privateMessages = userMessages.filter((message) => {
-          const { sender, receiver } = message;
-          return sender === receiver;
-        });
-
-        conversations[user.id] = messagesPerUser;
-        conversations[socket.auth.userID] = privateMessages;
-      });
-
-    return conversations;
-  };
-
-  const messages = handleConversations()[selectedUser?.id];
+  useEffect(() => {
+    socket.on("private message", (message) => {
+      setSelectedUserMessages((prev) => [...prev, message]);
+    });
+  }, []);
 
   return (
-    <div className="chat-conversation flex-1 p-4 lg:p-6">
+    <div className="chat-conversation p-4 lg:p-6 h-[calc(100vh-115px)] overflow-y-scroll">
       <div className="mt-20 px-4">
-        {userMessages &&
-          messages.map((message) => (
-            <ChatBubble key={message.id} message={message} />
-          ))}
+        {selectedUserMessages?.map((message) => (
+          <ChatBubble key={message.id} message={message} />
+        ))}
       </div>
     </div>
   );
