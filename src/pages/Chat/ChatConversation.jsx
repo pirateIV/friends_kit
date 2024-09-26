@@ -24,7 +24,7 @@ const ChatConversation = () => {
 
   return (
     <div className="chat-conversation p-4 lg:p-6 h-[calc(100vh-115px)] overflow-y-scroll">
-      <div className="mt-20 px-4">
+      <div className="mt-20 md:px-4">
         {selectedUserMessages.map((message) => (
           <ChatBubble key={message.id} message={message} />
         ))}

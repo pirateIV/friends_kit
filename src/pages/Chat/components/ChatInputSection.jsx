@@ -9,6 +9,7 @@ import { Slate, Editable, withReact } from "slate-react";
 
 import { socket } from "@/socket";
 import { filterArray } from "@/helpers";
+import { cn } from "@/lib/utils";
 
 const initialValue = [
   {
@@ -77,7 +78,7 @@ const ChatInputSection = () => {
       </div>
       <form id="chatinput-form" onSubmit={handleSendMessage}>
         <div className="flex items-end">
-          <div className="relative chat-input-links me-2">
+          <div className="relative chat-input-links me-2 hidden sm:block">
             <button type="button">
               <i className="bx bx-dots-horizontal-rounded align-middle"></i>
             </button>
@@ -103,15 +104,12 @@ const ChatInputSection = () => {
           </div>
 
           <div className="flex ml-2">
-            <button type="button" id="audio-btn">
+            <button type="button" id="audio-btn" className="hidden sm:block">
               <i className="bx bx-microphone align-middle"></i>
             </button>
-            <button
-              type="submit"
-              className="!text-white bg-[#3d70b2] rounded-md hover:bg-[#3467aa]"
-            >
-              <i className="bx bxs-send align-middle"></i>
-            </button>
+            <button type="submit" className="!text-[#3d70b2]">
+              <i className="bx bxs-send text-sm sm:text-xl align-middle"></i>
+            </>
           </div>
         </div>
       </form>

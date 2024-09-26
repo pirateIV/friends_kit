@@ -19,7 +19,7 @@ const ChatTopHeader = () => {
           />
 
           <div className="ms-3">
-            <p className="text-slate-700 text-lg font-medium dark:text-white/70">
+            <p className="text-slate-700 text-base md:text-lg font-medium dark:text-white/70">
               {handleUserName(selectedUser)}
             </p>
             <p

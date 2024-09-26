@@ -24,7 +24,6 @@ const ProtectedRoute = () => {
 
   return isAuthenticated ? (
     <>
-      {/* <NotificationRequest /> */}
       <App>
         <Outlet />
       </App>
