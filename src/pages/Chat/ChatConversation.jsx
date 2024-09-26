@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import ChatBubble from "./components/ChatBubble";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { socket } from "@/socket";
 
 const ChatConversation = () => {
@@ -10,25 +10,27 @@ const ChatConversation = () => {
   );
   const [selectedUserMessages, setSelectedUserMessages] = useState([]);
 
+  const bottomRef = useRef(null);
+
   useEffect(() => {
     if (selectedUser) {
       setSelectedUserMessages(conversations[selectedUser?.id] || []);
     }
   }, [selectedUser, conversations]);
 
-  // useEffect(() => {
-  //   socket.on("private message", (message) => {
-  //     setSelectedUserMessages((prev) => [...prev, message]);
-  //   });
-  // }, []);
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [selectedUser, conversations]);
 
   return (
-    <div className="chat-conversation p-4 lg:p-6 h-[calc(100vh-115px)] overflow-y-scroll">
+    <div className="chat-conversation p-4 lg:p-6 h-[calc(100vh-115px)] overflow-y-auto">
       <div className="mt-20 md:px-4">
         {selectedUserMessages.map((message) => (
           <ChatBubble key={message.id} message={message} />
         ))}
       </div>
+
+      <div className="mt-5" ref={bottomRef}></div>
     </div>
   );
 };

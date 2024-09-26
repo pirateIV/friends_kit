@@ -16,9 +16,14 @@ const chatSlice = createSlice({
     setChatRoomUsers: (state, action) => {
       const roomUsers = action.payload;
       state.chatRoomUsers = roomUsers;
+      console.log(state.chatRoomUsers);
     },
     setUserConnection: (state, action) => {
       const user = action.payload;
+
+      if (user.id === state.selectedUser?.id) {
+        state.selectedUser = { ...state.selectedUser, online: user.online };
+      }
 
       state.chatRoomUsers = state.chatRoomUsers.map((u) => {
         if (u.id === user.userID) {

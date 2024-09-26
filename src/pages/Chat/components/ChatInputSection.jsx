@@ -9,7 +9,6 @@ import { Slate, Editable, withReact } from "slate-react";
 
 import { socket } from "@/socket";
 import { filterArray } from "@/helpers";
-import { cn } from "@/lib/utils";
 
 const initialValue = [
   {
@@ -109,7 +108,7 @@ const ChatInputSection = () => {
             </button>
             <button type="submit" className="!text-[#3d70b2]">
               <i className="bx bxs-send text-sm sm:text-xl align-middle"></i>
-            </>
+            </button>
           </div>
         </div>
       </form>

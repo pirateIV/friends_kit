@@ -27,7 +27,7 @@ const ChatRoomList = () => {
         {selectedUser && (
           <button
             onClick={() => setSidebarIsOpen(false)}
-            class="bx bx-x absolute top-5 right-5 text-xl text-white hover:opacity-70 lg:hidden"
+            className="bx bx-x absolute top-5 right-5 text-xl text-white hover:opacity-70 lg:hidden"
           ></button>
         )}
       </header>
