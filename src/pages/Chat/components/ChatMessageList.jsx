@@ -57,12 +57,12 @@ const ChatMessageList = ({ searchQuery }) => {
               className="flex items-center"
               onClick={() => handleSelectUser(user)}
             >
-              <div className="chat-user-img me-2 ms-0 online">
+              <div className="chat-user-img ms-0 online">
                 <Avatar user={user} selectedUser={selectedUser} />
               </div>
               <div className="overflow-hidden">
                 <p
-                  className={`${selected(user)} text-sm dark:text-white/90 mb-0`}
+                  className={`${selected(user)} ms-2 text-sm dark:text-white/90 mb-0`}
                 >
                   {handleUserName(user)}&nbsp;
                   <span className="text-xs opacity-75">

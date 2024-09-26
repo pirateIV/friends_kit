@@ -36,10 +36,11 @@ main > * {
 }
 
 .chat-left-sidebar {
-  min-width: 300px;
-  max-width: 300px;
-  height: 100vh;
-  @apply shadow-sm shadow-black/10 bg-white dark:bg-[#262626];
+  /* min-width: 300px;
+  max-width: 300px; */
+  /* width: 100vw; */
+  /* max-height: calc(100vh - 60px); */
+  @apply h-[calc(100vh-60px)] shadow-sm shadow-black/10 bg-white dark:bg-[#262626] min-w-[100vw] lg:translate-x-0 lg:min-w-[300px] lg:h-full z-20;
 }
 
 .user-profile-sidebar {

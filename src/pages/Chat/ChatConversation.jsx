@@ -11,19 +11,21 @@ const ChatConversation = () => {
   const [selectedUserMessages, setSelectedUserMessages] = useState([]);
 
   useEffect(() => {
-    setSelectedUserMessages(conversations[selectedUser?.id]);
-  }, [selectedUser]);
+    if (selectedUser) {
+      setSelectedUserMessages(conversations[selectedUser?.id] || []);
+    }
+  }, [selectedUser, conversations]);
 
-  useEffect(() => {
-    socket.on("private message", (message) => {
-      setSelectedUserMessages((prev) => [...prev, message]);
-    });
-  }, []);
+  // useEffect(() => {
+  //   socket.on("private message", (message) => {
+  //     setSelectedUserMessages((prev) => [...prev, message]);
+  //   });
+  // }, []);
 
   return (
     <div className="chat-conversation p-4 lg:p-6 h-[calc(100vh-115px)] overflow-y-scroll">
       <div className="mt-20 px-4">
-        {selectedUserMessages?.map((message) => (
+        {selectedUserMessages.map((message) => (
           <ChatBubble key={message.id} message={message} />
         ))}
       </div>

@@ -58,13 +58,13 @@ const Chat = () => {
     return () => {
       socket.off("user connected");
       socket.off("user disconnected");
-      // socket.off("private message");
+      socket.off("private message");
     };
   }, []);
 
   return (
     <div className="flex">
-      <div className="flex-1 bg-[#f2f2f2] min-h-screen overflow-hidden grid grid-cols-[auto_auto_1fr] dark:bg-[#2e2e2e]">
+      <div className="flex-1 flex-row bg-[#f2f2f2] max-h-screen overflow-hidden grid lg:grid-cols-[auto_auto_1fr] dark:bg-[#2e2e2e]">
         <SideMenu user={user} />
         <ChatRoomList />
 
