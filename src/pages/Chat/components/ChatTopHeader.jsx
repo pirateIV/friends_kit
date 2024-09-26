@@ -9,7 +9,7 @@ const ChatTopHeader = () => {
   const { selectedUser } = useSelector((state) => state.chatRoom);
 
   return (
-    <header className="user-chat-topbar absolute top-0 inset-x-0 z-10 bg-gray-200/50 [@supports(backdrop-filter:blur(5px))]:backdrop-blur py-5 px-8  border-b border-[#eaeaf1]  dark:border-[#333] dark:bg-[#2e2e2e80]">
+    <header className="user-chat-topbar absolute top-0 inset-x-0 z-30 bg-gray-200/50 [@supports(backdrop-filter:blur(5px))]:backdrop-blur py-5 px-8  border-b border-[#eaeaf1]  dark:border-[#333] dark:bg-[#2e2e2e80]">
       <div className="flex items-center justify-between">
         <div className="flex items-start">
           <Avatar
