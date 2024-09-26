@@ -69,7 +69,7 @@ const Chat = () => {
         <ChatRoomList />
 
         <UserChatContainer>
-          <div className="relative flex flex-col w-full h-full">
+          <div className="relative flex flex-col w-full h-full transition duration-300">
             <ChatTopHeader />
             <ChatConversation />
             <ChatInputSection />

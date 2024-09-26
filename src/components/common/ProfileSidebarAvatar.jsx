@@ -9,12 +9,12 @@ const ProfileSidebarAvatar = () => {
     <img
       src={selectedUser.avatar}
       alt={selectedUser.firstName}
-      className="w-full h-[250px] rounded-md object-cover"
+      className="w-full h-52 lg:h-[250px] rounded-md object-cover"
     />
   ) : (
     <div
       className={cn(
-        "flex items-center justify-center h-[250px] rounded-md",
+        "flex items-center justify-center h-52 lg:h-[250px] rounded-md",
         getRandomColor(selectedUser.firstName),
       )}
     >

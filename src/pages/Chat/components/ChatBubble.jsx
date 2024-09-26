@@ -25,7 +25,10 @@ const ChatBubble = (props) => {
         )}
       >
         {message.map((content, i) => (
-          <div key={i} className="text-[11px] md:text-[13px] pb-2 sm:pb-2.5">
+          <div
+            key={i}
+            className="text-[11px] md:text-[13px] pb-2 sm:pb-2.5 font-montaga"
+          >
             {content}
           </div>
         ))}

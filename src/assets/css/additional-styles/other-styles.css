@@ -44,17 +44,18 @@ main > * {
 }
 
 .user-profile-sidebar {
-  min-width: 380px;
-  max-width: 380px;
-  height: 100vh;
+  /* min-width: 380px;
+  max-width: 380px; */
+  /* height: 100vh; */
   border-left: 4px solid;
-  @apply border-s-[#eaeaf1] dark:border-s-[#333];
+  @apply border-s-[#eaeaf1] dark:border-s-[#333] min-w-[350px] max-w-[350px] lg:min-w-[380px] lg:max-w-[380px] h-[calc(100vh-60px)] lg:h-screen;
 }
 
 .user-profile-desc {
-  height: calc(100vh - 285px);
-  overflow-y: scroll;
+  /* height: calc(100vh - 285px); */
+  overflow-y: auto;
   scrollbar-width: thin;
+  @apply h-[100vh-300px] lg:h-[285px];
 }
 
 .user-chat-overlay {

@@ -58,6 +58,8 @@ export default {
         ],
         montserrat: ["Montserrat"],
         inter: ["Roboto"],
+        martel: ["Martel sans"],
+        montaga: ["Montaga"],
       },
       boxShadow: {
         tiny: `0 1px 0.5px rgba(0, 0, 0, 0.13),

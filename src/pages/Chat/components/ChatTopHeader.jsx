@@ -1,7 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { handleUserName } from "@/helpers";
 import Avatar from "@/components/common/Avatar";
-import { setShowUserInfo } from "@/features/auth/reducers/chat/chatSlice";
+import {
+  setShowUserInfo,
+  setSidebarOpen,
+} from "@/features/auth/reducers/chat/chatSlice";
 import { cn } from "@/lib/utils";
 
 const ChatTopHeader = () => {
@@ -12,6 +15,12 @@ const ChatTopHeader = () => {
     <header className="user-chat-topbar absolute top-0 inset-x-0 z-30 bg-gray-200/50 [@supports(backdrop-filter:blur(5px))]:backdrop-blur py-5 px-8  border-b border-[#eaeaf1]  dark:border-[#333] dark:bg-[#2e2e2e80]">
       <div className="flex items-center justify-between">
         <div className="flex items-start">
+          <button
+            onClick={() => dispatch(setSidebarOpen(true))}
+            className="inline-flex items-center justify-center mt-1 me-5  text-white text-xl h-8 w-8 bg-[#3d70b2] rounded-full hover:bg-[#3d70b2]/70 lg:hidden"
+          >
+            <i class="bx bx-chevron-left align-middle"></i>
+          </button>
           <Avatar
             user={selectedUser}
             status={false}

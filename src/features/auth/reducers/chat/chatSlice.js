@@ -11,6 +11,7 @@ const chatSlice = createSlice({
     showUserInfo: false,
     userMessages: [],
     conversations: {},
+    sidebarOpen: true,
   },
   reducers: {
     setChatRoomUsers: (state, action) => {
@@ -84,6 +85,9 @@ const chatSlice = createSlice({
     setConversations: (state, action) => {
       state.conversations = action.payload;
     },
+    setSidebarOpen: (state, action) => {
+      state.sidebarOpen = action.payload;
+    },
   },
 });
 
@@ -92,6 +96,7 @@ export const {
   setUserConnection,
   setSelectedUser,
   setShowUserInfo,
+  setSidebarOpen,
   setConversations,
   setUserConversations,
 } = chatSlice.actions;

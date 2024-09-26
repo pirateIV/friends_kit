@@ -2,23 +2,25 @@ import { useState } from "react";
 import ChatMessageList from "./ChatMessageList";
 import SearchBox from "./SearchBox";
 import { cn } from "@/lib/utils";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setSidebarOpen } from "@/features/auth/reducers/chat/chatSlice";
 
 const ChatRoomList = () => {
-  const { selectedUser } = useSelector((state) => state.chatRoom);
+  const dispatch = useDispatch();
+  const { selectedUser, sidebarOpen } = useSelector((state) => state.chatRoom);
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [sidebarIsOpen, setSidebarIsOpen] = useState(true);
+  // const [sidebarIsOpen, setSidebarIsOpen] = useState(true);
 
   return (
     <div
       className={cn(
-        "chat-left-sidebar absolute lg:static transition duration-300",
-        sidebarIsOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
+        "chat-left-sidebar absolute lg:static transition duration-300 z-40",
+        sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
       )}
     >
       <header className="p-5">
-        <h1 className="text-2xl text-slate-800 dark:text-white font-bold">
+        <h1 className="font-sans text-2xl text-slate-800 dark:text-white font-bold">
           Chats
         </h1>
 
@@ -26,8 +28,8 @@ const ChatRoomList = () => {
 
         {selectedUser && (
           <button
-            onClick={() => setSidebarIsOpen(false)}
-            className="bx bx-x absolute top-5 right-5 text-xl text-white hover:opacity-70 lg:hidden"
+            onClick={() => dispatch(setSidebarOpen(false))}
+            className="bx bx-x absolute top-5 right-5 text-xl dark:text-white hover:opacity-70 lg:hidden"
           ></button>
         )}
       </header>
