@@ -120,8 +120,8 @@ const UserProfileSidebar = () => {
                     Location
                   </p>
                   <p className="text-sm font-semibold opacity-75 dark:text-white">
-                    {selectedUser.location.address ? (
-                      selectedUser.location.address
+                    {selectedUser.location?.address ? (
+                      selectedUser.location?.address
                     ) : (
                       <em className="text-xs opacity-50">NA</em>
                     )}
