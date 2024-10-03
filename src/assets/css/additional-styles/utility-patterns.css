@@ -14,3 +14,25 @@
   mask-size: 100% 100%;
   width: 1.2em;
 }
+
+/* Chat */
+
+.chat-bubble__dropdown {
+  @apply bg-white dark:bg-gray-600 shadow-lg shadow-black/40 rounded-lg p-2 z-50;
+}
+
+.chat-bubble__message {
+  @apply text-[11px] md:text-[13px] pb-2 sm:pb-2.5 font-montaga;
+}
+
+.chat-bubble__options-button {
+  @apply -translate-y-3/4 z-40 text-slate-800/70 hover:text-slate-800 focus:text-slate-800 dark:text-white/60 dark:hover:text-white dark:focus:text-white;
+}
+
+.chat-bubble__dropdown-item {
+  @apply block w-32 text-start hover:bg-gray-200 dark:hover:bg-gray-500 px-2 py-1 rounded cursor-pointer;
+}
+
+.chat-bubble__timestamp {
+  @apply absolute end-4 bottom-0.5 text-[9px] md:text-[11px] text-end opacity-70;
+}

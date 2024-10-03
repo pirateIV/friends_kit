@@ -1,5 +1,7 @@
 export const getRandomColor = (name) => {
-  const hash = [...name].reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const hash = name
+    ?.split("")
+    .reduce((acc, char) => acc + char.charCodeAt(0), 0);
   const tailwindColors = [
     "bg-red-500",
     "bg-orange-500",

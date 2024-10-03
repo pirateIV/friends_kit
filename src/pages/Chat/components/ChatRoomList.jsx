@@ -10,12 +10,11 @@ const ChatRoomList = () => {
   const { selectedUser, sidebarOpen } = useSelector((state) => state.chatRoom);
 
   const [searchQuery, setSearchQuery] = useState("");
-  // const [sidebarIsOpen, setSidebarIsOpen] = useState(true);
 
   return (
     <div
       className={cn(
-        "chat-left-sidebar absolute lg:static transition duration-300 z-40",
+        "chat-left-sidebar absolute lg:static transition duration-300 z-[999]",
         sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
       )}
     >

@@ -19,7 +19,7 @@ const ChatTopHeader = () => {
             onClick={() => dispatch(setSidebarOpen(true))}
             className="inline-flex items-center justify-center mt-1 me-5  text-white text-xl h-8 w-8 bg-[#3d70b2] rounded-full hover:bg-[#3d70b2]/70 lg:hidden"
           >
-            <i class="bx bx-chevron-left align-middle"></i>
+            <i className="bx bx-chevron-left align-middle"></i>
           </button>
           <Avatar
             user={selectedUser}

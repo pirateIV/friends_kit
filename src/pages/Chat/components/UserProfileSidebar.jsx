@@ -47,7 +47,7 @@ const UserProfileSidebar = () => {
                     </div>
                   </div>
                   <div className="mt-auto p-4">
-                    <h5 className="mb-1 text-lg text-white font-medium">
+                    <h5 className="mb-1 text-base text-white font-medium">
                       {handleUserName(selectedUser)}
                     </h5>
                     <div className="flex items-center gap-x-2">
@@ -95,7 +95,7 @@ const UserProfileSidebar = () => {
                 </p>
               </div>
               <hr className="my-4 dark:opacity-10" />
-              <div className="space-y-3">
+              <div className="space-y-7 ">
                 <h5 className="mb-2 opacity-90 text-xs font-semibold dark:text-gray-200">
                   INFO:
                 </h5>

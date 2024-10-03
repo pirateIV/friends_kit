@@ -36,12 +36,16 @@ const chatSlice = createSlice({
     },
     setUserConversations: (state, action) => {
       if (Array.isArray(action.payload)) {
-        state.userMessages = action.payload;
+        state.userMessages = action.payload.filter(
+          (message) => message.status !== "deleted",
+        );
       } else if (
         typeof action.payload === "object" &&
         action.payload !== null
       ) {
-        state.userMessages = [...state.userMessages, action.payload];
+        if (!state.userMessages.some((msg) => msg.id === action.payload.id)) {
+          state.userMessages = [...state.userMessages, action.payload];
+        }
       } else {
         console.error("Payload must be an array or an object");
       }
@@ -63,27 +67,21 @@ const chatSlice = createSlice({
           state.conversations[socket.auth.userID] = privateMessages;
         });
     },
+    setUpdatedMessage: (state, action) => {
+      const { id, user, actionType } = action.payload;
+
+      if (actionType === "delete") {
+        const message = state.conversations[user].find(
+          (message) => message.id === id,
+        );
+        console.log(message);
+      }
+    },
     setSelectedUser: (state, action) => {
       state.selectedUser = action.payload;
     },
-    setSelectedChatRoom: (state, action) => {
-      state.selectedChatRoom = action.payload;
-
-      state.selectedChatRoom.forEach((room) => {
-        if (socket.auth.userID === room.id) {
-          console.log(room);
-        }
-        console.log(room);
-      });
-    },
-    setSelectedChatMessage: (state, action) => {
-      state.selectedChatMessage = action.payload;
-    },
     setShowUserInfo: (state, action) => {
       state.showUserInfo = !state.showUserInfo;
-    },
-    setConversations: (state, action) => {
-      state.conversations = action.payload;
     },
     setSidebarOpen: (state, action) => {
       state.sidebarOpen = action.payload;
@@ -98,6 +96,7 @@ export const {
   setShowUserInfo,
   setSidebarOpen,
   setConversations,
+  setUpdatedMessage,
   setUserConversations,
 } = chatSlice.actions;
 
