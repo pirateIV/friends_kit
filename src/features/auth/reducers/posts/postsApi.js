@@ -14,9 +14,11 @@ export const postsApi = createApi({
       }
     },
   }),
+  tagTypes: ["Posts", "Comments"],
   endpoints: (builder) => ({
     getAllUserPosts: builder.query({
       query: (userId) => `posts/${userId}`,
+      providesTags: ["Posts"],
     }),
     updatePost: builder.mutation({
       query: (post) => ({
@@ -30,20 +32,37 @@ export const postsApi = createApi({
         url: `posts/create`,
         method: "POST",
         body: content,
+        prepareHeaders: (headers) => {
+          headers.set("Content-Type", "multipart/form-data");
+          return headers;
+        },
       }),
+      invalidatesTags: ["Posts"],
     }),
     deletePost: builder.mutation({
       query: (postId) => ({
         url: `posts/${postId}/delete`,
         method: "DELETE",
       }),
+      invalidateTags: (result, error, { postId }) => [
+        ({ type: "Posts" }, { type: "Comments", id: postId }),
+      ],
     }),
     addPostComment: builder.mutation({
       query: ({ postId, comment }) => ({
-        url: `posts/${postId}/comments`,
+        url: `/comments/create/${postId}`,
         method: "POST",
-        body: comment,
+        body: { comment },
       }),
+      invalidateTags: (result, error, { postId }) => [
+        { type: "Comments", id: postId },
+      ],
+    }),
+    getPostComments: builder.query({
+      query: (postId) => `comments/${postId}`,
+      providesTags: (result, error, { postId }) => [
+        { type: "Comments", id: postId },
+      ],
     }),
   }),
 });
@@ -51,6 +70,7 @@ export const postsApi = createApi({
 export const {
   useDeletePostMutation,
   useGetAllUserPostsQuery,
+  useGetPostCommentsQuery,
   useUpdatePostMutation,
   useCreatePostMutation,
   useAddPostCommentMutation,

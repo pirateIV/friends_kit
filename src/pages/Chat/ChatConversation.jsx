@@ -39,8 +39,6 @@ const ChatConversation = () => {
               <div className="relative w-24 mx-auto py-1 px-2 text-white text-xs text-center uppercase rounded-full z-20 bg-[#3d70b2]">
                 {dateLabel}
               </div>
-
-              {/* <div className="absolute top-1/2 bottom-1/2 w-full h-px z-10 bg-[#3d70b2]/40"></div> */}
             </div>
 
             {groupedMessages[dateLabel].map((message) => (

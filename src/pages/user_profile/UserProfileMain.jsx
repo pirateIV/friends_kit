@@ -30,6 +30,7 @@ const UserProfileMain = ({ children }) => {
   const dispatch = useDispatch();
 
   const { userId } = useParams();
+  console.log(userId);
 
   useEffect(() => {
     dispatch(getUserProfileInfo(userId));

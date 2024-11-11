@@ -1,20 +1,21 @@
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "@/features/auth/reducers/login/loginSlice";
 
-import { Avatar } from "flowbite-react";
 import photo from "@/assets/images/photo.png";
 import feeling from "@/assets/images/feeling.png";
 import liveVideo from "@/assets/images/live-video.png";
+import Avatar from "@/components/common/Avatar";
 
 const CreatePostBannner = () => {
   const { user } = useSelector(selectCurrentUser);
 
   return (
     <div id="create-post" aria-label="Create a Post">
-      <div className="bg-white p-3 rounded-md space-y-3 shadow-tiny border-t divide-y divide-gray-300 dark:divide-blue-gray-800 dark:border-gray-800 dark:bg-[#1c232e]">
+      <div className="bg-white p-3 rounded-md space-y-3 shadow-tiny border-t divide-y divide-gray-300 dark:divide-gray-800 dark:border-gray-700 dark:bg-[#1c232e]">
         <div className="create-post-header flex items-center gap-4 *:flex-shrink-0">
           <div className="avatar w-10 h-10 overflow-hidden rounded-full">
-            <Avatar />
+            {/* <Avatar /> */}
+            <Avatar user={user} status={false} />
           </div>
           <button
             type="button"
@@ -25,7 +26,7 @@ const CreatePostBannner = () => {
         </div>
         <div className="create-post-footer">
           <div className="post-types flex items-center justify-center *:flex-1 *:gap-3 gap-3 *:text-sm text-gray-600 *:flex-center *:py-1 *:rounded-md pt-1">
-            <button className="hover:bg-gray-300  dark:hover:bg-[#2d3546]">
+            <button className="flex items-center justify-center hover:bg-gray-300  dark:hover:bg-[#2d3546]">
               <img
                 width="20"
                 height="20"
@@ -34,11 +35,11 @@ const CreatePostBannner = () => {
               />
               <span>Live video</span>
             </button>
-            <button className="hover:bg-gray-300 dark:hover:bg-[#2d3546]">
+            <button className="flex items-center justify-center hover:bg-gray-300 dark:hover:bg-[#2d3546]">
               <img width="20" height="20" src={photo} alt="photo-icon" />
               <span>Photo/video</span>
             </button>
-            <button className="hover:bg-gray-300 dark:hover:bg-[#2d3546]">
+            <button className="flex items-center justify-center hover:bg-gray-300 dark:hover:bg-[#2d3546]">
               <img width="20" height="20" src={feeling} alt="" />
               <span>Feeling/activity</span>
             </button>

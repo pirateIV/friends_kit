@@ -7,13 +7,13 @@ const PostsTab = () => {
   const isProfile = useCustomLocation("@me");
 
   return (
-    <div className="grid grid-cols-12 w-full gap-5">
-      <div className="flex flex-col gap-5 col-span-5">
+    <div className="grid grid-cols-12 w-full gap-5 px-5 md:px-10">
+      <div className="sticky top-20 flex-col gap-5 col-span-5 hidden md:flex">
         <UserPhotos />
         <UserFriends />
         {isProfile && <UserSettings />}
       </div>
-      <div className="col-span-7">
+      <div className="col-span-12 md:col-span-7">
         <CreatePostBannner />
         <Feed />
       </div>

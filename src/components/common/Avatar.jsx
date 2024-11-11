@@ -7,11 +7,11 @@ const Avatar = ({ user, selectedUser, className, status = true }) => {
 
   return (
     <div className="relative">
-      {user.avatar ? (
+      {user?.avatar ? (
         <div className="w-8 h-8 md:w-9 md:h-9 lg:h-10 lg:w-10">
           <img
             alt={user.name}
-            src={user.avatar}
+            src={user?.avatar}
             className="rounded-full object-cover"
           />
         </div>
@@ -19,12 +19,12 @@ const Avatar = ({ user, selectedUser, className, status = true }) => {
         <div
           className={cn(
             "relative inline-flex items-center justify-center w-8 h-8 lg:w-10 lg:h-10 rounded-full",
-            getRandomColor(user.firstName),
+            getRandomColor(user?.firstName),
             className,
           )}
         >
           <span className="text-sm lg:text-base font-medium text-white">
-            {user.firstName.charAt(0)}
+            {user?.firstName?.charAt(0)}
           </span>
         </div>
       )}

@@ -59,7 +59,7 @@ const ProfileMenu = () => {
 
   return (
     <>
-      <div className="profile-menu flex items-center justify-end mt-3">
+      <div className="profile-menu flex items-center justify-end mt-3 px-5">
         <div className="flex items-center gap-3 *:min-w-28 *:text-sm *:p-2.5 *:rounded-md *:font-medium">
           <button {...buttonConfig}>{buttonConfig.content}</button>
           <button className={isProfile ? btn2Class : btn2Class2}>

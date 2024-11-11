@@ -4,11 +4,12 @@ const Button = ({ label, position, handleClick }) => {
   const buttonStyles = {
     display: "flex",
     alignItems: "center",
+    justifyContent: "center",
     gap: "10px",
   };
 
   return (
-    <div>
+    <div className="flex items-center justify-center">
       <button
         className="text-[#777] hover:text-gray-800 dark:hover:text-blue-400"
         style={buttonStyles}

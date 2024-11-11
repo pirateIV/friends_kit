@@ -42,11 +42,11 @@ const NavbarStart = () => {
 
   return (
     <div className="nav-start relative">
-      {navIconButtons.map((icon, i) => (
+      {/* {navIconButtons.map((icon, i) => (
         <Button key={i} handleClick={() => showMenu(icon.name)}>
           <Icon path={icon.icon} size={0.8} />
         </Button>
-      ))}
+      ))} */}
     </div>
   );
 };

@@ -8,7 +8,7 @@ const App = ({ children }) => {
 
   return (
     <main>
-      <div className="relative w-full bg-[#fff2f2] dark:bg-[#202937]">
+      <div className="relative w-full bg-gray-100 dark:bg-[#202937]">
         {isChatApp ? null : <Navigation />}
         {children}
       </div>

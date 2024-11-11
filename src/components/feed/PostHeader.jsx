@@ -6,6 +6,7 @@ import useUserData from "@/hooks/useUserData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useDeletePostMutation } from "@/features/auth/reducers/posts/postsApi";
+import Avatar from "../common/Avatar";
 
 const PostHeader = ({ post }) => {
   const [deletePost, { isLoading: isDeleting }] = useDeletePostMutation(
@@ -100,7 +101,8 @@ const PostHeader = ({ post }) => {
           </button>
         </div>
         <div className="flex items-center gap-3">
-          <AvatarComponent />
+          {/* <AvatarComponent /> */}
+          <Avatar user={user} status={false} />
           <div>
             <h5 className="header-title font-medium dark:font-normal">
               {isProfile ? "You" : `${user?.firstName} ${user?.lastName}`}

@@ -5,11 +5,11 @@ import useUserData from "@/hooks/useUserData";
 import { Avatar } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export const UserPhotos = () => {
   return (
-    <div className="user-photos bg-white dark:bg-[#1c232e] shadow-tiny border-t dark:border-gray-800 h-40 py-3 px-4 rounded-md">
+    <div className="user-photos bg-white dark:bg-[#1c232e] shadow border-t dark:border-gray-800 h-40 py-3 px-4 rounded-md">
       <div className="header flex items-center justify-between">
         <h4 className="font-semibold dark:text-gray-300">Photos</h4>
         <a href="" className="text-sm text-blue-500">
@@ -26,7 +26,7 @@ export const UserFriends = () => {
   const { user } = useSelector(selectCurrentUser);
 
   return (
-    <div className="user-photos bg-white dark:bg-[#1c232e] shadow-tiny border-t dark:border-gray-800 min-h-40 py-3 px-4 rounded-md">
+    <div className="user-photos bg-white dark:bg-[#1c232e] shadow border-t dark:border-gray-800 min-h-40 py-3 px-4 rounded-md">
       <div>
         <div className="header flex items-center justify-between">
           <h4 className="font-semibold dark:text-gray-300">Friends</h4>
@@ -38,8 +38,8 @@ export const UserFriends = () => {
           {userData?.friends.length} friends
         </p>
       </div>
-      <div className="mt-4 grid grid-cols-4">
-        {userData?.friends.map((friend) => (
+      <div className="mt-4 flex gap-4 flex-wrap">
+        {userData?.friends.slice(0, 6).map((friend) => (
           <div key={friend.id} className="friend-item col-span-1">
             <Link
               to={user.id === friend.id ? "/@me" : `/user/${friend.id}`}
@@ -61,7 +61,7 @@ export const UserFriends = () => {
 
 export const UserSettings = () => {
   return (
-    <div className="user-photos bg-white dark:bg-[#1c232e] shadow-tiny border-t dark:border-gray-800 h-auto py-3 px-4 rounded-md">
+    <div className="user-photos bg-white dark:bg-[#1c232e] shadow border-t dark:border-gray-800 h-auto py-3 px-4 rounded-md">
       <div className="header">
         <h4 className="font-semibold dark:text-gray-300">Settings</h4>
       </div>

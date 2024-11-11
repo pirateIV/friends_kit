@@ -8,13 +8,7 @@ const baseUrl = `${baseURL}`;
 const getUserProfileInfo = createAsyncThunk(
   "/users/getUserProfileInfo",
   async (userId, thunkApi) => {
-    const token = thunkApi.getState().auth.token;
-    // console.log(token)
-    const res = await axios.get(`${baseUrl}/users/me`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await axios.get(`${baseUrl}/users/${userId}`);
     return res.data;
   },
 );

@@ -30,7 +30,7 @@ const ProfileHeader = ({ triggerModal }) => {
           </button>
         </dl>
 
-        <div className="user-avatar absolute h-[130px] w-[130px] mx-auto flex justify-center z-30 -bottom-[65px] inset-x-0">
+        {/* <div className="user-avatar absolute h-[130px] w-[130px] mx-auto flex justify-center z-30 -bottom-[65px] inset-x-0">
           <img
             src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
             className="rounded-full"
@@ -41,7 +41,8 @@ const ProfileHeader = ({ triggerModal }) => {
               <PlusIcon />
             </a>
           </div>
-        </div>
+        </div> */}
+        {/* <Avat`` */}
       </section>
     </header>
   );
