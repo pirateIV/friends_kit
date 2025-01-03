@@ -1,18 +1,24 @@
 import { cn } from "@/lib/utils";
 import { getRandomColor } from "@/helpers/getRandomColor";
 
-const Avatar = ({ user, selectedUser, className, status = true }) => {
+const Avatar = ({
+  user,
+  selectedUser,
+  fullSize = false,
+  className,
+  status = true,
+}) => {
   const updateUserStatusStyle = (user) =>
     user.online ? "var(--color-online)" : "var(--color-offline)";
 
   return (
-    <div className="relative">
+    <div className={`relative ${fullSize ? "size-full" : ""}`}>
       {user?.avatar ? (
-        <div className="w-8 h-8 md:w-9 md:h-9 lg:h-10 lg:w-10">
+        <div className={`w-8 h-8 md:w-9 md:h-9 lg:h-10 lg:w-10 ${className}`}>
           <img
             alt={user.name}
             src={user?.avatar}
-            className="rounded-full object-cover"
+            className={`rounded-full object-cover `}
           />
         </div>
       ) : (

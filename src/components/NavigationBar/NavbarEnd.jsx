@@ -28,7 +28,7 @@ const NavbarEnd = () => {
 
   return (
     <div className="relative navbar-end flex items-center gap-7 transition-all">
-      <div className="relative w-80 me-3">
+      {/* <div className="relative w-80 me-3">
         <input
           id="search"
           type="search"
@@ -42,7 +42,7 @@ const NavbarEnd = () => {
           <SearchIcon />
           <span className="sr-only">Search icon</span>
         </div>
-      </div>
+      </div> */}
       <div className="relative">
         <button id="user-avatar" onClick={() => setisHidden(!isHidden)}>
           <Avatar user={user.user} className="w-9 h-9 text-sm" status={false} />

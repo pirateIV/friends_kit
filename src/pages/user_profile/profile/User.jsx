@@ -12,7 +12,7 @@ export const UserPhotos = () => {
     <div className="user-photos bg-white dark:bg-[#1c232e] shadow border-t dark:border-gray-800 h-40 py-3 px-4 rounded-md">
       <div className="header flex items-center justify-between">
         <h4 className="font-semibold dark:text-gray-300">Photos</h4>
-        <a href="" className="text-sm text-blue-500">
+        <a href="" className="text-sm text-sky-600 dark:text-sky-500">
           See all photos
         </a>
       </div>
@@ -30,7 +30,7 @@ export const UserFriends = () => {
       <div>
         <div className="header flex items-center justify-between">
           <h4 className="font-semibold dark:text-gray-300">Friends</h4>
-          <a href="" className="text-sm text-blue-500">
+          <a href="" className="text-sm text-sky-600 dark:text-sky-500">
             See all friends
           </a>
         </div>
