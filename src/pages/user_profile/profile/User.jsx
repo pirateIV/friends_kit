@@ -9,10 +9,13 @@ import { Link, useParams } from "react-router-dom";
 
 export const UserPhotos = () => {
   return (
-    <div className="user-photos bg-white dark:bg-[#1c232e] shadow border-t dark:border-gray-800 h-40 py-3 px-4 rounded-md">
+    <div className="user-photos bg-white dark:bg-[#1c232e] shadow border-t dark:border-gray-800 h-40 py-3 px-4 rounded-xl">
       <div className="header flex items-center justify-between">
         <h4 className="font-semibold dark:text-gray-300">Photos</h4>
-        <a href="" className="text-sm text-sky-600 dark:text-sky-500">
+        <a
+          href=""
+          className="text-sm text-indigo-600 font-medium dark:text-sky-500"
+        >
           See all photos
         </a>
       </div>
@@ -26,11 +29,14 @@ export const UserFriends = () => {
   const { user } = useSelector(selectCurrentUser);
 
   return (
-    <div className="user-photos bg-white dark:bg-[#1c232e] shadow border-t dark:border-gray-800 min-h-40 py-3 px-4 rounded-md">
+    <div className="user-photos bg-white dark:bg-[#1c232e] shadow border-t dark:border-gray-800 min-h-40 py-3 px-4 rounded-xl">
       <div>
         <div className="header flex items-center justify-between">
           <h4 className="font-semibold dark:text-gray-300">Friends</h4>
-          <a href="" className="text-sm text-sky-600 dark:text-sky-500">
+          <a
+            href=""
+            className="text-sm text-indigo-600 font-medium dark:text-sky-500"
+          >
             See all friends
           </a>
         </div>
@@ -61,7 +67,7 @@ export const UserFriends = () => {
 
 export const UserSettings = () => {
   return (
-    <div className="user-photos bg-white dark:bg-[#1c232e] shadow border-t dark:border-gray-800 h-auto py-3 px-4 rounded-md">
+    <div className="user-photos bg-white dark:bg-[#1c232e] shadow border-t dark:border-gray-800 h-auto py-3 px-4 rounded-xl">
       <div className="header">
         <h4 className="font-semibold dark:text-gray-300">Settings</h4>
       </div>

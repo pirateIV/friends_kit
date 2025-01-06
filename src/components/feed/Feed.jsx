@@ -77,7 +77,7 @@ const Feed = () => {
         posts.map((post) => (
           <div
             key={post._id}
-            className="bg-white border-t dark:border-gray-800 shadow text-sm my-5 rounded-md dark:text-gray-200 dark:bg-[#1c232e]"
+            className="bg-white border-t dark:border-gray-800 shadow text-sm my-5 rounded-xl dark:text-gray-200 dark:bg-[#1c232e]"
           >
             <PostHeader post={post} />
             <PostContent post={post} error={error} />

@@ -16,12 +16,12 @@ export const uploadDialogs = [
 ];
 
 export const btnClass =
-  "text-white bg-blue-700 border-t border-blue-500 dark:border-blue-400 hover:bg-blue-600";
+  "text-white bg-indigo-600 border-t border-blue-500 dark:border-blue-400 hover:bg-indigo-500";
 export const btnClass2 =
   "text-white bg-green-700 border-t border-green-500 dark:border-green-400 hover:bg-green-600";
 
 export const btn2Class =
-  "flex items-center justify-center bg-gray-400 gap-2  border-t border-gray-400 dark:border-gray-100 hover:bg-gray-400/70";
+  "flex items-center justify-center bg-gray-400 gap-2 border-t border-gray-400 dark:border-gray-100 hover:bg-gray-400/70";
 
 export const btn2Class2 =
   "flex items-center  text-white justify-center bg-blue-600 gap-2  border-t dark:border-blue-400 hover:bg-blue-500";

@@ -11,7 +11,7 @@ const ProfileHeader = ({ triggerModal }) => {
   return (
     <header className="relative">
       <section
-        className="mt-3 banner profile-cover h-[327px] w-full bg-cover group bg-gray-400"
+        className="mt-3 banner profile-cover h-[327px] w-full bg-cover group"
         style={{
           // backgroundImage: `url(${banner})`,
           backgroundImage: `url("https://source.unsplash.com/random?wallpapers")`,
@@ -26,12 +26,12 @@ const ProfileHeader = ({ triggerModal }) => {
           >
             <FontAwesomeIcon icon={faCamera} />
           </span>
-          {/* <button
+          <button
             onClick={() => triggerModal()}
             className="absolute border border-white py-1.5 ps-9 pe-3 text-white rounded-sm top-3 left-3 z-30  transition-opacity opacity-0 group-hover:opacity-100 text-sm"
           >
             Edit cover image
-          </button> */}
+          </button>
         </dl>
 
         <div className="user-avatar absolute h-[130px] w-[130px] mx-auto flex justify-center z-30 -bottom-[65px] inset-x-0">

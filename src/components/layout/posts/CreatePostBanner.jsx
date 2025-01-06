@@ -11,7 +11,7 @@ const CreatePostBannner = () => {
 
   return (
     <div id="create-post" aria-label="Create a Post">
-      <div className="bg-white p-3 rounded-md space-y-3 shadow-tiny border-t divide-y divide-gray-300 dark:divide-gray-800 dark:border-gray-700 dark:bg-[#1c232e]">
+      <div className="bg-white p-3 rounded-xl space-y-3 shadow-tiny border-t divide-y divide-gray-300 dark:divide-gray-800 dark:border-gray-700 dark:bg-[#1c232e]">
         <div className="create-post-header flex items-center gap-4 *:flex-shrink-0">
           <div className="avatar w-10 h-10 overflow-hidden rounded-full">
             {/* <Avatar /> */}

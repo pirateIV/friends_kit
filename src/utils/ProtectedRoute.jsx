@@ -7,15 +7,13 @@ import {
 } from "@/features/auth/reducers/login/loginSlice";
 import "@/assets/css/loader.css";
 import App from "@/App";
-import NotificationRequest from "@/components/notifications/NotificationRequest";
-import { MessageCircle } from "lucide-react";
+import { Home, MessageCircle } from "lucide-react";
 
 const ProtectedRoute = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const { isAuthenticated, loading } = useSelector((state) => state.auth);
+  const { isAuthenticated, loading, user } = useSelector((state) => state.auth);
   const [initialCheck, setInitialCheck] = useState(true);
-  const { user } = useSelector(selectCurrentUser);
 
   useEffect(() => {
     if (initialCheck) {
@@ -37,7 +35,7 @@ const ProtectedRoute = () => {
                 <span className="text-slate-600 dark:text-slate-400">
                   Welcome,
                 </span>{" "}
-                <span className="font-semibold">{user?.firstName}</span>{" "}
+                <span className="font-semibold">{user.user.firstName}</span>{" "}
               </h1>
 
               <p className="text-lg text-slate-600 dark:text-slate-400 mx-auto mt-3">
@@ -45,8 +43,12 @@ const ProtectedRoute = () => {
               </p>
 
               <div className="flex gap-4 justify-center mt-8">
-                <button className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors">
-                  <MessageCircle size="20" />
+                <button className="flex items-center gap-1.5 px-6 py-3.5 bg-slate-900 text-white dark:bg-white text-sm dark:text-slate-800 font-semibold rounded-lg dark:hover:bg-slate-100 border border-slate-200 shadow-sm transition-colors ">
+                  <span>Home</span>
+                  <span>&rarr;</span>
+                </button>
+                <button className="flex items-center gap-1.5 px-6 py-3.5 bg-indigo-600 text-sm text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors">
+                  <MessageCircle size="17" />
                   <span>Start Chatting</span>
                 </button>
               </div>
